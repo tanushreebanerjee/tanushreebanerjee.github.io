@@ -2,10 +2,6 @@
 # This file contains configuration flags to customize your site
 #
 
-theme: jekyll-theme-minimal
-title: Tanushree Banerjee's homepage
-description: Bookmark this to keep an eye on my project updates!
-
 # Name of your site (displayed in the header)
 name: Tanushree Banerjee
 
