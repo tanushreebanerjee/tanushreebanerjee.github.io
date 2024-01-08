@@ -2,7 +2,7 @@
 layout: post
 title:  "Lie Detection in the Diplomacy Game using Large Language Models"
 date:   
-image: 
+image: images/placeholder.png
 categories: research
 author: "Tanushree Banerjee"
 authors: "<strong>Tanushree Banerjee</strong>, Richard Zhu, Runzhe Yang, Denis Peskov, Brandon Stewart, Karthik Narasimhan"
