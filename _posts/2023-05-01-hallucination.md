@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Reducing Object Hallucination in Visual Question Answering"
-date:   
+date: 2023-05-01
 image: images/placeholder.png
 categories: research
 author: "Tanushree Banerjee"

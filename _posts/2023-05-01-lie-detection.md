@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Lie Detection in the Diplomacy Game using Large Language Models"
-date:   
+date:   2023-07-01
 image: images/placeholder.png
 categories: research
 author: "Tanushree Banerjee"
