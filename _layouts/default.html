@@ -72,9 +72,10 @@
               <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
             <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <h3><{{post.title}}</h3>
+              <h3>{{post.title}}</h3>
               <br>
               {{post.authors}}
+
               <br>
               <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
               <br>
@@ -137,8 +138,6 @@
             <td style="padding:2.5%;width:75%;vertical-align:middle">
               <h3>{{post.title}}</h3>
               <br>
-              {{post.authors}}
-              <br>
               <em> {{post.course}}</em> 
               <!-- {{post.categories}} -->
               <!-- <br> -->
@@ -191,7 +190,7 @@
               <p style="text-align:left;font-size:small;">
                 Source code adapted from <a style="font-size:small;" href="https://leonidk.com/">Leonid Keselman's</a> <a style="font-size:small;" href="https://github.com/leonidk/leonidk.github.io">Jekyll fork</a> of <a style="font-size:small;" href="https://jonbarron.info/">Jon Barron's public academic website</a>.
               </p>
-              <p style="text-align:right;font-size:small;">
+              <p style="text-align:left;font-size:small;">
                 Updated January 2024.
               </p>
             </td>
