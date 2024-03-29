@@ -14,7 +14,4 @@ arxiv:
 code: 
 website: 
 ---
-This paper trains a model to classify skin conditions based on images of skin lesions
-from the Fitzpatrick17k dataset. A confidence interval on the accuracy of the trained model
-across the different skin types is analyzed using the bootstrap method in order to determine
-the existence of bias in the trained model. This paper conducts a thorough analysis of whether such a trained model is biased against underrepresented skin tones in the Fitzpatrick17k dataset.
+This paper conducts a thorough analysis of the degree to which a model trained on skin lesion classification is biased against underrepresented skin tones in the training dataset.
