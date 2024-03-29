@@ -11,7 +11,7 @@ supplementary:
 video: 
 author: "Tanushree Banerjee"
 authors: 
-venue: Spring 2024
+course: Spring 2024
 arxiv:
 code: 
 website: https://www.cs.princeton.edu/courses/archive/spring24/cosIW05/
