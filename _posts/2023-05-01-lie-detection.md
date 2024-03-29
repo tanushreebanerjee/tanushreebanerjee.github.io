@@ -11,7 +11,7 @@ authors: <strong>Tanushree Banerjee</strong>, <a href="https://richardzhu123.git
 paper: pdfs/diplomacy_main.pdf
 slides: pdfs/diplomacy_slides.pdf
 venue:
-arxiv: 
+arxiv:
 code: 
 website: 
 ---
