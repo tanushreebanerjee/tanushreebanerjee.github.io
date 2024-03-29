@@ -1,11 +1,15 @@
 ---
 layout: post
 title:  "Lie Detection in the Diplomacy Game using Large Language Models"
-date:   2023-07-01
-image: images/placeholder.png
-categories: research
+date: 2023-07-01
+image: /diplomacy.png
+categories: other
+course: Independent Work Project, Spring 2022
 author: "Tanushree Banerjee"
-authors: "<strong>Tanushree Banerjee</strong>, Richard Zhu, Runzhe Yang, Denis Peskov, Brandon Stewart, Karthik Narasimhan"
+authors: <strong>Tanushree Banerjee</strong>, <a href="https://richardzhu123.github.io/">Richard Zhu</a>,
+<a href="https://runzhe-yang.science/">Runzhe Yang</a>, <a href="https://denis.ai/">Denis Peskov</a>,<a href="https://bstewart.scholar.princeton.edu/">Brandon Stewart</a>,<a href="https://www.cs.princeton.edu/~karthikn/">Karthik Narasimhan</a>
+paper: pdfs/diplomacy_main.pdf
+slides: pdfs/diplomacy_slides.pdf
 venue: 
 arxiv: 
 code: 
