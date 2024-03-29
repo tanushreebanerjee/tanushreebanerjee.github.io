@@ -3,7 +3,7 @@ highlight: true
 layout: post
 title:  "Instructior: Princeton AI4ALL"
 date:  2022-07-20
-image: /PU_mark.png
+image: /ai4all.png
 categories: outreach
 slides: 
 paper: 
