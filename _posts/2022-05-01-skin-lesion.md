@@ -14,4 +14,7 @@ arxiv:
 code: 
 website: 
 ---
-I studied the tendency of Visual Question Answering (VQA) models to predict non-existent objects when queried with an image and an unrelated question. Based on these observations, I devised a procedure to quantify the extent to which VQA models can identify unrelated questions based on the tradeoff between the risk of failing to identify an irrelevant question and the number of related questions incorrectly identified as unrelated. Then, I proposed several approaches to identify questions unrelated to an image. The best approach involved quantifying the extent to which an off-the-shelf VQA model relies on the text input relative to the image input to determine whether the input image-question pair is unrelated. This approach achieved a 40% improvement over the random baseline.
+This paper trains a model to classify skin conditions based on images of skin lesions
+from the Fitzpatrick17k dataset. A confidence interval on the accuracy of the trained model
+across the different skin types is analyzed using the bootstrap method in order to determine
+the existence of bias in the trained model. This paper conducts a thorough analysis of whether such a trained model is biased against underrepresented skin tones in the Fitzpatrick17k dataset.
