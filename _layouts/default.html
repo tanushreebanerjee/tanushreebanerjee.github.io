@@ -67,12 +67,11 @@
           {% for post in site.posts %}
           {% for cat in post.categories %}
           {% if cat == 'research' %}
-          
+          <div class="{% if post.highlight %}highlight{% endif %}">
           <tr>
             <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
               <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
-            <span highlight>
             <td style="padding:2.5%;width:70%;vertical-align:middle">
               <papertitle>{{post.title}}</papertitle>
               <br>
@@ -109,9 +108,9 @@
               {% endif %}
               <p></p>
               {{ post.excerpt }}
-            </span>
             </td>
           </tr>
+        </div>
         
           {% endif %}
           {% endfor %}
