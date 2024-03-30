@@ -67,7 +67,6 @@
           {% for post in site.posts %}
           {% for cat in post.categories %}
           {% if cat == 'research' %}
-          <div class="{% if post.highlight == true %}highlight{% endif %}">
           <tr>
             <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
               <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
@@ -110,7 +109,6 @@
               {{ post.excerpt }}
             </td>
           </tr>
-        </div>
         
           {% endif %}
           {% endfor %}
@@ -133,10 +131,10 @@
           {% for cat in post.categories %}
           {% if cat == "independent" %}
           <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+            <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
               <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
+            <td style="padding:2.5%;width:70%;vertical-align:middle">
               <papertitle>{{post.title}}</papertitle>
               <br>
               {{post.authors}}
@@ -203,10 +201,10 @@
           {% for cat in post.categories %}
           {% if cat == "other" %}
           <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+            <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
               <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
+            <td style="padding:2.5%;width:70%;vertical-align:middle">
               <papertitle>{{post.title}}</papertitle>
               <br>
               {{post.authors}}
@@ -271,10 +269,10 @@
           {% for cat in post.categories %}
           {% if cat == "outreach" %}
           <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+            <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
               <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
+            <td style="padding:2.5%;width:70%;vertical-align:middle">
               <papertitle>{{post.title}}</papertitle>
               <br>
               <!-- {{post.authors}} -->
