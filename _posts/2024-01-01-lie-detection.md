@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Lie Detection in the Diplomacy Game using Large Language Models"
+title:  "LLMs are Superior Feedback Providers: Bootstrapping Reasoning for Lie Detection with Self-Generated Feedback"
 date: 2024-01-01
 image: /diplomacy.png
 categories: independent
