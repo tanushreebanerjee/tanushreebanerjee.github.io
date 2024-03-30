@@ -67,7 +67,7 @@
           {% for post in site.posts %}
           {% for cat in post.categories %}
           {% if cat == 'research' %}
-          <div class="{% if post.highlight %}highlight{% endif %}">
+          <div class="{% if post.highlight == true %}highlight{% endif %}">
           <tr>
             <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
               <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
