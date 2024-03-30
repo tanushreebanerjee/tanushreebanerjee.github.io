@@ -1,7 +1,7 @@
 ---
 highlight: true
 layout: post
-title:  "Instructior: Princeton AI4ALL"
+title:  "Instructor: Princeton AI4ALL"
 date:  2022-07-20
 image: /ai4all.png
 categories: outreach
