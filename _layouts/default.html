@@ -67,7 +67,7 @@
           {% for post in site.posts %}
           {% for cat in post.categories %}
           {% if cat == 'research' %}
-          <tr>
+          <tr {% if post.highlight %} onmouseout="mip360_stop()" onmouseover="mip360_start()" bgcolor="#ffffd0" {% endif %}>
             <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
               <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
