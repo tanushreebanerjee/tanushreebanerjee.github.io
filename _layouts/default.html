@@ -67,12 +67,13 @@
           {% for post in site.posts %}
           {% for cat in post.categories %}
           {% if cat == 'research' %}
-          <span highlight>
+          
           <tr>
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+            <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
               <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
+            <span highlight></span>
+            <td style="padding:2.5%;width:70%;vertical-align:middle">
               <papertitle>{{post.title}}</papertitle>
               <br>
               {{post.authors}}
@@ -108,9 +109,10 @@
               {% endif %}
               <p></p>
               {{ post.excerpt }}
+            </span>
             </td>
           </tr>
-        </span>
+        
           {% endif %}
           {% endfor %}
           {% endfor %}
