@@ -14,4 +14,4 @@ arxiv:
 code: 
 website: 
 ---
-This paper conducts a thorough analysis of the degree to which a model trained on skin lesion classification is biased against underrepresented skin tones in the training dataset.
+This paper analyzes the bias in a model against underrepresented skin tones in the training dataset on the skin lesion classification task.
