@@ -11,7 +11,7 @@ paper: pdfs/iw_spr23_final.pdf
 slides:
 venue: 
 arxiv: 
-code: 
+code: https://github.com/tanushreebanerjee/iw-spring-23
 website: 
 ---
 This paper proposes several approaches to identify questions unrelated to an image to prevent object hallucination in VQA models. The best approach achieved a 40% improvement over the random baseline.
