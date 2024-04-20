@@ -6,7 +6,7 @@ image: /diplomacy.png
 categories: independent
 course:
 author: "Tanushree Banerjee"
-authors: <strong>Tanushree Banerjee</strong>, <a href="https://richardzhu123.github.io/">Richard Zhu</a>, <a href="https://runzhe-yang.science/">Runzhe Yang</a>, <a href="https://denis.ai/">Denis Peskov</a>, <a href="https://bstewart.scholar.princeton.edu/">Brandon Stewart</a>, <a href="https://www.cs.princeton.edu/~karthikn/">Karthik Narasimhan</a>
+authors: <u><strong>Tanushree Banerjee</strong></u>, <a href="https://richardzhu123.github.io/">Richard Zhu</a>, <a href="https://runzhe-yang.science/">Runzhe Yang</a>, <a href="https://denis.ai/">Denis Peskov</a>, <a href="https://bstewart.scholar.princeton.edu/">Brandon Stewart</a>, <a href="https://www.cs.princeton.edu/~karthikn/">Karthik Narasimhan</a>
 paper: pdfs/diplomacy_main.pdf
 slides: pdfs/diplomacy_slides.pdf
 venue: 
