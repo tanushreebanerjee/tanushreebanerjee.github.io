@@ -99,6 +99,9 @@
               <br>
               <be> <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
               <br>
+              {% if post.website %}
+              <a href="{{post.website}}">[project page]</a>
+              {% endif %}
               {% if post.paper %}
               <a href="{{post.paper}}">[paper]</a>
               {% endif %}
@@ -120,11 +123,11 @@
               {% if post.slides %}
               <a href="{{post.slides}}">[slides]</a>
               {% endif %}
-              {% if post.website %}
-              <a href="{{post.website}}">[website]</a>
-              {% endif %}
               {% if post.youtube %}
               <a href="{{post.youtube}}">[youtube]</a>
+              {% endif %}
+              {% if post.poster %}
+              <a href="{{post.poster}}">[poster]</a>
               {% endif %}
               <p></p>
               {{ post.excerpt }}
