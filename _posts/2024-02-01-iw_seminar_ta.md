@@ -16,4 +16,4 @@ arxiv:
 code: 
 website: https://www.cs.princeton.edu/courses/archive/spring24/cosIW05/
 ---
-As a UCA, I hold office hours for students in the seminar, helping them debug their code and advising them on their semester-long independent work projects.
+As a UCA, I held office hours for students in the seminar, helping them debug their code and advising them on their semester-long independent work projects.
