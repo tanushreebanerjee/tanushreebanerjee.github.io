@@ -3,7 +3,7 @@ layout: post
 title:  "Reducing Object Hallucination in Visual Question Answering"
 date: 2023-05-01
 image: /iw_spr23.png
-categories: independent
+categories: other
 course: Independent Work Project, Spring 2023
 author: "Tanushree Banerjee"
 authors: <u><strong>Tanushree Banerjee</strong></u>, <a href="https://www.cs.princeton.edu/~olgarus/">Olga Russakovsky</a>
