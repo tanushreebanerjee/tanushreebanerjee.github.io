@@ -162,6 +162,9 @@
               <br>
               {{post.authors}}
               <br>
+              <br>
+              <be> <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
+              <br>
               {% if post.course %}
               <em> {{post.course}}</em> 
               <br>
@@ -175,14 +178,8 @@
               {% if post.paper %}
               <a href="{{post.paper}}">[paper]</a> 
               {% endif %}
-              {% if post.patent %}
-              <a href="{{post.patent}}">[patent]</a> 
-              {% endif %}
-              {% if post.patent2 %}
-              <a href="{{post.patent2}}">[patent #2<]/a> 
-              {% endif %}
-              {% if post.patent3 %}
-              <a href="{{post.patent3}}">[patent #3<]/a> 
+              {% if post.arxiv %}
+              <a href="{{post.arxiv}}">[arXiv]</a>
               {% endif %}
               {% if post.video %}
               <a href="{{post.video}}">[video]</a> 
@@ -195,9 +192,6 @@
               {% endif %}
               {% if post.poster %}
               <a href="{{post.poster}}">[poster]</a> 
-              {% endif %}
-              {% if post.slides %}
-              <a href="{{post.slides}}">[slides]</a> 
               {% endif %}
               <p></p>
               {{ post.excerpt }}
