@@ -9,7 +9,7 @@ author: "Tanushree Banerjee"
 authors: <u><strong>Tanushree Banerjee</strong></u>, <a href="https://richardzhu123.github.io/">Richard Zhu</a>, <a href="https://runzhe-yang.science/">Runzhe Yang</a>, <a href="https://www.cs.princeton.edu/~karthikn/">Karthik Narasimhan</a>
 paper: pdfs/diplomacy_main.pdf
 slides: pdfs/diplomacy_slides.pdf
-venue: ArXiv Preprint
+venue: arXiv preprint
 arxiv: https://arxiv.org/abs/2408.13915
 code: 
 website: 
