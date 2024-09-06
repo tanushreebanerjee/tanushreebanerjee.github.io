@@ -3,7 +3,7 @@ layout: post
 title:  "LLMs are Superior Feedback Providers: Bootstrapping Reasoning for Lie Detection with Self-Generated Feedback"
 date: 2024-01-01
 image: /diplomacy.png
-categories: independent
+categories: research
 course:
 author: "Tanushree Banerjee"
 authors: <u><strong>Tanushree Banerjee</strong></u>, <a href="https://richardzhu123.github.io/">Richard Zhu</a>, <a href="https://runzhe-yang.science/">Runzhe Yang</a>, <a href="https://www.cs.princeton.edu/~karthikn/">Karthik Narasimhan</a>
