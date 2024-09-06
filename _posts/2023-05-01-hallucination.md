@@ -6,7 +6,7 @@ image: /iw_spr23.png
 categories: other
 course: Independent Work Project, Spring 2023
 author: "Tanushree Banerjee"
-authors: <u><strong>Tanushree Banerjee</strong></u>, <a href="https://www.cs.princeton.edu/~olgarus/">Olga Russakovsky</a>
+authors: <u><strong>Tanushree Banerjee</strong></u>. Advisor&#58; <a href="https://www.cs.princeton.edu/~olgarus/">Olga Russakovsky</a>
 paper: pdfs/iw_spr23_final.pdf
 slides:
 venue: 
