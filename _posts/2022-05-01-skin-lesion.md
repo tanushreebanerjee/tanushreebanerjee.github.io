@@ -3,7 +3,7 @@ layout: post
 title:  "Bias in Skin Lesion Classification	"
 date: 2023-05-01
 image: /iw_spr22.png
-categories: other
+categories: independent
 course: Independent Work Project, Spring 2022
 author: "Tanushree Banerjee"
 authors: <u><strong>Tanushree Banerjee</strong></u>. Advisor&#58; <a href="https://www.cs.princeton.edu/~olgarus/">Olga Russakovsky</a>
