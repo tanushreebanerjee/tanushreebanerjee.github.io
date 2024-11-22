@@ -117,13 +117,13 @@ div.highlight {
 
 .tag {
   display: inline-block; /* Arrange tags in rows */
-  margin: 3px 6px; /* Reduce spacing between tags */
-  padding: 4px 10px; /* Compact padding */
-  font-size: 0.85em; /* Smaller font size for neatness */
+  margin: 2px 2px; /* Reduce spacing between tags */
+  padding: 2px 2px; /* Compact padding */
+  font-size: 1em; /* Smaller font size for neatness */
   font-weight: normal;
   color: white;
-  background-color: #007BFF; /* Clean blue for default tags */
-  border-radius: 8px; /* Slightly rounded edges */
+  background-color: #1772d0; /* Clean blue for default tags */
+  border-radius: 4px; /* Slightly rounded edges */
   text-transform: capitalize;
   text-decoration: none;
   white-space: nowrap; /* Prevents text wrapping */
@@ -131,7 +131,7 @@ div.highlight {
 }
 
 .tag:hover {
-  background-color: #0056b3; /* Slightly darker blue on hover */
+  background-color: #f09228; /* Slightly darker blue on hover */
 }
 
 .tags {
