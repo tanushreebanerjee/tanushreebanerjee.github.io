@@ -115,20 +115,40 @@ div.highlight {
 }
 
 
-.keywords, .tags {
-  font-size: 0.9em;
-  color: #555;
+.tag {
   display: inline-block;
-  margin-top: 5px;
+  margin: 0.2em 0.3em;
+  padding: 0.4em 0.8em;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: white;
+  background-color: #0073e6; /* Default blue color */
+  border-radius: 15px;
+  text-transform: capitalize;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
-.keywords span, .tags span {
-  background-color: #eef;
-  color: #333;
-  padding: 3px 6px;
-  border-radius: 4px;
-  margin-right: 5px;
+.tag:hover {
+  background-color: #005bb5; /* Slightly darker on hover */
 }
+
+.tags .tag:nth-child(odd) {
+  background-color: #34a853; /* Green for odd tags */
+}
+
+.tags .tag:nth-child(even) {
+  background-color: #ea4335; /* Red for even tags */
+}
+
+.keywords .tag:nth-child(odd) {
+  background-color: #fbbc04; /* Yellow for odd keywords */
+}
+
+.keywords .tag:nth-child(even) {
+  background-color: #4285f4; /* Blue for even keywords */
+}
+
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
