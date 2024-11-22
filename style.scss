@@ -116,39 +116,29 @@ div.highlight {
 
 
 .tag {
-  display: inline-block; /* Ensures the tags are arranged in rows */
-  margin: 5px 10px; /* Adds spacing around each tag */
-  padding: 5px 12px; /* Adjust padding for better size */
-  font-size: 0.9em; /* Font size for readability */
-  font-weight: bold;
+  display: inline-block; /* Arrange tags in rows */
+  margin: 3px 6px; /* Reduce spacing between tags */
+  padding: 4px 10px; /* Compact padding */
+  font-size: 0.85em; /* Smaller font size for neatness */
+  font-weight: normal;
   color: white;
-  background-color: #6c757d; /* Neutral gray as the default */
-  border-radius: 12px; /* Smooth edges for the tags */
+  background-color: #007BFF; /* Clean blue for default tags */
+  border-radius: 8px; /* Slightly rounded edges */
   text-transform: capitalize;
   text-decoration: none;
-  transition: background-color 0.3s ease;
-  white-space: nowrap; /* Prevents tags from wrapping to multiple lines */
+  white-space: nowrap; /* Prevents text wrapping */
+  transition: background-color 0.2s ease-in-out;
 }
-
 
 .tag:hover {
-  background-color: #005bb5; /* Slightly darker on hover */
+  background-color: #0056b3; /* Slightly darker blue on hover */
 }
 
-.tags .tag:nth-child(odd) {
-  background-color: #34a853; /* Green for odd tags */
-}
-
-.tags .tag:nth-child(even) {
-  background-color: #ea4335; /* Red for even tags */
-}
-
-.keywords .tag:nth-child(odd) {
-  background-color: #fbbc04; /* Yellow for odd keywords */
-}
-
-.keywords .tag:nth-child(even) {
-  background-color: #4285f4; /* Blue for even keywords */
+.tags {
+  display: flex; /* Flexible layout for wrapping */
+  flex-wrap: wrap; /* Allow tags to wrap onto multiple lines */
+  gap: 5px; /* Compact gap between tags */
+  margin-top: 8px; /* Adjust spacing between tags and content */
 }
 
 
