@@ -114,6 +114,22 @@ div.highlight {
   background-color: #ffffd0;
 }
 
+
+.keywords, .tags {
+  font-size: 0.9em;
+  color: #555;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.keywords span, .tags span {
+  background-color: #eef;
+  color: #333;
+  padding: 3px 6px;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 //@import "highlights";
