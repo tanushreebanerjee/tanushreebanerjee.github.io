@@ -96,10 +96,13 @@
             <td style="padding:2.5%;width:60%;vertical-align:middle">
               <papertitle>{{post.title}}</papertitle>
               <td>
-                {% if post.tags %}
-                  <span class="tags">Tags: {{ post.tags | join: ', ' }}</span>
-                {% endif %}
-              </td>
+    {% if post.keywords %}
+      <span class="keywords">Keywords: {{ post.keywords | join: ', ' }}</span>
+    {% endif %}
+    {% if post.tags %}
+      <span class="tags">Tags: {{ post.tags | join: ', ' }}</span>
+    {% endif %}
+  </td>
               <br>
               {{post.authors}}
               <br>
