@@ -118,7 +118,7 @@ div.highlight {
 .tag {
   display: inline-block; /* Arrange tags in rows */
   margin: 2px 2px; /* Reduce spacing between tags */
-  padding: 2px 2px; /* Compact padding */
+  padding: 5px 5px; /* Compact padding */
   font-size: 1em; /* Smaller font size for neatness */
   font-weight: normal;
   color: white;
@@ -137,9 +137,11 @@ div.highlight {
 .tags {
   display: flex; /* Flexible layout for wrapping */
   flex-wrap: wrap; /* Allow tags to wrap onto multiple lines */
-  gap: 5px; /* Compact gap between tags */
-  margin-top: 8px; /* Adjust spacing between tags and content */
+  gap: 0.5rem; /* Compact gap between tags */
+  margin-top: 1rem; /* Adjust spacing between tags and content */
+  margin-bottom: 1rem;
 }
+
 
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
