@@ -106,16 +106,13 @@
     {% endfor %}
   </div>
 {% endif %}
-
 {% if post.tags %}
   <div class="tags">
     {% for tag in post.tags %}
       <span class="tag">{{ tag }}</span>
     {% endfor %}
   </div>
-{% endif %}
-
-                
+{% endif %}   
               {% if post.website %}
               <a href="{{post.website}}">[project page]</a>
               {% endif %}
@@ -265,7 +262,6 @@
     {% endfor %}
   </div>
 {% endif %}
-
 {% if post.tags %}
   <div class="tags">
     {% for tag in post.tags %}
