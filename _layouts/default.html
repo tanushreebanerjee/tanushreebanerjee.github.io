@@ -95,19 +95,22 @@
             </td>
             <td style="padding:2.5%;width:60%;vertical-align:middle">
               <papertitle>{{post.title}}</papertitle>
-              <td>
+              <br>
+              {{post.authors}}
+              <br>
+              <be> <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
+              <br>
+
+               <br>
     {% if post.keywords %}
       <span class="keywords">Keywords: {{ post.keywords | join: ', ' }}</span>
     {% endif %}
     {% if post.tags %}
       <span class="tags">Tags: {{ post.tags | join: ', ' }}</span>
     {% endif %}
-  </td>
-              <br>
-              {{post.authors}}
-              <br>
-              <be> <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
-              <br>
+<br>
+
+                
               {% if post.website %}
               <a href="{{post.website}}">[project page]</a>
               {% endif %}
