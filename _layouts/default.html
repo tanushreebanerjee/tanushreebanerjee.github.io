@@ -99,8 +99,6 @@
               {{post.authors}}
               <br>
               <be> <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
-              <br>
-
              {% if post.keywords %}
   <div class="keywords">
     {% for keyword in post.keywords %}
