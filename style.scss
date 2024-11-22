@@ -138,8 +138,8 @@ div.highlight {
   display: flex; /* Flexible layout for wrapping */
   flex-wrap: wrap; /* Allow tags to wrap onto multiple lines */
   gap: 0.5rem; /* Compact gap between tags */
-  margin-top: 1rem; /* Adjust spacing between tags and content */
-  margin-bottom: 1rem;
+  margin-top: 0px; /* Adjust spacing between tags and content */
+  margin-bottom: 0px;
 }
 
 
