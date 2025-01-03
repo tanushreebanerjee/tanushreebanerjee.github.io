@@ -89,7 +89,7 @@ papertitle {
   font-weight: 700;
   font-display: auto;
   padding: 0px;
-  margin: 0px;
+  margin: 10px;
   display:inline; 
 }
 
@@ -146,8 +146,8 @@ div.highlight {
   display: flex; /* Flexible layout for wrapping */
   flex-wrap: wrap; /* Allow tags to wrap onto multiple lines */
   gap: 0.5rem; /* Compact gap between tags */
-  margin-top: 0px; /* Adjust spacing between tags and content */
-  margin-bottom: 0px;
+  margin-top: 5px; /* Adjust spacing between tags and content */
+  margin-bottom: 5px;
 }
 
 
