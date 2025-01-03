@@ -90,10 +90,10 @@
           {% for cat in post.categories %}
           {% if cat == 'research' %}
           <tr {% if post.highlight %} onmouseout="mip360_stop()" onmouseover="mip360_start()" bgcolor="#ffffd0" {% endif %}>
-            <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
-              <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+            <td style="padding:2.5%;width:30%;vertical-align:middle;horizontal-align:middle;min-width:120px">
+              <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-height:100%;" />
             </td>
-            <td style="padding:2.5%;width:70%;vertical-align:middle">
+            <td style="padding:2.5%;width:70%;vertical-align:middle;horizontal-align:middle">
               <span><papertitle>{{post.title}}</papertitle></span>
               <br>
               {{post.authors}}
@@ -156,7 +156,7 @@
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
+            <td style="padding:2.5%;width:100%;vertical-align:middle;horizontal-align:middle">
               <h2>Selected Independent Work Reports</h2>
               <p> 
 <!--                 Earlier during my undergraduate studies at <a href="https://www.princeton.edu/">Princeton</a>, I explored human and machine-in-the-loop systems under Prof. <a href="https://www.cs.princeton.edu/~karthikn/">Karthik Narasimhan</a> in the <a href="https://princeton-nlp.github.io/">Princeton Natural Language Processing Group</a>. -->
@@ -171,10 +171,10 @@
           {% for cat in post.categories %}
           {% if cat == "independent" %}
           <tr>
-            <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
-              <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+            <td style="padding:2.5%;width:30%;vertical-align:middle;horizontal-align:middle;min-width:120px">
+              <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-height:100%;" />
             </td>
-            <td style="padding:2.5%;width:70%;vertical-align:middle">
+            <td style="padding:2.5%;width:70%;vertical-align:middle;horizontal-align:middle">
              <span><papertitle>{{post.title}}</papertitle></span>
               {% if post.keywords %}
   <div class="keywords">
@@ -236,7 +236,7 @@
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
+            <td style="padding:2.5%;width:100%;vertical-align:middle;horizontal-align:middle">
               <h2>Selected Course Projects</h2>
               <p> These include unpublished research-related work as part of semester-long course projects during my undergraduate studies at <a href="https://www.princeton.edu/">Princeton</a>.
               </p>
@@ -249,10 +249,10 @@
           {% for cat in post.categories %}
           {% if cat == "other" %}
           <tr>
-            <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
-              <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+            <td style="padding:2.5%;width:30%;vertical-align:middle;horizontal-align:middle;min-width:120px">
+              <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-height:100%;" />
             </td>
-            <td style="padding:2.5%;width:70%;vertical-align:middle">
+            <td style="padding:2.5%;width:70%;vertical-align:middle;horizontal-align:middle">
               <span><papertitle>{{post.title}}</papertitle></span>
               {% if post.keywords %}
   <div class="keywords">
@@ -319,7 +319,7 @@
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
+            <td style="padding:2.5%;width:100%;vertical-align:middle;horizontal-align:middle">
               <h2>Teaching & Outreach</h2>
               <p> I have been incredibly fortunate to receive tremendous support from faculty mentors while at <a href="https://www.princeton.edu/">Princeton</a> to pursue a research career in computer science. I am keen to use my position to help empower others to pursue careers in computer science. This section includes my teaching and outreach endeavors to help address the acute diversity crisis in this field.
             </td>
@@ -331,10 +331,10 @@
           {% for cat in post.categories %}
           {% if cat == "outreach" %}
           <tr>
-            <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
-              <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:120px;vertical-align:middle" align="center" />
+            <td style="padding:2.5%;width:30%;vertical-align:middle;horizontal-align:middle;min-width:120px">
+              <img src="/images{{post.image}}" alt="project image" style="width:auto; height:auto; max-height:100%;horizontal-align:middle" align="center" />
             </td>
-            <td style="padding:2.5%;width:70%;vertical-align:middle">
+            <td style="padding:2.5%;width:70%;vertical-align:middle;horizontal-align:middle">
               <span><papertitle>{{post.title}}</papertitle></span>
               <br>
               <!-- {{post.authors}} -->
