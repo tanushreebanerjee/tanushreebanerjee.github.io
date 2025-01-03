@@ -9,8 +9,8 @@ output_folder = "images_resized"
 os.makedirs(output_folder, exist_ok=True)
 
 # Define max dimensions
-max_width = 160
-max_height = 160
+max_width = 400
+max_height = 400
 
 # Resize and save images
 for file_name in os.listdir(input_folder):
