@@ -89,7 +89,7 @@ papertitle {
   font-weight: 700;
   font-display: auto;
   padding: 0px;
-  margin-bottom: 10px;
+  margin: 0px;
   display:inline; 
 }
 
@@ -126,7 +126,7 @@ div.highlight {
 .tag {
   display: inline-block; /* Arrange tags in rows */
   margin: 2px 2px; /* Reduce spacing between tags */
-  padding: 0px 0px; /* Compact padding */
+  padding: 5px 5px; /* Compact padding */
   font-size: 0.85em; /* Smaller font size for neatness */
   font-weight: normal;
   color: white;
@@ -146,8 +146,8 @@ div.highlight {
   display: flex; /* Flexible layout for wrapping */
   flex-wrap: wrap; /* Allow tags to wrap onto multiple lines */
   gap: 0.5rem; /* Compact gap between tags */
-  margin-top: 5px; /* Adjust spacing between tags and content */
-  margin-bottom: 5px;
+  margin-top: 0px; /* Adjust spacing between tags and content */
+  margin-bottom: 0px;
 }
 
 
