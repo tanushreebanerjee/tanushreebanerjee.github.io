@@ -79,7 +79,7 @@
                 </ul>
               </p>
           <p>
-            * indicates equal contribution. Representative projects are <span style="background-color:#ffffd0">highlighted</span>.
+            * indicates equal contribution. Representative projects are <span style="background-color:#FDFBD4">highlighted</span>.
           </p>
             </td>
           </tr>
@@ -89,7 +89,7 @@
           {% for post in site.posts %}
           {% for cat in post.categories %}
           {% if cat == 'research' %}
-          <tr {% if post.highlight %} onmouseout="mip360_stop()" onmouseover="mip360_start()" bgcolor="#ffffd0" {% endif %}>
+          <tr {% if post.highlight %} onmouseout="mip360_stop()" onmouseover="mip360_start()" bgcolor="#FDFBD4" {% endif %}>
             <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
               <img src="/images_resized{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
