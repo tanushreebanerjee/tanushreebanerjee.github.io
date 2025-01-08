@@ -9,6 +9,7 @@ author: "Tanushree Banerjee"
 authors: <u><strong>Tanushree Banerjee</strong></u>. Advisor&#58; <a href="https://www.cs.princeton.edu/~olgarus/">Olga Russakovsky</a>
 paper: pdfs/iw_spr22_final.pdf
 slides: pdfs/iw_spr22_slides.pdf
+tags: [Bias in AI, Racial Biases in Computer Vision]
 venue: 
 arxiv: 
 code: 
