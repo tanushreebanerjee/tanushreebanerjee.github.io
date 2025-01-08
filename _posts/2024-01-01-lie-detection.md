@@ -10,6 +10,7 @@ authors: <u><strong>Tanushree Banerjee</strong></u>, <a href="https://richardzhu
 paper: pdfs/diplomacy_main.pdf
 slides: pdfs/diplomacy_slides.pdf
 venue: arXiv preprint
+tags: [LLM Self-Refinement, Human-in-the-Loop ML]
 arxiv: https://arxiv.org/abs/2408.13915
 code: 
 website: 
