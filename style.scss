@@ -145,7 +145,7 @@ div.highlight {
 .tags {
   display: flex; /* Flexible layout for wrapping */
   flex-wrap: wrap; /* Allow tags to wrap onto multiple lines */
-  gap: 0.5rem; /* Compact gap between tags */
+  gap: 0.0rem; /* Compact gap between tags */
   margin-top: 0px; /* Adjust spacing between tags and content */
   margin-bottom: 0px;
 }
