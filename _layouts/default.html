@@ -183,14 +183,6 @@
     {% endfor %}
   </div>
 {% endif %}
-
-{% if post.tags %}
-  <div class="tags">
-    {% for tag in post.tags %}
-      <span class="tag">{{ tag }}</span>
-    {% endfor %}
-  </div>
-{% endif %}
               {{post.authors}}
 <!--               <br>
               <be> <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }} -->
@@ -198,6 +190,13 @@
               {% if post.course %}
               <em> {{post.course}}</em> 
               <br>
+              {% if post.tags %}
+  <div class="tags">
+    {% for tag in post.tags %}
+      <span class="tag">{{ tag }}</span>
+    {% endfor %}
+  </div>
+{% endif %}
 <!--               <br> -->
 <!--               {% endif %}
               {{post.categories}}
