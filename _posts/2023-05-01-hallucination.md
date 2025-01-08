@@ -8,6 +8,7 @@ course: Independent Work Project, Spring 2023
 author: "Tanushree Banerjee"
 authors: <u><strong>Tanushree Banerjee</strong></u>. Advisor&#58; <a href="https://www.cs.princeton.edu/~olgarus/">Olga Russakovsky</a>
 paper: pdfs/iw_spr23_final.pdf
+tags: [Hallucination in Vision Models, Bias in AI, Reliability in AI]
 slides:
 venue: 
 arxiv: 
