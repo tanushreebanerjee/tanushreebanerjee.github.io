@@ -162,8 +162,8 @@ p {
 
 // Enhanced navigation styles
 .navigation {
-  background-color: $background-primary;
-  border-bottom: 2px solid $primary-color;
+  background-color: $primary-color;
+  // border-bottom: 2px solid $primary-color;
   padding: $spacing-sm 0;
   position: sticky;
   top: 0;
@@ -188,15 +188,15 @@ p {
     
     a {
       padding: $spacing-sm $spacing-md;
-      color: $text-primary;
+      color: $background-primary;
       border-radius: 4px;
       transition: all 0.2s ease;
       font-weight: 500;
       
       &:hover {
-        color: $primary-color;
-        text-decoration: none;
-        background-color: rgba($primary-color, 0.05);
+        color: $background-primary;
+        text-decoration: underline;
+        // background-color: rgba($primary-color, 0.05);
       }
       
       &.active {
