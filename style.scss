@@ -5,154 +5,455 @@
 // IMPORTS
 //
 
-//@import "reset";
-//@import "variables";
-// Syntax highlighting @import is at the bottom of this file
+// Reset some basic elements
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/**************/
-/* BASE RULES */
-/**************/
+// Variables
+$primary-color: #B30059;
+$secondary-color: #cc9933;
+$text-color: #333;
+$background-color: #fff;
+$light-grey: #f5f5f5;
+$dark-grey: #4a4a4a;
+$font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+// Base styles
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-stack;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+// Links
 a {
-  color: #B30059;
+  color: $primary-color;
   text-decoration: none;
-}
-
-a:focus,
-a:hover {
-  color: #cc9933; /* Darker burgundy */
-  text-decoration: underline; /* Optional: Add underline on hover */
-}
-
-br {
-    margin-bottom: 20px; 
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: $secondary-color;
+    text-decoration: underline;
   }
-
-ul li {
-    margin-bottom: 5px;
 }
 
-
-body,
-td,
-th,
-tr,
-p,
-a {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-  font-size: 14px;
-  font-display: auto;
-}
-
-strong {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-  font-size: 14px;
-  font-display: auto;
-}
-
-h2 {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-  font-size: 22px;
-  font-display: auto;
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-stack;
+  line-height: 1.3;
+  margin-bottom: 1rem;
   font-weight: 700;
-  padding: 0px;
-  margin: 0px;
-  display:inline; 
-}
-
-h3 {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-  font-size: 14px;
-  font-weight: 700;
-  font-display: auto;
-  padding: 0px;
-  margin: 0px;
-  display:inline; 
 }
 
 h1 {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-  font-size: 32px;
-  font-weight: 700;
-  font-display: auto;
+  font-size: 2rem;
   text-align: center;
-  padding: 0px;
-  margin-block-start: 14px;
-  margin-block-end: 14px;
-  margin-left: 0px;
-  margin-right: 0px;
+  margin: 1rem 0;
 
+  @media (min-width: 768px) {
+    font-size: 2.5rem;
+  }
 }
 
-papertitle {
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-  font-size: 18px;
+h2 {
+  font-size: 1.5rem;
+  display: inline-block;
+  border-bottom: 3px solid $primary-color;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1.2rem;
+  
+  @media (min-width: 768px) {
+    font-size: 1.8rem;
+  }
+}
+
+h3 {
+  font-size: 1.2rem;
+  
+  @media (min-width: 768px) {
+    font-size: 1.4rem;
+  }
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+strong, b {
   font-weight: 700;
-  font-display: auto;
-  padding: 0px;
-  margin: 0px;
-  display:inline; 
 }
 
-.one {
-  width: 160px;
-  height: 160px;
-  position: relative;
+// Layout
+.container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto;
 }
 
-.two {
-  width: 160px;
-  height: 160px;
-  position: absolute;
-  transition: opacity .2s ease-in-out;
-  -moz-transition: opacity .2s ease-in-out;
-  -webkit-transition: opacity .2s ease-in-out;
+.header {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+  
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  &__photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    object-fit: cover;
+    border: 3px solid $primary-color;
+    
+    @media (min-width: 768px) {
+      margin: 0 2rem 0 0;
+    }
+  }
+  
+  &__content {
+    flex: 1;
+  }
+  
+  &__name {
+    margin-bottom: 0.5rem;
+  }
+  
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+    
+    @media (min-width: 768px) {
+      justify-content: flex-start;
+    }
+    
+    a {
+      margin: 0 0.5rem 0.5rem 0;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 0.8rem;
+      background-color: $light-grey;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      
+      i {
+        margin-right: 0.4rem;
+      }
+      
+      &:hover {
+        background-color: $primary-color;
+        color: white;
+        text-decoration: none;
+      }
+    }
+  }
 }
 
-.fade {
-  transition: opacity .2s ease-in-out;
-  -moz-transition: opacity .2s ease-in-out;
-  -webkit-transition: opacity .2s ease-in-out;
+.section {
+  margin: 3rem 0;
+  
+  &__title {
+    margin-bottom: 2rem;
+  }
 }
 
-span.highlight {
-  background-color: #FDFBD4;
+// News section
+.news {
+  &__item {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6rem;
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: $primary-color;
+      border-radius: 50%;
+    }
+  }
+  
+  &__date {
+    font-weight: 700;
+  }
 }
 
-div.highlight {
-  background-color: #FDFBD4;
+// Projects section
+.projects {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  &__item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    background-color: $light-grey;
+    
+    &:hover {
+      transform: translateY(-5px);
+    }
+    
+    &--highlight {
+      border: 2px solid $primary-color;
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+  }
+  
+  &__content {
+    padding: 1.5rem;
+  }
+  
+  &__title {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  &__authors {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  &__venue {
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  
+  &__tag {
+    background-color: $primary-color;
+    color: white;
+    padding: 0.3rem 0.6rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    margin: 0 0.5rem 0.5rem 0;
+  }
+  
+  &__links {
+    a {
+      margin-right: 0.8rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  &__description {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
 }
 
+// Research interests
+.research-interests {
+  background-color: $light-grey;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  
+  ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-top: 1rem;
+    
+    li {
+      margin-bottom: 0.5rem;
+    }
+  }
+}
 
+// Publications
+.publications {
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 2fr;
+      align-items: start;
+    }
+  }
+  
+  &__image {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  &__title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+// Tags
 .tag {
-  display: inline-block; /* Arrange tags in rows */
-  margin: 2px 2px; /* Reduce spacing between tags */
-  padding: 5px 5px; /* Compact padding */
-  font-size: 0.85em; /* Smaller font size for neatness */
+  display: inline-block;
+  margin: 2px;
+  padding: 5px 10px;
+  font-size: 0.85em;
   font-weight: normal;
   color: white;
-  background-color: #B30059; /* Clean blue for default tags */
-  border-radius: 4px; /* Slightly rounded edges */
+  background-color: $primary-color;
+  border-radius: 4px;
   text-transform: capitalize;
-  text-decoration: none;
-  white-space: nowrap; /* Prevents text wrapping */
-  transition: background-color 0.2s ease-in-out;
-}
-
-.tag:hover {
-  background-color: #cc9933; /* Slightly darker blue on hover */
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background-color: $secondary-color;
+    color: white;
+    text-decoration: none;
+  }
 }
 
 .tags {
-  display: flex; /* Flexible layout for wrapping */
-  flex-wrap: wrap; /* Allow tags to wrap onto multiple lines */
-  gap: 0.0rem; /* Compact gap between tags */
-  margin-top: 0px; /* Adjust spacing between tags and content */
-  margin-bottom: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin: 0.5rem 0;
 }
 
+// Teaching & Outreach
+.teaching {
+  &__item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+  
+  &__image {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    
+    @media (min-width: 768px) {
+      margin-right: 1.5rem;
+      margin-bottom: 0;
+    }
+  }
+  
+  &__content {
+    flex: 1;
+  }
+  
+  &__title {
+    margin-bottom: 0.5rem;
+  }
+}
 
+// Footer
+.footer {
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: 4rem;
+  border-top: 1px solid $light-grey;
+  font-size: 0.9rem;
+  color: $dark-grey;
+}
 
-// Settled on moving the import of syntax highlighting to the bottom of the CSS
-// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
-//@import "highlights";
-//@import "svg-icons";
+// Utilities
+.highlight-bg {
+  background-color: #FDFBD4;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+// Animation for highlighted items
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba($primary-color, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba($primary-color, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba($primary-color, 0);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #121212;
+    color: #e1e1e1;
+  }
+  
+  a {
+    color: lighten($primary-color, 20%);
+    
+    &:hover {
+      color: lighten($secondary-color, 20%);
+    }
+  }
+  
+  .header__links a,
+  .projects__item {
+    background-color: #2a2a2a;
+  }
+  
+  .research-interests {
+    background-color: #2a2a2a;
+  }
+  
+  .header__links a:hover {
+    background-color: $primary-color;
+  }
+  
+  .footer {
+    border-top-color: #2a2a2a;
+  }
+}
