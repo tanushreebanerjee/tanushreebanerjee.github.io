@@ -226,27 +226,50 @@ p {
 }
 
 // Centered contact links
+
+// Updated contact links styling
 .contact-centered {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: $spacing-md auto $spacing-xl;
+  align-items: center;
+  margin: $spacing-lg auto;
   max-width: 800px;
   gap: $spacing-md $spacing-lg;
   
   a {
     display: inline-flex;
     align-items: center;
-    font-size: 0.95rem;
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    transition: all 0.2s ease;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: 4px;
+    text-decoration: none;
     
     i {
       margin-right: $spacing-xs;
       color: $primary-color;
+      transition: transform 0.2s ease;
     }
     
-    &:hover i {
-      color: $primary-dark;
+    &:hover {
+      background-color: rgba($primary-color, 0.05);
+      color: $text-primary;
+      
+      i {
+        transform: scale(1.1);
+        color: $primary-dark;
+      }
     }
+  }
+
+  // Separator between links
+  a + a::before {
+    content: '•';
+    color: $border-light;
+    margin-right: $spacing-lg;
+    margin-left: -$spacing-lg;
   }
 }
 
@@ -521,3 +544,7 @@ p {
   margin: 0;
   align-items: center;  // Vertically center tags
 }
+
+
+
+
