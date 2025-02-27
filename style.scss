@@ -114,6 +114,17 @@ h1 {
   margin-bottom: $spacing-lg;
 }
 
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  font-size: $font-size-xxl;
+  margin-bottom: $spacing-lg;
+}
+
+
 h2 {
   font-size: $font-size-xl;
   border-bottom: 2px solid $primary-color;
