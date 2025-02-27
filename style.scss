@@ -273,7 +273,7 @@ p {
   // Separator between links
   a + a::before {
     content: '•';
-    color: $border-medium;  // Slightly darker separator
+    color: $text-muted;  // Slightly darker separator
     margin-right: $spacing-lg;
     margin-left: -$spacing-lg;
     opacity: 0.5;
