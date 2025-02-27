@@ -393,18 +393,18 @@ p {
       background-color: $tag-peer-reviewed-light;
       color: $tag-peer-reviewed-color;
       
-      &:before {
-        content: "✓ ";
-      }
+      // &:before {
+      //   content: "✓ ";
+      // }
     }
     
     &--preprint {
       background-color: $tag-preprint-light;
       color: $tag-preprint-color;
       
-      &:before {
-        content: "⟳ ";
-      }
+      // &:before {
+      //   content: "⟳ ";
+      // }
     }
   }
   
