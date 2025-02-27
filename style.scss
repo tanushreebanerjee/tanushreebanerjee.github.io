@@ -437,3 +437,110 @@ p {
     border: 1px solid #ddd;
   }
 }
+
+
+
+
+/* Enhanced navigation styles */
+.navigation {
+  background-color: $background-primary;
+  border-bottom: 2px solid $primary-color;
+  padding: $spacing-sm 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  &__name {
+    font-weight: 700;
+    color: $primary-color;
+    font-size: 1.1rem;
+  }
+  
+  &__links {
+    display: flex;
+    gap: $spacing-md;
+    
+    a {
+      padding: $spacing-sm $spacing-md;
+      color: $text-primary;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      font-weight: 500;
+      
+      &:hover {
+        color: $primary-color;
+        text-decoration: none;
+        background-color: rgba($primary-color, 0.05);
+      }
+      
+      &.active {
+        font-weight: 600;
+        color: white;
+        background-color: $primary-color;
+      }
+    }
+  }
+}
+
+/* Centered contact links */
+.contact-centered {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: $spacing-md auto $spacing-xl;
+  max-width: 800px;
+  gap: $spacing-md $spacing-lg;
+  
+  a {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.95rem;
+    
+    i {
+      margin-right: $spacing-xs;
+      color: $primary-color;
+    }
+    
+    &:hover i {
+      color: $primary-dark;
+    }
+  }
+}
+
+/* Compact teaching format */
+.teaching-compact {
+  margin-top: $spacing-lg;
+}
+
+.teaching-item-compact {
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 1px solid $border-light;
+  
+  h3 {
+    margin-bottom: $spacing-xs;
+  }
+  
+  .teaching-details {
+    color: $text-secondary;
+    
+    .semester {
+      font-style: italic;
+    }
+    
+    .teaching-link {
+      color: $primary-color;
+      
+      &:hover {
+        color: $primary-dark;
+      }
+    }
+  }
+}
