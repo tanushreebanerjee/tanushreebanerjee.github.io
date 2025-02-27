@@ -1,0 +1,218 @@
+---
+layout: default
+---
+
+<!-- Research Section -->
+<section class="section">
+  <h2>Research</h2>
+  <div class="research-interests" style="margin-bottom: 2rem;">
+    <p>
+      My research lies at the intersection of computer vision, computer graphics, machine learning, and optimization, focusing on <strong>explainable 3D perception via inverse generation</strong>.
+    </p>
+    <p>Some research questions that inspire my current work:</p>
+    <ul>
+      <li>Can we leverage priors learned in <a href="https://youtu.be/j9nB_DttAlw">generative models</a> to interpret 3D information from everyday 2D videos and photographs?</li>
+      <li>How can we reformulate visual perception as an <a href="https://www.cs.toronto.edu/~hinton/csc2535/notes/lec6b.pdf">inverse generation</a> problem?</li>
+    </ul>
+    <p><em>* indicates equal contribution. Representative projects are highlighted.</em></p>
+  </div>
+
+  <!-- Research Projects -->
+  {% for post in site.posts %}
+  {% for cat in post.categories %}
+  {% if cat == "research" %}
+  <div class="publication" {% if post.highlight %} style="background-color: #FDFBD4; padding: 15px; border-radius: 8px;" {% endif %}>
+    <div>
+      <img src="/images_resized{{ post.image }}" alt="{{ post.title }}" class="publication__image">
+    </div>
+    <div>
+      <h3 class="publication__title">{{ post.title }}</h3>
+      <p class="publication__authors">{{ post.authors }}</p>
+      <p class="publication__venue"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</p>
+      
+      {% if post.tags %}
+      <div class="tags">
+        {% for tag in post.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      
+      <div class="publication__links">
+        {% if post.website %}
+        <a href="{{ post.website }}">[project page]</a>
+        {% endif %}
+        {% if post.paper %}
+        <a href="{{ post.paper }}">[paper]</a>
+        {% endif %}
+        {% if post.supplementary %}
+        <a href="{{ post.supplementary }}">[supplement]</a>
+        {% endif %}
+        {% if post.arxiv %}
+        <a href="{{ post.arxiv }}">[arXiv]</a>
+        {% endif %}
+        {% if post.video %}
+        <a href="{{ post.video }}">[video]</a>
+        {% endif %}
+        {% if post.code %}
+        <a href="{{ post.code }}">[code]</a>
+        {% endif %}
+        {% if post.slides %}
+        <a href="{{ post.slides }}">[slides]</a>
+        {% endif %}
+      </div>
+      
+      <p>{{ post.excerpt }}</p>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+</section>
+
+<!-- Independent Work Section -->
+<section class="section">
+  <h2>Selected Independent Work Reports</h2>
+  <p>Earlier during my undergraduate studies at <a href="https://www.princeton.edu/">Princeton</a> I worked on bias in visual understanding pipelines under Prof. <a href="https://www.cs.princeton.edu/~olgarus/">Olga Russakovsky</a> in the <a href="https://visualai.princeton.edu/">Princeton Visual AI Lab</a>.</p>
+  
+  {% for post in site.posts %}
+  {% for cat in post.categories %}
+  {% if cat == "independent" %}
+  <div class="publication">
+    <div>
+      <img src="/images_resized{{ post.image }}" alt="{{ post.title }}" class="publication__image">
+    </div>
+    <div>
+      <h3 class="publication__title">{{ post.title }}</h3>
+      <p class="publication__authors">{{ post.authors }}</p>
+      {% if post.course %}
+      <p class="publication__venue"><em>{{ post.course }}</em></p>
+      {% endif %}
+      
+      {% if post.tags %}
+      <div class="tags">
+        {% for tag in post.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      
+      <div class="publication__links">
+        {% if post.website %}
+        <a href="{{ post.website }}">[website]</a>
+        {% endif %}
+        {% if post.paper %}
+        <a href="{{ post.paper }}">[paper]</a>
+        {% endif %}
+        {% if post.code %}
+        <a href="{{ post.code }}">[code]</a>
+        {% endif %}
+        {% if post.slides %}
+        <a href="{{ post.slides }}">[slides]</a>
+        {% endif %}
+      </div>
+      
+      <p>{{ post.excerpt }}</p>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+</section>
+
+<!-- Course Projects Section -->
+<section class="section">
+  <h2>Selected Course Projects</h2>
+  <p>These include unpublished research-related work as part of semester-long course projects during my undergraduate studies at <a href="https://www.princeton.edu/">Princeton</a>.</p>
+  
+  {% for post in site.posts %}
+  {% for cat in post.categories %}
+  {% if cat == "other" %}
+  <div class="publication">
+    <div>
+      <img src="/images_resized{{ post.image }}" alt="{{ post.title }}" class="publication__image">
+    </div>
+    <div>
+      <h3 class="publication__title">{{ post.title }}</h3>
+      <p class="publication__authors">{{ post.authors }}</p>
+      {% if post.course %}
+      <p class="publication__venue"><em>{{ post.course }}</em></p>
+      {% endif %}
+      
+      {% if post.tags %}
+      <div class="tags">
+        {% for tag in post.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+      
+      <div class="publication__links">
+        {% if post.website %}
+        <a href="{{ post.website }}">[website]</a>
+        {% endif %}
+        {% if post.paper %}
+        <a href="{{ post.paper }}">[paper]</a>
+        {% endif %}
+        {% if post.code %}
+        <a href="{{ post.code }}">[code]</a>
+        {% endif %}
+        {% if post.poster %}
+        <a href="{{ post.poster }}">[poster]</a>
+        {% endif %}
+        {% if post.slides %}
+        <a href="{{ post.slides }}">[slides]</a>
+        {% endif %}
+      </div>
+      
+      <p>{{ post.excerpt }}</p>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+</section>
+
+<!-- Teaching Section -->
+<section class="section">
+  <h2>Teaching & Outreach</h2>
+  <p>
+    I have been incredibly fortunate to receive tremendous support from faculty mentors while at <a href="https://www.princeton.edu/">Princeton</a> to pursue a research career in computer science. I am keen to use my position to help empower others to pursue careers in computer science. This section includes my teaching and outreach endeavors to help address the acute diversity crisis in this field.
+  </p>
+  
+  {% for post in site.posts %}
+  {% for cat in post.categories %}
+  {% if cat == "outreach" %}
+  <div class="teaching-item">
+    <img src="/images_resized{{ post.image }}" alt="{{ post.title }}" class="teaching-item__image">
+    <div class="teaching-item__content">
+      <h3>{{ post.title }}</h3>
+      {% if post.course %}
+      <p><em>{{ post.course }}</em></p>
+      {% endif %}
+      
+      <div class="teaching-item__links">
+        {% if post.website %}
+        <a href="{{ post.website }}">[website]</a>
+        {% endif %}
+      </div>
+      
+      <p>{{ post.excerpt }}</p>
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+</section>
+
+<style>
+  .research-interests ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .research-interests li {
+    margin-bottom: 0.5rem;
+  }
+</style>
