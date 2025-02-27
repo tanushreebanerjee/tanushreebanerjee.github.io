@@ -343,7 +343,7 @@ p {
   padding-top: $spacing-md;
   margin-bottom: $spacing-lg;
   padding-bottom: $spacing-md;
-  border-bottom: 1px solid $border-light;  
+  // border-bottom: 1px solid $border-light;  
   @media (min-width: 768px) {
     grid-template-columns: 1fr 3fr;
   }
