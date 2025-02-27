@@ -267,9 +267,10 @@ p {
   // Separator between links
   a + a::before {
     content: '•';
-    color: $border-light;
+    color: $border-medium;  // Slightly darker separator
     margin-right: $spacing-lg;
     margin-left: -$spacing-lg;
+    opacity: 0.5;
   }
 }
 
