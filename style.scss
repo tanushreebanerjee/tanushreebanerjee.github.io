@@ -2,26 +2,38 @@
 ---
 
 //
-// VARIABLES
+// VARIABLES - Consistent color scheme
 //
 
-// Colors
-$primary-color: #B30059;      // Burgundy
-$secondary-color: #1E3A8A;    // Navy blue
-$accent-color: #cc9933;       // Gold accent
-$text-color: #333333;         // Dark text
-$light-text: #666666;         // Light text
-$background-color: #ffffff;   // White background
-$light-grey: #F9FAFB;         // Light grey background
-$medium-grey: #E5E7EB;        // Medium grey for borders
-$dark-grey: #4B5563;          // Dark grey for secondary text
+// Primary colors
+$primary-color: #B30059;        // Burgundy - main brand color
+$primary-light: rgba($primary-color, 0.1);  // Light burgundy for backgrounds
+$primary-dark: darken($primary-color, 10%); // Darker burgundy for hover states
 
-// Typography
+// Text colors
+$text-primary: #333333;          // Main text color
+$text-secondary: #666666;        // Secondary text color
+$text-muted: #888888;            // Muted text (less important)
+
+// Background colors
+$background-primary: #ffffff;    // Main background
+$background-secondary: #f6f6f6;  // Secondary background (for cards, etc.)
+$background-tertiary: #efefef;   // Tertiary background (for code blocks, etc.)
+
+// Border colors
+$border-light: #e0e0e0;          // Light borders
+$border-medium: #cccccc;         // Medium borders
+
+// System font stack
 $font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-$line-height: 1.6;
 
-// Spacing (more conservative)
-$spacing-base: 5px;
+// Spacing - consistent scale
+$spacing-unit: 5px;
+$spacing-xs: $spacing-unit;
+$spacing-sm: $spacing-unit * 2;
+$spacing-md: $spacing-unit * 3;
+$spacing-lg: $spacing-unit * 5;
+$spacing-xl: $spacing-unit * 8;
 
 // BASE STYLES
 html {
@@ -36,52 +48,58 @@ html {
 body {
   font-family: $font-stack;
   font-size: 1rem;
-  line-height: $line-height;
-  color: $text-color;
-  background-color: $background-color;
+  line-height: 1.6;
+  color: $text-primary;
+  background-color: $background-primary;
   margin: 0;
   padding: 0;
 }
 
-// Links
+// Consistent link styling
 a {
   color: $primary-color;
   text-decoration: none;
+  transition: color 0.2s ease;
   
   &:hover, &:focus {
-    color: $accent-color;
+    color: $primary-dark;
     text-decoration: underline;
+  }
+  
+  &:visited {
+    color: $primary-color;
   }
 }
 
-// Typography
+// Typography with consistent hierarchy
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-stack;
   line-height: 1.3;
   margin-top: 0;
-  margin-bottom: $spacing-base * 3;
+  margin-bottom: $spacing-md;
   font-weight: 700;
+  color: $text-primary;
 }
 
 h1 {
   font-size: 2rem;
-  margin-bottom: $spacing-base * 4;
+  margin-bottom: $spacing-lg;
 }
 
 h2 {
   font-size: 1.5rem;
   border-bottom: 2px solid $primary-color;
-  padding-bottom: $spacing-base;
-  margin-bottom: $spacing-base * 4;
+  padding-bottom: $spacing-xs;
+  margin-bottom: $spacing-lg;
 }
 
 h3 {
   font-size: 1.3rem;
-  margin-bottom: $spacing-base * 2;
+  margin-bottom: $spacing-sm;
 }
 
 p {
-  margin: 0 0 $spacing-base * 3 0;
+  margin: 0 0 $spacing-md 0;
 }
 
 // LAYOUT
@@ -89,14 +107,14 @@ p {
   width: 95%;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 0 $spacing-base;
+  padding: 0 $spacing-sm;
 }
 
-// Navigation (simplified)
+// Navigation
 .navigation {
-  background-color: $background-color;
-  border-bottom: 1px solid $medium-grey;
-  padding: $spacing-base 0;
+  background-color: $background-primary;
+  border-bottom: 1px solid $border-light;
+  padding: $spacing-sm 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -114,35 +132,44 @@ p {
   
   &__links {
     display: flex;
-    gap: $spacing-base * 3;
+    gap: $spacing-md;
     
     a {
-      padding: $spacing-base 0;
+      padding: $spacing-xs 0;
+      color: $text-primary;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        color: $primary-color;
+        text-decoration: none;
+        border-bottom-color: $primary-color;
+      }
       
       &.active {
         font-weight: 600;
         color: $primary-color;
+        border-bottom-color: $primary-color;
       }
     }
   }
 }
 
-// Header (square photo, less spacing)
+// Header
 .header {
   display: flex;
   flex-direction: column;
-  padding: $spacing-base * 3 0;
+  padding: $spacing-lg 0;
   
   @media (min-width: 768px) {
     flex-direction: row;
-    gap: $spacing-base * 4;
+    gap: $spacing-lg;
   }
   
   &__photo {
     width: 160px;
-    height: 160px;
-    object-fit: cover;
-    margin: 0 auto $spacing-base * 3;
+    height: auto;
+    margin: 0 auto $spacing-md;
     
     @media (min-width: 768px) {
       margin: 0;
@@ -154,33 +181,39 @@ p {
   }
   
   &__links {
-    margin-top: $spacing-base * 2;
+    margin-top: $spacing-md;
     display: flex;
     flex-wrap: wrap;
-    gap: $spacing-base;
+    gap: $spacing-sm;
     
     a {
-      margin-right: $spacing-base * 2;
       display: inline-flex;
       align-items: center;
+      margin-right: $spacing-md;
+      margin-bottom: $spacing-sm;
       
       i {
-        margin-right: $spacing-base;
+        margin-right: $spacing-xs;
+        color: $primary-color;
+      }
+      
+      &:hover i {
+        color: $primary-dark;
       }
     }
   }
 }
 
-// Section (less spacing)
+// Section
 .section {
-  margin: $spacing-base * 5 0;
+  margin: $spacing-xl 0;
 }
 
 // News
 .news {
   &__item {
-    margin-bottom: $spacing-base * 2;
-    padding-left: $spacing-base * 3;
+    margin-bottom: $spacing-md;
+    padding-left: $spacing-md;
     position: relative;
     
     &::before {
@@ -199,13 +232,30 @@ p {
   }
 }
 
-// Publications (simplified layout)
+// Research interests box
+.research-interests {
+  margin-bottom: $spacing-lg;
+  padding: $spacing-md;
+  background-color: $background-secondary;
+  border: 1px solid $border-light;
+  
+  ul {
+    padding-left: $spacing-lg;
+    margin: $spacing-sm 0 $spacing-md;
+    
+    li {
+      margin-bottom: $spacing-xs;
+    }
+  }
+}
+
+// Publications
 .publication {
   display: grid;
-  gap: $spacing-base * 3;
-  margin-bottom: $spacing-base * 4;
-  padding-bottom: $spacing-base * 3;
-  border-bottom: 1px solid $medium-grey;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-md;
+  border-bottom: 1px solid $border-light;
   
   @media (min-width: 768px) {
     grid-template-columns: 1fr 3fr;
@@ -214,35 +264,40 @@ p {
   &__image {
     width: 100%;
     max-width: 100%;
+    border: 1px solid $border-light;
   }
   
   &__title {
     margin-top: 0;
-    margin-bottom: $spacing-base;
+    margin-bottom: $spacing-xs;
   }
   
   &__authors {
-    margin-bottom: $spacing-base;
+    margin-bottom: $spacing-xs;
+    
+    a {
+      color: $primary-color;
+    }
   }
   
   &__venue {
     font-style: italic;
-    margin-bottom: $spacing-base;
-    color: $dark-grey;
+    margin-bottom: $spacing-xs;
+    color: $text-secondary;
   }
   
   &__type {
     display: inline-block;
-    margin-right: $spacing-base;
-    margin-bottom: $spacing-base;
-    padding: $spacing-base/2 $spacing-base;
-    border-radius: 4px;
+    margin-right: $spacing-sm;
+    margin-bottom: $spacing-sm;
+    padding: 2px $spacing-xs;
+    border-radius: 3px;
     font-size: 0.8rem;
     font-weight: 600;
     
     &--peer-reviewed {
-      background-color: rgba($secondary-color, 0.15);
-      color: $secondary-color;
+      background-color: rgba($primary-color, 0.1);
+      color: $primary-color;
       
       &:before {
         content: "✓ ";
@@ -250,8 +305,8 @@ p {
     }
     
     &--preprint {
-      background-color: rgba($accent-color, 0.15);
-      color: darken($accent-color, 15%);
+      background-color: rgba($text-secondary, 0.1);
+      color: $text-secondary;
       
       &:before {
         content: "⟳ ";
@@ -260,17 +315,24 @@ p {
   }
   
   &__links {
-    margin-bottom: $spacing-base;
+    margin-bottom: $spacing-sm;
     
     a {
-      margin-right: $spacing-base * 2;
+      margin-right: $spacing-md;
+      color: $primary-color;
+      
+      &:hover {
+        color: $primary-dark;
+      }
       
       &:before {
         content: "[";
+        color: $text-muted;
       }
       
       &:after {
         content: "]";
+        color: $text-muted;
       }
     }
   }
@@ -278,15 +340,15 @@ p {
   &--highlight {
     background-color: rgba($primary-color, 0.05);
     border-left: 3px solid $primary-color;
-    padding-left: $spacing-base * 2;
+    padding-left: $spacing-sm;
   }
 }
 
-// Tags
+// Tags - consistent with primary color
 .tag {
   display: inline-block;
-  margin: 0 $spacing-base/2 $spacing-base/2 0;
-  padding: $spacing-base/2 $spacing-base;
+  margin: 0 $spacing-xs $spacing-xs 0;
+  padding: 2px $spacing-sm;
   font-size: 0.75rem;
   font-weight: 600;
   color: white;
@@ -298,15 +360,15 @@ p {
 .tags {
   display: flex;
   flex-wrap: wrap;
-  margin: $spacing-base 0;
+  margin: $spacing-xs 0 $spacing-sm;
 }
 
 // Teaching items
 .teaching-item {
   display: flex;
-  margin-bottom: $spacing-base * 3;
-  padding-bottom: $spacing-base * 3;
-  border-bottom: 1px solid $medium-grey;
+  margin-bottom: $spacing-md;
+  padding-bottom: $spacing-md;
+  border-bottom: 1px solid $border-light;
   
   @media (max-width: 767px) {
     flex-direction: column;
@@ -315,10 +377,11 @@ p {
   &__image {
     width: 100px;
     height: auto;
-    margin-right: $spacing-base * 2;
+    margin-right: $spacing-md;
+    border: 1px solid $border-light;
     
     @media (max-width: 767px) {
-      margin-bottom: $spacing-base * 2;
+      margin-bottom: $spacing-sm;
     }
   }
   
@@ -327,42 +390,48 @@ p {
   }
 }
 
-// Skills section (more compact)
+// Skills section
 .skills {
   display: grid;
   grid-template-columns: 1fr;
-  gap: $spacing-base * 3;
+  gap: $spacing-md;
   
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
   
   &__category {
-    background-color: $light-grey;
-    padding: $spacing-base * 2;
-    border: 1px solid $medium-grey;
+    background-color: $background-secondary;
+    padding: $spacing-md;
+    border: 1px solid $border-light;
   }
   
   &__title {
     margin-top: 0;
-    margin-bottom: $spacing-base * 2;
-    padding-bottom: $spacing-base;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-xs;
     border-bottom: 1px solid $primary-color;
+    color: $text-primary;
   }
   
   &__item {
-    margin-bottom: $spacing-base * 1.5;
+    margin-bottom: $spacing-sm;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   
   &__name {
     display: block;
-    margin-bottom: $spacing-base/2;
+    margin-bottom: $spacing-xs;
     font-weight: 500;
+    color: $text-primary;
   }
   
   &__bar {
     height: 6px;
-    background-color: $medium-grey;
+    background-color: $border-medium;
     border-radius: 3px;
     overflow: hidden;
   }
@@ -376,15 +445,19 @@ p {
 
 // Footer
 .footer {
-  margin-top: $spacing-base * 5;
-  padding: $spacing-base * 2 0;
+  margin-top: $spacing-xl;
+  padding: $spacing-md 0;
   text-align: center;
   font-size: 0.9rem;
-  color: $dark-grey;
-  border-top: 1px solid $medium-grey;
+  color: $text-secondary;
+  border-top: 1px solid $border-light;
+  
+  a {
+    color: $primary-color;
+  }
 }
 
-// Print styles
+// Print styles - consistent
 @media print {
   body {
     font-size: 11pt;
