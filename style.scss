@@ -162,7 +162,7 @@ p {
 
 // Enhanced navigation styles
 .navigation {
-  background-color: $primary-color;
+  background-color: $primary-dark;
   // border-bottom: 2px solid $primary-color;
   padding: $spacing-sm 0;
   position: sticky;
@@ -178,7 +178,7 @@ p {
   
   &__name {
     font-weight: 700;
-    color: $primary-color;
+    color: $primary-dark;
     font-size: $font-size-md;
   }
   
