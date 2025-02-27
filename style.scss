@@ -1,6 +1,21 @@
 ---
 ---
 
+// Base font size
+html {
+  font-size: 16px;
+}
+
+// Type scale using a modular scale (1.250 - Major Third)
+$font-size-base:     1rem;     // 16px
+$font-size-sm:       0.875rem; // 14px
+$font-size-xs:       0.75rem;  // 12px
+$font-size-md:       1.125rem; // 18px
+$font-size-lg:       1.25rem;  // 20px
+$font-size-xl:       1.5rem;   // 24px
+$font-size-xxl:      2rem;     // 32px
+
+
 //
 // VARIABLES - Consistent color scheme
 //
@@ -49,8 +64,9 @@ $spacing-xl: $spacing-unit * 8;
 
 // BASE STYLES
 html {
-  font-size: 16px;
+  font-size: $font-size-base;
   box-sizing: border-box;
+line-height: 1.6;
 }
 
 *, *:before, *:after {
@@ -94,20 +110,35 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: $font-size-xxl;
   margin-bottom: $spacing-lg;
 }
 
 h2 {
-  font-size: 1.5rem;
+  font-size: $font-size-xl;
   border-bottom: 2px solid $primary-color;
   padding-bottom: $spacing-xs;
   margin-bottom: $spacing-lg;
 }
 
 h3 {
-  font-size: 1.3rem;
+  font-size: $font-size-lg;
   margin-bottom: $spacing-sm;
+}
+
+h4 {
+  font-size: $font-size-md;
+}
+
+h5 {
+  font-size: $font-size-base;
+  font-weight: 600;
+}
+
+h6 {
+  font-size: $font-size-sm;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 p {
@@ -141,7 +172,7 @@ p {
   &__name {
     font-weight: 700;
     color: $primary-color;
-    font-size: 1.1rem;
+    font-size: $font-size-md;
   }
   
   &__links {
@@ -243,6 +274,7 @@ p {
   
   &__date {
     font-weight: 700;
+    font-size: $font-size-sm;
     color: $primary-color;
   }
 }
@@ -285,11 +317,13 @@ p {
   }
   
   &__title {
+    font-size: $font-size-lg;
     margin-top: 0;
     margin-bottom: $spacing-xs;
   }
   
   &__authors {
+    font-size: $font-size-base;
     margin-bottom: $spacing-xs;
     
     a {
@@ -299,6 +333,7 @@ p {
   
   &__venue {
     font-style: italic;
+    font-size: $font-size-sm;
     margin-bottom: $spacing-xs;
     color: $text-secondary;
   }
@@ -366,7 +401,7 @@ p {
   display: inline-block;
   margin: 0 $spacing-xs $spacing-xs 0;
   padding: 2px $spacing-sm;
-  font-size: 0.75rem;
+  font-size: $font-size-xs;
   font-weight: 600;
   color: $tag-content-color;
   background-color: $tag-content-light;  // Uses Chocolate
@@ -416,7 +451,7 @@ p {
   margin-top: $spacing-xl;
   padding: $spacing-md 0;
   text-align: center;
-  font-size: 0.9rem;
+  font-size: $font-size-sm;
   color: $text-secondary;
   border-top: 1px solid $border-light;
   
