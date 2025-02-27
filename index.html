@@ -3,9 +3,9 @@ layout: default
 ---
 
 <!-- Research Section -->
-<section class="section">
+<section id="research" class="section">
   <h2>Research</h2>
-  <div class="research-interests" style="margin-bottom: 2rem;">
+  <div class="research-interests" style="margin-bottom: 2rem; padding: 1.5rem; background-color: #F9FAFB; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
     <p>
       My research lies at the intersection of computer vision, computer graphics, machine learning, and optimization, focusing on <strong>explainable 3D perception via inverse generation</strong>.
     </p>
@@ -21,7 +21,7 @@ layout: default
   {% for post in site.posts %}
   {% for cat in post.categories %}
   {% if cat == "research" %}
-  <div class="publication" {% if post.highlight %} style="background-color: #FDFBD4; padding: 15px; border-radius: 8px;" {% endif %}>
+  <div class="publication {% if post.highlight %}publication--highlight{% endif %}">
     <div>
       <img src="/images_resized{{ post.image }}" alt="{{ post.title }}" class="publication__image">
     </div>
@@ -29,6 +29,13 @@ layout: default
       <h3 class="publication__title">{{ post.title }}</h3>
       <p class="publication__authors">{{ post.authors }}</p>
       <p class="publication__venue"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</p>
+      
+      <!-- Publication type indicator -->
+      {% if post.venue contains "arXiv" or post.venue contains "preprint" %}
+        <div class="publication__type publication__type--preprint">Preprint</div>
+      {% else %}
+        <div class="publication__type publication__type--peer-reviewed">Peer-reviewed</div>
+      {% endif %}
       
       {% if post.tags %}
       <div class="tags">
@@ -40,25 +47,25 @@ layout: default
       
       <div class="publication__links">
         {% if post.website %}
-        <a href="{{ post.website }}">[project page]</a>
+        <a href="{{ post.website }}">project page</a>
         {% endif %}
         {% if post.paper %}
-        <a href="{{ post.paper }}">[paper]</a>
+        <a href="{{ post.paper }}">paper</a>
         {% endif %}
         {% if post.supplementary %}
-        <a href="{{ post.supplementary }}">[supplement]</a>
+        <a href="{{ post.supplementary }}">supplement</a>
         {% endif %}
         {% if post.arxiv %}
-        <a href="{{ post.arxiv }}">[arXiv]</a>
+        <a href="{{ post.arxiv }}">arXiv</a>
         {% endif %}
         {% if post.video %}
-        <a href="{{ post.video }}">[video]</a>
+        <a href="{{ post.video }}">video</a>
         {% endif %}
         {% if post.code %}
-        <a href="{{ post.code }}">[code]</a>
+        <a href="{{ post.code }}">code</a>
         {% endif %}
         {% if post.slides %}
-        <a href="{{ post.slides }}">[slides]</a>
+        <a href="{{ post.slides }}">slides</a>
         {% endif %}
       </div>
       
@@ -71,7 +78,7 @@ layout: default
 </section>
 
 <!-- Independent Work Section -->
-<section class="section">
+<section id="independent" class="section">
   <h2>Selected Independent Work Reports</h2>
   <p>Earlier during my undergraduate studies at <a href="https://www.princeton.edu/">Princeton</a> I worked on bias in visual understanding pipelines under Prof. <a href="https://www.cs.princeton.edu/~olgarus/">Olga Russakovsky</a> in the <a href="https://visualai.princeton.edu/">Princeton Visual AI Lab</a>.</p>
   
@@ -99,16 +106,16 @@ layout: default
       
       <div class="publication__links">
         {% if post.website %}
-        <a href="{{ post.website }}">[website]</a>
+        <a href="{{ post.website }}">website</a>
         {% endif %}
         {% if post.paper %}
-        <a href="{{ post.paper }}">[paper]</a>
+        <a href="{{ post.paper }}">paper</a>
         {% endif %}
         {% if post.code %}
-        <a href="{{ post.code }}">[code]</a>
+        <a href="{{ post.code }}">code</a>
         {% endif %}
         {% if post.slides %}
-        <a href="{{ post.slides }}">[slides]</a>
+        <a href="{{ post.slides }}">slides</a>
         {% endif %}
       </div>
       
@@ -121,7 +128,7 @@ layout: default
 </section>
 
 <!-- Course Projects Section -->
-<section class="section">
+<section id="projects" class="section">
   <h2>Selected Course Projects</h2>
   <p>These include unpublished research-related work as part of semester-long course projects during my undergraduate studies at <a href="https://www.princeton.edu/">Princeton</a>.</p>
   
@@ -149,19 +156,19 @@ layout: default
       
       <div class="publication__links">
         {% if post.website %}
-        <a href="{{ post.website }}">[website]</a>
+        <a href="{{ post.website }}">website</a>
         {% endif %}
         {% if post.paper %}
-        <a href="{{ post.paper }}">[paper]</a>
+        <a href="{{ post.paper }}">paper</a>
         {% endif %}
         {% if post.code %}
-        <a href="{{ post.code }}">[code]</a>
+        <a href="{{ post.code }}">code</a>
         {% endif %}
         {% if post.poster %}
-        <a href="{{ post.poster }}">[poster]</a>
+        <a href="{{ post.poster }}">poster</a>
         {% endif %}
         {% if post.slides %}
-        <a href="{{ post.slides }}">[slides]</a>
+        <a href="{{ post.slides }}">slides</a>
         {% endif %}
       </div>
       
@@ -173,8 +180,126 @@ layout: default
   {% endfor %}
 </section>
 
+<!-- Skills Section -->
+<section id="skills" class="section">
+  <h2>Skills</h2>
+  <div class="skills">
+    <div class="skills__category">
+      <h3 class="skills__title">Programming Languages</h3>
+      <div class="skills__item">
+        <span class="skills__name">Python</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 95%;"></div>
+        </div>
+      </div>
+      <div class="skills__item">
+        <span class="skills__name">C++</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 85%;"></div>
+        </div>
+      </div>
+      <div class="skills__item">
+        <span class="skills__name">JavaScript</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 75%;"></div>
+        </div>
+      </div>
+      <div class="skills__item">
+        <span class="skills__name">MATLAB</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 70%;"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="skills__category">
+      <h3 class="skills__title">Frameworks & Libraries</h3>
+      <div class="skills__item">
+        <span class="skills__name">PyTorch</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 90%;"></div>
+        </div>
+      </div>
+      <div class="skills__item">
+        <span class="skills__name">TensorFlow</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 80%;"></div>
+        </div>
+      </div>
+      <div class="skills__item">
+        <span class="skills__name">OpenCV</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 85%;"></div>
+        </div>
+      </div>
+      <div class="skills__item">
+        <span class="skills__name">NumPy/SciPy</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 95%;"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="skills__category">
+      <h3 class="skills__title">Research Areas</h3>
+      <div class="skills__item">
+        <span class="skills__name">Computer Vision</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 95%;"></div>
+        </div>
+      </div>
+      <div class="skills__item">
+        <span class="skills__name">3D Perception</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 90%;"></div>
+        </div>
+      </div>
+      <div class="skills__item">
+        <span class="skills__name">Generative Models</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 85%;"></div>
+        </div>
+      </div>
+      <div class="skills__item">
+        <span class="skills__name">Inverse Rendering</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 90%;"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="skills__category">
+      <h3 class="skills__title">Tools & Environments</h3>
+      <div class="skills__item">
+        <span class="skills__name">Git & GitHub</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 90%;"></div>
+        </div>
+      </div>
+      <div class="skills__item">
+        <span class="skills__name">Linux/Unix</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 85%;"></div>
+        </div>
+      </div>
+      <div class="skills__item">
+        <span class="skills__name">Docker</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 75%;"></div>
+        </div>
+      </div>
+      <div class="skills__item">
+        <span class="skills__name">LaTeX</span>
+        <div class="skills__bar">
+          <div class="skills__progress" style="width: 90%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Teaching Section -->
-<section class="section">
+<section id="teaching" class="section">
   <h2>Teaching & Outreach</h2>
   <p>
     I have been incredibly fortunate to receive tremendous support from faculty mentors while at <a href="https://www.princeton.edu/">Princeton</a> to pursue a research career in computer science. I am keen to use my position to help empower others to pursue careers in computer science. This section includes my teaching and outreach endeavors to help address the acute diversity crisis in this field.
@@ -204,15 +329,3 @@ layout: default
   {% endfor %}
   {% endfor %}
 </section>
-
-<style>
-  .research-interests ul {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-    margin-top: 0.5rem;
-  }
-  
-  .research-interests li {
-    margin-bottom: 0.5rem;
-  }
-</style>
