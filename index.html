@@ -181,27 +181,29 @@ layout: default
 </section> -->
 
 <!-- Teaching Section - Compact Format -->
-<section id="teaching" class="section">
-  <h2>Teaching & Outreach</h2>
-  <p>
-    I have been incredibly fortunate to receive tremendous support from faculty mentors while at <a href="https://www.princeton.edu/">Princeton</a> to pursue a research career in computer science. I am keen to use my position to help empower others to pursue careers in computer science. This section includes my teaching and outreach endeavors to help address the acute diversity crisis in this field.
-  </p>
-  
-  <div class="teaching-compact">
-    <div class="teaching-item-compact">
-      <h3>Undergraduate Course Assistant (UCA): Independent Work Seminar on AI for Engineering and Physics</h3>
-      <div class="teaching-details">
-        <span class="semester">Spring 2024</span> | 
-        <a href="https://www.cs.princeton.edu/courses/archive/spring24/cosIW05/" class="teaching-link">website</a>
-      </div>
-    </div>
-    
-    <div class="teaching-item-compact">
-      <h3>Instructor: Princeton AI4ALL</h3>
-      <div class="teaching-details">
-        <span class="semester">Summer 2022</span> | 
-        <a href="https://ai4all.princeton.edu/" class="teaching-link">website</a>
-      </div>
-    </div>
-  </div>
-</section>
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+  <tr>
+    <td style="padding:2.5%;width:100%;vertical-align:middle">
+      <h2>Teaching & Outreach</h2>
+      <p>
+        I have been incredibly fortunate to receive tremendous support from faculty mentors while at <a href="https://www.princeton.edu/">Princeton</a> to pursue a research career in computer science. I am keen to use my position to help empower others to pursue careers in computer science. This section includes my teaching and outreach endeavors to help address the acute diversity crisis in this field.
+      </p>
+    </td>
+  </tr>
+</table>
+<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+
+  {% for post in site.posts %}
+  {% for cat in post.categories %}
+  {% if cat == "outreach" %}
+  <tr>
+    <td style="padding:2.5%;width:100%;vertical-align:middle">
+      {{post.title}}, <em>{{post.course}}</em> 
+      <br>
+      <a href="{{post.website}}">Program Website</a>
+    </td>
+  </tr>
+  {% endif %}
+  {% endfor %}
+  {% endfor %}
+</table>
