@@ -110,14 +110,15 @@ p {
   padding: 0 $spacing-sm;
 }
 
-// Navigation
+// Enhanced navigation styles
 .navigation {
   background-color: $background-primary;
-  border-bottom: 1px solid $border-light;
+  border-bottom: 2px solid $primary-color;
   padding: $spacing-sm 0;
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   
   &__container {
     display: flex;
@@ -126,8 +127,9 @@ p {
   }
   
   &__name {
-    font-weight: 600;
+    font-weight: 700;
     color: $primary-color;
+    font-size: 1.1rem;
   }
   
   &__links {
@@ -135,27 +137,28 @@ p {
     gap: $spacing-md;
     
     a {
-      padding: $spacing-xs 0;
+      padding: $spacing-sm $spacing-md;
       color: $text-primary;
-      border-bottom: 2px solid transparent;
+      border-radius: 4px;
       transition: all 0.2s ease;
+      font-weight: 500;
       
       &:hover {
         color: $primary-color;
         text-decoration: none;
-        border-bottom-color: $primary-color;
+        background-color: rgba($primary-color, 0.05);
       }
       
       &.active {
         font-weight: 600;
-        color: $primary-color;
-        border-bottom-color: $primary-color;
+        color: white;
+        background-color: $primary-color;
       }
     }
   }
 }
 
-// Header
+// Header with smaller profile pic
 .header {
   display: flex;
   flex-direction: column;
@@ -167,7 +170,7 @@ p {
   }
   
   &__photo {
-    width: 160px;
+    width: 120px;
     margin: 0 auto $spacing-md;
     
     @media (min-width: 768px) {
@@ -178,27 +181,29 @@ p {
   &__content {
     flex: 1;
   }
+}
+
+// Centered contact links
+.contact-centered {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: $spacing-md auto $spacing-xl;
+  max-width: 800px;
+  gap: $spacing-md $spacing-lg;
   
-  &__links {
-    margin-top: $spacing-md;
-    display: flex;
-    flex-wrap: wrap;
-    gap: $spacing-sm;
+  a {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.95rem;
     
-    a {
-      display: inline-flex;
-      align-items: center;
-      margin-right: $spacing-md;
-      margin-bottom: $spacing-sm;
-      
-      i {
-        margin-right: $spacing-xs;
-        color: $primary-color;
-      }
-      
-      &:hover i {
-        color: $primary-dark;
-      }
+    i {
+      margin-right: $spacing-xs;
+      color: $primary-color;
+    }
+    
+    &:hover i {
+      color: $primary-dark;
     }
   }
 }
@@ -297,250 +302,3 @@ p {
     &--peer-reviewed {
       background-color: rgba($primary-color, 0.1);
       color: $primary-color;
-      
-      &:before {
-        content: "✓ ";
-      }
-    }
-    
-    &--preprint {
-      background-color: rgba($text-secondary, 0.1);
-      color: $text-secondary;
-      
-      &:before {
-        content: "⟳ ";
-      }
-    }
-  }
-  
-  &__links {
-    margin-bottom: $spacing-sm;
-    
-    a {
-      margin-right: $spacing-md;
-      color: $primary-color;
-      
-      &:hover {
-        color: $primary-dark;
-      }
-      
-      &:before {
-        content: "[";
-        color: $text-muted;
-      }
-      
-      &:after {
-        content: "]";
-        color: $text-muted;
-      }
-    }
-  }
-  
-  &--highlight {
-    background-color: rgba($primary-color, 0.05);
-    border-left: 3px solid $primary-color;
-    padding-left: $spacing-sm;
-  }
-}
-
-// Tags - consistent with primary color
-.tag {
-  display: inline-block;
-  margin: 0 $spacing-xs $spacing-xs 0;
-  padding: 2px $spacing-sm;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: white;
-  background-color: $primary-color;
-  border-radius: 3px;
-  text-transform: capitalize;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  margin: $spacing-xs 0 $spacing-sm;
-}
-
-// Teaching items
-.teaching-item {
-  display: flex;
-  margin-bottom: $spacing-md;
-  padding-bottom: $spacing-md;
-  border-bottom: 1px solid $border-light;
-  
-  @media (max-width: 767px) {
-    flex-direction: column;
-  }
-  
-  &__image {
-    width: 100px;
-    height: auto;
-    margin-right: $spacing-md;
-    border: 1px solid $border-light;
-    
-    @media (max-width: 767px) {
-      margin-bottom: $spacing-sm;
-    }
-  }
-  
-  &__content {
-    flex: 1;
-  }
-}
-
-// Footer
-.footer {
-  margin-top: $spacing-xl;
-  padding: $spacing-md 0;
-  text-align: center;
-  font-size: 0.9rem;
-  color: $text-secondary;
-  border-top: 1px solid $border-light;
-  
-  a {
-    color: $primary-color;
-  }
-}
-
-// Print styles - consistent
-@media print {
-  body {
-    font-size: 11pt;
-    line-height: 1.4;
-    color: black;
-  }
-  
-  .navigation, 
-  .header__links a:not([href^="mailto:"]):not([href$=".pdf"]) {
-    display: none;
-  }
-  
-  .publication {
-    page-break-inside: avoid;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  a {
-    color: black;
-    
-    &:after {
-      content: " (" attr(href) ")";
-      font-size: 0.8em;
-      font-style: italic;
-    }
-  }
-  
-  .tag {
-    background: none;
-    color: black;
-    border: 1px solid #ddd;
-  }
-}
-
-
-
-
-/* Enhanced navigation styles */
-.navigation {
-  background-color: $background-primary;
-  border-bottom: 2px solid $primary-color;
-  padding: $spacing-sm 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  
-  &__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  &__name {
-    font-weight: 700;
-    color: $primary-color;
-    font-size: 1.1rem;
-  }
-  
-  &__links {
-    display: flex;
-    gap: $spacing-md;
-    
-    a {
-      padding: $spacing-sm $spacing-md;
-      color: $text-primary;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-      font-weight: 500;
-      
-      &:hover {
-        color: $primary-color;
-        text-decoration: none;
-        background-color: rgba($primary-color, 0.05);
-      }
-      
-      &.active {
-        font-weight: 600;
-        color: white;
-        background-color: $primary-color;
-      }
-    }
-  }
-}
-
-/* Centered contact links */
-.contact-centered {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: $spacing-md auto $spacing-xl;
-  max-width: 800px;
-  gap: $spacing-md $spacing-lg;
-  
-  a {
-    display: inline-flex;
-    align-items: center;
-    font-size: 0.95rem;
-    
-    i {
-      margin-right: $spacing-xs;
-      color: $primary-color;
-    }
-    
-    &:hover i {
-      color: $primary-dark;
-    }
-  }
-}
-
-/* Compact teaching format */
-.teaching-compact {
-  margin-top: $spacing-lg;
-}
-
-.teaching-item-compact {
-  margin-bottom: $spacing-lg;
-  padding-bottom: $spacing-md;
-  border-bottom: 1px solid $border-light;
-  
-  h3 {
-    margin-bottom: $spacing-xs;
-  }
-  
-  .teaching-details {
-    color: $text-secondary;
-    
-    .semester {
-      font-style: italic;
-    }
-    
-    .teaching-link {
-      color: $primary-color;
-      
-      &:hover {
-        color: $primary-dark;
-      }
-    }
-  }
-}
