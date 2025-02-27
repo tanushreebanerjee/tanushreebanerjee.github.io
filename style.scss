@@ -33,6 +33,7 @@ $tag-preprint-light: rgba($tag-preprint-color, 0.1);
 
 
 $tag-content-color: #D2691E;  // Chocolate
+$tag-content-light: rgba($tag-content-color, 0.1);
 
 
 // System font stack
@@ -367,8 +368,8 @@ p {
   padding: 2px $spacing-sm;
   font-size: 0.75rem;
   font-weight: 600;
-  color: white;
-  background-color: $tag-content-color;  // Uses Chocolate
+  color: $tag-content-color;
+  background-color: $tag-content-light;  // Uses Chocolate
   border-radius: 3px;
   text-transform: capitalize;
 }
