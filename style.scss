@@ -494,3 +494,16 @@ p {
     border: 1px solid #ddd;
   }
 }
+
+.publication__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: $spacing-sm;
+  margin-bottom: $spacing-sm;
+}
+
+.tags--inline {
+  display: inline-flex;
+  margin: 0;
+}
