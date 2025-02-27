@@ -1,52 +1,43 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-  <!-- Meta tags for SEO and accessibility -->
+  <!-- Meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Tanushree Banerjee - Research in explainable 3D perception via inverse generation. Princeton research assistant focusing on computer vision and machine learning.">
   <meta name="author" content="{{ site.name }}">
-  <meta name="keywords" content="Tanushree Banerjee, 3D perception, inverse generation, explainable AI, computer vision, Princeton, machine learning, Felix Heide">
+  <meta name="keywords" content="Tanushree Banerjee, 3D perception, inverse generation, explainable AI, computer vision, Princeton">
   
-  <!-- Open Graph / Social Media Meta Tags -->
+  <!-- Open Graph tags -->
   <meta property="og:title" content="Tanushree Banerjee | Researcher in Explainable 3D Perception">
   <meta property="og:description" content="Research assistant at Princeton Computational Imaging Lab working on explainable 3D perception via inverse generation">
   <meta property="og:image" content="{{ site.url }}/images_resized/avatar.jpeg">
   <meta property="og:url" content="{{ site.url }}{{ page.url }}">
   <meta property="og:type" content="website">
   
-  <!-- Twitter Card tags -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Tanushree Banerjee | Researcher">
-  <meta name="twitter:description" content="Explainable 3D perception via inverse generation research at Princeton">
-  <meta name="twitter:image" content="{{ site.url }}/images_resized/avatar.jpeg">
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   
-  <!-- Font Awesome for icons -->
+  <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/998764ba87.js" crossorigin="anonymous"></script>
   
   <!-- Stylesheet -->
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css">
   
-  <title>{{ site.name }} | {% if page.title %}{{ page.title }}{% else %}Researcher in Explainable 3D Perception{% endif %}</title>
+  <title>{{ site.name }}</title>
 </head>
 
 <body>
-  <!-- Navigation Bar -->
-  <nav class="navigation" id="main-nav">
+  <!-- Simple Navigation -->
+  <nav class="navigation">
     <div class="container navigation__container">
       <a href="#" class="navigation__name">Tanushree Banerjee</a>
       <div class="navigation__links">
-        <a href="#research" class="nav-link">Research</a>
-        <a href="#independent" class="nav-link">Independent Work</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#teaching" class="nav-link">Teaching</a>
-        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#research">Research</a>
+        <a href="#independent">Independent Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#skills">Skills</a>
       </div>
     </div>
   </nav>
@@ -64,13 +55,13 @@
           I recently graduated from <a href="https://www.princeton.edu/">Princeton University</a> with a BSE in Computer Science. I conducted my senior thesis research under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a>, for which I received the <a href="https://www.cs.princeton.edu/news/class-day-department-celebrates-accomplishments-graduates">Outstanding Computer Science Senior Thesis Prize</a>.
         </p>
         <div class="header__links">
-          <a href="https://mailhide.io/e/hxhuvv7j" onclick="popup=window.open('https://mailhide.io/e/hxhuvv7j','mailhidepopup','width=580,height=635'); return false;" aria-label="Email Address"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email</a>
-          <a href="pdfs/cv.pdf" aria-label="Curriculum Vitae"><i class="fa-solid fa-file" aria-hidden="true"></i> CV</a>
-          <a href="pdfs/sop.pdf" aria-label="Statement of Purpose"><i class="fa-solid fa-file" aria-hidden="true"></i> Statement of Purpose</a>
-          <a href="https://www.linkedin.com/in/tanushreebanerjee1/" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
-          <a href="https://scholar.google.com/citations?user=9gamKaAAAAAJ&hl=en" aria-label="Google Scholar Profile"><i class="fa-brands fa-google" aria-hidden="true"></i> Google Scholar</a>
-          <a href="https://bsky.app/profile/tanushreebanerjee.bsky.social" aria-label="Bluesky Profile"><i class="fa-brands fa-square-twitter" aria-hidden="true"></i> Bluesky</a>
-          <a href="https://github.com/tanushreebanerjee" aria-label="GitHub Profile"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
+          <a href="https://mailhide.io/e/hxhuvv7j" onclick="popup=window.open('https://mailhide.io/e/hxhuvv7j','mailhidepopup','width=580,height=635'); return false;"><i class="fa-solid fa-envelope"></i> Email</a>
+          <a href="pdfs/cv.pdf"><i class="fa-solid fa-file"></i> CV</a>
+          <a href="pdfs/sop.pdf"><i class="fa-solid fa-file"></i> Statement of Purpose</a>
+          <a href="https://www.linkedin.com/in/tanushreebanerjee1/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=9gamKaAAAAAJ&hl=en"><i class="fa-brands fa-google"></i> Google Scholar</a>
+          <a href="https://bsky.app/profile/tanushreebanerjee.bsky.social"><i class="fa-brands fa-square-twitter"></i> Bluesky</a>
+          <a href="https://github.com/tanushreebanerjee"><i class="fa-brands fa-github"></i> GitHub</a>
         </div>
       </div>
     </header>
@@ -103,33 +94,12 @@
     </footer>
   </div>
 
-  <!-- Script for interactive navigation -->
+  <!-- Simple navigation script -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Highlight active navigation item based on scroll position
-      const sections = document.querySelectorAll('.section');
-      const navLinks = document.querySelectorAll('.nav-link');
+      // Add active class to current section
+      const navLinks = document.querySelectorAll('.navigation__links a');
       
-      function updateActiveLink() {
-        const scrollPosition = window.scrollY;
-        
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop - 100;
-          const sectionHeight = section.offsetHeight;
-          const sectionId = section.id;
-          
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            navLinks.forEach(link => {
-              link.classList.remove('active');
-              if (link.getAttribute('href') === `#${sectionId}`) {
-                link.classList.add('active');
-              }
-            });
-          }
-        });
-      }
-      
-      // Smooth scrolling for anchor links
       navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
@@ -138,38 +108,20 @@
           
           if (targetSection) {
             window.scrollTo({
-              top: targetSection.offsetTop - 70,
+              top: targetSection.offsetTop - 60,
               behavior: 'smooth'
             });
           }
+          
+          // Set active class
+          navLinks.forEach(link => link.classList.remove('active'));
+          this.classList.add('active');
         });
-      });
-      
-      // Initial call and bind to scroll
-      updateActiveLink();
-      window.addEventListener('scroll', updateActiveLink);
-      
-      // Shrink navigation on scroll
-      const nav = document.getElementById('main-nav');
-      let lastScrollTop = 0;
-      
-      window.addEventListener('scroll', function() {
-        const scrollTop = window.scrollY;
-        
-        if (scrollTop > 100) {
-          nav.style.padding = '8px 0';
-          nav.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-        } else {
-          nav.style.padding = '16px 0';
-          nav.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.05)';
-        }
-        
-        lastScrollTop = scrollTop;
       });
     });
   </script>
   
-  <!-- Add Schema.org structured data for academic profile -->
+  <!-- Schema.org data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org/",
@@ -186,12 +138,7 @@
       "@type": "Organization",
       "name": "Princeton University"
     },
-    "description": "Researcher in explainable 3D perception via inverse generation",
-    "sameAs": [
-      "https://www.linkedin.com/in/tanushreebanerjee1/",
-      "https://github.com/tanushreebanerjee",
-      "https://scholar.google.com/citations?user=9gamKaAAAAAJ&hl=en"
-    ]
+    "description": "Researcher in explainable 3D perception via inverse generation"
   }
   </script>
 </body>
