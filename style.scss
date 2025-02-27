@@ -399,7 +399,7 @@ p {
 // Tags - consistent with primary color
 .tag {
   display: inline-block;
-  margin: 0 $spacing-xs $spacing-xs 0;
+  margin: 0 $spacing-xs 0 0;  // Remove bottom margin
   padding: 2px $spacing-sm;
   font-size: $font-size-xs;
   font-weight: 600;
@@ -501,9 +501,20 @@ p {
   align-items: center;
   gap: $spacing-sm;
   margin-bottom: $spacing-sm;
+  
+  // Add these new properties
+  line-height: 1.5;
+}
+
+.publication__type {
+  display: inline-flex;  // Change from inline-block to inline-flex
+  align-items: center;
+  margin-right: $spacing-sm;
+  margin-bottom: 0;  // Remove bottom margin
 }
 
 .tags--inline {
   display: inline-flex;
   margin: 0;
+  align-items: center;  // Vertically center tags
 }
