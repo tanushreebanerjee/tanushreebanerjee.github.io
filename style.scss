@@ -231,6 +231,16 @@ p {
   }
 }
 
+
+.header__photo {
+  width: 25%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: attr(width) / attr(height);
+  max-width: 300px; // Optional: prevent image from getting too large on big screens
+  border-radius: 8px; // Optional: adds a subtle rounded corner
+}
+
 // Centered contact links
 
 // Updated contact links styling
