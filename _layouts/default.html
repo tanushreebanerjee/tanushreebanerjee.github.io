@@ -1,18 +1,175 @@
-The Content Security Policy (CSP) prevents the evaluation of arbitrary strings as JavaScript to make it more difficult for an attacker to inject unathorized code on your site.
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <!-- Meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Tanushree Banerjee - Research in explainable 3D perception via inverse generation. Princeton research assistant focusing on computer vision and machine learning.">
+  <meta name="author" content="{{ site.name }}">
+  <meta name="keywords" content="Tanushree Banerjee, 3D perception, inverse generation, explainable AI, computer vision, Princeton">
+  
+  <!-- Open Graph tags -->
+  <meta property="og:title" content="Tanushree Banerjee | Researcher in Explainable 3D Perception">
+  <meta property="og:description" content="Research assistant at Princeton Computational Imaging Lab working on explainable 3D perception via inverse generation">
+  <meta property="og:image" content="{{ site.url }}/images_resized/avatar.jpeg">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  
+  <!-- Font Awesome - using a specific version to avoid potential issues -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css">
+  
+  <title>{{ site.name }}</title>
+</head>
 
-To solve this issue, avoid using eval(), new Function(), setTimeout([string], ...) and setInterval([string], ...) for evaluating strings.
+<body>
+  <!-- Simple Navigation -->
+  <nav class="navigation" id="main-nav">
+    <div class="container navigation__container">
+      <a href="#" class="navigation__name">Tanushree Banerjee</a>
+      <div class="navigation__links">
+        <a href="#research" class="nav-link">Research</a>
+        <a href="#independent" class="nav-link">Independent Work</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#teaching" class="nav-link">Teaching</a>
+        <a href="#skills" class="nav-link">Skills</a>
+      </div>
+    </div>
+  </nav>
 
-If you absolutely must: you can enable string evaluation by adding unsafe-eval as an allowed source in a script-src directive.
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <img src="images_resized/avatar.jpeg" alt="Tanushree Banerjee" class="header__photo">
+      <div class="header__content">
+        <h1>Tanushree Banerjee</h1>
+        <p>
+          Hi there! 👋 I'm Tanushree (she/her), a research assistant at the <a href="https://light.princeton.edu/">Princeton Computational Imaging Lab</a> working on explainable 3D perception via inverse generation under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a>.
+        </p>
+        <p>
+          I recently graduated from <a href="https://www.princeton.edu/">Princeton University</a> with a BSE in Computer Science. I conducted my senior thesis research under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a>, for which I received the <a href="https://www.cs.princeton.edu/news/class-day-department-celebrates-accomplishments-graduates">Outstanding Computer Science Senior Thesis Prize</a>.
+        </p>
+        <div class="header__links">
+          <a href="https://mailhide.io/e/hxhuvv7j" onclick="window.open('https://mailhide.io/e/hxhuvv7j','mailhidepopup','width=580,height=635'); return false;"><i class="fa-solid fa-envelope"></i> Email</a>
+          <a href="pdfs/cv.pdf"><i class="fa-solid fa-file"></i> CV</a>
+          <a href="pdfs/sop.pdf"><i class="fa-solid fa-file"></i> Statement of Purpose</a>
+          <a href="https://www.linkedin.com/in/tanushreebanerjee1/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=9gamKaAAAAAJ&hl=en"><i class="fa-brands fa-google"></i> Google Scholar</a>
+          <a href="https://bsky.app/profile/tanushreebanerjee.bsky.social"><i class="fa-brands fa-square-twitter"></i> Bluesky</a>
+          <a href="https://github.com/tanushreebanerjee"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+      </div>
+    </header>
 
-⚠️ Allowing string evaluation comes at the risk of inline script injection.
+    <!-- News Section -->
+    <section class="section">
+      <h2>News</h2>
+      <div class="news">
+        <div class="news__item">
+          <span class="news__date">June 2024:</span> Starting work as a full-time research assistant in the <a href="https://light.princeton.edu/">Princeton Computational Imaging Lab</a>, where I am super excited to extend my senior thesis work on inverse generation for 3D perception under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a>!
+        </div>
+        <div class="news__item">
+          <span class="news__date">May 2024:</span> Graduated <i>magna cum laude</i> from Princeton with a BSE in Computer Science and certificates in Statistics and Machine Learning and Optimization and Quantitative Decision Science. Received the <a href="https://www.cs.princeton.edu/news/class-day-department-celebrates-accomplishments-graduates">Outstanding Computer Science Senior Thesis Prize</a> for my thesis work on "Inverse Neural Rendering for Explainable 3D Perception" under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a> (one of 6 in 216 in the CS department)
+        </div>
+        <div class="news__item">
+          <span class="news__date">May 2024:</span> Received the <a href="https://www.linkedin.com/posts/princetonresearch_prd24-activity-7194428986980978688-tJyw?utm_source=share&utm_medium=member_desktop">Fitzrandolph Gate Award</a> for my <a href="https://mediacentral.princeton.edu/media/Inverse+Neural+Rendering+for+Explainable+Multi-Object+Tracking,+Tanushree+Banerjee,+UG+'24,+(611179F4)/1_qq8ls1c7">video presentation</a> on <a href="https://light.princeton.edu/publication/inverse-rendering-tracking/">Inverse Neural Rendering for Explainable Multi-Object Tracking</a> at <a href="https://researchday.princeton.edu/">Princeton Research Day</a>!
+        </div>
+        <div class="news__item">
+          <span class="news__date">April 2024:</span> Submitted <a href="https://light.princeton.edu/publication/inverse-rendering-tracking/">Inverse Neural Rendering for Explainable Multi-Object Tracking</a> to <a href="https://arxiv.org/abs/2404.12359">ArXiv</a>!
+        </div>
+      </div>
+    </section>
 
-1 directive
-Source location	Directive	Status
-script-src	blocked
-Learn more: Content Security Policy - Eval
-Deprecated feature used
-Unload event listeners are deprecated and will be removed.
+    <!-- Main Content -->
+    {{ content }}
 
-1 source
-frame.js:21098
-Learn more: Check the feature status page for more details.
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Design adapted from <a href="https://leonidk.com/">Leonid Keselman's</a> <a href="https://github.com/leonidk/leonidk.github.io">Jekyll fork</a> of <a href="https://jonbarron.info/">Jon Barron's website</a> | Updated {{ 'now' | date: "%B %Y" }}</p>
+    </footer>
+  </div>
+
+  <!-- CSP-safe navigation script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // CSP-safe code (no eval or string execution)
+      const navLinks = document.querySelectorAll('.navigation__links a');
+      
+      function handleClick(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          // Scroll to section - without using setTimeout with strings
+          window.scrollTo({
+            top: targetSection.offsetTop - 60,
+            behavior: 'smooth'
+          });
+        }
+        
+        // Set active class
+        navLinks.forEach(function(link) {
+          link.classList.remove('active');
+        });
+        this.classList.add('active');
+      }
+      
+      // Set up event listeners
+      navLinks.forEach(function(link) {
+        link.addEventListener('click', handleClick);
+      });
+      
+      // Initial highlight based on scroll position
+      function updateActiveLink() {
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        
+        document.querySelectorAll('section[id]').forEach(function(section) {
+          const sectionTop = section.offsetTop - 100;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+          
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            navLinks.forEach(function(link) {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + sectionId) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      }
+      
+      // Run on page load and scroll
+      updateActiveLink();
+      window.addEventListener('scroll', updateActiveLink);
+    });
+  </script>
+  
+  <!-- Schema.org data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Person",
+    "name": "Tanushree Banerjee",
+    "url": "{{ site.url }}",
+    "image": "{{ site.url }}/images_resized/avatar.jpeg",
+    "jobTitle": "Research Assistant",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Princeton University Computational Imaging Lab"
+    },
+    "alumniOf": {
+      "@type": "Organization",
+      "name": "Princeton University"
+    },
+    "description": "Researcher in explainable 3D perception via inverse generation"
+  }
+  </script>
+</body>
+</html>
