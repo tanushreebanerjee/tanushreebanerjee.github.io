@@ -1,406 +1,68 @@
 <!DOCTYPE HTML>
 <html lang="en">
-
 <head>
-  <!-- Google tag (gtag.js) -->
-<!--   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E00L9PT3V9"></script> -->
   <script src="https://kit.fontawesome.com/998764ba87.js" crossorigin="anonymous"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-E00L9PT3V9');
-  </script>
   <title>{{ site.name }}</title>
 
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  <meta name="google-site-verification" content="Wv7GtzRHkf91M8FVdi3WpRtMMX1v8vIFRq48D88ptyo" />
-  <meta name="author" content="{{ site.name }}" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="I am a senior studying CS at Princeton working on inverse generation for explainable 3D perception under Prof. Felix Heide.">
-  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+  <meta name="description" content="Tanushree Banerjee - Research in Explainable 3D Perception via Inverse Generation">
+  <meta name="author" content="{{ site.name }}">
+  <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css">
   <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
 </head>
 
 <body>
-  <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-    <tr style="padding:0px">
-      <td style="padding:0px">
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <h1>Tanushree Banerjee</h1>
-              <p>Hi there! 👋 I'm Tanushree (she/her), a research assistant at the <a href="https://light.princeton.edu/">Princeton Computational Imaging Lab</a> working on explainable 3D perception via inverse generation under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a>.</p>
-              <p>I recently graduated from <a href="https://www.princeton.edu/">Princeton University</a> with a BSE in Computer Science. I conducted my senior thesis research under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a>, for which I received the <a href="https://www.cs.princeton.edu/news/class-day-department-celebrates-accomplishments-graduates">Outstanding Computer Science Senior Thesis Prize</a>. </p>
-              <p>Earlier during my undergraduate studies at Princeton, I worked under Prof. <a href="https://www.cs.princeton.edu/~karthikn/">Karthik Narasimhan</a> in the <a href="https://princeton-nlp.github.io/">Princeton Natural Language Processing Group</a> and Prof. <a href="https://www.cs.princeton.edu/~olgarus/">Olga Russakovsky</a> in the <a href="https://visualai.princeton.edu/">Princeton Visual AI Lab</a>.</p>
-              <p style="text-align:center"> 
-                <a href="https://mailhide.io/e/hxhuvv7j" onclick="popup=window.open('https://mailhide.io/e/hxhuvv7j','mailhidepopup','width=580,height=635'); return false;"><span class="fa-solid fa-envelope"></span> Email</a> &nbsp;|&nbsp;
-                <a href="pdfs/cv.pdf"><span class="fa-solid fa-file"></span> CV</a> &nbsp;|&nbsp;
-                <a href="pdfs/sop.pdf"><span class="fa-solid fa-file"></span> Statement of Purpose</a> &nbsp;|&nbsp;
-                <a href="https://www.linkedin.com/in/tanushreebanerjee1/"><span class="fa-brands fa-linkedin"></span> LinkedIn</a> &nbsp;|&nbsp;
-                <a href="https://scholar.google.com/citations?user=9gamKaAAAAAJ&hl=en"><span class="fa-brands fa-google-scholar"></span> Google Scholar</a> &nbsp;|&nbsp;
-                <a href="https://bsky.app/profile/tanushreebanerjee.bsky.social"><span class="fa-brands fa-bluesky"></span> Bluesky</a> &nbsp;|&nbsp;
-                <a href="https://github.com/tanushreebanerjee"><span class="fa-brands fa-github"></span> GitHub</a> 
-                
-                
-              </p>
-            </td>
-            <td style="padding:2.5%;width:25%;max-width:40%">
-              <img style="width:100%;max-width:100%" alt="profile photo" src="images_resized/avatar.jpeg">
-            </td>
-          </tr>
-        </table>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <img src="images_resized/avatar.jpeg" alt="Tanushree Banerjee" class="header__photo">
+      <div class="header__content">
+        <h1>Tanushree Banerjee</h1>
+        <p>
+          Hi there! 👋 I'm Tanushree (she/her), a research assistant at the <a href="https://light.princeton.edu/">Princeton Computational Imaging Lab</a> working on explainable 3D perception via inverse generation under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a>.
+        </p>
+        <p>
+          I recently graduated from <a href="https://www.princeton.edu/">Princeton University</a> with a BSE in Computer Science. I conducted my senior thesis research under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a>, for which I received the <a href="https://www.cs.princeton.edu/news/class-day-department-celebrates-accomplishments-graduates">Outstanding Computer Science Senior Thesis Prize</a>.
+        </p>
+        <div class="header__links">
+          <a href="https://mailhide.io/e/hxhuvv7j" onclick="popup=window.open('https://mailhide.io/e/hxhuvv7j','mailhidepopup','width=580,height=635'); return false;"><i class="fa-solid fa-envelope"></i> Email</a>
+          <a href="pdfs/cv.pdf"><i class="fa-solid fa-file"></i> CV</a>
+          <a href="pdfs/sop.pdf"><i class="fa-solid fa-file"></i> Statement of Purpose</a>
+          <a href="https://www.linkedin.com/in/tanushreebanerjee1/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=9gamKaAAAAAJ&hl=en"><i class="fa-brands fa-google"></i> Google Scholar</a>
+          <a href="https://bsky.app/profile/tanushreebanerjee.bsky.social"><i class="fa-brands fa-square-twitter"></i> Bluesky</a>
+          <a href="https://github.com/tanushreebanerjee"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
+      </div>
+    </header>
 
-        <table style="width:100%;max-width:1000px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr style="padding:0px">
-            <td style="padding:2.5%;width:60%;vertical-align:middle">
-              <h2>News</h2>
-              <p>
-                <ul>
-<li margin-bottom: 5px><b>June 2024:</b> Starting work as a full-time research assistant in the <a href="https://light.princeton.edu/">Princeton Computational Imaging Lab</a>, where I am super excited to extend my senior thesis work on inverse generation for 3D perception under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a>!</li>
-<li margin-bottom: 5px><b>May 2024:</b> Graduated <i>magna cum laude</i> from Princeton with a BSE in Computer Science and certificates in Statistics and Machine Learning and Optimization and Quantitative Decision Science. Received the <a href="https://www.cs.princeton.edu/news/class-day-department-celebrates-accomplishments-graduates">Outstanding Computer Science Senior Thesis Prize</a> for my thesis work on "Inverse Neural Rendering for Explainable 3D Perception" under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a> (one of 6 in 216 in the CS department)</li>
-<li margin-bottom: 5px><b>May 2024:</b> Received the <a href=https://www.linkedin.com/posts/princetonresearch_prd24-activity-7194428986980978688-tJyw?utm_source=share&utm_medium=member_desktop>Fitzrandolph Gate Award</a> for my <a href=https://mediacentral.princeton.edu/media/Inverse+Neural+Rendering+for+Explainable+Multi-Object+Tracking,+Tanushree+Banerjee,+UG+'24,+(611179F4)/1_qq8ls1c7>video presentation</a> on <a href=https://light.princeton.edu/publication/inverse-rendering-tracking/>Inverse Neural Rendering for Explainable Multi-Object Tracking</a> at <a href=https://researchday.princeton.edu/>Princeton Research Day</a>!</li>
-<li margin-bottom: 5px><b>April 2024:</b> Submitted <a href=https://light.princeton.edu/publication/inverse-rendering-tracking/>Inverse Neural Rendering for Explainable Multi-Object Tracking</a> to <a href=https://arxiv.org/abs/2404.12359>ArXiv</a>!</li>
-                </ul>  
-              </p>
-            </td>
-          </tr>
-        </table>
+    <!-- News Section -->
+    <section class="section">
+      <h2>News</h2>
+      <div class="news">
+        <div class="news__item">
+          <span class="news__date">June 2024:</span> Starting work as a full-time research assistant in the <a href="https://light.princeton.edu/">Princeton Computational Imaging Lab</a>, where I am super excited to extend my senior thesis work on inverse generation for 3D perception under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a>!
+        </div>
+        <div class="news__item">
+          <span class="news__date">May 2024:</span> Graduated <i>magna cum laude</i> from Princeton with a BSE in Computer Science and certificates in Statistics and Machine Learning and Optimization and Quantitative Decision Science. Received the <a href="https://www.cs.princeton.edu/news/class-day-department-celebrates-accomplishments-graduates">Outstanding Computer Science Senior Thesis Prize</a> for my thesis work on "Inverse Neural Rendering for Explainable 3D Perception" under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a> (one of 6 in 216 in the CS department)
+        </div>
+        <div class="news__item">
+          <span class="news__date">May 2024:</span> Received the <a href="https://www.linkedin.com/posts/princetonresearch_prd24-activity-7194428986980978688-tJyw?utm_source=share&utm_medium=member_desktop">Fitzrandolph Gate Award</a> for my <a href="https://mediacentral.princeton.edu/media/Inverse+Neural+Rendering+for+Explainable+Multi-Object+Tracking,+Tanushree+Banerjee,+UG+'24,+(611179F4)/1_qq8ls1c7">video presentation</a> on <a href="https://light.princeton.edu/publication/inverse-rendering-tracking/">Inverse Neural Rendering for Explainable Multi-Object Tracking</a> at <a href="https://researchday.princeton.edu/">Princeton Research Day</a>!
+        </div>
+        <div class="news__item">
+          <span class="news__date">April 2024:</span> Submitted <a href="https://light.princeton.edu/publication/inverse-rendering-tracking/">Inverse Neural Rendering for Explainable Multi-Object Tracking</a> to <a href="https://arxiv.org/abs/2404.12359">ArXiv</a>!
+        </div>
+      </div>
+    </section>
 
+    {{ content }}
 
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Research</h2>
-              <p>
-                My research lies at the intersection of computer vision, computer graphics, machine learning, and optimization, focusing on <strong>explainable 3D perception via inverse generation</strong>.
-                Some research questions that inspire my current work:
-                <ul>
-                  <li>Can we leverage priors learned in <a href=https://youtu.be/j9nB_DttAlw>generative models</a> to interpret 3D information from everyday 2D videos and photographs?</li>
-                  <li>How can we reformulate visual perception as an <a href=https://www.cs.toronto.edu/~hinton/csc2535/notes/lec6b.pdf>inverse generation</a> problem?
-                </ul>
-              </p>
-          <p>
-            * indicates equal contribution. Representative projects are <span style="background-color:#FDFBD4">highlighted</span>.
-          </p>
-            </td>
-          </tr>
-        </table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == 'research' %}
-          <tr {% if post.highlight %} onmouseout="mip360_stop()" onmouseover="mip360_start()" bgcolor="#FDFBD4" {% endif %}>
-            <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
-              <img src="/images_resized{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:70%;vertical-align:middle">
-              <span><papertitle>{{post.title}}</papertitle></span>
-              <br>
-              {{post.authors}}
-              <br>
-              <be> <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
-             {% if post.keywords %}
-  <div class="keywords">
-    {% for keyword in post.keywords %}
-      <span class="tag">{{ keyword }}</span>
-    {% endfor %}
+    <!-- Footer -->
+    <footer class="footer">
+      <p>Design adapted from <a href="https://leonidk.com/">Leonid Keselman's</a> <a href="https://github.com/leonidk/leonidk.github.io">Jekyll fork</a> of <a href="https://jonbarron.info/">Jon Barron's website</a> | Updated {{ 'now' | date: "%B %Y" }}</p>
+    </footer>
   </div>
-{% endif %}
-{% if post.tags %}
-  <div class="tags">
-    {% for tag in post.tags %}
-      <span class="tag">{{ tag }}</span>
-    {% endfor %}
-  </div>
-{% endif %}   
-              {% if post.website %}
-              <a href="{{post.website}}">[project page]</a>
-              {% endif %}
-              {% if post.paper %}
-              <a href="{{post.paper}}">[paper]</a>
-              {% endif %}
-              {% if post.supplementary %}
-              <a href="{{post.supplementary}}">[supplement]</a>
-              {% endif %}
-              {% if post.arxiv %}
-              <a href="{{post.arxiv}}">[arXiv]</a>
-              {% endif %}
-              {% if post.video %}
-              <a href="{{post.video}}">[video]</a>
-              {% endif %}
-              {% if post.code %}
-              <a href="{{post.code}}">[code]</a>
-              {% endif %}
-              {% if post.poster %}
-              <a href="{{post.poster}}">[poster]</a>
-              {% endif %}
-              {% if post.slides %}
-              <a href="{{post.slides}}">[slides]</a>
-              {% endif %}
-              {% if post.youtube %}
-              <a href="{{post.youtube}}">[youtube]</a>
-              {% endif %}
-              {% if post.poster %}
-              <a href="{{post.poster}}">[poster]</a>
-              {% endif %}
-              <p></p>
-              {{ post.excerpt }}
-            </td>
-          </tr>
-        
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
-        </table> 
-        <be>
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Selected Independent Work Reports</h2>
-              <p> 
-<!--                 Earlier during my undergraduate studies at <a href="https://www.princeton.edu/">Princeton</a>, I explored human and machine-in-the-loop systems under Prof. <a href="https://www.cs.princeton.edu/~karthikn/">Karthik Narasimhan</a> in the <a href="https://princeton-nlp.github.io/">Princeton Natural Language Processing Group</a>. -->
-              Earlier during my undergraduate studies at <a href="https://www.princeton.edu/">Princeton</a> I worked on bias in visual understanding pipelines under Prof. <a href=https://www.cs.princeton.edu/~olgarus/>Olga Russakovsky</a> in the <a href=https://visualai.princeton.edu/>Princeton Visual AI Lab</a>.
-              </p>
-            </td>
-          </tr>
-        </table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == "independent" %}
-          <tr>
-            <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
-              <img src="/images_resized{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:70%;vertical-align:middle">
-             <span><papertitle>{{post.title}}</papertitle></span>
-              {% if post.keywords %}
-  <div class="keywords">
-    {% for keyword in post.keywords %}
-      <span class="tag">{{ keyword }}</span>
-    {% endfor %}
-  </div>
-{% endif %}
-              <br>
-              {{post.authors}}
-<!--               <br>
-              <be> <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }} -->
-              <br>
-              {% if post.course %}
-              <em> {{post.course}}</em> 
-              <br>
-              {% if post.tags %}
-  <div class="tags">
-    {% for tag in post.tags %}
-      <span class="tag">{{ tag }}</span>
-    {% endfor %}
-  </div>
-{% endif %}
-<!--               <br> -->
-<!--               {% endif %}
-              {{post.categories}}
-              <br> -->
-<!--               {{ post.date | date: "%Y-%m-%d" }} -->
-              {% if post.website %}
-              <a href="{{post.website}}">[website]</a>  
-              {% endif %}
-              {% if post.paper %}
-              <a href="{{post.paper}}">[paper]</a> 
-              {% endif %}
-              {% if post.arxiv %}
-              <a href="{{post.arxiv}}">[arXiv]</a>
-              {% endif %}
-              {% if post.video %}
-              <a href="{{post.video}}">[video]</a> 
-              {% endif %}
-              {% if post.video2 %}
-              <a href="{{post.video2}}">[video] #2</a> 
-              {% endif %}
-              {% if post.code %}
-              <a href="{{post.code}}">[code]</a> 
-              {% endif %}
-              {% if post.poster %}
-              <a href="{{post.poster}}">[poster]</a> 
-              {% endif %}
-              <p></p>
-              {{ post.excerpt }}
-            </td>
-          </tr>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
-        </table>
-        <br>
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Selected Course Projects</h2>
-              <p> These include unpublished research-related work as part of semester-long course projects during my undergraduate studies at <a href="https://www.princeton.edu/">Princeton</a>.
-              </p>
-            </td>
-          </tr>
-        </table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == "other" %}
-          <tr>
-            <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
-              <img src="/images_resized{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            <td style="padding:2.5%;width:70%;vertical-align:middle">
-              <span><papertitle>{{post.title}}</papertitle></span>
-              {% if post.keywords %}
-  <div class="keywords">
-    {% for keyword in post.keywords %}
-      <span class="tag">{{ keyword }}</span>
-    {% endfor %}
-  </div>
-{% endif %}
-{% if post.tags %}
-  <div class="tags">
-    {% for tag in post.tags %}
-      <span class="tag">{{ tag }}</span>
-    {% endfor %}
-  </div>
-{% endif %}
-              {{post.authors}}
-              <br>
-              {% if post.course %}
-              <em> {{post.course}}</em> 
-              <br>
-              {% endif %}
-              <!-- {{post.categories}} -->
-              <!-- <br> -->
-              <!-- {{ post.date | date: "%Y-%m-%d" }} -->
-              {% if post.website %}
-              <a href="{{post.website}}">[website]</a> 
-              {% endif %}
-              {% if post.paper %}
-              <a href="{{post.paper}}">[paper]</a> 
-              {% endif %}
-              {% if post.patent %}
-              <a href="{{post.patent}}">[patent]</a> 
-              {% endif %}
-              {% if post.patent2 %}
-              <a href="{{post.patent2}}">[patent #2<]/a> 
-              {% endif %}
-              {% if post.patent3 %}
-              <a href="{{post.patent3}}">[patent #3<]/a> 
-              {% endif %}
-              {% if post.video %}
-              <a href="{{post.video}}">[video]</a> 
-              {% endif %}
-              {% if post.video2 %}
-              <a href="{{post.video2}}">[video] #2</a> 
-              {% endif %}
-              {% if post.code %}
-              <a href="{{post.code}}">[code]</a> 
-              {% endif %}
-              {% if post.poster %}
-              <a href="{{post.poster}}">[poster]</a> 
-              {% endif %}
-              {% if post.slides %}
-              <a href="{{post.slides}}">[slides]</a> 
-              {% endif %}
-              <p></p>
-              {{ post.excerpt }}
-            </td>
-          </tr>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
-        </table>
-
-
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Teaching & Outreach</h2>
-              <p> I have been incredibly fortunate to receive tremendous support from faculty mentors while at <a href="https://www.princeton.edu/">Princeton</a> to pursue a research career in computer science. I am keen to use my position to help empower others to pursue careers in computer science. This section includes my teaching and outreach endeavors to help address the acute diversity crisis in this field.
-            </td>
-          </tr>
-        </table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == "outreach" %}
-          <tr>
-            <td style="padding:2.5%;width:30%;vertical-align:middle;min-width:120px">
-              <img src="/images_resized{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:120px;vertical-align:middle" align="center" />
-            </td>
-            <td style="padding:2.5%;width:70%;vertical-align:middle">
-              <span><papertitle>{{post.title}}</papertitle></span>
-              <br>
-              <!-- {{post.authors}} -->
-              <!-- <br> -->
-              {% if post.course %}
-              <em> {{post.course}}</em> 
-              <br>
-              {% endif %}
-              <!-- {{post.categories}} -->
-              <!-- <br> -->
-              <!-- {{ post.date | date: "%Y-%m-%d" }} -->
-              {% if post.website %}
-              <a href="{{post.website}}">[website]</a> 
-              {% endif %}
-              {% if post.paper %}
-              <a href="{{post.paper}}">[paper]</a> 
-              {% endif %}
-              {% if post.patent %}
-              <a href="{{post.patent}}">[patent]</a> 
-              {% endif %}
-              {% if post.patent2 %}
-              <a href="{{post.patent2}}">[patent #2<]/a> 
-              {% endif %}
-              {% if post.patent3 %}
-              <a href="{{post.patent3}}">[patent #3<]/a> 
-              {% endif %}
-              {% if post.video %}
-              <a href="{{post.video}}">[video]</a> 
-              {% endif %}
-              {% if post.video2 %}
-              <a href="{{post.video2}}">[video] #2</a> 
-              {% endif %}
-              {% if post.code %}
-              <a href="{{post.code}}">[code]</a> 
-              {% endif %}
-              {% if post.poster %}
-              <a href="{{post.poster}}">[poster]</a> 
-              {% endif %}
-              {% if post.slides %}
-              <a href="{{post.slides}}">[slides]</a> 
-              {% endif %}
-              <p></p>
-              {{ post.excerpt }}
-            </td>
-          </tr>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
-        </table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-          <tr>
-            <td style="padding:0px">
-              <br>
-              <p style="text-align:right;font-size:small;">
-                Design and source code from <a style="font-size:small;" href="https://leonidk.com/">Leonid Keselman's</a> <a style="font-size:small;" href="https://github.com/leonidk/leonidk.github.io">Jekyll fork</a> of <a style="font-size:small;" href="https://jonbarron.info/">Jon Barron's website</a>.<br>Updated January 2025.
-              </p>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
 </body>
-
 </html>
