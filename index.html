@@ -28,13 +28,13 @@ layout: default
     <div>
       <h3 class="publication__title">{{ post.title }}</h3>
       <p class="publication__authors">{{ post.authors }}</p>
-      <p class="publication__venue"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</p>
+<!--       <p class="publication__venue"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</p> -->
       
       <!-- Publication type indicator -->
       {% if post.venue contains "arXiv" or post.venue contains "preprint" %}
-        <div class="publication__type publication__type--preprint">Preprint</div>
+        <div class="publication__type publication__type--preprint"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</div>
       {% else %}
-        <div class="publication__type publication__type--peer-reviewed">Peer-reviewed</div>
+        <div class="publication__type publication__type--peer-reviewed"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</div>
       {% endif %}
       
       {% if post.tags %}
