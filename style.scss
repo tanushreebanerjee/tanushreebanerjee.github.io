@@ -256,6 +256,8 @@ p {
 .publication {
   display: grid;
   gap: $spacing-md;
+  margin-top: $spacing-lg;
+  padding-top: $spacing-md;
   margin-bottom: $spacing-lg;
   padding-bottom: $spacing-md;
   border-bottom: 1px solid $border-light;
