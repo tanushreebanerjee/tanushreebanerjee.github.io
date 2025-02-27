@@ -5,7 +5,7 @@ layout: default
 <!-- Research Section -->
 <section id="research" class="section">
   <h2>Research</h2>
-  <div class="research-interests" style="margin-bottom: 2rem; padding: 1.5rem; background-color: #F9FAFB; border-radius: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);">
+  <div style="margin-bottom: 15px; padding: 10px; background-color: #F9FAFB; border: 1px solid #E5E7EB;">
     <p>
       My research lies at the intersection of computer vision, computer graphics, machine learning, and optimization, focusing on <strong>explainable 3D perception via inverse generation</strong>.
     </p>
@@ -180,112 +180,6 @@ layout: default
   {% endfor %}
 </section>
 
-<!-- Skills Section -->
-<section id="skills" class="section">
-  <h2>Skills</h2>
-  <div class="skills">
-    <div class="skills__category">
-      <h3 class="skills__title">Programming Languages</h3>
-      <div class="skills__item">
-        <span class="skills__name">Python</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 95%;"></div>
-        </div>
-      </div>
-      <div class="skills__item">
-        <span class="skills__name">JavaScript</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 75%;"></div>
-        </div>
-      </div>
-      <div class="skills__item">
-        <span class="skills__name">MATLAB</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 70%;"></div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="skills__category">
-      <h3 class="skills__title">Frameworks & Libraries</h3>
-      <div class="skills__item">
-        <span class="skills__name">PyTorch</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 90%;"></div>
-        </div>
-      </div>
-      <div class="skills__item">
-        <span class="skills__name">TensorFlow</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 80%;"></div>
-        </div>
-      </div>
-      <div class="skills__item">
-        <span class="skills__name">OpenCV</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 85%;"></div>
-        </div>
-      </div>
-      <div class="skills__item">
-        <span class="skills__name">NumPy/SciPy</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 95%;"></div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="skills__category">
-      <h3 class="skills__title">Research Areas</h3>
-      <div class="skills__item">
-        <span class="skills__name">Computer Vision</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 95%;"></div>
-        </div>
-      </div>
-      <div class="skills__item">
-        <span class="skills__name">3D Perception</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 90%;"></div>
-        </div>
-      </div>
-      <div class="skills__item">
-        <span class="skills__name">Generative Models</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 85%;"></div>
-        </div>
-      </div>
-      <div class="skills__item">
-        <span class="skills__name">Inverse Rendering</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 90%;"></div>
-        </div>
-      </div>
-    </div>
-    
-    <div class="skills__category">
-      <h3 class="skills__title">Tools & Environments</h3>
-      <div class="skills__item">
-        <span class="skills__name">Git & GitHub</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 90%;"></div>
-        </div>
-      </div>
-      <div class="skills__item">
-        <span class="skills__name">Linux/Unix</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 85%;"></div>
-        </div>
-      </div>
-      <div class="skills__item">
-        <span class="skills__name">LaTeX</span>
-        <div class="skills__bar">
-          <div class="skills__progress" style="width: 90%;"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- Teaching Section -->
 <section id="teaching" class="section">
   <h2>Teaching & Outreach</h2>
@@ -304,11 +198,9 @@ layout: default
       <p><em>{{ post.course }}</em></p>
       {% endif %}
       
-      <div class="teaching-item__links">
-        {% if post.website %}
-        <a href="{{ post.website }}">[website]</a>
-        {% endif %}
-      </div>
+      {% if post.website %}
+      <p><a href="{{ post.website }}">[website]</a></p>
+      {% endif %}
       
       <p>{{ post.excerpt }}</p>
     </div>
