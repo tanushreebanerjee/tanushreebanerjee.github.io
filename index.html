@@ -185,24 +185,21 @@ layout: default
   <tr>
     <td style="padding:2.5%;width:100%;vertical-align:middle">
       <h2>Teaching & Outreach</h2>
-      <p>
+      <p style="margin-bottom:20px;">
         I have been incredibly fortunate to receive tremendous support from faculty mentors while at <a href="https://www.princeton.edu/">Princeton</a> to pursue a research career in computer science. I am keen to use my position to help empower others to pursue careers in computer science. This section includes my teaching and outreach endeavors to help address the acute diversity crisis in this field.
+      </p>
+
+      <p style="margin-bottom:10px;">
+        <strong>Undergraduate Course Assistant (UCA)</strong>: Independent Work Seminar on AI for Engineering and Physics, <em>Spring 2024</em>
+        <br>
+        <a href="https://www.cs.princeton.edu/courses/archive/spring24/cosIW05/">Program Website</a>
+      </p>
+
+      <p>
+        <strong>Instructor</strong>: Princeton AI4ALL, <em>Summer 2022</em>
+        <br>
+        <a href="https://ai4all.princeton.edu/">Program Website</a>
       </p>
     </td>
   </tr>
-</table>
-<table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
-  {% for post in site.posts %}
-  {% for cat in post.categories %}
-  {% if cat == "outreach" %}
-  <tr>
-    <td style="padding:2.5%;width:100%;vertical-align:middle">
-      <strong>{{post.title}}</strong>, <em>{{post.course}}</em> 
-      <br>
-      <a href="{{post.website}}">Program Website</a>
-    </td>
-  </tr>
-  {% endif %}
-  {% endfor %}
-  {% endfor %}
 </table>
