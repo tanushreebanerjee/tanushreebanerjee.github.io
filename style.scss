@@ -24,6 +24,14 @@ $background-tertiary: #efefef;   // Tertiary background (for code blocks, etc.)
 $border-light: #e0e0e0;          // Light borders
 $border-medium: #cccccc;         // Medium borders
 
+// Academic/Research Tag Colors
+$tag-peer-reviewed-color: #2E8B57;   // Sea Green - represents validation and growth
+$tag-peer-reviewed-light: rgba($tag-peer-reviewed-color, 0.1);
+
+$tag-preprint-color: #4682B4;        // Steel Blue - represents preliminary research and progress
+$tag-preprint-light: rgba($tag-preprint-color, 0.1);
+
+
 // System font stack
 $font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
 
@@ -301,8 +309,8 @@ p {
     font-weight: 600;
     
     &--peer-reviewed {
-      background-color: rgba($primary-color, 0.1);
-      color: $primary-color;
+      background-color: $tag-peer-reviewed-light;
+      color: $tag-peer-reviewed-color;
       
       &:before {
         content: "✓ ";
@@ -310,8 +318,8 @@ p {
     }
     
     &--preprint {
-      background-color: rgba($text-secondary, 0.1);
-      color: $text-secondary;
+      background-color: $tag-preprint-light;
+      color: $tag-preprint-color;
       
       &:before {
         content: "⟳ ";
