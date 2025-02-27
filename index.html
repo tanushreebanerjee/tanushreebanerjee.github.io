@@ -30,20 +30,21 @@ layout: default
       <p class="publication__authors">{{ post.authors }}</p>
 <!--       <p class="publication__venue"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</p> -->
       
-      <!-- Publication type indicator -->
-      {% if post.venue contains "arXiv" or post.venue contains "preprint" %}
-        <div class="publication__type publication__type--preprint"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</div>
-      {% else %}
-        <div class="publication__type publication__type--peer-reviewed"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</div>
-      {% endif %}
-      
-      {% if post.tags %}
-      <div class="tags">
-        {% for tag in post.tags %}
+      <div class="publication__meta">
+  {% if post.venue contains "arXiv" or post.venue contains "preprint" %}
+    <div class="publication__type publication__type--preprint"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</div>
+  {% else %}
+    <div class="publication__type publication__type--peer-reviewed"><em>{{ post.venue }}</em>, {{ post.date | date: "%Y" }}</div>
+  {% endif %}
+  
+  {% if post.tags %}
+    <div class="tags tags--inline">
+      {% for tag in post.tags %}
         <span class="tag">{{ tag }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
       
       <div class="publication__links">
         {% if post.website %}
