@@ -167,8 +167,7 @@ p {
   }
   
   &__photo {
-    width: auto;
-    height: auto;
+    width: 160px;
     margin: 0 auto $spacing-md;
     
     @media (min-width: 768px) {
@@ -390,59 +389,6 @@ p {
   }
 }
 
-// Skills section
-.skills {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: $spacing-md;
-  
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  &__category {
-    background-color: $background-secondary;
-    padding: $spacing-md;
-    border: 1px solid $border-light;
-  }
-  
-  &__title {
-    margin-top: 0;
-    margin-bottom: $spacing-md;
-    padding-bottom: $spacing-xs;
-    border-bottom: 1px solid $primary-color;
-    color: $text-primary;
-  }
-  
-  &__item {
-    margin-bottom: $spacing-sm;
-    
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-  
-  &__name {
-    display: block;
-    margin-bottom: $spacing-xs;
-    font-weight: 500;
-    color: $text-primary;
-  }
-  
-  &__bar {
-    height: 6px;
-    background-color: $border-medium;
-    border-radius: 3px;
-    overflow: hidden;
-  }
-  
-  &__progress {
-    height: 100%;
-    background-color: $primary-color;
-    border-radius: 3px;
-  }
-}
-
 // Footer
 .footer {
   margin-top: $spacing-xl;
@@ -473,10 +419,6 @@ p {
   .publication {
     page-break-inside: avoid;
     border-bottom: 1px solid #ddd;
-  }
-  
-  .skills__category {
-    page-break-inside: avoid;
   }
   
   a {
