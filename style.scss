@@ -415,7 +415,7 @@ p {
 .tags {
   display: flex;
   flex-wrap: wrap;
-  margin: $spacing-xs 0 $spacing-sm;
+  margin: 0 $spacing-xs 0 0;
 }
 
 /* Compact teaching format */
