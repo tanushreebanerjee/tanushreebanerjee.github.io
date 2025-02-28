@@ -20,7 +20,7 @@
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://kit.fontawesome.com/998764ba87.js" crossorigin="anonymous"></script>
+  
   <!-- Stylesheet -->
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css">
   
@@ -28,35 +28,37 @@
 </head>
 
 <body>
-  <!-- Enhanced Navigation Bar -->
- <!-- Right-justified navigation -->
-<nav class="navigation" id="main-nav">
-  <div class="container">
-    <div class="nav-wrapper">
-      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
-        <div class="hamburger" id="hamburger-icon">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </button>
+  <!-- Enhanced Navigation Bar with Fixed Hamburger Menu -->
+  <nav class="navigation">
+    <div class="container">
+      <div class="nav-wrapper">        
+        <!-- Hamburger button (only visible on mobile) -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
+          <div class="hamburger" id="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+      </div>
+      
+      <!-- Navigation links -->
+      <div class="nav-links" id="nav-links">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#research" class="nav-link">Research</a>
+        <a href="#teaching" class="nav-link">Teaching</a>
+        <a href="pdfs/cv.pdf" class="nav-link">CV</a>
+      </div>
     </div>
-    <div class="nav-links" id="nav-links">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#research" class="nav-link">Research</a>
-      <a href="#teaching" class="nav-link">Teaching</a>
-      <a href="#cv" class="nav-link">CV</a>
-    </div>
-  </div>
-</nav>
+  </nav>
   
   <div class="container">
-    <!-- Header with smaller profile pic -->
-    <h1 id="about">Tanushree Banerjee</h1>
-    <header class="header">
-      <img src="images_resized/avatar.jpeg" alt="Tanushree Banerjee" class="header__photo" style="width:25%;">
+    <!-- Header with profile pic -->
+    <header class="header" id="about">
+      <img src="/images_resized/avatar.jpeg" alt="Tanushree Banerjee" class="header__photo">
       <div class="header__content">
+        <h1>Tanushree Banerjee</h1>
         <p>
           I'm Tanushree (she/her), a research assistant at the <a href="https://light.princeton.edu/">Princeton Computational Imaging Lab</a> working on explainable 3D perception via inverse generation under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a>.
         </p>
@@ -67,23 +69,19 @@
           Earlier during my undergraduate studies at Princeton, I worked under Prof. <a href="https://www.cs.princeton.edu/~karthikn/">Karthik Narasimhan</a> in the <a href="https://princeton-nlp.github.io/">Princeton Natural Language Processing Group</a> and Prof. <a href="https://www.cs.princeton.edu/~olgarus/">Olga Russakovsky</a> in the <a href="https://visualai.princeton.edu/">Princeton Visual AI Lab</a>.
         </p>
 
-         <!-- Add the centered contact links after the header -->
-    <div class="contact-centered">
-      <a href="https://mailhide.io/e/hxhuvv7j" onclick="window.open('https://mailhide.io/e/hxhuvv7j','mailhidepopup','width=580,height=635'); return false;"><i class="fa-solid fa-envelope"></i> Email</a>
-      <a href="pdfs/cv.pdf"><i class="fa-solid fa-file"></i> CV</a>
-      <a href="https://www.linkedin.com/in/tanushreebanerjee1/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-      <a href="https://scholar.google.com/citations?user=9gamKaAAAAAJ&hl=en"><i class="fa-brands fa-google-scholar"></i> Scholar</a>
-      <a href="https://bsky.app/profile/tanushreebanerjee.bsky.social"><i class="fa-brands fa-bluesky"></i> Bluesky</a>
-      <a href="https://github.com/tanushreebanerjee"><i class="fa-brands fa-github"></i> GitHub</a>
-    </div>
-      
+        <!-- Contact links -->
+        <div class="contact-centered">
+          <a href="https://mailhide.io/e/hxhuvv7j" onclick="window.open('https://mailhide.io/e/hxhuvv7j','mailhidepopup','width=580,height=635'); return false;"><i class="fa-solid fa-envelope"></i> Email</a>
+          <a href="pdfs/cv.pdf"><i class="fa-solid fa-file"></i> CV</a>
+          <a href="https://www.linkedin.com/in/tanushreebanerjee1/"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=9gamKaAAAAAJ&hl=en"><i class="fa-solid fa-graduation-cap"></i> Scholar</a>
+          <a href="https://github.com/tanushreebanerjee"><i class="fa-brands fa-github"></i> GitHub</a>
+        </div>
       </div>
     </header>
 
-   
-
-    <!-- News Section -->
-<!--     <section class="section">
+<!--     <!-- News Section -->
+    <section class="section">
       <h2>News</h2>
       <div class="news">
         <div class="news__item">
@@ -110,60 +108,29 @@
     </footer>
   </div>
 
-  <!-- CSP-safe navigation script -->
+  <!-- Fixed Navigation Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // CSP-safe code (no eval or string execution)
-      const navLinks = document.querySelectorAll('.navigation__links a');
+      const menuToggle = document.getElementById('menu-toggle');
+      const navLinks = document.getElementById('nav-links');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
       
-      function handleClick(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
+      if (menuToggle && navLinks && hamburgerIcon) {
+        // Toggle mobile menu when hamburger is clicked
+        menuToggle.addEventListener('click', function() {
+          navLinks.classList.toggle('active');
+          hamburgerIcon.classList.toggle('open');
+        });
         
-        if (targetSection) {
-          // Scroll to section - without using setTimeout with strings
-          window.scrollTo({
-            top: targetSection.offsetTop - 60,
-            behavior: 'smooth'
+        // Close mobile menu when a link is clicked
+        const links = document.querySelectorAll('.nav-link');
+        links.forEach(link => {
+          link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            hamburgerIcon.classList.remove('open');
           });
-        }
-        
-        // Set active class
-        navLinks.forEach(function(link) {
-          link.classList.remove('active');
-        });
-        this.classList.add('active');
-      }
-      
-      // Set up event listeners
-      navLinks.forEach(function(link) {
-        link.addEventListener('click', handleClick);
-      });
-      
-      // Initial highlight based on scroll position
-      function updateActiveLink() {
-        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        
-        document.querySelectorAll('section[id]').forEach(function(section) {
-          const sectionTop = section.offsetTop - 100;
-          const sectionHeight = section.offsetHeight;
-          const sectionId = section.getAttribute('id');
-          
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            navLinks.forEach(function(link) {
-              link.classList.remove('active');
-              if (link.getAttribute('href') === '#' + sectionId) {
-                link.classList.add('active');
-              }
-            });
-          }
         });
       }
-      
-      // Run on page load and scroll
-      updateActiveLink();
-      window.addEventListener('scroll', updateActiveLink);
     });
   </script>
   
@@ -187,32 +154,5 @@
     "description": "Researcher in computer vision and graphics"
   }
   </script>
-
-<script>
-  // Navigation menu JavaScript
-document.addEventListener('DOMContentLoaded', function() {
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks = document.getElementById('nav-links');
-  const hamburgerIcon = document.getElementById('hamburger-icon');
-  
-  if (menuToggle && navLinks && hamburgerIcon) {
-    // Toggle mobile menu when hamburger is clicked
-    menuToggle.addEventListener('click', function() {
-      navLinks.classList.toggle('active');
-      hamburgerIcon.classList.toggle('open');
-    });
-    
-    // Close mobile menu when a link is clicked
-    const links = document.querySelectorAll('.nav-link');
-    links.forEach(link => {
-      link.addEventListener('click', function() {
-        navLinks.classList.remove('active');
-        hamburgerIcon.classList.remove('open');
-      });
-    });
-  }
-});
-</script>
-
 </body>
 </html>
