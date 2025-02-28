@@ -161,82 +161,162 @@ p {
 }
 
 /* Navigation styles with mobile-first approach */
-    .navigation {
-      background-color:$primary-dark;
-      padding: 0.75rem 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    }
-    
-    .container {
-      width: 95%;
-      margin: 0 auto;
-    }
-    
-    /* Mobile nav layout with hamburger */
-    .nav-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .site-title {
-      color: white;
-      font-weight: 600;
-      font-size: 1.1rem;
-      text-decoration: none;
-    }
-    
-    /* Hamburger menu styles */
-    .menu-toggle {
-      display: block;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 1.5rem;
-      cursor: pointer;
-      padding: 0.25rem;
-      z-index: 200;
-    }
-    
-    /* Mobile menu container */
-    .nav-links {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: #B30059;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.25rem;
-      padding: 0.5rem 0;
-      display: none;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    
-    .nav-links.active {
-      display: flex;
-    }
-    
-    .nav-link {
-      color: white;
-      font-weight: 500;
-      padding: 0.75rem;
-      width: 100%;
-      text-align: center;
-      text-decoration: none;
-      transition: background-color 0.2s ease;
-    }
-    
-    .nav-link:hover, .nav-link:focus {
-      background-color: rgba(255, 255, 255, 0.15);
-    }
-    
-    .nav-link.active {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
+/* Navigation styles with hamburger menu */
+.navigation {
+  background-color: var(--primary-color);
+  padding: 0.75rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.container {
+  width: 95%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-title {
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Desktop navigation links */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  
+  &:hover, &:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+    color: white;
+  }
+  
+  &.active {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Hamburger menu button - hidden on desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+/* Hamburger icon styling */
+.hamburger {
+  width: 24px;
+  height: 20px;
+  position: relative;
+  margin: 0;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 3px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+
+.hamburger span:nth-child(2), 
+.hamburger span:nth-child(3) {
+  top: 8px;
+}
+
+.hamburger span:nth-child(4) {
+  top: 16px;
+}
+
+.hamburger.open span:nth-child(1) {
+  top: 8px;
+  width: 0%;
+  left: 50%;
+}
+
+.hamburger.open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.hamburger.open span:nth-child(4) {
+  top: 8px;
+  width: 0%;
+  left: 50%;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Show hamburger on mobile */
+  }
+  
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: 0;
+  }
+}
 
 // Header with smaller profile pic
 .header {
