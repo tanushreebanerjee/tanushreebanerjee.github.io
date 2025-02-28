@@ -217,13 +217,11 @@ layout: default
     {% for cat in post.categories %}
     {% if cat == "outreach" %}
     <div class="teaching-item">
-      <h3>{{ post.title }}</h3>
-      <div class="teaching-details">
-        <span class="semester">{{ post.course }}</span>
-      </div>
+     
+      <a href="{{ post.website }}">
+      <b>{{ post.title }}</b>, {{ post.course }}</a>
       <p>{{ post.excerpt }}</p>
-      {% if post.website %}
-      <a href="{{ post.website }}" class="teaching-link">Course Website</a>
+     
       {% endif %}
     </div>
     {% endif %}
