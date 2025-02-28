@@ -134,7 +134,7 @@ li {
 /* Navigation - import styles from the navigation CSS file */
 /* Updated Navigation styling with darker theme */
 .navigation {
-  background-color: #8c0046; /* Darker version of your burgundy theme color */
+  background-color: var(--navbar-bg); /* Darker version of your burgundy theme color */
   padding: 0.75rem 0;
   position: sticky;
   top: 0;
@@ -280,7 +280,7 @@ li {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: #8c0046; /* Match the navbar color */
+    background-color: var(--navbar-bg); /* Match the navbar color */
     flex-direction: column;
     align-items: center;
     gap: 0;
