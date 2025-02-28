@@ -32,7 +32,7 @@
   <nav class="navigation">
     <div class="container">
       <div class="nav-wrapper">
-<!--         <a href="/" class="site-title">Tanushree Banerjee</a> -->
+        <a href="/" class="site-title">Tanushree Banerjee</a>
         
         <!-- Hamburger button (only visible on mobile) -->
         <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
@@ -48,8 +48,6 @@
         <div class="nav-links" id="nav-links">
           <a href="/#about" class="nav-link">About</a>
           <a href="/#research" class="nav-link">Research</a>
-<!--           <a href="/#independent" class="nav-link">Independent Work</a>
-          <a href="/#projects" class="nav-link">Projects</a> -->
           <a href="/#teaching" class="nav-link">Teaching</a>
           <a href="/pdfs/cv.pdf" class="nav-link">CV</a>
         </div>
@@ -106,32 +104,6 @@
             hamburgerIcon.classList.remove('open');
           });
         });
-        
-        // Active link highlighting
-        const sections = document.querySelectorAll('section[id]');
-        const navItems = document.querySelectorAll('.nav-link');
-        
-        function setActiveLink() {
-          let scrollPosition = window.scrollY;
-          
-          sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-              navItems.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(sectionId)) {
-                  link.classList.add('active');
-                }
-              });
-            }
-          });
-        }
-        
-        window.addEventListener('scroll', setActiveLink);
-        setActiveLink();
       }
     });
   </script>
