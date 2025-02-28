@@ -1,3 +1,221 @@
 ---
 layout: default
 ---
+
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    
+    {% if page.authors %}
+    <p class="post-authors">{{ page.authors }}</p>
+    {% endif %}
+    
+    {% if page.venue %}
+    <p class="post-venue"><em>{{ page.venue }}</em>, {{ page.date | date: "%Y" }}</p>
+    {% endif %}
+    
+    {% if page.course %}
+    <p class="post-venue"><em>{{ page.course }}</em></p>
+    {% endif %}
+    
+    <div class="post-meta">
+      {% if page.tags %}
+      <div class="tags">
+        {% for tag in page.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+    
+    <div class="post-links">
+      {% if page.website %}
+      <a href="{{ page.website }}" target="_blank"><i class="fas fa-globe"></i> Project Page</a>
+      {% endif %}
+      
+      {% if page.paper %}
+      <a href="{{ page.paper }}" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
+      {% endif %}
+      
+      {% if page.supplementary %}
+      <a href="{{ page.supplementary }}" target="_blank"><i class="fas fa-file-alt"></i> Supplement</a>
+      {% endif %}
+      
+      {% if page.code %}
+      <a href="{{ page.code }}" target="_blank"><i class="fas fa-code"></i> Code</a>
+      {% endif %}
+      
+      {% if page.slides %}
+      <a href="{{ page.slides }}" target="_blank"><i class="fas fa-desktop"></i> Slides</a>
+      {% endif %}
+      
+      {% if page.poster %}
+      <a href="{{ page.poster }}" target="_blank"><i class="fas fa-image"></i> Poster</a>
+      {% endif %}
+      
+      {% if page.video %}
+      <a href="{{ page.video }}" target="_blank"><i class="fas fa-video"></i> Video</a>
+      {% endif %}
+      
+      {% if page.arxiv %}
+      <a href="{{ page.arxiv }}" target="_blank"><i class="fas fa-external-link-alt"></i> arXiv</a>
+      {% endif %}
+    </div>
+  </header>
+
+  {% if page.image %}
+  <div class="post-image">
+    <img src="/images_resized{{ page.image }}" alt="{{ page.title }}">
+  </div>
+  {% endif %}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+  
+  <div class="post-navigation">
+    <a href="/" class="back-to-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    
+    <div class="post-pagination">
+      {% if page.previous.url %}
+      <a class="prev" href="{{page.previous.url}}"><i class="fas fa-chevron-left"></i> Previous</a>
+      {% endif %}
+      
+      {% if page.next.url %}
+      <a class="next" href="{{page.next.url}}">Next <i class="fas fa-chevron-right"></i></a>
+      {% endif %}
+    </div>
+  </div>
+</article>
+
+<style>
+  /* Post-specific styling */
+  .post {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+  }
+  
+  .post-header {
+    margin-bottom: var(--spacing-xl);
+  }
+  
+  .post-title {
+    font-size: var(--font-size-xxl);
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .post-authors {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .post-venue {
+    font-size: var(--font-size-md);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .post-meta {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .post-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .post-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--primary-light);
+    border-radius: 4px;
+    font-size: var(--font-size-sm);
+    transition: all 0.3s ease;
+  }
+  
+  .post-links a:hover {
+    background-color: var(--primary-medium);
+    text-decoration: none;
+    transform: translateY(-2px);
+  }
+  
+  .post-image {
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+  }
+  
+  .post-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .post-content {
+    font-size: var(--font-size-md);
+    line-height: 1.7;
+  }
+  
+  .post-content p {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .post-content h2 {
+    font-size: var(--font-size-xl);
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--border-light);
+  }
+  
+  .post-content h3 {
+    font-size: var(--font-size-lg);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .post-content ul, 
+  .post-content ol {
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-lg);
+  }
+  
+  .post-content li {
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .post-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-light);
+  }
+  
+  .back-to-home {
+    font-weight: 500;
+  }
+  
+  .post-pagination {
+    display: flex;
+    gap: var(--spacing-md);
+  }
+  
+  @media (max-width: 768px) {
+    .post-links {
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+    
+    .post-navigation {
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+  }
+</style>
