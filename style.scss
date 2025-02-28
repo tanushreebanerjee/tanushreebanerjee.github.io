@@ -508,27 +508,27 @@ li {
 }
 
 /* Featured badge for highlighted work */
-.featured-badge {
-  position: absolute;
-  top: -10px;
-  left: 20px;
-  background-color: var(--accent-gold);
-  color: var(--text-primary);
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  box-shadow: var(--shadow-sm);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  z-index: 2;
-}
+// .featured-badge {
+//   position: absolute;
+//   top: -10px;
+//   left: 20px;
+//   background-color: var(--accent-gold);
+//   color: var(--text-primary);
+//   padding: 4px 8px;
+//   border-radius: 12px;
+//   font-size: var(--font-size-xs);
+//   font-weight: var(--font-weight-medium);
+//   box-shadow: var(--shadow-sm);
+//   display: flex;
+//   align-items: center;
+//   gap: 4px;
+//   z-index: 2;
+// }
 
-.featured-badge i {
-  color: var(--accent-navy);
-  font-size: 10px;
-}
+// .featured-badge i {
+//   color: var(--accent-navy);
+//   font-size: 10px;
+// }
 
 // .publication:hover {
 //   box-shadow: var(--shadow-md);
