@@ -163,7 +163,7 @@ p {
 /* Navigation styles with mobile-first approach */
 /* Navigation styles with hamburger menu */
 .navigation {
-  background-color: var(--primary-color);
+  background-color: $primary-color;
   padding: 0.75rem 0;
   position: sticky;
   top: 0;
