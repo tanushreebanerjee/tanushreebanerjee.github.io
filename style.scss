@@ -678,21 +678,21 @@ li {
   }
 }
 
-/* Animations */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+// /* Animations */
+// @keyframes fadeIn {
+//   from { opacity: 0; transform: translateY(10px); }
+//   to { opacity: 1; transform: translateY(0); }
+// }
 
-.publication {
-  animation: fadeIn 0.5s ease-out;
-  animation-fill-mode: both;
-}
+// .publication {
+//   animation: fadeIn 0.5s ease-out;
+//   animation-fill-mode: both;
+// }
 
-.publication:nth-child(2) { animation-delay: 0.1s; }
-.publication:nth-child(3) { animation-delay: 0.2s; }
-.publication:nth-child(4) { animation-delay: 0.3s; }
-.publication:nth-child(5) { animation-delay: 0.4s; }
+// .publication:nth-child(2) { animation-delay: 0.1s; }
+// .publication:nth-child(3) { animation-delay: 0.2s; }
+// .publication:nth-child(4) { animation-delay: 0.3s; }
+// .publication:nth-child(5) { animation-delay: 0.4s; }
 
 /* Print styles for CV */
 @media print {
