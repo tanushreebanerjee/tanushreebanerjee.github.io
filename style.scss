@@ -280,20 +280,16 @@ li {
 }
 
 .header__photo {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  border-radius: 6px; 
   object-fit: cover;
   margin-bottom: var(--spacing-sm);
-  border: 3px solid var(--primary-light);
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
 }
 
 .header__photo:hover {
-  transform: scale(1.03);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-  border-color: var(--primary-medium);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .header__content {
@@ -327,7 +323,7 @@ li {
   background-color: var(--primary-light);
   color: var(--primary-color);
   text-decoration: none;
-  transform: translateY(-2px);
+  transform: none;
 }
 
 /* Section styling */
