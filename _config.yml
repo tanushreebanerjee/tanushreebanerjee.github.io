@@ -1,6 +1,6 @@
 # Site settings
 name: T Banerjee
-title: T Banerjee | Computer Vision and Inverse Graphics
+title: T Banerjee | Computer Vision & Inverse Generation
 
 # Short bio or description
 description: Research assistant at Princeton Computational Imaging Lab working on explainable 3D perception via inverse generation
@@ -12,11 +12,12 @@ avatar: images/avatar.jpeg
 footer-links:
   email: tb21@princeton.edu
   github: tanushreebanerjee
-  instagram: tanushreebanerjee1
   linkedin: tanushreebanerjee1
+  scholar: 9gamKaAAAAAJ
 
 # Your website URL
 url: "https://tanushreebanerjee.github.io"
+baseurl: ""
 
 # Permalink structure
 permalink: /:title/
@@ -35,6 +36,7 @@ sass:
 # Use plugins
 plugins:
   - jekyll-sitemap
+  - jekyll-seo-tag
 
 # Exclude from processing
 exclude:
@@ -48,3 +50,4 @@ exclude:
   - _temp/
   - _make_thumbnails.sh
   - make_thumbnails.py
+  - .gitignore
