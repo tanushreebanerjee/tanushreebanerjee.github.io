@@ -369,7 +369,7 @@ li {
 }
 
 .publication:hover {
-  transform: translateY(-3px);
+  // transform: translateY(-3px);
   // border-left: 3px solid var(--primary-color);
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
@@ -521,7 +521,7 @@ li {
 
 .teaching-item:hover {
   border-left-color: var(--primary-color);
-  transform: translateX(5px);
+  // transform: translateX(5px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
