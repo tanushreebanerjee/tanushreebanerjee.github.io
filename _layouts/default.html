@@ -186,5 +186,25 @@
     "description": "Researcher in computer vision and graphics"
   }
   </script>
+<!-- At the bottom of _layouts/default.html -->
+<script>
+  // Toggle mobile menu
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      document.getElementById('nav-links').classList.toggle('active');
+      document.getElementById('hamburger-icon').classList.toggle('open');
+    });
+    
+    // Close menu when clicking a link
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        document.getElementById('nav-links').classList.remove('active');
+        document.getElementById('hamburger-icon').classList.remove('open');
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
