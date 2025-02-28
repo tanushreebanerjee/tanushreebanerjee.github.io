@@ -43,6 +43,22 @@ title: Home
     <p><em>* indicates equal contribution. Representative projects are <span class="highlight-text">highlighted</span>.</em></p>
   </div>
 
+ <!-- Search and Filter Controls -->
+<div class="research-controls">
+  <div class="search-container">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" id="research-search" placeholder="Search research projects..." class="research-search">
+  </div>
+  
+  <div class="filter-container">
+    <span class="filter-label">Filter by topic:</span>
+    <div class="filter-buttons">
+      <button class="filter-button active" data-filter="all">All</button>
+      <!-- Filter buttons for each tag are generated automatically -->
+    </div>
+  </div>
+</div>
+
   <!-- Research Projects -->
   {% for post in site.posts %}
   {% for cat in post.categories %}
