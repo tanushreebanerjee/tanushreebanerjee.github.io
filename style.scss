@@ -288,17 +288,17 @@ li {
 .header__photo {
   width: 200px;
   height: auto;
-  border-radius: 8px; 
+  // border-radius: 8px; 
   object-fit: cover;
   margin-bottom: var(--spacing-md);
   /* Subtle shadow for the profile photo */
-  box-shadow: var(--shadow-md); 
+  // box-shadow: var(--shadow-md); 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .header__photo:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  // transform: translateY(-2px);
+  // box-shadow: var(--shadow-lg);
 }
 
 .header__content {
@@ -356,17 +356,17 @@ li {
   background-color: var(--primary-light);
   padding: 2px 5px;
   border-left: 3px solid var(--primary-color);
-  border-radius: 3px;
+  // border-radius: 3px;
 }
 
 /* Publications */
 .publication {
   background-color: var(--background-secondary);
   padding: var(--spacing-lg);
-  border-radius: 8px;
+  // border-radius: 8px;
   margin-bottom: var(--spacing-xl);
   /* More subtle box shadow */
-  box-shadow: var(--shadow-md);
+  // box-shadow: var(--shadow-md);
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: var(--spacing-lg);
@@ -374,7 +374,7 @@ li {
 }
 
 .publication:hover {
-  box-shadow: var(--shadow-hover);
+  // box-shadow: var(--shadow-hover);
 }
 
 .publication__image-container {
@@ -386,15 +386,15 @@ li {
 .publication__image {
   width: 100%;
   max-width: 220px;
-  border-radius: 6px;
-  box-shadow: var(--shadow-sm);
+  // border-radius: 6px;
+  // box-shadow: var(--shadow-sm);
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.publication:hover .publication__image {
-  transform: scale(1.02);
-}
+// .publication:hover .publication__image {
+//   transform: scale(1.02);
+// }
 
 .publication__content {
   display: flex;
@@ -477,7 +477,7 @@ li {
   background-color: var(--primary-light);
   border-left: 3px solid var(--primary-color);
   padding: var(--spacing-lg);
-  border-radius: 6px;
+  // border-radius: 6px;
   box-shadow: var(--shadow-md);
 }
 
@@ -514,16 +514,16 @@ li {
 }
 
 .teaching-item {
-  background-color: var(--background-secondary);
+  // background-color: var(--background-secondary);
   padding: var(--spacing-lg);
-  border-radius: 8px;
+  // border-radius: 8px;
   transition: all 0.3s ease;
-  box-shadow: var(--shadow-md);
+  // box-shadow: var(--shadow-md);
   width: 100%;
 }
 
 .teaching-item:hover {
-  box-shadow: var(--shadow-hover);
+  // box-shadow: var(--shadow-hover);
 }
 
 .teaching-details {
