@@ -568,6 +568,11 @@ p {
   .container {
     padding: 0 15px;
   }
+
+  .publication {
+    flex-direction: column;
+  }
+
   
   h1 {
     font-size: 1.8rem;
