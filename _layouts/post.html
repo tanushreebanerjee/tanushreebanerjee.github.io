@@ -30,42 +30,42 @@ layout: default
     
     <div class="post-links">
       {% if page.website %}
-      <a href="{{ page.website }}" target="_blank"><i class="fas fa-globe"></i> Project Page</a>
+      <a href="{{ page.website }}" target="_blank" class="pub-link website-link"><i class="fas fa-globe"></i> Project Page</a>
       {% endif %}
       
       {% if page.paper %}
-      <a href="{{ page.paper }}" target="_blank"><i class="fas fa-file-pdf"></i> Paper</a>
+      <a href="{{ page.paper }}" target="_blank" class="pub-link paper-link"><i class="fas fa-file-pdf"></i> Paper</a>
       {% endif %}
       
       {% if page.supplementary %}
-      <a href="{{ page.supplementary }}" target="_blank"><i class="fas fa-file-alt"></i> Supplement</a>
+      <a href="{{ page.supplementary }}" target="_blank" class="pub-link supplement-link"><i class="fas fa-file-alt"></i> Supplement</a>
       {% endif %}
       
       {% if page.code %}
-      <a href="{{ page.code }}" target="_blank"><i class="fas fa-code"></i> Code</a>
+      <a href="{{ page.code }}" target="_blank" class="pub-link code-link"><i class="fas fa-code"></i> Code</a>
       {% endif %}
       
       {% if page.slides %}
-      <a href="{{ page.slides }}" target="_blank"><i class="fas fa-desktop"></i> Slides</a>
+      <a href="{{ page.slides }}" target="_blank" class="pub-link slides-link"><i class="fas fa-desktop"></i> Slides</a>
       {% endif %}
       
       {% if page.poster %}
-      <a href="{{ page.poster }}" target="_blank"><i class="fas fa-image"></i> Poster</a>
+      <a href="{{ page.poster }}" target="_blank" class="pub-link poster-link"><i class="fas fa-image"></i> Poster</a>
       {% endif %}
       
       {% if page.video %}
-      <a href="{{ page.video }}" target="_blank"><i class="fas fa-video"></i> Video</a>
+      <a href="{{ page.video }}" target="_blank" class="pub-link video-link"><i class="fas fa-video"></i> Video</a>
       {% endif %}
       
       {% if page.arxiv %}
-      <a href="{{ page.arxiv }}" target="_blank"><i class="fas fa-external-link-alt"></i> arXiv</a>
+      <a href="{{ page.arxiv }}" target="_blank" class="pub-link arxiv-link"><i class="fas fa-external-link-alt"></i> arXiv</a>
       {% endif %}
     </div>
   </header>
 
   {% if page.image %}
   <div class="post-image">
-    <img src="/images_resized{{ page.image }}" alt="{{ page.title }}">
+    <img src="/images_resized{{ page.image }}" alt="{{ page.title }}" loading="lazy">
   </div>
   {% endif %}
 
