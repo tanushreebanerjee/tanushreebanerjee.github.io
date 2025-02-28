@@ -1,170 +1,134 @@
 ---
 ---
 
-// Base font size
-html {
-  font-size: 16px;
+/* Base styles and variables */
+:root {
+  /* Primary colors */
+  --primary-color: #B30059;
+  --primary-light: rgba(179, 0, 89, 0.1);
+  --primary-dark: #8c0046;
+  
+  /* Text colors */
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: #888888;
+  
+  /* Background colors */
+  --background-primary: #ffffff;
+  --background-secondary: #f8f8f8;
+  --background-tertiary: #efefef;
+  
+  /* Borders */
+  --border-light: #e0e0e0;
+  --border-medium: #cccccc;
+  
+  /* Tag colors */
+  --tag-peer-reviewed-color: #2E8B57;
+  --tag-peer-reviewed-light: rgba(46, 139, 87, 0.1);
+  --tag-preprint-color: #4682B4;
+  --tag-preprint-light: rgba(70, 130, 180, 0.1);
+  --tag-content-color: #D2691E;
+  --tag-content-light: rgba(210, 105, 30, 0.1);
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  
+  /* Font sizes */
+  --font-size-xs: 0.75rem;  /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem;   /* 16px */
+  --font-size-md: 1.125rem; /* 18px */
+  --font-size-lg: 1.25rem;  /* 20px */
+  --font-size-xl: 1.5rem;   /* 24px */
+  --font-size-xxl: 2rem;    /* 32px */
 }
 
-// Type scale using a modular scale (1.250 - Major Third)
-$font-size-base:     1rem;     // 16px
-$font-size-sm:       0.875rem; // 14px
-$font-size-xs:       0.75rem;  // 12px
-$font-size-md:       1.125rem; // 18px
-$font-size-lg:       1.25rem;  // 20px
-$font-size-xl:       1.5rem;   // 24px
-$font-size-xxl:      2rem;     // 32px
-
-
-//
-// VARIABLES - Consistent color scheme
-//
-
-// Primary colors
-$primary-color: #B30059;        // Burgundy - main brand color
-$primary-light: rgba($primary-color, 0.1);  // Light burgundy for backgrounds
-$primary-dark: darken($primary-color, 10%); // Darker burgundy for hover states
-
-// Text colors
-$text-primary: #333333;          // Main text color
-$text-secondary: #666666;        // Secondary text color
-$text-muted: #888888;            // Muted text (less important)
-
-// Background colors
-$background-primary: #ffffff;    // Main background
-$background-secondary: #f6f6f6;  // Secondary background (for cards, etc.)
-$background-tertiary: #efefef;   // Tertiary background (for code blocks, etc.)
-
-// Border colors
-$border-light: #e0e0e0;          // Light borders
-$border-medium: #cccccc;         // Medium borders
-
-// Academic/Research Tag Colors
-$tag-peer-reviewed-color: #2E8B57;   // Sea Green - represents validation and growth
-$tag-peer-reviewed-light: rgba($tag-peer-reviewed-color, 0.1);
-
-$tag-preprint-color: #4682B4;        // Steel Blue - represents preliminary research and progress
-$tag-preprint-light: rgba($tag-preprint-color, 0.1);
-
-
-$tag-content-color: #D2691E;  // Chocolate
-$tag-content-light: rgba($tag-content-color, 0.1);
-
-
-// System font stack
-$font-stack: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-
-// Spacing - consistent scale
-$spacing-unit: 2.5px;
-$spacing-xs: $spacing-unit;
-$spacing-sm: $spacing-unit * 2;
-$spacing-md: $spacing-unit * 3;
-$spacing-lg: $spacing-unit * 5;
-$spacing-xl: $spacing-unit * 8;
-
-// BASE STYLES
-html {
-  font-size: $font-size-base;
+/* Base styles */
+* {
   box-sizing: border-box;
-line-height: 1.6;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-body {
-  font-family: $font-stack;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: $text-primary;
-  background-color: $background-primary;
   margin: 0;
   padding: 0;
 }
 
-// Consistent link styling
-a {
-  color: $primary-color;
-  text-decoration: none;
-  transition: color 0.2s ease;
-  
-  &:hover, &:focus {
-    color: $primary-dark;
-    text-decoration: underline;
-  }
-  
-  &:visited {
-    color: $primary-color;
-  }
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
-// Typography with consistent hierarchy
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--background-primary);
+}
+
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-stack;
-  line-height: 1.3;
   margin-top: 0;
-  margin-bottom: $spacing-md;
+  margin-bottom: var(--spacing-md);
   font-weight: 700;
-  color: $text-primary;
+  line-height: 1.3;
+  color: var(--text-primary);
 }
 
 h1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  font-size: $font-size-xxl;
-  margin-bottom: $spacing-sm;
-  margin-top: $spacing-xl;
+  font-size: var(--font-size-xxl);
+  margin-bottom: var(--spacing-md);
 }
 
-
 h2 {
-  font-size: $font-size-xl;
-  border-bottom: 2px solid $primary-color;
-  padding-bottom: $spacing-xs;
-  margin-bottom: $spacing-lg;
+  font-size: var(--font-size-xl);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 2px solid var(--primary-color);
+  margin-bottom: var(--spacing-lg);
 }
 
 h3 {
-  font-size: $font-size-lg;
-  margin-bottom: $spacing-sm;
-}
-
-h4 {
-  font-size: $font-size-md;
-}
-
-h5 {
-  font-size: $font-size-base;
-  font-weight: 600;
-}
-
-h6 {
-  font-size: $font-size-sm;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
 }
 
 p {
-  margin: 0 0 $spacing-md 0;
+  margin-bottom: var(--spacing-md);
 }
 
-// LAYOUT
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+a:hover, a:focus {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+ul, ol {
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-lg);
+}
+
+li {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Layout */
 .container {
-  width: 95%;
-  max-width: 1000px;
+  width: 92%;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 $spacing-sm;
+  padding: 0 var(--spacing-sm);
 }
 
-/* Navigation styles with hamburger menu */
-
-/* Navigation styling */
+/* Navigation - import styles from the navigation CSS file */
 .navigation {
-  background-color: $primary-color;
+  background-color: var(--primary-color);
   padding: 0.75rem 0;
   position: sticky;
   top: 0;
@@ -224,7 +188,7 @@ p {
   color: white;
   cursor: pointer;
   padding: 0.25rem;
-  outline: none; /* Remove outline on focus for better visuals */
+  outline: none;
 }
 
 /* Hamburger icon styling */
@@ -283,8 +247,253 @@ p {
   left: 50%;
 }
 
+/* Header */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-xl) 0 var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.header__photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: var(--spacing-md);
+  border: 4px solid var(--primary-light);
+}
+
+.header__content {
+  text-align: center;
+  max-width: 800px;
+}
+
+.header__content h1 {
+  margin-bottom: var(--spacing-md);
+}
+
+/* Contact links */
+.contact-centered {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: var(--spacing-lg) 0;
+  gap: var(--spacing-sm);
+}
+
+.contact-centered a {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  color: var(--text-secondary);
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.contact-centered a i {
+  margin-right: var(--spacing-xs);
+  color: var(--primary-color);
+}
+
+.contact-centered a:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+/* Section styling */
+.section {
+  margin: var(--spacing-xxl) 0;
+}
+
+/* News section */
+.news__item {
+  margin-bottom: var(--spacing-md);
+  padding-left: var(--spacing-lg);
+  position: relative;
+  border-left: 3px solid var(--primary-light);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  background-color: var(--background-secondary);
+  border-radius: 0 4px 4px 0;
+}
+
+.news__date {
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-right: var(--spacing-xs);
+}
+
+/* Publications */
+.publication {
+  display: grid;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+}
+
+.publication:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.publication__image {
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.publication:hover .publication__image {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.publication__title {
+  margin-top: 0;
+  margin-bottom: var(--spacing-xs);
+  font-size: var(--font-size-lg);
+}
+
+.publication__authors {
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.4;
+}
+
+.publication__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.publication__type {
+  display: inline-flex;
+  align-items: center;
+  margin-right: var(--spacing-sm);
+  padding: 2px var(--spacing-xs);
+  border-radius: 3px;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+}
+
+.publication__type--peer-reviewed {
+  background-color: var(--tag-peer-reviewed-light);
+  color: var(--tag-peer-reviewed-color);
+}
+
+.publication__type--preprint {
+  background-color: var(--tag-preprint-light);
+  color: var(--tag-preprint-color);
+}
+
+.publication__links {
+  margin-bottom: var(--spacing-sm);
+}
+
+.publication__links a {
+  margin-right: var(--spacing-md);
+  position: relative;
+  white-space: nowrap;
+}
+
+.publication__links a:before {
+  content: "[";
+  color: var(--text-muted);
+}
+
+.publication__links a:after {
+  content: "]";
+  color: var(--text-muted);
+}
+
+.publication--highlight {
+  background-color: var(--primary-light);
+  border-left: 3px solid var(--primary-color);
+  padding-left: var(--spacing-sm);
+  border-radius: 4px;
+  padding: var(--spacing-md);
+}
+
+/* Tags */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: var(--spacing-sm);
+  gap: var(--spacing-xs);
+}
+
+.tags--inline {
+  display: inline-flex;
+  margin: 0;
+  align-items: center;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--tag-content-color);
+  background-color: var(--tag-content-light);
+  border-radius: 3px;
+  text-transform: capitalize;
+}
+
+/* Teaching section */
+.teaching-item {
+  margin-bottom: var(--spacing-lg);
+  padding-bottom: var(--spacing-md);
+}
+
+/* Footer */
+.footer {
+  margin-top: var(--spacing-xxl);
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+  border-top: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
+  h1 {
+    font-size: var(--font-size-xl);
+  }
+  
+  h2 {
+    font-size: var(--font-size-lg);
+  }
+  
+  .container {
+    width: 95%;
+    padding: 0 10px;
+  }
+  
+  .header {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .header__photo {
+    width: 140px;
+    height: 140px;
+  }
+  
+  .publication {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+  
+  .publication__image {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
   .menu-toggle {
     display: block; /* Show hamburger on mobile only */
   }
@@ -294,7 +503,7 @@ p {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: #B30059;
+    background-color: var(--primary-color);
     flex-direction: column;
     align-items: center;
     gap: 0;
@@ -313,304 +522,167 @@ p {
     padding: 0.75rem;
     border-radius: 0;
   }
-}
-
-// Header with smaller profile pic
-.header {
-  display: flex;
-  flex-direction: column;
-  padding: $spacing-lg 0;
   
-  @media (min-width: 768px) {
-    flex-direction: row;
-    gap: $spacing-lg;
+  .contact-centered {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
   }
   
-  &__photo {
-    margin: 0 auto $spacing-md;
-    
-    @media (min-width: 768px) {
-      margin: 0;
-    }
+  .contact-centered a + a::before {
+    display: none;
+  }
+}
+
+/* Tablet styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .publication {
+    grid-template-columns: 1fr 2fr;
   }
   
-  &__content {
-    flex: 1;
+  .container {
+    width: 90%;
   }
 }
 
-
-.header__photo {
-  width: 25%;
-  height: auto;
-  object-fit: cover;
-  aspect-ratio: attr(width) / attr(height);
-  max-width: 300px; // Optional: prevent image from getting too large on big screens
-}
-
-// Centered contact links
-
-// Updated contact links styling
-.contact-centered {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  margin: $spacing-lg auto;
-  max-width: 800px;
-  gap: $spacing-md $spacing-lg;
-  
-  a {
-    display: inline-flex;
-    align-items: center;
-    font-size: $font-size-base;
-    color: $text-secondary;
-    transition: all 0.2s ease;
-    padding: $spacing-xs $spacing-sm;
-    border-radius: 4px;
-    text-decoration: none;
-    
-    i {
-      margin-right: $spacing-xs;
-      color: $primary-color;
-      transition: transform 0.2s ease;
-    }
-    
-    &:hover {
-      background-color: rgba($primary-color, 0.05);
-      color: $text-primary;
-      
-      i {
-        transform: scale(1.1);
-        color: $primary-dark;
-      }
-    }
-  }
-
-  // Separator between links
-  a + a::before {
-    content: '•';
-    color: $text-secondary;  // Slightly darker separator
-    margin-right: $spacing-lg;
-    margin-left: -$spacing-lg;
-    opacity: 0.5;
-  }
-}
-
-// Section
-.section {
-  margin: $spacing-md 0;
-}
-
-// News
-.news {
-  &__item {
-    margin-bottom: $spacing-md;
-    padding-left: $spacing-md;
-    position: relative;
-    
-    &::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: $primary-color;
-      font-weight: bold;
-    }
-  }
-  
-  &__date {
-    font-weight: 700;
-    font-size: $font-size-sm;
-    color: $primary-color;
-  }
-}
-
-// Research interests box
-.research-interests {
-  margin-bottom: $spacing-lg;
-  padding: $spacing-md;
-  background-color: $background-secondary;
-  border: 1px solid $border-light;
-  
-  ul {
-    padding-left: $spacing-lg;
-    margin: $spacing-sm 0 $spacing-md;
-    
-    li {
-      margin-bottom: $spacing-xs;
-    }
-  }
-}
-
-// Publications
-.publication {
-  display: grid;
-  gap: $spacing-md;
-  margin-top: $spacing-lg;
-  padding-top: $spacing-md;
-  margin-bottom: $spacing-lg;
-  padding-bottom: $spacing-md;
-  // border-bottom: 1px solid $border-light;  
-  @media (min-width: 768px) {
+/* Desktop layouts */
+@media (min-width: 1024px) {
+  .publication {
     grid-template-columns: 1fr 3fr;
   }
   
-  &__image {
-    width: 100%;
-    max-width: 100%;
-    // border: 1px solid $border-light;
+  .header {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
   }
   
-  &__title {
-    font-size: $font-size-lg;
-    margin-top: 0;
-    margin-bottom: $spacing-xs;
+  .header__content {
+    text-align: left;
   }
   
-  &__authors {
-    font-size: $font-size-base;
-    margin-bottom: $spacing-xs;
-    
-    a {
-      color: $primary-color;
-    }
-  }
-  
-  &__venue {
-    display: inline-block;
-    font-style: italic;
-    font-size: $font-size-xs;
-    margin: 0 $spacing-xs 0 0;  // Remove bottom margin
-    color: $text-secondary;
-    padding: 2px $spacing-sm;
-    font-weight: 600;
-    border-radius: 3px;
-  }
-  
-  &__type {
-    display: inline-block;
-    margin-right: $spacing-sm;
-    margin-bottom: $spacing-sm;
-    padding: 2px $spacing-xs;
-    border-radius: 3px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    
-    &--peer-reviewed {
-      background-color: $tag-peer-reviewed-light;
-      color: $tag-peer-reviewed-color;
-      
-      // &:before {
-      //   content: "✓ ";
-      // }
-    }
-    
-    &--preprint {
-      background-color: $tag-preprint-light;
-      color: $tag-preprint-color;
-      
-      // &:before {
-      //   content: "⟳ ";
-      // }
-    }
-  }
-  
-  &__links {
-    margin-bottom: $spacing-sm;
-    
-    a {
-      margin-right: $spacing-md;
-      color: $primary-color;
-      
-      &:hover {
-        color: $primary-dark;
-      }
-      
-      &:before {
-        content: "[";
-        color: $text-muted;
-      }
-      
-      &:after {
-        content: "]";
-        color: $text-muted;
-      }
-    }
-  }
-  
-  &--highlight {
-    background-color: rgba($primary-color, 0.05);
-    border-left: 3px solid $primary-color;
-    padding-left: $spacing-sm;
+  .header__photo {
+    margin-top: var(--spacing-md);
   }
 }
 
-// Tags - consistent with primary color
-.tag {
-  display: inline-block;
-  margin: 0 $spacing-xs 0 0;  // Remove bottom margin
-  padding: 2px $spacing-sm;
-  font-size: $font-size-xs;
-  font-weight: 600;
-  color: $tag-content-color;
-  background-color: $tag-content-light;  // Uses Chocolate
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.publication {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Research Intro styling */
+.research-intro {
+  background-color: var(--background-secondary);
+  padding: var(--spacing-lg);
+  border-radius: 6px;
+  margin-bottom: var(--spacing-xl);
+  border-left: 3px solid var(--primary-color);
+}
+
+.research-intro ul {
+  margin-left: var(--spacing-md);
+}
+
+.research-intro li {
+  margin-bottom: var(--spacing-sm);
+}
+
+.highlight-text {
+  background-color: var(--primary-light);
+  padding: 2px 5px;
+  border-left: 3px solid var(--primary-color);
   border-radius: 3px;
-  text-transform: capitalize;
 }
 
-.tags {
+/* Teaching items */
+.teaching-item {
+  background-color: var(--background-secondary);
+  padding: var(--spacing-lg);
+  border-radius: 6px;
+  margin-bottom: var(--spacing-lg);
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+}
+
+.teaching-item:hover {
+  border-left-color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+.teaching-details {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-secondary);
+}
+
+.teaching-details .semester {
+  font-weight: 600;
+}
+
+.teaching-link {
+  color: var(--primary-color);
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--primary-color);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
-  flex-wrap: wrap;
-  margin: 0 $spacing-xs 0 0;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  cursor: pointer;
+  z-index: 99;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-/* Compact teaching format */
-.teaching-compact {
-  margin-top: $spacing-lg;
+.back-to-top.visible {
+  opacity: 0.7;
+  pointer-events: auto;
 }
 
-.teaching-item-compact {
-  margin-bottom: $spacing-lg;
-  padding-bottom: $spacing-md;
-  border-bottom: 1px solid $border-light;
-  
-  h3 {
-    margin-bottom: $spacing-xs;
-  }
-  
-  .teaching-details {
-    color: $text-secondary;
-    
-    .semester {
-      font-style: italic;
-    }
-    
-    .teaching-link {
-      color: $primary-color;
-      
-      &:hover {
-        color: $primary-dark;
-      }
-    }
-  }
+.back-to-top:hover {
+  opacity: 1;
+  transform: translateY(-3px);
 }
 
-// Footer
-.footer {
-  margin-top: $spacing-xl;
-  padding: $spacing-md 0;
-  text-align: center;
-  font-size: $font-size-sm;
-  color: $text-secondary;
-  border-top: 1px solid $border-light;
-  
-  a {
-    color: $primary-color;
-  }
+/* Enhanced Navigation Styling */
+.nav-link {
+  position: relative;
 }
 
-// Print styles - consistent
+.nav-link:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: white;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover:after,
+.nav-link.active:after {
+  width: 70%;
+}
+
+/* Print styles for CV */
 @media print {
   body {
     font-size: 11pt;
@@ -630,12 +702,12 @@ p {
   
   a {
     color: black;
-    
-    &:after {
-      content: " (" attr(href) ")";
-      font-size: 0.8em;
-      font-style: italic;
-    }
+  }
+  
+  a:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    font-style: italic;
   }
   
   .tag {
@@ -644,125 +716,3 @@ p {
     border: 1px solid #ddd;
   }
 }
-
-.publication__meta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: $spacing-sm;
-  margin-bottom: $spacing-sm;
-  
-  // Add these new properties
-  line-height: 1.5;
-}
-
-.publication__type {
-  display: inline-flex;  // Change from inline-block to inline-flex
-  align-items: center;
-  margin-right: $spacing-sm;
-  margin-bottom: 0;  // Remove bottom margin
-}
-
-.tags--inline {
-  display: inline-flex;
-  margin: 0;
-  align-items: center;  // Vertically center tags
-}
-
-
-/* Mobile-specific styles - to be included in style.css */
-@media (max-width: 768px) {
-  .container {
-    padding: 0 15px;
-  }
-
-  .publication {
-    flex-direction: column;
-  }
-
-  
-  h1 {
-    font-size: 1.8rem;
-  }
-  
-  h2 {
-    font-size: 1.3rem;
-  }
-  
-  .site-header {
-    padding: 1rem 0;
-  }
-  
-  .profile-image {
-    width: 120px;
-    height: 120px;
-  }
-  
-  .contact-links {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  
-  .contact-links a {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .news-list li {
-    padding: 0.75rem;
-  }
-  
-  .main-nav {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0.5rem 0;
-  }
-  
-  .main-nav ul {
-    width: 100%;
-    justify-content: space-between;
-  }
-  
-  .main-nav li {
-    margin: 0 0.5rem;
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 480px) {
-  .profile-section {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .profile-image {
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-  
-  .profile-info {
-    text-align: center;
-  }
-  
-  .project-card {
-    flex-direction: column;
-  }
-  
-  .project-image {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 1rem;
-  }
-  
-  .tags {
-    justify-content: center;
-  }
-  
-  .project-links {
-    text-align: center;
-  }
-}
-
-
-
