@@ -3,24 +3,29 @@
 
 /* Base styles and variables */
 :root {
-  /* Primary colors */
-  --primary-color: #B30059;
+  /* Primary colors - updated with darker navbar theme */
+  --primary-color: #B30059;      /* Original burgundy */
+  --primary-dark: #8c0046;       /* Darker burgundy for navbar */
   --primary-light: rgba(179, 0, 89, 0.1);
-  --primary-dark: #8c0046;
+  
+  /* Navbar specific colors */
+  --navbar-bg: #8c0046;          /* Dark burgundy for navbar */
+  --navbar-text: #ffffff;        /* White text for navbar */
+  --navbar-hover: rgba(255, 255, 255, 0.15);  /* Light hover state */
   
   /* Text colors */
-  --text-primary: #333333;
-  --text-secondary: #666666;
-  --text-muted: #888888;
+  --text-primary: #333333;       /* Main text color */
+  --text-secondary: #666666;     /* Secondary text color */
+  --text-muted: #888888;         /* Muted text color */
   
   /* Background colors */
-  --background-primary: #ffffff;
-  --background-secondary: #f8f8f8;
-  --background-tertiary: #efefef;
+  --background-primary: #ffffff;    /* Main background */
+  --background-secondary: #f8f8f8;  /* Secondary background */
+  --background-tertiary: #efefef;   /* Tertiary background */
   
-  /* Borders */
-  --border-light: #e0e0e0;
-  --border-medium: #cccccc;
+  /* Border colors */
+  --border-light: #e0e0e0;         /* Light borders */
+  --border-medium: #cccccc;        /* Medium borders */
   
   /* Tag colors */
   --tag-peer-reviewed-color: #2E8B57;
@@ -127,8 +132,9 @@ li {
 }
 
 /* Navigation - import styles from the navigation CSS file */
+/* Updated Navigation styling with darker theme */
 .navigation {
-  background-color: var(--primary-color);
+  background-color: #8c0046; /* Darker version of your burgundy theme color */
   padding: 0.75rem 0;
   position: sticky;
   top: 0;
@@ -140,6 +146,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .site-title {
@@ -159,6 +166,20 @@ li {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    width: auto;
+    margin-top: 0;
+  }
+  
+  .nav-wrapper {
+    flex-wrap: nowrap;
+  }
 }
 
 .nav-link {
@@ -167,6 +188,7 @@ li {
   padding: 0.5rem 0.75rem;
   border-radius: 4px;
   transition: all 0.2s ease;
+  display: inline-block; /* Make sure links are properly displayed */
 }
 
 .nav-link:hover, 
@@ -247,6 +269,38 @@ li {
   left: 50%;
 }
 
+/* Mobile styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* Show hamburger on mobile only */
+  }
+  
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #8c0046; /* Match the navbar color */
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 100;
+  }
+  
+  .nav-links.active {
+    display: flex;
+  }
+  
+  .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+    border-radius: 0;
+  }
+}
 /* Header */
 .header {
   display: flex;
