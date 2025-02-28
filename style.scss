@@ -393,8 +393,11 @@ li {
 }
 
 .highlight-text {
-  background-color: var(--primary-light);
+  background-color: var(--background-highlight);
   padding: 2px 5px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
   border-left: 3px solid var(--primary-color);
 }
 
