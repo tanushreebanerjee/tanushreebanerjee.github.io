@@ -281,7 +281,7 @@ li {
 
 .header__photo {
   width: 150px;
-  height: 150px;
+  height: auto;
   border-radius: 6px; 
   object-fit: cover;
   margin-bottom: var(--spacing-sm);
