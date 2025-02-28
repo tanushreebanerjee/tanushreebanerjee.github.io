@@ -1,0 +1,84 @@
+<!-- Basic SEO metadata -->
+{% if page.title %}
+  {% assign seo_title = page.title | append: " | " | append: site.name %}
+{% else %}
+  {% assign seo_title = site.name | append: " - " | append: site.description %}
+{% endif %}
+
+{% if page.excerpt %}
+  {% assign seo_description = page.excerpt | strip_html | strip_newlines | truncate: 160 %}
+{% elsif page.description %}
+  {% assign seo_description = page.description | strip_html | strip_newlines | truncate: 160 %}
+{% else %}
+  {% assign seo_description = site.description %}
+{% endif %}
+
+<title>{{ seo_title }}</title>
+<meta name="description" content="{{ seo_description }}">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html','' }}">
+
+<!-- Open Graph / Facebook metadata -->
+<meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}">
+<meta property="og:title" content="{{ seo_title }}">
+<meta property="og:description" content="{{ seo_description }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url | replace:'index.html','' }}">
+<meta property="og:site_name" content="{{ site.name }}">
+{% if page.image %}
+<meta property="og:image" content="{{ site.url }}/images_resized{{ page.image }}">
+{% else %}
+<meta property="og:image" content="{{ site.url }}/images_resized/avatar.jpeg">
+{% endif %}
+
+<!-- Twitter Card metadata -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ seo_title }}">
+<meta name="twitter:description" content="{{ seo_description }}">
+{% if page.image %}
+<meta name="twitter:image" content="{{ site.url }}/images_resized{{ page.image }}">
+{% else %}
+<meta name="twitter:image" content="{{ site.url }}/images_resized/avatar.jpeg">
+{% endif %}
+
+<!-- Schema.org markup -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{% if page.title %}Article{% else %}WebSite{% endif %}",
+  "headline": "{{ seo_title }}",
+  "description": "{{ seo_description }}",
+  "url": "{{ site.url }}{{ page.url | replace:'index.html','' }}",
+  {% if page.date %}
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.date | date_to_xmlschema }}",
+  {% endif %}
+  "author": {
+    "@type": "Person",
+    "name": "{{ site.name }}",
+    "url": "{{ site.url }}"
+  },
+  {% if page.image %}
+  "image": "{{ site.url }}/images_resized{{ page.image }}"
+  {% else %}
+  "image": "{{ site.url }}/images_resized/avatar.jpeg"
+  {% endif %}
+}
+</script>
+
+<!-- Additional metadata for researchers -->
+{% if page.tags %}
+<meta name="keywords" content="{{ page.tags | join: ', ' }}">
+{% else %}
+<meta name="keywords" content="Tanushree Banerjee, 3D perception, inverse generation, explainable AI, computer vision, Princeton, inverse graphics, 3D Vision">
+{% endif %}
+
+<!-- Academic-specific metadata -->
+{% if page.citation %}
+<meta name="citation_title" content="{{ page.title }}">
+<meta name="citation_author" content="{{ site.name }}">
+{% if page.date %}
+<meta name="citation_publication_date" content="{{ page.date | date: '%Y/%m/%d' }}">
+{% endif %}
+<meta name="citation_pdf_url" content="{{ site.url }}{{ page.paper }}">
+{% endif %}
