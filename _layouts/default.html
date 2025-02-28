@@ -25,6 +25,61 @@
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css">
   
   <title>{{ site.name }}</title>
+  
+  <style>
+    /* Critical navbar styles to ensure visibility */
+    .navigation {
+      background-color: #8c0046; /* Darker burgundy */
+    }
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: center;
+    }
+    
+    @media (min-width: 768px) {
+      .nav-links {
+        width: auto;
+      }
+    }
+    
+    .nav-link {
+      color: white !important;
+      display: inline-block;
+      padding: 0.5rem 0.75rem;
+      margin: 0 0.25rem;
+      text-decoration: none;
+    }
+    
+    .site-title {
+      color: white;
+      font-weight: 600;
+    }
+    
+    .menu-toggle {
+      display: none;
+    }
+    
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -32,8 +87,8 @@
   <nav class="navigation">
     <div class="container">
       <div class="nav-wrapper">
-<!--         <a href="/" class="site-title">Tanushree Banerjee</a>
-         -->
+<!--         <a href="/" class="site-title">Tanushree Banerjee</a> -->
+        
         <!-- Hamburger button (only visible on mobile) -->
         <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu">
           <div class="hamburger" id="hamburger-icon">
@@ -43,14 +98,14 @@
             <span></span>
           </div>
         </button>
-      </div>
       
-      <!-- Navigation links -->
-      <div class="nav-links" id="nav-links">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#research" class="nav-link">Research</a>
-        <a href="#teaching" class="nav-link">Teaching</a>
-        <a href="pdfs/cv.pdf" class="nav-link">CV</a>
+        <!-- Navigation links - moved inside nav-wrapper for better layout -->
+        <div class="nav-links" id="nav-links">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#research" class="nav-link">Research</a>
+          <a href="#teaching" class="nav-link">Teaching</a>
+          <a href="pdfs/cv.pdf" class="nav-link">CV</a>
+        </div>
       </div>
     </div>
   </nav>
@@ -82,25 +137,6 @@
       </div>
     </header>
 
-    <!-- News Section -->
-    <section class="section">
-      <h2>News</h2>
-      <div class="news">
-        <div class="news__item">
-          <span class="news__date">June 2024:</span> Starting work as a full-time research assistant in the <a href="https://light.princeton.edu/">Princeton Computational Imaging Lab</a>, where I am super excited to extend my senior thesis work on inverse generation for 3D perception under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a>!
-        </div>
-        <div class="news__item">
-          <span class="news__date">May 2024:</span> Graduated <i>magna cum laude</i> from Princeton with a BSE in Computer Science and certificates in Statistics and Machine Learning and Optimization and Quantitative Decision Science. Received the <a href="https://www.cs.princeton.edu/news/class-day-department-celebrates-accomplishments-graduates">Outstanding Computer Science Senior Thesis Prize</a> for my thesis work on "Inverse Neural Rendering for Explainable 3D Perception" under Prof. <a href="https://www.cs.princeton.edu/~fheide/">Felix Heide</a> (one of 6 in 216 in the CS department)
-        </div>
-        <div class="news__item">
-          <span class="news__date">May 2024:</span> Received the <a href="https://www.linkedin.com/posts/princetonresearch_prd24-activity-7194428986980978688-tJyw?utm_source=share&utm_medium=member_desktop">Fitzrandolph Gate Award</a> for my <a href="https://mediacentral.princeton.edu/media/Inverse+Neural+Rendering+for+Explainable+Multi-Object+Tracking,+Tanushree+Banerjee,+UG+'24,+(611179F4)/1_qq8ls1c7">video presentation</a> on <a href="https://light.princeton.edu/publication/inverse-rendering-tracking/">Inverse Neural Rendering for Explainable Multi-Object Tracking</a> at <a href="https://researchday.princeton.edu/">Princeton Research Day</a>!
-        </div>
-        <div class="news__item">
-          <span class="news__date">April 2024:</span> Submitted <a href="https://light.princeton.edu/publication/inverse-rendering-tracking/">Inverse Neural Rendering for Explainable Multi-Object Tracking</a> to <a href="https://arxiv.org/abs/2404.12359">ArXiv</a>!
-        </div>
-      </div>
-    </section>
-
     <!-- Main Content -->
     {{ content }}
 
@@ -110,124 +146,27 @@
     </footer>
   </div>
 
-  <!-- Enhanced Navigation and UI Script -->
+  <!-- Fixed Navigation Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Mobile menu toggle functionality
       const menuToggle = document.getElementById('menu-toggle');
       const navLinks = document.getElementById('nav-links');
       const hamburgerIcon = document.getElementById('hamburger-icon');
       
       if (menuToggle && navLinks && hamburgerIcon) {
+        // Toggle mobile menu when hamburger is clicked
         menuToggle.addEventListener('click', function() {
           navLinks.classList.toggle('active');
           hamburgerIcon.classList.toggle('open');
         });
         
+        // Close mobile menu when a link is clicked
         const links = document.querySelectorAll('.nav-link');
         links.forEach(link => {
           link.addEventListener('click', function() {
             navLinks.classList.remove('active');
             hamburgerIcon.classList.remove('open');
           });
-        });
-      }
-      
-      // Create and append back to top button
-      const backToTopButton = document.createElement('div');
-      backToTopButton.className = 'back-to-top';
-      backToTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
-      document.body.appendChild(backToTopButton);
-      
-      // Show/hide back to top button
-      window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-          backToTopButton.classList.add('visible');
-        } else {
-          backToTopButton.classList.remove('visible');
-        }
-      });
-      
-      // Scroll to top when button is clicked
-      backToTopButton.addEventListener('click', function() {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-      
-      // Active link highlighting based on scroll position
-      const sections = document.querySelectorAll('section[id]');
-      const navLinksArray = document.querySelectorAll('.nav-link');
-      
-      function highlightNavLink() {
-        const scrollPosition = window.scrollY + 100;
-        
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionBottom = sectionTop + section.offsetHeight;
-          const sectionId = section.getAttribute('id');
-          
-          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            navLinksArray.forEach(link => {
-              link.classList.remove('active');
-              if (link.getAttribute('href') === '#' + sectionId) {
-                link.classList.add('active');
-              }
-            });
-          }
-        });
-      }
-      
-      window.addEventListener('scroll', highlightNavLink);
-      highlightNavLink(); // Run once on page load
-      
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-          const targetId = this.getAttribute('href');
-          if (targetId !== '#') {
-            e.preventDefault();
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-              const navHeight = document.querySelector('.navigation').offsetHeight;
-              const targetPosition = targetElement.offsetTop - navHeight - 20;
-              
-              window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-              });
-            }
-          }
-        });
-      });
-      
-      // Add fade-in animation for publications
-      const publications = document.querySelectorAll('.publication');
-      
-      if ('IntersectionObserver' in window) {
-        const observerOptions = {
-          root: null,
-          rootMargin: '0px',
-          threshold: 0.1
-        };
-        
-        const pubObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.style.opacity = '1';
-              entry.target.style.transform = 'translateY(0)';
-              observer.unobserve(entry.target);
-            }
-          });
-        }, observerOptions);
-        
-        publications.forEach((pub, index) => {
-          pub.style.opacity = '0';
-          pub.style.transform = 'translateY(20px)';
-          pub.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-          pub.style.transitionDelay = `${index * 0.1}s`;
-          pubObserver.observe(pub);
         });
       }
     });
