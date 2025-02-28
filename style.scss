@@ -32,12 +32,12 @@
   --tag-content-light: rgba(210, 105, 30, 0.1);
   
   /* Spacing */
-  --spacing-xs: 4px;
-  --spacing-sm: 8px;
-  --spacing-md: 16px;
-  --spacing-lg: 24px;
-  --spacing-xl: 32px;
-  --spacing-xxl: 48px;
+  --spacing-xs: 1px;
+  --spacing-sm: 2px;
+  --spacing-md: 4px;
+  --spacing-lg: 6px;
+  --spacing-xl: 8px;
+  --spacing-xxl: 12px;
   
   /* Font sizes */
   --font-size-xs: 0.75rem;  /* 12px */
@@ -397,7 +397,6 @@ li {
   margin-top: 0;
   margin-bottom: var(--spacing-xs);
   font-size: var(--font-size-lg);
-  color: var(--primary-color);
 }
 
 .publication__authors {
