@@ -187,24 +187,31 @@
     "description": "Researcher in computer vision and graphics"
   }
   </script>
-<!-- At the bottom of _layouts/default.html -->
+
 <script>
-  // Toggle mobile menu
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-      document.getElementById('nav-links').classList.toggle('active');
-      document.getElementById('hamburger-icon').classList.toggle('open');
+  // Navigation menu JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  const hamburgerIcon = document.getElementById('hamburger-icon');
+  
+  if (menuToggle && navLinks && hamburgerIcon) {
+    // Toggle mobile menu when hamburger is clicked
+    menuToggle.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+      hamburgerIcon.classList.toggle('open');
     });
     
-    // Close menu when clicking a link
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
+    // Close mobile menu when a link is clicked
+    const links = document.querySelectorAll('.nav-link');
+    links.forEach(link => {
       link.addEventListener('click', function() {
-        document.getElementById('nav-links').classList.remove('active');
-        document.getElementById('hamburger-icon').classList.remove('open');
+        navLinks.classList.remove('active');
+        hamburgerIcon.classList.remove('open');
       });
     });
-  });
+  }
+});
 </script>
 
 </body>
