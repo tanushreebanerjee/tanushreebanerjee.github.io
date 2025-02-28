@@ -475,10 +475,10 @@ li {
 
 .publication--highlight {
   background-color: var(--primary-light);
-  border-left: 3px solid var(--primary-color);
+  // border-left: 3px solid var(--primary-color);
   padding: var(--spacing-md);
   border-radius: 6px;
-  // box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
 
 /* Tags */
