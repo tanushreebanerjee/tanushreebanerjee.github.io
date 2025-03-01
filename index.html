@@ -63,8 +63,18 @@ title: Home
   {% for cat in post.categories %}
   {% if cat == "research" %}
   <div class="publication {% if post.highlight %}publication--highlight{% endif %}">
+   
     <div class="publication__image-container">
-      <img src="/images_resized{{ post.image }}" alt="{{ post.title }}" class="publication__image">
+     <picture>
+        <source srcset="/images_webp{{ post.image }}.webp" type="image/webp">
+        <source srcset="/images_resized{{ post.image }}" type="image/jpeg">
+        <img 
+          src="/images_resized{{ post.image }}" 
+         class="publication__image"
+          alt="{{ post.title }}" 
+          loading="lazy"
+        >
+      </picture>
     </div>
     <div class="publication__content">
       <h3 class="publication__title">{{ post.title }}</h3>
