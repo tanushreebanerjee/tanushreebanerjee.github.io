@@ -1,0 +1,22 @@
+<nav aria-label="Breadcrumb" class="breadcrumbs">
+  <ol itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="{{ site.url }}" itemprop="item">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    {% if page.layout == 'post' %}
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="/#research" itemprop="item">
+        <span itemprop="name">Research</span>
+      </a>
+      <meta itemprop="position" content="2" />
+    </li>
+    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <span itemprop="name">{{ page.title }}</span>
+      <meta itemprop="position" content="3" />
+    </li>
+    {% endif %}
+  </ol>
+</nav>
