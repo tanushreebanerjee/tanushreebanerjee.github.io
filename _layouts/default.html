@@ -47,10 +47,10 @@
       
         <!-- Navigation links -->
         <div class="nav-links" id="nav-links">
-          <a href="/#about" class="nav-link">About</a>
-          <a href="/#research" class="nav-link">Research</a>
-          <a href="/#teaching" class="nav-link">Teaching</a>
-          <a href="/pdfs/cv.pdf" class="nav-link">CV</a>
+          <a href="/#about" class="nav-link" {% if page.url == '/' and page.url contains '#about' %}aria-current="page"{% endif %}>About</a>
+          <a href="/#research" class="nav-link" {% if page.url == '/' and page.url contains '#research' %}aria-current="page"{% endif %}>Research</a>
+          <a href="/#teaching" class="nav-link" {% if page.url == '/' and page.url contains '#teaching' %}aria-current="page"{% endif %}>Teaching</a>
+          <a href="/pdfs/cv.pdf" class="nav-link" {% if page.url == '/' and page.url contains '#cv' %}aria-current="page"{% endif %}>CV</a>
         </div>
       </div>
     </div>
