@@ -143,6 +143,30 @@
   {% endif %}
 
 
+  <script>
+function sendToAnalytics(metric) {
+  const body = JSON.stringify({
+    metric: metric.name,
+    value: metric.value,
+    id: metric.id
+  });
+  
+  // Replace with your analytics endpoint
+  fetch('/analytics', { 
+    method: 'POST', 
+    body, 
+    keepalive: true 
+  });
+}
+
+// Web Vitals library (from https://unpkg.com/web-vitals)
+import { getCLS, getFID, getLCP } from 'web-vitals';
+
+getCLS(sendToAnalytics);
+getFID(sendToAnalytics);
+getLCP(sendToAnalytics);
+</script>
+
 <style>
 {% include critical.css %}
 </style>
