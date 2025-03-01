@@ -1,0 +1,4 @@
+:root{--primary-color:#8d1b3d;--text-primary:#2d2d2d}
+body{font-family:'Inter',sans-serif;color:var(--text-primary)}
+.header{display:flex;align-items:center}
+.navigation{background-color:var(--primary-color);color:white}
