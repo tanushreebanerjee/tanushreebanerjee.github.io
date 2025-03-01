@@ -1,0 +1,20 @@
+{% if page.layout == 'post' %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ScholarlyArticle",
+  "name": "{{ page.title }}",
+  "author": {
+    "@type": "Person",
+    "name": "{{ page.authors | strip_html }}"
+  },
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "url": "{{ site.url }}{{ page.url }}",
+  "description": "{{ page.excerpt | strip_html | truncate: 250 }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Princeton University"
+  }
+}
+</script>
+{% endif %}
