@@ -6,6 +6,14 @@ This repository contains the source code for my personal academic website, hoste
 
 This site is built with [Jekyll](https://jekyllrb.com/), a static site generator that transforms Markdown files into a complete website. It's hosted directly from this GitHub repository via [GitHub Pages](https://pages.github.com/).
 
+## About Me
+
+I'm a Research Assistant at the Princeton Computational Imaging Lab, working on explainable 3D perception via inverse generation under Prof. Felix Heide. Starting Fall 2025, I will be a PhD student in Computer Science at the University of Maryland, College Park, under Prof. Matthias Zwicker.
+
+My research lies at the intersection of computer vision, computer graphics, and machine learning, focusing on:
+- Leveraging generative model priors to interpret 3D information from everyday 2D visual data
+- Reformulating visual perception as inverse rendering/generation problems
+
 ## Site Structure
 
 - `_posts/`: Contains individual publication entries in Markdown format
