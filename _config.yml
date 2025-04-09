@@ -3,18 +3,18 @@ name: T Banerjee
 title: T Banerjee
 
 # Short bio or description
-description: Research assistant at Princeton Computational Imaging Lab working on explainable 3D perception via inverse generation
+description: Research assistant at Princeton Computational Imaging Lab, incoming PhD student at University of Maryland working on explainable 3D perception via inverse generation
 
 # Long description for SEO
 long_description: >-
   Tanushree Banerjee is a researcher in computer vision and graphics focusing on explainable 3D perception
   via inverse generation. Currently a research assistant at Princeton University's Computational Imaging Lab
-  working with Prof. Felix Heide, her research interests include computer vision, computer graphics, 
-  machine learning, and optimization.
+  working with Prof. Felix Heide, she will join the University of Maryland as a PhD student in Fall 2025.
+  Her research interests include computer vision, computer graphics, machine learning, and optimization.
 
 # Academic information
-academic_status: Research Assistant
-institution: Princeton University
+academic_status: Research Assistant & Incoming PhD Student
+institution: Princeton University & University of Maryland
 department: Computer Science Department
 research_areas: [Computer Vision, Computer Graphics, Machine Learning, Optimization]
 
