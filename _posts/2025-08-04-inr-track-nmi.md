@@ -1,7 +1,7 @@
 ---
 highlight: true
 layout: post
-title: "Towards generalizable and interpretable three-dimensional tracking with inverse neural rendering"
+title: "Towards Generalizable and Interpretable Three-Dimensional Tracking with Inverse Neural Rendering"
 date:  2025-08-04
 image: /tracking.gif
 categories: research
@@ -17,4 +17,4 @@ arxiv:
 code: https://github.com/princeton-computational-imaging/INRTracker
 website: https://light.princeton.edu/publication/inverse-rendering-tracking/
 ---
-Extending our previous <a href="https://arxiv.org/abs/2404.12359">arXiv preprint</a> recasting 3D multi-object tracking from RGB cameras as an <em>Inverse Rendering</em> (IR) problem to object classes other than vehicles and using several different generator models to showcase the generalization ability of our method.
+Extending our previous <a href="https://arxiv.org/abs/2404.12359">arXiv preprint</a>, which recasts 3D multi-object tracking from RGB cameras as an <em>Inverse Rendering</em> (IR) problem, to object classes other than vehicles and using several different generator models to showcase the generalization ability of our method.
