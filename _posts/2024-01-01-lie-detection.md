@@ -7,7 +7,7 @@ categories: research
 course:
 author: "Tanushree Banerjee"
 authors: <u><strong>Tanushree Banerjee</strong></u>, <a href="https://richardzhu123.github.io/">Richard Zhu</a>, <a href="https://runzhe-yang.science/">Runzhe Yang</a>, <a href="https://www.cs.princeton.edu/~karthikn/">Karthik Narasimhan</a>
-paper: pdfs/diplomacy_main.pdf
+paper: https://arxiv.org/pdf/2408.13915
 slides: pdfs/diplomacy_slides.pdf
 venue: arXiv preprint
 tags: [LLM Self-Refinement, Human-in-the-Loop ML]
