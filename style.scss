@@ -580,18 +580,18 @@ li {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-sm); /* Consistent 12px gap between all items */
   margin-bottom: var(--spacing-sm);
 }
 
 .publication__type {
   display: inline-flex;
   align-items: center;
-  margin-right: var(--spacing-sm);
   padding: 2px var(--spacing-xs);
   border-radius: 3px;
   font-size: var(--font-size-xs);
   font-weight: 600;
+  margin: 0; /* Remove any default margins */
 }
 
 .publication__type--peer-reviewed {
@@ -699,8 +699,8 @@ li {
 .tags {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: var(--spacing-sm);
-  gap: var(--spacing-xxs);
+  gap: var(--spacing-xs); /* Consistent 4px gap between tags */
+  margin: 0; /* Remove default margins */
 }
 
 .tags--inline {
@@ -718,7 +718,9 @@ li {
   background-color: var(--tag-content-light);
   border-radius: 3px;
   text-transform: capitalize;
+  margin: 0; /* Remove any default margins */
 }
+
 
 /* Teaching section */
 .teaching-items {
