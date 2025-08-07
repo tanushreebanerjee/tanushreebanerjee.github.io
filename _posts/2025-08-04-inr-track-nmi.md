@@ -2,7 +2,7 @@
 highlight: true
 layout: post
 title: "Towards generalizable and interpretable three-dimensional tracking with inverse neural rendering"
-date:  2028-08-04
+date:  2025-08-04
 image: /tracking.gif
 categories: research
 slides: 
