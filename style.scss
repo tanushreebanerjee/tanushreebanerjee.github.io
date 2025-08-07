@@ -629,8 +629,8 @@ li {
 .publication__links a:focus {
   color: var(--primary-dark);
   text-decoration: none;
-  transform: none; /* Remove the translateY animation */
-  box-shadow: none; /* Remove box shadow */
+  transform: none;
+  box-shadow: none;
 }
 
 
