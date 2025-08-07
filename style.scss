@@ -608,22 +608,91 @@ li {
   margin-bottom: var(--spacing-sm);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-lg); /* Similar spacing to nav links */
 }
 
 .publication__links a {
   position: relative;
-  white-space: nowrap;
+  color: var(--primary-color);
+  font-weight: 500;
   font-size: var(--font-size-sm);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
   text-decoration: none;
-  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-xxs) 0; /* Small vertical padding */
+  transition: all 0.3s ease;
+  border-radius: 0; /* Remove rounded corners to match nav */
+  background: none; /* Remove background colors */
 }
+
+
+/* Hover effect matching navigation */
+.publication__links a:hover,
+.publication__links a:focus {
+  color: var(--primary-dark);
+  text-decoration: none;
+  transform: none; /* Remove the translateY animation */
+  box-shadow: none; /* Remove box shadow */
+}
+
+
+* Underline animation matching navigation */
+.publication__links a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--primary-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.publication__links a:hover:after {
+  width: 100%;
+}
+
+/* Optional: Different underline colors for different link types */
+.publication__links a.paper-link:after {
+  background-color: var(--primary-color);
+}
+
+.publication__links a.website-link:after {
+  background-color: var(--accent-teal);
+}
+
+.publication__links a.code-link:after {
+  background-color: var(--accent-navy);
+}
+
+.publication__links a.arxiv-link:after,
+.publication__links a.supplement-link:after {
+  background-color: var(--text-secondary);
+}
+
+.publication__links a.slides-link:after,
+.publication__links a.video-link:after {
+  background-color: var(--accent-gold);
+}
+
+/* Hover colors to match underlines */
+.publication__links a.website-link:hover {
+  color: var(--accent-teal);
+}
+
+.publication__links a.code-link:hover {
+  color: var(--accent-navy);
+}
+
+.publication__links a.arxiv-link:hover,
+.publication__links a.supplement-link:hover {
+  color: var(--text-secondary);
+}
+
+.publication__links a.slides-link:hover,
+.publication__links a.video-link:hover {
+  color: var(--text-primary);
+}
+
 
 /* Different colors for different link types */
 .pub-link.paper-link {
@@ -653,11 +722,11 @@ li {
   color: var(--text-primary);
 }
 
-.publication__links a:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-  box-shadow: var(--shadow-sm);
-}
+// .publication__links a:hover {
+//   transform: translateY(-2px);
+//   opacity: 0.9;
+//   box-shadow: var(--shadow-sm);
+// }
 
 .publication__excerpt {
   color: var(--text-secondary);
@@ -1026,5 +1095,18 @@ li {
     background: none;
     color: black;
     border: 1px solid #ddd;
+  }
+}
+
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .publication__links {
+    gap: var(--spacing-md);
+    justify-content: flex-start;
+  }
+  
+  .publication__links a {
+    font-size: var(--font-size-xs);
   }
 }
