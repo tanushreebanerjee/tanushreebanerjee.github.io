@@ -345,38 +345,84 @@ li {
 .header__content {
   max-width: 800px;
 }
-
-/* Contact links */
+/* Contact links styled like header navigation */
 .contact-centered {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   margin: var(--spacing-md) 0;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-lg); /* Match nav spacing */
 }
 
 .contact-centered a {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  padding: var(--spacing-xxs) var(--spacing-xs);
-  color: var(--text-secondary);
-  border-radius: 4px;
+  padding: var(--spacing-xxs) 0; /* Vertical padding only, like nav */
+  color: var(--primary-color); /* Primary color instead of secondary */
   font-size: var(--font-size-sm);
+  font-weight: 500; /* Match nav font weight */
+  text-decoration: none;
   transition: all 0.3s ease;
+  border-radius: 0; /* Remove rounded corners */
+  background: none; /* Remove background */
 }
 
 .contact-centered a i {
   margin-right: var(--spacing-xxs);
-  color: var(--primary-color);
+  color: var(--primary-color); /* Keep icon same color as text */
 }
 
-.contact-centered a:hover {
-  background-color: var(--primary-light);
-  color: var(--primary-color);
+/* Hover effect matching navigation */
+.contact-centered a:hover,
+.contact-centered a:focus {
+  color: var(--primary-dark);
   text-decoration: none;
-  transform: translateY(-1px);
+  background: none; /* Remove background change */
+  transform: none; /* Remove translateY animation */
 }
 
+.contact-centered a:hover i {
+  color: var(--primary-dark); /* Icon color matches text on hover */
+}
+
+/* Underline animation matching navigation */
+.contact-centered a:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: var(--primary-color);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.contact-centered a:hover:after {
+  width: 70%; /* Match nav underline width */
+}
+
+/* Mobile responsive adjustments for contact links */
+@media (max-width: 768px) {
+  .contact-centered {
+    gap: var(--spacing-md);
+    justify-content: center;
+  }
+  
+  .contact-centered a {
+    padding: var(--spacing-xs) 0; /* Slightly more padding on mobile */
+    font-size: var(--font-size-xs);
+  }
+  
+  /* Remove the old mobile styles that added backgrounds and borders */
+  .contact-centered a {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+  }
+}
 /* Section styling */
 .section {
   margin: var(--spacing-xl) 0;
