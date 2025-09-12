@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="{{ site.name }}">
+  <meta name="description" content="I'm Tanushree (she/her), a PhD student in Computer Science at the University of Maryland, College Park. My research spans computer vision and graphics, focusing on generalizable 3D perception via inverse generation.">
+  <meta name="keywords" content="Tanushree Banerjee, University of Maryland, Princeton University, PhD Computer Science, computer vision, graphics, 3D perception, inverse generation, generalizable AI, Matthias Zwicker, Felix Heide, research">
   
   <!-- Comprehensive SEO Setup -->
   {% include seo.html %}
@@ -26,6 +28,24 @@
   
   <!-- Stylesheet -->
   <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css">
+
+
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Tanushree Banerjee">
+  <meta property="og:description" content="PhD student in Computer Science at the University of Maryland, College Park. Research in computer vision and graphics. ">
+  <meta property="og:image" content="{{ site.url }}/images_resized/avatar.jpeg">
+  <meta property="og:url" content="{{ site.url }}">
+
+
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Tanushree Banerjee">
+  <meta name="twitter:description" content="PhD student in Computer Science at the University of Maryland, College Park. Research in computer vision and graphics with focus on generalizable 3D perception.">
+  <meta name="twitter:image" content="{{ site.url }}/images_resized/avatar.jpeg">
+  
 </head>
 
 <body>
@@ -74,34 +94,37 @@
   <!-- Schema.org data for better SEO -->
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org/",
-    "@type": "Person",
-    "name": "Tanushree Banerjee",
-    "url": "{{ site.url }}",
-    "image": "{{ site.url }}/images_resized/avatar.jpeg",
-    "jobTitle": "Research Assistant",
-    "worksFor": {
+  "@context": "https://schema.org/",
+  "@type": "Person",
+  "name": "Tanushree Banerjee",
+  "alternateName": "Tanushree",
+  "gender": "Female",
+  "url": "{{ site.url }}",
+  "image": "{{ site.url }}/images_resized/avatar.jpeg",
+  "jobTitle": "PhD Student in Computer Science",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "University of Maryland, College Park"
+  },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Princeton University",
+      "sameAs": "https://www.princeton.edu/"
+    }
+  ],
+  "affiliation": [
+    {
       "@type": "Organization",
-      "name": "Princeton University Computational Imaging Lab"
+      "name": "University of Maryland, College Park"
     },
-    "alumniOf": [
-      {
-        "@type": "Organization",
-        "name": "Princeton University"
-      }
-    ],
-    "description": "Researcher in computer vision and graphics focusing on explainable 3D perception via inverse generation. Incoming PhD student at University of Maryland.",
-    "affiliation": [
-      {
-        "@type": "Organization",
-        "name": "Princeton University"
-      },
-      {
-        "@type": "Organization",
-        "name": "University of Maryland"
-      }
-    ]
-  }
+    {
+      "@type": "Organization",
+      "name": "Princeton University"
+    }
+  ],
+  "description": "I'm Tanushree (she/her), a PhD student in Computer Science at the University of Maryland, College Park under Prof. Matthias Zwicker, supported by a Dean's Fellowship. I graduated magna cum laude from Princeton University with a BSE in Computer Science, where I worked under Prof. Felix Heide on explainable 3D perception via inverse generation (Outstanding CS Senior Thesis Prize). I also worked with Prof. Karthik Narasimhan in the Princeton NLP Group and Prof. Olga Russakovsky in the Princeton Visual AI Lab."
+}
   </script>
   
   <!-- Core scripts -->
