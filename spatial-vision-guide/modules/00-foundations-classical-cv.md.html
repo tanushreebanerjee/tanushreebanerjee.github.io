@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Classical Computer Vision</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Classical Computer Vision
+
+**Module 0.2** | [← Back to Index](../index.md.html) | [Next: Transformers →](00-foundations-transformers.md.html)
+
+---
+
+## Overview
+
+Classical computer vision: image processing, feature detection, matching, and geometric vision.
+
+---
+
+## Resources
+
+### Computer Vision: Algorithms and Applications (Szeliski)
+[szeliski.org](http://szeliski.org/Book/)
+
+**Key topics:** Image processing, feature detection (SIFT, SURF), image matching, stereo vision, structure from motion.
+
+---
+
+### Multiple View Geometry (Hartley & Zisserman)
+Classic textbook on geometric computer vision.
+
+**Key topics:**
+- Camera models (pinhole, projection matrices)
+- Epipolar geometry
+- Fundamental matrix
+- Triangulation
+- Bundle adjustment
+
+Essential for understanding 3D reconstruction from multiple views.
+
+---
+
+## Core Concepts
+
+### Image Features
+
+**Corners/Keypoints**: Distinctive points in images (e.g., SIFT, SURF, ORB).
+
+**Descriptors**: Vectors describing local image patches around keypoints.
+
+**Applications**: Feature matching, object recognition, image stitching.
+
+---
+
+### Feature Matching
+
+**Goal**: Find corresponding points across multiple images.
+
+**Methods**:
+- Brute force matching with distance metrics (L2, Hamming)
+- Ratio test (Lowe) to filter ambiguous matches
+- RANSAC for robust matching in presence of outliers
+
+---
+
+### Epipolar Geometry
+
+**Epipolar constraint**: Corresponding points in two views lie on epipolar lines.
+
+**Fundamental matrix** $F$: Relates corresponding points: $x'^T F x = 0$
+
+**Essential matrix** $E$: Fundamental matrix with known camera intrinsics: $E = K'^T F K$
+
+[Figure placeholder: Epipolar geometry diagram showing two camera views, epipolar lines, and corresponding points]
+
+**Applications**: Stereo vision, structure from motion, visual SLAM.
+
+---
+
+### Camera Models
+
+**Pinhole camera model**: Projects 3D points to 2D image plane.
+
+**Projection**: $x = K[R|t]X$ where:
+- $K$: Camera intrinsic matrix (focal length, principal point)
+- $[R|t]$: Camera extrinsic (rotation, translation)
+- $X$: 3D point in world coordinates
+- $x$: 2D point in image
+
+**Distortion models**: Radial and tangential distortion correction.
+
+[Figure placeholder: Pinhole camera projection diagram]
+
+---
+
+### Camera Calibration
+
+**Goal**: Estimate camera intrinsic parameters ($K$) and distortion coefficients.
+
+**Zhang's method**: Use checkerboard pattern, estimate parameters from multiple views.
+
+**Applications**: 3D reconstruction, augmented reality, robotics.
+
+---
+
+### Stereo Vision
+
+**Epipolar rectification**: Align images so epipolar lines are horizontal.
+
+**Disparity**: Horizontal offset of corresponding points.
+
+**Depth**: $Z = \frac{fB}{d}$ where $f$ is focal length, $B$ is baseline, $d$ is disparity.
+
+[Figure placeholder: Stereo vision diagram showing rectified images and disparity]
+
+---
+
+## Related Modules
+
+- Module 3.1: Geometry & Camera Models (detailed)
+- Module 3.2: Structure-from-Motion
+- Module 4.1: Optical Flow
+- Module 4.2: Feature Matching (modern methods)
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Transformers →](00-foundations-transformers.md.html)
+</div>
+
+</code>
+</body>
+</html>

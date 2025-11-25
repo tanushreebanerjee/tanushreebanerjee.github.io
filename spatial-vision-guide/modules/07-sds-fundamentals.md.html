@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Score Distillation Sampling</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Score Distillation Sampling
+
+**Module 7.1** | [← Back to Index](../index.md.html) | [Next: 2D→3D Lifting →](07-sds-2d-to-3d.md.html)
+
+---
+
+## Overview
+
+Score Distillation Sampling (SDS): Text-to-3D generation by optimizing 3D representations using pre-trained 2D diffusion models. Enables 3D generation without 3D training data.
+
+---
+
+## Essential Papers
+
+### 🔥🔥🔥 DreamFusion (2022)
+
+**DreamFusion: Text-to-3D using 2D Diffusion** (Poole et al.) | [arXiv](https://arxiv.org/abs/2209.14988) | [Project](https://dreamfusion3d.github.io/)
+
+**Key idea**: Use 2D diffusion model as "loss function" for 3D optimization.
+
+**Score Distillation Sampling (SDS)**:
+$$\nabla_\theta L_{SDS} = \mathbb{E}_{t,\epsilon} [w(t)(\epsilon_\phi(x_t; y, t) - \epsilon) \frac{\partial x}{\partial \theta}]$$
+
+Where:
+- $\epsilon_\phi$: Pre-trained 2D diffusion model (e.g., Imagen)
+- $x_t$: Rendered 2D view of 3D model at noise level $t$
+- $y$: Text prompt
+- $\theta$: 3D representation parameters
+- $w(t)$: Time-dependent weighting
+
+**Process**:
+1. Initialize 3D representation (NeRF or mesh)
+2. Render random viewpoint
+3. Add noise to rendered image
+4. Denoise with diffusion model
+5. Compute gradient through rendering
+6. Update 3D parameters
+
+[Figure placeholder: SDS pipeline diagram showing 3D→2D→diffusion→gradient flow]
+
+**3D representation**: NeRF with instant-NGP encoding.
+
+**Challenges**:
+- Mode seeking (saturated colors)
+- Slow optimization
+- Geometry/appearance coupling
+
+---
+
+### 🔥 Magic3D (2023)
+
+**Magic3D: High-Resolution Text-to-3D Content Creation** (Lin et al.) | [arXiv](https://arxiv.org/abs/2211.10440)
+
+**Two-stage approach**:
+1. **Coarse stage**: Low-resolution NeRF optimization with SDS
+2. **Fine stage**: Extract mesh, refine with SDS at high resolution
+
+**Improvements**:
+- Higher resolution output
+- Mesh-based fine-tuning
+- Better geometry quality
+
+---
+
+### 🔥 Fantasia3D (2023)
+
+**Fantasia3D: Disentangling Geometry and Appearance** (Chen et al.) | [arXiv](https://arxiv.org/abs/2303.13818)
+
+**Key innovation**: Separate geometry and appearance optimization.
+
+**Geometry**: Signed distance field (SDF) with normal-based rendering.
+
+**Appearance**: Material properties (diffuse, specular, normal maps).
+
+**Benefits**: Better geometry quality, realistic materials, controllable appearance.
+
+---
+
+### 🔥 ProlificDreamer (2023)
+
+**ProlificDreamer: High-Fidelity Text-to-3D** (Wang et al.) | [arXiv](https://arxiv.org/abs/2305.16213)
+
+**Variational Score Distillation (VSD)**: Addresses mode-seeking issues in SDS.
+
+**Key idea**: Learn distribution over 3D objects, not single point estimate.
+
+**Benefits**: Higher diversity, better quality, more stable optimization.
+
+---
+
+## Core Concepts
+
+### Score Distillation Sampling
+
+**Intuition**: Diffusion model knows what "good" images look like. Use its gradients to guide 3D optimization.
+
+**Formulation**: Treat diffusion loss as differentiable loss function for 3D.
+
+**Advantage**: Leverages powerful pre-trained 2D models without 3D data.
+
+**Limitation**: No 3D consistency guarantee (each view optimized independently).
+
+---
+
+### Variational Score Distillation
+
+**Problem**: SDS mode-seeking behavior.
+
+**Solution**: Learn distribution $q_\theta(z)$ over 3D representations.
+
+**Objective**: Minimize KL divergence between rendered distribution and diffusion prior.
+
+**Benefits**: Better diversity, smoother optimization.
+
+---
+
+### Geometry vs Appearance Disentanglement
+
+**Problem**: SDS couples geometry and appearance.
+
+**Solution**: Separate optimization:
+- **Geometry**: Use normal-based rendering (geometry-only)
+- **Appearance**: Material properties on fixed geometry
+
+**Benefits**: Better control, higher quality geometry.
+
+---
+
+## Technical Details
+
+### SDS Implementation
+
+**Rendering**: Differentiable renderer (NeRF, mesh, or Gaussian splatting).
+
+**Diffusion model**: Pre-trained text-to-image model (Imagen, Stable Diffusion).
+
+**Optimization**: Adam or similar, gradient through rendering.
+
+**Noise schedule**: Sample noise level $t \sim \mathcal{U}(0.02, 0.98)$.
+
+**View sampling**: Random camera poses, importance sample based on prompt.
+
+---
+
+### Challenges and Solutions
+
+**Mode seeking**: VSD, classifier-free guidance scheduling.
+
+**Slow convergence**: Multi-resolution optimization, better initialization.
+
+**Geometry quality**: SDF-based methods, normal constraints.
+
+**View consistency**: Multi-view consistency loss, regularization.
+
+---
+
+## Related Methods
+
+**SJC (Score Jacobian Chaining)**: Alternative formulation, similar to SDS.
+
+**VSD**: Variational extension addressing mode-seeking.
+
+**3D-aware diffusion**: Direct 3D diffusion (still limited).
+
+---
+
+## Applications
+
+- Text-to-3D asset generation
+- 3D content creation
+- Concept visualization
+- Game/VR asset pipeline
+
+---
+
+## Related Modules
+
+- Module 2.1: Diffusion Models (underlying 2D models)
+- Module 5.1: NeRF Fundamentals (3D representation)
+- Module 6.1: Gaussian Splatting (alternative 3D representation)
+- Module 7.2: 2D→3D Lifting (single image input)
+
+---
+
+## Additional Resources
+
+- **DreamFusion Project**: [dreamfusion3d.github.io](https://dreamfusion3d.github.io/)
+- **Stable Diffusion**: Underlying 2D model used by many methods
+- **Community implementations**: Various open-source SDS implementations
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: 2D→3D Lifting →](07-sds-2d-to-3d.md.html)
+</div>
+
+</code>
+</body>
+</html>

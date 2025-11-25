@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Feature Matching</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Feature Matching
+
+**Module 4.2** | [← Back to Index](../index.md.html) | [Next: Scene Flow →](04-temporal-scene-flow.md.html)
+
+---
+
+## Overview
+
+Feature matching: Find sparse correspondences between images. Modern methods use transformers and learned features for robust matching across large baselines and viewpoint changes.
+
+---
+
+## Essential Papers
+
+### 🔥 LoFTR (2021)
+
+**LoFTR: Detector-Free Local Feature Matching with Transformers** (Sun et al.) | [arXiv](https://arxiv.org/abs/2104.00680)
+
+**Key innovation**: Detector-free matching using transformers.
+
+**Architecture**:
+1. Dense feature extraction (CNN)
+2. Transformer encoder (self-attention)
+3. Transformer decoder (cross-attention)
+4. Optimal transport matching
+
+**Advantages**:
+- Works in low-texture regions (no keypoint detection needed)
+- Robust to viewpoint changes
+- End-to-end trainable
+
+**Process**: Extract dense features, match at coarse level, refine at fine level.
+
+---
+
+### COTR (2021)
+
+**COTR: Correspondence Transformer for Matching Across Images** (Jiang et al.) | [arXiv](https://arxiv.org/abs/2103.14167)
+
+**Key idea**: Query-based correspondence finding.
+
+**Process**: Given point in image 1, find corresponding point in image 2 using transformer.
+
+---
+
+### 🔥 LightGlue (2023)
+
+**LightGlue: Local Feature Matching at Light Speed** (Lindenberger et al.) | [arXiv](https://arxiv.org/abs/2306.13643)
+
+**Key innovation**: Efficient transformer-based matching.
+
+**Improvements over LoFTR**:
+- Faster inference (lightweight architecture)
+- Better matching accuracy
+- Adaptive pruning of unnecessary features
+
+**Benefits**: Real-time matching, high accuracy.
+
+---
+
+### 🔥 DUST3R (2024)
+
+**DUST3R: Geometric 3D Vision Made Easy** (Dang et al.) | [arXiv](https://arxiv.org/abs/2312.14132)
+
+**Key idea**: Joint matching and 3D reconstruction.
+
+**Output**: Dense 3D point cloud from image pairs.
+
+**Process**: Predict 3D points for each pixel, match across views.
+
+**Benefits**: End-to-end 3D reconstruction, no explicit matching step.
+
+---
+
+### 🚀 Mega-DUST3R (2024-2025)
+
+**Mega-DUST3R**: Extension of DUST3R for multiple views.
+
+---
+
+## Core Concepts
+
+### Detector-Free Matching
+
+**Traditional**: Detect keypoints → Compute descriptors → Match descriptors.
+
+**Detector-free**: Extract dense features → Match directly.
+
+**Advantages**: Works in textureless regions, better coverage.
+
+---
+
+### Transformer-Based Matching
+
+**Self-attention**: Encode features with context from same image.
+
+**Cross-attention**: Match features across images.
+
+**Optimal transport**: Globally consistent matching.
+
+---
+
+### Learned Features
+
+**Traditional**: Hand-crafted (SIFT, ORB).
+
+**Learned**: CNN or transformer features, trained on correspondence data.
+
+**Benefits**: Better invariance, learned from data.
+
+---
+
+## Comparison with Classical Methods
+
+**Classical (SIFT, ORB)**:
+- Fast, well-established
+- Requires texture
+- Limited viewpoint invariance
+
+**Learned (LoFTR, LightGlue)**:
+- Better accuracy
+- Works in textureless regions
+- More robust
+- Slower (but LightGlue addresses this)
+
+---
+
+## Applications
+
+- Structure-from-Motion
+- SLAM
+- Image stitching
+- 3D reconstruction
+- Visual localization
+
+---
+
+## Related Modules
+
+- Module 0.2: Classical Computer Vision (traditional matching)
+- Module 3.2: Structure-from-Motion (uses matching)
+- Module 4.1: Optical Flow (dense matching)
+
+---
+
+## Additional Resources
+
+- **LoFTR Repository**: Official implementation
+- **LightGlue**: Fast matching implementation
+- **DUST3R**: Joint matching and reconstruction
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Scene Flow →](04-temporal-scene-flow.md.html)
+</div>
+
+</code>
+</body>
+</html>

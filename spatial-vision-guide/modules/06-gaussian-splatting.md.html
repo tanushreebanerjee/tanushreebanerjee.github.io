@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>3D Gaussian Splatting</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# 3D Gaussian Splatting
+
+**Module 6.1** | [← Back to Index](../index.md.html) | [Next: Dynamic & 4D Gaussians →](06-gaussian-dynamic.md.html)
+
+---
+
+## Overview
+
+3D Gaussian Splatting: Real-time neural rendering using 3D Gaussians as primitives. Achieves real-time rendering speeds while maintaining high quality, replacing slower NeRF-based approaches for interactive applications.
+
+---
+
+## Essential Papers
+
+### 🔥🔥🔥 3D Gaussian Splatting (2023)
+
+**3D Gaussian Splatting for Real-Time Radiance Field Rendering** (Kerbl et al.) | [arXiv](https://arxiv.org/abs/2308.04079) | [Project](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/)
+
+**Key idea**: Represent scene as collection of 3D Gaussians, rasterize them to 2D for real-time rendering.
+
+**3D Gaussian parameterization**:
+- Position: $\mu \in \mathbb{R}^3$
+- Covariance: $\Sigma = R S S^T R^T$ (rotation $R$ + scaling $S$)
+- Opacity: $\alpha$
+- Color: Spherical harmonics (SH) coefficients for view-dependent appearance
+
+**Rendering**: Project 3D Gaussians to 2D, rasterize using alpha blending:
+$$C = \sum_{i \in N} c_i \alpha_i \prod_{j=1}^{i-1} (1 - \alpha_j)$$
+
+[Figure placeholder: 3D Gaussian splatting pipeline showing Gaussians and rasterization]
+
+**Training**:
+1. Initialize from SfM point cloud
+2. Adaptive density control (split/clone/prune Gaussians)
+3. Differentiable rasterization
+4. Optimize with gradient descent (photometric loss)
+
+**Advantages**:
+- Real-time rendering (60+ FPS)
+- High quality comparable to NeRF
+- Fast training (minutes to hours)
+- Compact representation
+
+**Limitations**:
+- Requires initial point cloud (from COLMAP)
+- Large memory for high-resolution scenes
+- Artifacts with extreme viewpoints
+
+---
+
+## Core Concepts
+
+### 3D Gaussian Representation
+
+**Gaussian function**: $G(x) = \exp(-\frac{1}{2}(x-\mu)^T \Sigma^{-1} (x-\mu))$
+
+**Parameterization**:
+- Position $\mu$: Center of Gaussian
+- Covariance $\Sigma$: Shape/orientation
+  - Decomposed as: $\Sigma = R \cdot S \cdot S^T \cdot R^T$
+  - Rotation $R$: Quaternion representation
+  - Scale $S$: 3D scaling vector
+
+**Opacity** $\alpha$: Controls visibility after sigmoid.
+
+**Color**: Spherical harmonics (SH) for view-dependent appearance:
+- Low-order SH captures view-dependent color
+- Typically 3 SH bands (16 coefficients)
+
+---
+
+### Differentiable Rasterization
+
+**Projection**: 3D Gaussian → 2D Gaussian in image space.
+
+**2D covariance**: $\Sigma' = J \Sigma J^T$ where $J$ is Jacobian of projection.
+
+**Alpha blending**: Front-to-back order, alpha compositing.
+
+**Gradient flow**: Gradient flows through rasterization to Gaussian parameters.
+
+---
+
+### Adaptive Density Control
+
+**Split**: Large Gaussians (high gradient) → split into smaller ones.
+
+**Clone**: Small Gaussians with high opacity → duplicate in neighboring views.
+
+**Prune**: Remove low-opacity Gaussians.
+
+**Purpose**: Adaptively refine representation during training.
+
+---
+
+## Technical Details
+
+### Training Pipeline
+
+1. **Initialization**: 
+   - SfM point cloud from COLMAP
+   - Create Gaussians at each point
+   - Initialize with small random scales
+
+2. **Differentiable rasterization**:
+   - Project Gaussians to image space
+   - Rasterize with alpha blending
+
+3. **Loss**:
+   - $L = (1-\lambda) L_1 + \lambda L_{D-SSIM}$
+   - $L_1$: Pixel-wise L1 loss
+   - $L_{D-SSIM}$: Structural similarity loss
+
+4. **Optimization**:
+   - SGD with exponential decay
+   - Adaptive density control every $N$ iterations
+
+5. **Convergence**: Typically 7,000-30,000 iterations.
+
+---
+
+### Memory and Performance
+
+**Memory**: Scales with number of Gaussians (typically millions).
+
+**Rendering speed**: 60-200+ FPS depending on scene complexity.
+
+**Training time**: Minutes to hours (much faster than NeRF).
+
+**File size**: Typically 50-500 MB per scene.
+
+---
+
+## Comparison with NeRF
+
+**Gaussian Splatting**:
+- Real-time rendering
+- Fast training
+- Requires point cloud initialization
+- Discrete primitives
+
+**NeRF**:
+- Slow rendering (seconds per frame)
+- Slow training (hours to days)
+- Continuous representation
+- Better extrapolation to novel views
+
+**Use cases**:
+- Gaussian Splatting: Real-time applications, VR/AR, interactive viewing
+- NeRF: Highest quality, research, offline rendering
+
+---
+
+## Extensions
+
+- **4D Gaussian Splatting**: Dynamic scenes (Module 6.2)
+- **Animatable Gaussians**: Deformable objects
+- **Gaussian avatars**: Human rendering
+- **Scene-level Gaussians**: Large-scale scenes
+- **InstantSplat**: Faster initialization/training
+
+---
+
+## Related Modules
+
+- Module 3.2: Structure-from-Motion (provides initialization)
+- Module 5.1: NeRF Fundamentals (alternative approach)
+- Module 6.2: Dynamic & 4D Gaussians
+- Module 7.1: Score Distillation (generative Gaussian methods)
+
+---
+
+## Additional Resources
+
+- **Official Repository**: [repo-sam.inria.fr](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/)
+- **Gaussian Splatting Viewer**: Interactive viewing tools
+- **Extensions**: Community implementations and variants
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Dynamic & 4D Gaussians →](06-gaussian-dynamic.md.html)
+</div>
+
+</code>
+</body>
+</html>

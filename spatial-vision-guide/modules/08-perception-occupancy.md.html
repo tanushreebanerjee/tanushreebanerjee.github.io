@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Occupancy & Scene Completion</title>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Occupancy & Scene Completion
+
+**Module 8.4** | [← Back to Index](../index.md.html) | [Next: 4D Detection & Tracking →](08-perception-4d.md.html)
+
+---
+
+## Overview
+
+Occupancy prediction: Predict dense 3D occupancy grids from images. Scene completion: Fill in occluded/truncated regions. Essential for autonomous driving planning.
+
+---
+
+## Essential Papers
+
+### SurroundOcc (2023)
+
+**SurroundOcc: Multi-Camera 3D Occupancy Prediction for Autonomous Driving**
+
+**Key idea**: Predict dense occupancy from multi-camera inputs.
+
+**Benefits**: Dense 3D understanding, better than sparse detection.
+
+**Applications**: Planning, obstacle avoidance, safety.
+
+---
+
+### OccFormer (2024)
+
+**OccFormer: Dual-path Transformer for 3D Occupancy Prediction**
+
+**Key innovation**: Transformer architecture for occupancy prediction.
+
+**Benefits**: Better feature aggregation, strong performance.
+
+---
+
+### OccNeXt
+
+**Key idea**: Next-generation occupancy prediction models.
+
+**Improvements**: Better accuracy, efficiency.
+
+---
+
+## Core Concepts
+
+### Occupancy Grid
+
+**Definition**: 3D voxel grid where each voxel is occupied/empty.
+
+**Resolution**: Voxel size determines resolution (e.g., 0.5m × 0.5m × 0.5m).
+
+**Semantic occupancy**: Predict semantic class for each voxel.
+
+---
+
+### Scene Completion
+
+**Goal**: Fill in occluded regions.
+
+**Approaches**:
+- Learned priors from training data
+- Geometric reasoning
+- Multi-view fusion
+
+---
+
+### Multi-Camera Fusion
+
+**Challenge**: Combine information from multiple cameras.
+
+**Solutions**:
+- BEV representation
+- Transformer attention
+- Voxel fusion
+
+---
+
+## Applications
+
+- Autonomous driving planning
+- Obstacle avoidance
+- Safety systems
+- Dense 3D scene understanding
+
+---
+
+## Related Modules
+
+- Module 8.2: BEV Models (similar multi-camera fusion)
+- Module 8.3: Monocular 3D Detection (sparse vs dense)
+
+---
+
+## Additional Resources
+
+- **nuScenes Dataset**: Occupancy prediction benchmarks
+- **Occupancy Prediction**: Research papers and code
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: 4D Detection & Tracking →](08-perception-4d.md.html)
+</div>
+
+</code>
+</body>
+</html>

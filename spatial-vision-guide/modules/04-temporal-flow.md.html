@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Optical Flow</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Optical Flow
+
+**Module 4.1** | [← Back to Index](../index.md.html) | [Next: Feature Matching →](04-temporal-matching.md.html)
+
+---
+
+## Overview
+
+Optical flow: Dense pixel-level motion between consecutive frames. Estimates 2D motion vectors indicating where each pixel moves.
+
+---
+
+## Essential Papers
+
+### 📖 FlowNet (2015)
+
+**FlowNet: Learning Optical Flow with Convolutional Networks** (Dosovitskiy et al.) | [arXiv](https://arxiv.org/abs/1504.06852)
+
+**Key idea**: First end-to-end deep learning for optical flow.
+
+**Architecture**: Two-stream CNN (one for each image), correlation layer, refinement.
+
+**Limitations**: Lower accuracy than traditional methods, slow.
+
+---
+
+### FlowNet 2.0 (2017)
+
+**FlowNet 2.0: Evolution of Optical Flow Estimation with Deep Networks** (Ilg et al.) | [arXiv](https://arxiv.org/abs/1612.01925)
+
+**Improvements**:
+- Stack multiple FlowNet modules
+- Warping between stages
+- Better training strategy
+
+**Benefits**: Better accuracy, still slower than traditional.
+
+---
+
+### 🔥 PWC-Net (2018)
+
+**PWC-Net: CNNs for Optical Flow Using Pyramid, Warping, and Cost Volume** (Sun et al.) | [arXiv](https://arxiv.org/abs/1709.02371)
+
+**Key components**:
+- **Pyramid**: Multi-scale feature extraction
+- **Warping**: Warp features from previous scale
+- **Cost volume**: Compute matching costs
+- **Refinement**: Iterative refinement
+
+**Benefits**: Better accuracy than FlowNet, more efficient.
+
+---
+
+### 🔥 RAFT (2020)
+
+**RAFT: Recurrent All-Pairs Field Transforms for Optical Flow** (Teed & Deng) | [arXiv](https://arxiv.org/abs/2003.12039)
+
+**Key innovation**: Recurrent update mechanism for iterative refinement.
+
+**Architecture**:
+1. Feature extraction from both images
+2. Correlation pyramid (all-pairs correlations)
+3. Recurrent GRU updates flow field iteratively
+4. Upsampling to full resolution
+
+**Benefits**:
+- State-of-the-art accuracy
+- Generalizes well (fewer domain gaps)
+- Efficient inference
+
+[Figure placeholder: RAFT architecture diagram]
+
+---
+
+### GMFlow (2022)
+
+**GMFlow: Learning Optical Flow via Global Matching** (Xu et al.) | [arXiv](https://arxiv.org/abs/2111.13680)
+
+**Key idea**: Global matching instead of local correlation.
+
+**Benefits**: Better handling of large motions, occlusions.
+
+---
+
+## Core Concepts
+
+### Optical Flow Problem
+
+**Goal**: For each pixel in frame 1, find corresponding pixel in frame 2.
+
+**Brightness constancy**: Assumes pixel intensity doesn't change: $I(x, y, t) = I(x+u, y+v, t+1)$
+
+**Aperture problem**: Only normal flow can be determined from local patches.
+
+**Solution**: Require smoothness or use global constraints.
+
+---
+
+### Cost Volume
+
+**Definition**: 3D volume encoding matching costs for each pixel at different displacements.
+
+**Construction**: For each pixel, compute similarity with pixels at different offsets.
+
+**Usage**: Find best matching displacement (argmin over offsets).
+
+**Memory**: Large memory requirement (H × W × displacement_range).
+
+---
+
+### Iterative Refinement
+
+**Coarse-to-fine**: Start with low resolution, refine at higher resolutions.
+
+**Warping**: Warp second image using current flow estimate, compute residual flow.
+
+**Iterative updates**: Update flow field iteratively using GRU or CNN.
+
+---
+
+## Applications
+
+- Video stabilization
+- Motion segmentation
+- Action recognition
+- SLAM (DROID-SLAM uses optical flow)
+- Video interpolation
+- Scene flow (3D motion)
+
+---
+
+## Related Modules
+
+- Module 4.2: Feature Matching (sparse correspondence)
+- Module 4.3: Scene Flow (3D motion)
+- Module 3.4: SLAM (uses optical flow)
+
+---
+
+## Additional Resources
+
+- **RAFT Repository**: Official implementation
+- **Optical Flow Benchmarks**: Sintel, KITTI, FlyingThings3D
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Feature Matching →](04-temporal-matching.md.html)
+</div>
+
+</code>
+</body>
+</html>

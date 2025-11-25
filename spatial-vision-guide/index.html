@@ -1,105 +1,274 @@
 <!doctype html>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Spatial Understanding For Dummies: Basics of 3D/4D Computer Vision</title>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spatial Understanding For Dummies: Basics of 3D/4D Computer Vision</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fafafa;
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #007acc;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #444;
+            margin-top: 30px;
+            border-left: 4px solid #007acc;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #666;
+            margin-top: 25px;
+        }
+        .toc {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .toc li {
+            margin: 8px 0;
+            padding: 5px 0;
+        }
+        .toc a {
+            color: #007acc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .section {
+            margin: 15px 0;
+        }
+        .header-banner {
+            text-align: center;
+            margin: 2em 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 10px;
+        }
+        .status {
+            text-align: center;
+            margin: 2em 0;
+            font-style: italic;
+            color: #666;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 3em;
+            color: #888;
+            font-style: italic;
+        }
+        .quick-links {
+            background: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .topics {
+            background: #f0f8e8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #eee;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
 
-# 🌌 Spatial Understanding For Dummies
-## Basics of 3D/4D Computer Vision
+<div class="header-banner">
+    <h1>🌌 Spatial Understanding For Dummies</h1>
+    <p><strong>Basics of 3D/4D Computer Vision</strong></p>
+    <p><em>An open educational resource: concise encyclopedia-style for foundations, deeper blog-style for frontier topics.</em></p>
+</div>
 
-*An open educational resource: concise encyclopedia-style for foundations, deeper blog-style for frontier topics.*
+<div class="status">
+    <em>Work in Progress</em> • <em>Last Updated: 2025</em>
+</div>
 
----
+<hr>
 
-!!!
-    Work in Progress • Last Updated: 2025
+<h2>📚 Table of Contents</h2>
 
----
+<div class="toc">
+    <div class="section">
+        <h3><strong>Part 0: Foundations</strong></h3>
+        <ul>
+            <li><a href="modules/00-foundations-core-ml.html">Module 0.1: Core ML & Mathematics</a></li>
+            <li><a href="modules/00-foundations-classical-cv.html">Module 0.2: Classical Computer Vision</a></li>
+            <li><a href="modules/00-foundations-transformers.html">Module 0.3: Transformers & Attention</a></li>
+        </ul>
+    </div>
 
-# 📚 Table of Contents
+    <div class="section">
+        <h3><strong>Part 1: Representation Learning</strong></h3>
+        <ul>
+            <li><a href="modules/01-representation-self-supervised.html">Module 1.1: Self-Supervised Learning</a></li>
+            <li><a href="modules/01-representation-multimodal.html">Module 1.2: Multimodal Foundation Models</a></li>
+        </ul>
+    </div>
 
-## **Part 0: Foundations**
-- [Module 0.1: Core ML & Mathematics](modules/00-foundations-core-ml.html)
-- [Module 0.2: Classical Computer Vision](modules/00-foundations-classical-cv.html)  
-- [Module 0.3: Transformers & Attention](modules/00-foundations-transformers.html)
+    <div class="section">
+        <h3><strong>Part 2: Generative Models</strong></h3>
+        <ul>
+            <li><a href="modules/02-generative-diffusion.html">Module 2.1: Diffusion Models</a></li>
+            <li><a href="modules/02-generative-control.html">Module 2.2: Control & Conditioning</a></li>
+            <li><a href="modules/02-generative-video.html">Module 2.3: Video Generation</a></li>
+            <li><a href="modules/02-generative-world-models.html">Module 2.4: World Models</a></li>
+        </ul>
+    </div>
 
-## **Part 1: Representation Learning**
-- [Module 1.1: Self-Supervised Learning](modules/01-representation-self-supervised.html)
-- [Module 1.2: Multimodal Foundation Models](modules/01-representation-multimodal.html)
+    <div class="section">
+        <h3><strong>Part 3: Core 3D Vision</strong></h3>
+        <ul>
+            <li><a href="modules/03-3d-geometry.html">Module 3.1: Geometry & Camera Models</a></li>
+            <li><a href="modules/03-3d-sfm.html">Module 3.2: Structure-from-Motion</a></li>
+            <li><a href="modules/03-3d-mvs.html">Module 3.3: Multi-View Stereo</a></li>
+            <li><a href="modules/03-3d-slam.html">Module 3.4: SLAM</a></li>
+        </ul>
+    </div>
 
-## **Part 2: Generative Models**
-- [Module 2.1: Diffusion Models](modules/02-generative-diffusion.html)
-- [Module 2.2: Control & Conditioning](modules/02-generative-control.html)
-- [Module 2.3: Video Generation](modules/02-generative-video.html)
-- [Module 2.4: World Models](modules/02-generative-world-models.html)
+    <div class="section">
+        <h3><strong>Part 4: Temporal & Flow</strong></h3>
+        <ul>
+            <li><a href="modules/04-temporal-flow.html">Module 4.1: Optical Flow</a></li>
+            <li><a href="modules/04-temporal-matching.html">Module 4.2: Feature Matching</a></li>
+            <li><a href="modules/04-temporal-scene-flow.html">Module 4.3: Scene Flow</a></li>
+        </ul>
+    </div>
 
-## **Part 3: Core 3D Vision**
-- [Module 3.1: Geometry & Camera Models](modules/03-3d-geometry.html)
-- [Module 3.2: Structure-from-Motion](modules/03-3d-sfm.html)
-- [Module 3.3: Multi-View Stereo](modules/03-3d-mvs.html)
-- [Module 3.4: SLAM](modules/03-3d-slam.html)
+    <div class="section">
+        <h3><strong>Part 5: Neural Rendering</strong></h3>
+        <ul>
+            <li><a href="modules/05-nerf-fundamentals.html">Module 5.1: NeRF Fundamentals</a></li>
+            <li><a href="modules/05-nerf-acceleration.html">Module 5.2: NeRF Acceleration</a></li>
+            <li><a href="modules/05-nerf-appearance.html">Module 5.3: Appearance & Relighting</a></li>
+        </ul>
+    </div>
 
-## **Part 4: Temporal & Flow**
-- [Module 4.1: Optical Flow](modules/04-temporal-flow.html)
-- [Module 4.2: Feature Matching](modules/04-temporal-matching.html)
-- [Module 4.3: Scene Flow](modules/04-temporal-scene-flow.html)
+    <div class="section">
+        <h3><strong>Part 6: Gaussian Splatting</strong></h3>
+        <ul>
+            <li><a href="modules/06-gaussian-splatting.html">Module 6.1: 3D Gaussian Splatting</a></li>
+            <li><a href="modules/06-gaussian-dynamic.html">Module 6.2: Dynamic & 4D Gaussians</a></li>
+        </ul>
+    </div>
 
-## **Part 5: Neural Rendering**
-- [Module 5.1: NeRF Fundamentals](modules/05-nerf-fundamentals.html)
-- [Module 5.2: NeRF Acceleration](modules/05-nerf-acceleration.html)
-- [Module 5.3: Appearance & Relighting](modules/05-nerf-appearance.html)
+    <div class="section">
+        <h3><strong>Part 7: Score Distillation & Generative 3D</strong></h3>
+        <ul>
+            <li><a href="modules/07-sds-fundamentals.html">Module 7.1: Score Distillation Sampling</a></li>
+            <li><a href="modules/07-sds-2d-to-3d.html">Module 7.2: 2D→3D Lifting</a></li>
+            <li><a href="modules/07-sds-implicit-3d.html">Module 7.3: Implicit 3D Generation</a></li>
+        </ul>
+    </div>
 
-## **Part 6: Gaussian Splatting**
-- [Module 6.1: 3D Gaussian Splatting](modules/06-gaussian-splatting.html)
-- [Module 6.2: Dynamic & 4D Gaussians](modules/06-gaussian-dynamic.html)
+    <div class="section">
+        <h3><strong>Part 8: 3D Perception</strong></h3>
+        <ul>
+            <li><a href="modules/08-perception-multiview.html">Module 8.1: Multi-View Transformers</a></li>
+            <li><a href="modules/08-perception-bev.html">Module 8.2: BEV Models</a></li>
+            <li><a href="modules/08-perception-monocular.html">Module 8.3: Monocular 3D Detection</a></li>
+            <li><a href="modules/08-perception-occupancy.html">Module 8.4: Occupancy & Scene Completion</a></li>
+            <li><a href="modules/08-perception-4d.html">Module 8.5: 4D Detection & Tracking</a></li>
+        </ul>
+    </div>
 
-## **Part 7: Score Distillation & Generative 3D**
-- [Module 7.1: Score Distillation Sampling](modules/07-sds-fundamentals.html)
-- [Module 7.2: 2D→3D Lifting](modules/07-sds-2d-to-3d.html)
-- [Module 7.3: Implicit 3D Generation](modules/07-sds-implicit-3d.html)
+    <div class="section">
+        <h3><strong>Part 9: Humans & Avatars</strong></h3>
+        <ul>
+            <li><a href="modules/09-humans-parametric.html">Module 9.1: Parametric Human Models</a></li>
+            <li><a href="modules/09-humans-neural.html">Module 9.2: Neural Humans</a></li>
+            <li><a href="modules/09-humans-monocular.html">Module 9.3: Monocular Human Reconstruction</a></li>
+        </ul>
+    </div>
 
-## **Part 8: 3D Perception**
-- [Module 8.1: Multi-View Transformers](modules/08-perception-multiview.html)
-- [Module 8.2: BEV Models](modules/08-perception-bev.html)
-- [Module 8.3: Monocular 3D Detection](modules/08-perception-monocular.html)
-- [Module 8.4: Occupancy & Scene Completion](modules/08-perception-occupancy.html)
-- [Module 8.5: 4D Detection & Tracking](modules/08-perception-4d.html)
+    <div class="section">
+        <h3><strong>Part 10: Dynamic 4D</strong></h3>
+        <ul>
+            <li><a href="modules/10-4d-dynamic-nerf.html">Module 10.1: Dynamic NeRFs</a></li>
+            <li><a href="modules/10-4d-video-to-3d.html">Module 10.2: Video-to-3D/4D</a></li>
+        </ul>
+    </div>
 
-## **Part 9: Humans & Avatars**
-- [Module 9.1: Parametric Human Models](modules/09-humans-parametric.html)
-- [Module 9.2: Neural Humans](modules/09-humans-neural.html)
-- [Module 9.3: Monocular Human Reconstruction](modules/09-humans-monocular.html)
+    <div class="section">
+        <h3><strong>Part 11: Differentiable Rendering</strong></h3>
+        <ul>
+            <li><a href="modules/11-diff-rendering.html">Module 11.1: Differentiable Rendering</a></li>
+            <li><a href="modules/11-inverse-rendering.html">Module 11.2: Inverse Rendering</a></li>
+        </ul>
+    </div>
 
-## **Part 10: Dynamic 4D**
-- [Module 10.1: Dynamic NeRFs](modules/10-4d-dynamic-nerf.html)
-- [Module 10.2: Video-to-3D/4D](modules/10-4d-video-to-3d.html)
+    <div class="section">
+        <h3><strong>Part 12: Practical Tools</strong></h3>
+        <ul>
+            <li><a href="modules/12-tools-libraries.html">Module 12.1: Libraries & Tools</a></li>
+            <li><a href="modules/12-tools-datasets.html">Module 12.2: Datasets</a></li>
+        </ul>
+    </div>
+</div>
 
-## **Part 11: Differentiable Rendering**
-- [Module 11.1: Differentiable Rendering](modules/11-diff-rendering.html)
-- [Module 11.2: Inverse Rendering](modules/11-inverse-rendering.html)
+<hr>
 
-## **Part 12: Practical Tools**
-- [Module 12.1: Libraries & Tools](modules/12-tools-libraries.html)
-- [Module 12.2: Datasets](modules/12-tools-datasets.html)
+<h2>🎯 Learning Paths</h2>
 
----
+<hr>
 
-# 🤝 Contributing
+<div class="quick-links">
+    <h2>🔗 Quick Links</h2>
+    <ul>
+        <li><a href="reading-list.html">Full Reading List</a> - Complete bibliography</li>
+        <li><a href="dependency-graph.html">Visual Dependency Graph</a> - See how topics connect</li>
+        <li><a href="curriculum.html">Curriculum Suggestions</a> - 12-week and 24-week plans</li>
+        <li><a href="implementations.html">Implementation Resources</a> - Code repositories and tutorials</li>
+    </ul>
+</div>
 
-This guide is a work in progress. Feedback and contributions are welcome.
+<div class="topics">
+    <h2>💡 Topics Covered</h2>
+    <ul>
+        <li><strong>3D/4D perception</strong> from images and video</li>
+        <li><strong>Neural rendering</strong> and implicit representations</li>
+        <li><strong>Generative 3D models</strong> and score distillation</li>
+        <li><strong>Multi-view geometry</strong> and BEV understanding</li>
+        <li><strong>Dynamic scenes</strong> and temporal reasoning</li>
+    </ul>
+    
+    <p><strong>Prerequisites:</strong> Linear algebra, calculus, basic machine learning concepts, Python programming.</p>
+</div>
 
----
+<hr>
 
-# 📝 License
+<h2>🤝 Contributing</h2>
+<p>This guide is a work in progress. Feedback and contributions are welcome.</p>
 
-[Add your license preference here]
+<hr>
 
----
+<h2>📝 License</h2>
+<p>[Add your license preference here]</p>
 
-!!!
-    Built with Markdeep • Designed for learners
+<div class="footer">
+    <em>Built with HTML & CSS • Designed for learners</em>
+</div>
 
-<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
-<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js" charset="utf-8"></script>
-<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
 </body>
 </html>

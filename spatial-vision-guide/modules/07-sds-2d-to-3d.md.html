@@ -1,0 +1,155 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>2D→3D Lifting</title>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# 2D→3D Lifting
+
+**Module 7.2** | [← Back to Index](../index.md.html) | [Next: Implicit 3D Generation →](07-sds-implicit-3d.md.html)
+
+---
+
+## Overview
+
+2D→3D lifting: Reconstruct 3D objects or scenes from single or few images. Uses diffusion models or multi-view synthesis to predict 3D structure.
+
+---
+
+## Essential Papers
+
+### 🔥 Zero-1-to-3 (2023)
+
+**Zero-1-to-3: Zero-shot One Image to 3D Object** (Liu et al.) | [arXiv](https://arxiv.org/abs/2303.11328)
+
+**Key idea**: Conditional diffusion model that generates novel views from single image.
+
+**Architecture**: ControlNet-like conditioning on input image and camera pose.
+
+**Process**:
+1. Input: Single image + target camera pose
+2. Generate novel view via diffusion
+3. Generate multiple views (e.g., 16 views around object)
+4. Reconstruct 3D using NeRF or MVS
+
+**Training**: Large dataset of (image, pose, novel view) triplets.
+
+**Benefits**: Zero-shot, works for any object, reasonable quality.
+
+---
+
+### 🔥 Zero-1-to-3++ (2024)
+
+**Zero-1-to-3++: Image to 3D Object Generation via Angle-Quantized Gaussian Splatting**
+
+**Improvements**: Uses Gaussian Splatting instead of NeRF, better quality and speed.
+
+---
+
+### 🔥 Wonder3D (2023)
+
+**Wonder3D: Single Image to 3D using Cross-Domain Diffusion** (Long et al.) | [arXiv](https://arxiv.org/abs/2310.15008)
+
+**Key innovation**: Multi-view consistent generation in single pass.
+
+**Cross-domain attention**: Ensures consistency across views.
+
+**Benefits**: Better multi-view consistency, higher quality.
+
+---
+
+### 🔥 SyncDreamer (2023)
+
+**SyncDreamer: Generating Multiview-consistent Images from a Single-view Image** (Liu et al.) | [arXiv](https://arxiv.org/abs/2309.03453)
+
+**Key idea**: Generate all views simultaneously with consistency constraints.
+
+**Benefits**: Better multi-view consistency than sequential generation.
+
+---
+
+### LGM (2024)
+
+**LGM: Large Multi-View Gaussian Model for High-Resolution 3D Reconstruction**
+
+**Key idea**: Large-scale model trained on many 3D objects for direct 3D prediction.
+
+---
+
+## Core Concepts
+
+### Single-Image 3D Reconstruction
+
+**Challenge**: Ambiguous depth from single view.
+
+**Solutions**:
+- **Multi-view synthesis**: Generate novel views, then reconstruct
+- **Direct prediction**: Predict 3D structure directly
+- **Geometry priors**: Use learned 3D priors
+
+---
+
+### Multi-View Consistency
+
+**Problem**: Generated views may be inconsistent.
+
+**Solutions**:
+- **Cross-view attention**: Ensure consistency during generation
+- **3D constraints**: Enforce 3D geometric consistency
+- **Iterative refinement**: Refine views to be consistent
+
+---
+
+### Reconstruction Pipeline
+
+**Step 1**: Generate multiple views from input image.
+
+**Step 2**: Estimate camera poses (if unknown).
+
+**Step 3**: Reconstruct 3D using:
+- NeRF optimization
+- Multi-view stereo
+- Gaussian Splatting
+- Direct 3D prediction
+
+---
+
+## Applications
+
+- 3D asset generation from photos
+- Augmented reality content creation
+- E-commerce product visualization
+- 3D scanning from mobile photos
+
+---
+
+## Related Modules
+
+- Module 7.1: Score Distillation Sampling (alternative approach)
+- Module 3.3: Multi-View Stereo (reconstruction step)
+- Module 6.1: Gaussian Splatting (3D representation)
+
+---
+
+## Additional Resources
+
+- **Zero-1-to-3 Repository**: Official implementation
+- **Wonder3D Project**: High-quality single-image 3D
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Implicit 3D Generation →](07-sds-implicit-3d.md.html)
+</div>
+
+</code>
+</body>
+</html>

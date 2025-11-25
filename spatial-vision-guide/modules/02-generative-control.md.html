@@ -1,0 +1,137 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Control & Conditioning</title>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Control & Conditioning
+
+**Module 2.2** | [← Back to Index](../index.md.html) | [Next: Video Generation →](02-generative-video.md.html)
+
+---
+
+## Overview
+
+Control methods for diffusion models: Add spatial, geometric, or semantic control to text-to-image generation. Enables precise control over generated content.
+
+---
+
+## Essential Papers
+
+### 🔥🔥 ControlNet (2023)
+
+**Adding Conditional Control to Text-to-Image Diffusion Models** (Zhang et al.) | [arXiv](https://arxiv.org/abs/2302.05543)
+
+**Key idea**: Trainable copy of diffusion U-Net encoder as "control branch" that adds conditional information.
+
+**Architecture**:
+- **Original branch**: Pretrained diffusion U-Net (frozen)
+- **Control branch**: Trainable copy with zero-initialized output layers
+- **Zero convolution**: Ensures no noise added initially, gradually learns control
+
+**Condition types**: Depth, edges, pose, segmentation, normal maps, etc.
+
+**Training**: Train only control branch and zero convolutions, original weights frozen.
+
+**Benefits**: Precise control, preserves original model quality, modular.
+
+[Figure placeholder: ControlNet architecture showing original and control branches]
+
+---
+
+### T2I-Adapter (2023)
+
+**T2I-Adapter: Learning Adapters to Dig out More Controllable Ability** (Mou et al.) | [arXiv](https://arxiv.org/abs/2302.08453)
+
+**Key idea**: Lightweight adapter modules instead of full copy.
+
+**Benefits**: Smaller parameters, faster training, similar control capability.
+
+---
+
+### IP-Adapter (2023)
+
+**IP-Adapter: Text Compatible Image Prompt Adapter** (Ye et al.) | [arXiv](https://arxiv.org/abs/2308.06721)
+
+**Key idea**: Image prompts alongside text prompts.
+
+**Cross-attention**: Conditions on both text and image features.
+
+**Benefits**: Style transfer, image composition, reference-based generation.
+
+---
+
+### Uni-ControlNet (2023)
+
+**Uni-ControlNet: All-in-One Control** (Zhao et al.) | [arXiv](https://arxiv.org/abs/2305.16322)
+
+**Key idea**: Single model handles multiple control types.
+
+**Benefits**: More efficient than multiple ControlNets.
+
+---
+
+## Core Concepts
+
+### Conditional Diffusion
+
+**Goal**: Control generation process with additional inputs.
+
+**Methods**:
+- **ControlNet**: Separate control branch
+- **Adapter**: Lightweight adapter modules
+- **Cross-attention**: Inject conditions via attention
+
+---
+
+### Control Signals
+
+**Geometric**: Depth maps, normal maps, edge maps, pose.
+
+**Semantic**: Segmentation masks, text layouts.
+
+**Stylistic**: Reference images, style codes.
+
+**Applications**: Image editing, composition, style transfer, precise generation.
+
+---
+
+## Applications
+
+- Image editing with precise control
+- Architecture/interior design visualization
+- Character generation with pose control
+- Style transfer and composition
+- 3D control for generation (via depth/normal maps)
+
+---
+
+## Related Modules
+
+- Module 2.1: Diffusion Models (underlying models)
+- Module 7.1: Score Distillation Sampling (uses control for 3D)
+
+---
+
+## Additional Resources
+
+- **ControlNet Repository**: Official implementation
+- **Hugging Face Diffusers**: ControlNet integration
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Video Generation →](02-generative-video.md.html)
+</div>
+
+</code>
+</body>
+</html>

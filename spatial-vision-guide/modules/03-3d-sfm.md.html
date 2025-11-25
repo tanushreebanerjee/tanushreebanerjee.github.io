@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Structure-from-Motion</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Structure-from-Motion
+
+**Module 3.2** | [← Back to Index](../index.md.html) | [Next: Multi-View Stereo →](03-3d-mvs.md.html)
+
+---
+
+## Overview
+
+Structure-from-Motion (SfM): Recover 3D structure and camera poses from multiple uncalibrated images.
+
+---
+
+## Key Papers
+
+### 🔥 COLMAP
+
+[colmap.github.io](https://colmap.github.io/)
+
+**Open-source SfM pipeline.**
+
+**Pipeline:**
+1. **Feature detection**: Detect keypoints (SIFT)
+2. **Feature matching**: Match features across images
+3. **Incremental reconstruction**: Add images one by one
+4. **Bundle adjustment**: Jointly optimize cameras and points
+5. **Dense reconstruction**: Multi-view stereo (optional)
+
+**Outputs:**
+- Camera poses (rotation, translation, intrinsics)
+- 3D point cloud (sparse)
+- Visibility information
+
+[Figure placeholder: COLMAP reconstruction pipeline diagram]
+
+---
+
+### OpenMVG
+
+Open-source SfM library with modular architecture.
+
+---
+
+### Bundler
+
+Early SfM software using bundle adjustment.
+
+---
+
+## Core Concepts
+
+### Incremental SfM
+
+**Process:**
+1. Initialize with two images (find fundamental matrix, triangulate)
+2. Register new images (PnP problem)
+3. Triangulate new 3D points
+4. Bundle adjustment after each addition
+5. Filter outliers
+
+**Advantages**: Robust, handles large image collections.
+
+**Disadvantages**: Sequential, sensitive to initialization.
+
+---
+
+### Global SfM
+
+**Process:**
+1. Compute all pairwise relative poses
+2. Global rotation averaging
+3. Global translation averaging
+4. Bundle adjustment
+
+**Advantages**: More robust to drift, parallelizable.
+
+**Disadvantages**: More complex, sensitive to outliers.
+
+---
+
+### Bundle Adjustment
+
+**Goal**: Jointly optimize camera parameters and 3D structure.
+
+**Cost function**: Sum of squared reprojection errors:
+$$\sum_i \sum_j \rho(||x_{ij} - \pi(P_i, X_j)||^2)$$
+
+Where:
+- $x_{ij}$: Observed 2D point
+- $\pi(P_i, X_j)$: Projection of 3D point $X_j$ by camera $P_i$
+- $\rho$: Robust cost function (Huber loss)
+
+**Optimization**: Levenberg-Marquardt algorithm.
+
+**Sparse structure**: Schur complement for efficient solving.
+
+---
+
+### Image Registration
+
+**Perspective-n-Point (PnP)**: Estimate camera pose from 2D-3D correspondences.
+
+**Minimal solvers**: P3P (3 points), P4P, P5P.
+
+**RANSAC**: Robust estimation in presence of outliers.
+
+---
+
+## Implementation Details
+
+### Feature Matching
+
+**SIFT features**: Scale-invariant, robust matching.
+
+**Vocabulary tree**: Fast approximate nearest neighbors for large image collections.
+
+**Covisibility graph**: Track which images share features.
+
+---
+
+### Triangulation
+
+**Linear triangulation**: Solve for 3D point from multiple views.
+
+**Optimization**: Non-linear refinement of reprojection error.
+
+**Cheirality check**: Ensure points are in front of cameras.
+
+---
+
+## Applications
+
+- 3D reconstruction from photo collections
+- Photogrammetry
+- Virtual tourism (reconstruct landmarks)
+- Preprocessing for NeRF (COLMAP provides camera poses)
+
+---
+
+## Related Modules
+
+- Module 3.1: Geometry & Camera Models
+- Module 3.3: Multi-View Stereo (uses SfM camera poses)
+- Module 5.1: NeRF (uses SfM poses as initialization)
+
+---
+
+## Additional Resources
+
+- **COLMAP Documentation**: [colmap.github.io](https://colmap.github.io/)
+- **VisualSfM**: GUI-based SfM tool
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Multi-View Stereo →](03-3d-mvs.md.html)
+</div>
+
+</code>
+</body>
+</html>

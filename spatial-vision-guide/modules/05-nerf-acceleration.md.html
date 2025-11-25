@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>NeRF Acceleration</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# NeRF Acceleration
+
+**Module 5.2** | [← Back to Index](../index.md.html) | [Next: Appearance & Relighting →](05-nerf-appearance.md.html)
+
+---
+
+## Overview
+
+Acceleration methods for NeRF: Hash encoding, grid-based representations, and optimization techniques that reduce training and inference time by orders of magnitude.
+
+---
+
+## Essential Papers
+
+### 🔥🔥 Instant-NGP (2022)
+
+**Instant Neural Graphics Primitives with a Multiresolution Hash Encoding** (Müller et al.) | [arXiv](https://arxiv.org/abs/2201.05989)
+
+**Key innovation**: Multiresolution hash encoding for fast feature lookup.
+
+**Hash encoding**:
+- Multiresolution grids at different resolutions
+- Hash function maps grid coordinates to feature table
+- Concatenate features from all resolution levels
+- Small feature table (much smaller than full grid)
+
+**Benefits**: 
+- 10-100x faster training than vanilla NeRF
+- Real-time rendering possible
+- Low memory overhead
+
+**Architecture**: Tiny MLP (2-3 layers) + hash encoding.
+
+[Figure placeholder: Hash encoding diagram showing multiresolution grids]
+
+**Training time**: Minutes instead of hours/days.
+
+---
+
+### 🔥 Zip-NeRF (2023)
+
+**Zip-NeRF: Anti-Aliased Grid-Based Neural Radiance Fields** (Barron et al.) | [arXiv](https://arxiv.org/abs/2304.06706)
+
+**Key innovation**: Mip-NeRF-like anti-aliasing for grid-based methods.
+
+**Integrated positional encoding**: Encodes conical frustums, not points.
+
+**Benefits**: Fixes aliasing issues in Instant-NGP, maintains speed.
+
+**Quality**: Better than Instant-NGP, comparable to Mip-NeRF.
+
+---
+
+### TensoRF (2022)
+
+**TensoRF: Tensorial Radiance Fields** (Chen et al.) | [arXiv](https://arxiv.org/abs/2203.09517)
+
+**Key idea**: Tensor factorization for efficient 3D representation.
+
+**Representation**: Factorize 3D volume into low-rank tensors.
+
+**Benefits**: Compact representation, fast rendering.
+
+---
+
+### DVGO (2022)
+
+**Direct Voxel Grid Optimization** (Sun et al.) | [arXiv](https://arxiv.org/abs/2111.11215)
+
+**Key idea**: Explicit voxel grid instead of MLP.
+
+**Density grid**: Store density directly in voxel grid.
+
+**Feature grid**: Store features in voxel grid, small MLP decodes to color.
+
+**Benefits**: Very fast training, simple implementation.
+
+**Limitations**: Memory scales with resolution.
+
+---
+
+## Core Concepts
+
+### Hash Encoding
+
+**Problem**: Dense grids require too much memory.
+
+**Solution**: Hash table with collision handling.
+
+**Multiresolution**: Multiple grids at different resolutions capture details at different scales.
+
+**Lookup**: Hash coordinates to feature table indices, handle collisions.
+
+**Feature size**: Small feature vectors (2-4 dimensions per level).
+
+---
+
+### Grid-Based Representations
+
+**Explicit grids**: Store features/density in regular 3D grids.
+
+**Interpolation**: Trilinear interpolation for continuous values.
+
+**Hybrid**: Grid for coarse features, MLP for fine details.
+
+**Memory trade-off**: Higher resolution = better quality but more memory.
+
+---
+
+### Factorization Methods
+
+**Tensor factorization**: Factorize 3D volume into lower-dimensional components.
+
+**CP decomposition**: Factorize into vectors.
+
+**VM decomposition**: Factorize into matrices.
+
+**Benefits**: Compact representation, efficient storage.
+
+---
+
+## Performance Comparison
+
+**Vanilla NeRF**: Hours to days training, seconds per frame rendering.
+
+**Instant-NGP**: Minutes training, real-time rendering possible.
+
+**DVGO**: Very fast training, real-time rendering.
+
+**Zip-NeRF**: Fast training, high quality, some aliasing fixes.
+
+---
+
+## Related Modules
+
+- Module 5.1: NeRF Fundamentals (baseline methods)
+- Module 6.1: Gaussian Splatting (alternative acceleration approach)
+
+---
+
+## Additional Resources
+
+- **Instant-NGP Repository**: Official implementation
+- **Nerfstudio**: Framework with many acceleration methods
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Appearance & Relighting →](05-nerf-appearance.md.html)
+</div>
+
+</code>
+</body>
+</html>

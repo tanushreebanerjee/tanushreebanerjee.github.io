@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Monocular 3D Detection</title>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Monocular 3D Detection
+
+**Module 8.3** | [← Back to Index](../index.md.html) | [Next: Occupancy & Scene Completion →](08-perception-occupancy.md.html)
+
+---
+
+## Overview
+
+Monocular 3D detection: Detect and localize 3D objects from single camera images. Challenging due to depth ambiguity, requires strong geometric priors or learned depth understanding.
+
+---
+
+## Essential Papers
+
+### 🔥 Monocular 3D Object Detection (2019-2023)
+
+**Key approaches**:
+- Direct 3D regression from 2D features
+- 2D detection + depth estimation
+- Geometry-based methods using constraints
+
+**Methods**:
+- **Mono3D**: Multi-task learning (2D detection, depth, 3D box)
+- **M3D-RPN**: 3D region proposal network
+- **MonoPair**: Pairwise constraints for consistency
+- **MonoDETR**: DETR-style end-to-end detection
+
+**Challenges**: Depth ambiguity, scale ambiguity, occlusion.
+
+---
+
+### 🚀 Depth Anything 3 (2024)
+
+**Key innovation**: Strong depth understanding for 3D detection.
+
+**Benefits**: Better depth estimation improves 3D localization.
+
+---
+
+## Core Concepts
+
+### Depth Ambiguity
+
+**Problem**: Single view cannot determine absolute depth.
+
+**Solutions**:
+- Learned depth priors from training data
+- Geometric constraints (ground plane, object size)
+- Multiple object constraints (relative positioning)
+
+---
+
+### Detection Pipeline
+
+**2D detection**: First detect objects in 2D.
+
+**Depth estimation**: Estimate depth for each object.
+
+**3D box estimation**: Predict 3D bounding box (center, size, rotation).
+
+**Constraints**: Use ground plane, object size priors, geometric consistency.
+
+---
+
+### Geometric Priors
+
+**Ground plane**: Objects rest on ground plane.
+
+**Object size**: Learned average sizes per category.
+
+**Camera calibration**: Known camera parameters.
+
+---
+
+## Applications
+
+- Autonomous driving (monocular cameras)
+- Robotics
+- AR/VR
+- Surveillance
+
+---
+
+## Related Modules
+
+- Module 3.1: Geometry & Camera Models (required for 3D)
+- Module 8.1: Multi-View Transformers (easier with multiple views)
+- Module 8.2: BEV Models (uses multiple views)
+
+---
+
+## Additional Resources
+
+- **KITTI Dataset**: Common benchmark for monocular 3D detection
+- **nuScenes**: Multi-view detection benchmark
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Occupancy & Scene Completion →](08-perception-occupancy.md.html)
+</div>
+
+</code>
+</body>
+</html>

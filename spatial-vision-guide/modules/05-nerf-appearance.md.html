@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>NeRF Appearance & Relighting</title>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# NeRF Appearance & Relighting
+
+**Module 5.3** | [← Back to Index](../index.md.html) | [Previous: NeRF Acceleration ←](05-nerf-acceleration.md.html)
+
+---
+
+## Overview
+
+NeRF appearance modeling: Decompose view-dependent appearance into shape, reflectance, and lighting. Enables relighting and material editing.
+
+---
+
+## Essential Papers
+
+### NeRFactor (2021)
+
+**NeRFactor: Neural Factorization of Shape and Reflectance under an Unknown Illumination** (Bi et al.) | [arXiv](https://arxiv.org/abs/2006.04970)
+
+**Key idea**: Factorize NeRF into geometry, BRDF (material), and lighting.
+
+**Pipeline**:
+1. Train NeRF to learn geometry and appearance
+2. Extract surface geometry (marching cubes)
+3. Optimize BRDF properties (albedo, roughness, normal)
+4. Estimate lighting environment
+
+**Output**: Relightable scene with material properties.
+
+[Figure placeholder: NeRFactor factorization diagram]
+
+---
+
+### Ref-NeRF (2022)
+
+**Ref-NeRF: Structured View-Dependent Appearance for Neural Radiance Fields** (Verbin et al.) | [arXiv](https://arxiv.org/abs/2112.03907)
+
+**Key innovation**: Explicitly model view-dependent appearance using learned normal and reflection direction.
+
+**Appearance model**: Separates diffuse and specular components.
+
+**Benefits**: Better view-dependent modeling, enables relighting.
+
+---
+
+### Neural Reflectance Fields
+
+**Goal**: Decompose appearance into material properties.
+
+**Components**: Albedo, roughness, metallic, normal maps.
+
+**Applications**: Material editing, relighting, realistic rendering.
+
+---
+
+## Core Concepts
+
+### Appearance Factorization
+
+**Geometry**: 3D shape (surface, volume).
+
+**Material**: BRDF properties (albedo, roughness, metallic).
+
+**Lighting**: Environment maps, light sources.
+
+**Combined**: Render realistic appearance under different lighting.
+
+---
+
+### View-Dependent Appearance
+
+**Challenge**: NeRF learns view-dependent color but doesn't separate causes.
+
+**Solution**: Explicitly model reflection direction, normal, lighting.
+
+**Benefits**: Better understanding, enables editing.
+
+---
+
+## Applications
+
+- Relighting scenes under new lighting
+- Material editing
+- Physically-based rendering
+- Virtual product visualization
+
+---
+
+## Related Modules
+
+- Module 5.1: NeRF Fundamentals (baseline)
+- Module 11.2: Inverse Rendering (overlapping concepts)
+
+---
+
+## Additional Resources
+
+- **NeRFactor Project Page**: Official implementation
+- **Inverse Rendering**: Related work on material estimation
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Previous: NeRF Acceleration ←](05-nerf-acceleration.md.html)
+</div>
+
+</code>
+</body>
+</html>

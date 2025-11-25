@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>NeRF Fundamentals</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# NeRF Fundamentals
+
+**Module 5.1** | [← Back to Index](../index.md.html) | [Next: NeRF Acceleration →](05-nerf-acceleration.md.html)
+
+---
+
+## Overview
+
+Neural Radiance Fields (NeRF): Implicit 3D scene representation using MLPs. Represents scenes as continuous volumetric fields mapping 3D position and viewing direction to color and density.
+
+---
+
+## Essential Papers
+
+### 📖🔥🔥 NeRF (2020)
+
+**NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis** (Mildenhall et al.) | [arXiv](https://arxiv.org/abs/2003.08934) | [Project](https://www.matthewtancik.com/nerf)
+
+**Key idea**: Represent scene as continuous function $F_\Theta: (x, y, z, \theta, \phi) \rightarrow (c, \sigma)$.
+
+**Input**: 3D position $(x,y,z)$ and viewing direction $(\theta, \phi)$
+
+**Output**: Color $c = (r,g,b)$ and volume density $\sigma$
+
+**Architecture**:
+1. Positional encoding of 3D coordinates and directions
+2. MLP maps encoded position to density and feature vector
+3. Additional MLP maps feature + viewing direction to color
+4. Volume rendering integrates along camera rays
+
+[Figure placeholder: NeRF architecture diagram showing MLP and volume rendering]
+
+**Training**: Minimize photometric loss between rendered and observed images.
+
+**Requires**: Multiple posed camera views of static scene (typically from COLMAP).
+
+---
+
+### 🔥 NeRF++ (2020)
+
+**NeRF++: Analyzing and Improving Neural Radiance Fields** (Zhang et al.) | [arXiv](https://arxiv.org/abs/2010.07492)
+
+**Improvements**:
+- Handles unbounded scenes (inverted sphere parameterization)
+- Better background modeling
+- Improved training stability
+
+---
+
+### 🔥 Mip-NeRF (2021)
+
+**Mip-NeRF: A Multiscale Representation for Anti-Aliasing Neural Radiance Fields** (Barron et al.) | [arXiv](https://arxiv.org/abs/2103.13415)
+
+**Key innovation**: Integrated positional encoding (IPE) - encodes conical frustums instead of points.
+
+**Benefits**: Anti-aliasing, handles multi-scale scenes better, more efficient.
+
+---
+
+## Core Concepts
+
+### Positional Encoding
+
+**Purpose**: Help MLP represent high-frequency details (geometry, texture).
+
+**Formulation**: $\gamma(p) = (\sin(2^0 \pi p), \cos(2^0 \pi p), ..., \sin(2^{L-1} \pi p), \cos(2^{L-1} \pi p))$
+
+For 3D position: Encode $x, y, z$ coordinates independently with $L=10$.
+
+For viewing direction: Encode with $L=4$.
+
+**Effect**: Enables learning fine details despite MLP's bias toward low frequencies.
+
+---
+
+### Volume Rendering
+
+**Ray marching**: Sample points along camera ray, query NeRF at each point, integrate.
+
+**Rendering equation**:
+$$C(\mathbf{r}) = \int_{t_n}^{t_f} T(t) \sigma(\mathbf{r}(t)) \mathbf{c}(\mathbf{r}(t), \mathbf{d}) dt$$
+
+Where:
+- $T(t) = \exp(-\int_{t_n}^{t} \sigma(\mathbf{r}(s)) ds)$: Transmittance (how much light reaches point)
+- $\sigma(\mathbf{r}(t))$: Density at point
+- $\mathbf{c}(\mathbf{r}(t), \mathbf{d})$: Color (view-dependent)
+
+**Discretized**:
+$$C(\mathbf{r}) = \sum_{i=1}^{N} T_i (1 - \exp(-\sigma_i \delta_i)) \mathbf{c}_i$$
+
+Where $T_i = \exp(-\sum_{j=1}^{i-1} \sigma_j \delta_j)$.
+
+[Figure placeholder: Volume rendering diagram showing ray marching through volume]
+
+---
+
+### Hierarchical Sampling
+
+**Two-stage sampling**:
+1. **Coarse network**: Sample uniformly, predict density
+2. **Fine network**: Importance sample based on coarse density, more samples in dense regions
+
+**Benefits**: Efficiency - more samples where geometry exists.
+
+---
+
+## Technical Details
+
+### Loss Function
+
+**Photometric loss**: $L = \sum_{\mathbf{r}} ||C_c(\mathbf{r}) - C(\mathbf{r})||_2^2 + ||C_f(\mathbf{r}) - C(\mathbf{r})||_2^2$
+
+- $C_c$: Coarse network prediction
+- $C_f$: Fine network prediction
+- $C$: Ground truth color
+
+---
+
+### Training Process
+
+1. **Input preparation**: COLMAP provides camera poses, intrinsics
+2. **Ray generation**: For each training image, sample random rays
+3. **Ray marching**: Sample points along each ray
+4. **MLP forward**: Query NeRF at each sample point
+5. **Volume rendering**: Integrate to get predicted color
+6. **Loss computation**: Compare with ground truth
+7. **Backpropagation**: Update MLP weights
+
+**Training time**: Hours to days depending on scene complexity and resolution.
+
+---
+
+## Related Modules
+
+- Module 3.2: Structure-from-Motion (provides camera poses)
+- Module 5.2: NeRF Acceleration (speeds up training/inference)
+- Module 6.1: Gaussian Splatting (alternative real-time approach)
+
+---
+
+## Additional Resources
+
+- **NeRF Project Page**: [matthewtancik.com/nerf](https://www.matthewtancik.com/nerf)
+- **NeRF Papers**: Comprehensive list of NeRF variants
+- **Nerfstudio**: [nerf.studio](https://nerf.studio/) - NeRF framework
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: NeRF Acceleration →](05-nerf-acceleration.md.html)
+</div>
+
+</code>
+</body>
+</html>

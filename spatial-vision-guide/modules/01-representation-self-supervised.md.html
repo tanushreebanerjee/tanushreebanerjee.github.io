@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Self-Supervised Learning</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Self-Supervised Learning
+
+**Module 1.1** | [← Back to Index](../index.md.html) | [Next: Multimodal Foundation Models →](01-representation-multimodal.md.html)
+
+---
+
+## Overview
+
+Self-supervised learning: Learn visual representations without human labels. Contrastive learning, masked image modeling, and other pretext tasks enable learning from unlabeled data.
+
+---
+
+## Essential Papers
+
+### 🔥 SimCLR (2020)
+
+**A Simple Framework for Contrastive Learning** (Chen et al.) | [arXiv](https://arxiv.org/abs/2002.05709)
+
+**Key idea**: Contrastive learning with data augmentation.
+
+**Framework**:
+1. Apply random augmentations to image (two views)
+2. Encode both views with CNN
+3. Maximize similarity of augmented pairs
+4. Minimize similarity with other images
+
+**Loss**: InfoNCE loss:
+$$L = -\log \frac{\exp(\text{sim}(z_i, z_j) / \tau)}{\sum_{k \neq i} \exp(\text{sim}(z_i, z_k) / \tau)}$$
+
+**Components**:
+- Strong data augmentation crucial
+- Large batch sizes help
+- Non-linear projection head improves representations
+
+[Figure placeholder: SimCLR framework diagram]
+
+---
+
+### 🔥 MoCo (2020)
+
+**Momentum Contrast for Unsupervised Visual Representation Learning** (He et al.) | [arXiv](https://arxiv.org/abs/1911.05722)
+
+**Key innovation**: Momentum encoder + memory bank for large negatives.
+
+**Momentum encoder**: Moving average of main encoder, more stable.
+
+**Memory bank**: Stores features from past batches, enables many negatives without large batches.
+
+**Benefits**: Works with smaller batches, better representations.
+
+---
+
+### 🔥 BYOL (2020)
+
+**Bootstrap Your Own Latent** (Grill et al.) | [arXiv](https://arxiv.org/abs/2006.07733)
+
+**Key innovation**: Self-supervised learning without negatives.
+
+**Architecture**: Two networks (online and target), online predicts target.
+
+**Process**: Online network predicts augmented view, target provides targets (moving average).
+
+**Benefits**: No negative sampling needed, simpler.
+
+**Surprising**: Works without collapse (still not fully understood).
+
+---
+
+### 🔥 DINO (2021)
+
+**Emerging Properties in Self-Supervised Vision Transformers** (Caron et al.) | [arXiv](https://arxiv.org/abs/2104.14294)
+
+**Key idea**: Self-distillation with vision transformers.
+
+**Process**: Teacher and student ViTs, teacher provides soft targets.
+
+**Benefits**: Learns segmentation-like attention, strong features.
+
+**Use case**: Foundation features for many vision tasks.
+
+---
+
+### 🔥 DINOv2 (2024)
+
+**DINOv2: Learning Robust Visual Features without Supervision** (Oquab et al.) | [arXiv](https://arxiv.org/abs/2304.07193)
+
+**Improvements over DINO**:
+- Larger dataset (142M images)
+- Better training recipe
+- Stronger features
+
+**Benefits**: Strong general-purpose features, good for downstream tasks.
+
+---
+
+### MAE (2021)
+
+**Masked Autoencoders Are Scalable Vision Learners** (He et al.) | [arXiv](https://arxiv.org/abs/2111.06377)
+
+**Key idea**: Mask random image patches, predict masked patches.
+
+**Process**:
+1. Mask ~75% of image patches
+2. Encode visible patches with ViT
+3. Decode to reconstruct masked patches
+
+**Benefits**: Simple, scalable, strong features.
+
+---
+
+## Core Concepts
+
+### Contrastive Learning
+
+**Goal**: Learn representations where similar samples are close, dissimilar are far.
+
+**Positive pairs**: Different views of same image (augmentations).
+
+**Negative pairs**: Different images.
+
+**Loss**: Contrastive loss pushes positives together, negatives apart.
+
+---
+
+### Data Augmentation
+
+**Critical component**: Strong augmentations essential for good representations.
+
+**Common augmentations**: Random crop, color jitter, blur, flip.
+
+**Augmentation policy**: Stronger augmentations → better generalization.
+
+---
+
+### Non-Linear Projection
+
+**Projection head**: Small MLP on top of encoder.
+
+**Purpose**: Separate representation learning from contrastive learning.
+
+**Removal**: Projection head removed after training, use encoder features.
+
+---
+
+## Applications
+
+- Pre-training for downstream tasks
+- Feature extraction
+- Image retrieval
+- Segmentation (DINO attention)
+- Foundation for other models (CLIP uses self-supervised features)
+
+---
+
+## Related Modules
+
+- Module 0.3: Transformers (DINO uses ViT)
+- Module 1.2: Multimodal Foundation Models (builds on self-supervised features)
+- Module 8.1: Multi-View Transformers (uses learned features)
+
+---
+
+## Additional Resources
+
+- **DINOv2 Repository**: Official implementation
+- **Self-Supervised Learning Survey**: Comprehensive overview
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Multimodal Foundation Models →](01-representation-multimodal.md.html)
+</div>
+
+</code>
+</body>
+</html>

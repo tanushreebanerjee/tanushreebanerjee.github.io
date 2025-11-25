@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Diffusion Models</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Diffusion Models
+
+**Module 2.1** | [← Back to Index](../index.md.html) | [Next: Control & Conditioning →](02-generative-control.md.html)
+
+---
+
+## Overview
+
+Diffusion models: Generative models that learn to reverse a diffusion process. State-of-the-art for image and video generation.
+
+---
+
+## Essential Papers
+
+### 📖 DDPM (2020)
+
+**Denoising Diffusion Probabilistic Models** (Ho et al.) | [arXiv](https://arxiv.org/abs/2006.11239)
+
+**Key idea**: Learn to reverse gradual noise corruption process.
+
+**Forward process** (diffusion): Gradually add Gaussian noise:
+$$q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t} x_{t-1}, \beta_t I)$$
+
+**Reverse process** (denoising): Learn to denoise:
+$$p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))$$
+
+**Training**: Predict noise $\epsilon$ added to $x_0$:
+$$L = \mathbb{E}_{t,x_0,\epsilon} [||\epsilon - \epsilon_\theta(x_t, t)||^2]$$
+
+**Sampling**: Start from noise, iteratively denoise:
+$$x_{t-1} = \frac{1}{\sqrt{\alpha_t}} (x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}} \epsilon_\theta(x_t, t)) + \sigma_t z$$
+
+[Figure placeholder: Diffusion process diagram showing forward and reverse]
+
+---
+
+### 🔥 DDIM (2020)
+
+**Denoising Diffusion Implicit Models** (Song et al.) | [arXiv](https://arxiv.org/abs/2010.02502)
+
+**Key innovation**: Deterministic sampling with fewer steps.
+
+**DDIM sampling**: Deterministic reverse process, skip steps.
+
+**Benefits**: 10-50x faster sampling, enables latent interpolation.
+
+**Trade-off**: Slightly lower quality than DDPM.
+
+---
+
+### 🔥 Score-Based Diffusion (2020)
+
+**Score-Based Generative Modeling through Stochastic Differential Equations** (Song et al.) | [arXiv](https://arxiv.org/abs/2011.13456)
+
+**Unified framework**: Connects diffusion models to score-based methods.
+
+**SDE formulation**: Continuous-time diffusion process.
+
+**Benefits**: Theoretical foundation, enables new sampling methods.
+
+---
+
+### 🔥 Stable Diffusion (2022)
+
+**High-Resolution Image Synthesis with Latent Diffusion Models** (Rombach et al.) | [arXiv](https://arxiv.org/abs/2112.10752)
+
+**Key innovation**: Operate in latent space, not pixel space.
+
+**Architecture**:
+1. VAE encoder: Image → Latent
+2. Diffusion in latent space (much smaller, faster)
+3. VAE decoder: Latent → Image
+
+**Benefits**: 
+- Faster training and inference
+- Lower memory
+- High-resolution generation
+
+**Text conditioning**: CLIP text encoder conditions diffusion model.
+
+---
+
+### 🔥 Classifier-Free Guidance (2022)
+
+**Classifier-Free Diffusion Guidance** (Ho & Salimans) | [arXiv](https://arxiv.org/abs/2207.12598)
+
+**Key idea**: Train unconditional model, use guidance during sampling.
+
+**Guided sampling**: $\tilde{\epsilon}_\theta = \epsilon_\theta(x_t, y) + s(\epsilon_\theta(x_t, y) - \epsilon_\theta(x_t))$
+
+Where $s$ is guidance scale.
+
+**Benefits**: Better control, higher quality, no classifier needed.
+
+---
+
+## Core Concepts
+
+### Diffusion Process
+
+**Forward diffusion**: $q(x_{1:T} | x_0) = \prod_{t=1}^T q(x_t | x_{t-1})$
+
+Adds noise over $T$ steps until $x_T \sim \mathcal{N}(0, I)$.
+
+**Noise schedule**: $\{\beta_t\}$ controls noise amount at each step.
+
+**Cumulative noise**: $\bar{\alpha}_t = \prod_{s=1}^t (1-\beta_s)$, $x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t} \epsilon$.
+
+---
+
+### Denoising Process
+
+**Goal**: Learn $p_\theta(x_{t-1} | x_t)$ to reverse diffusion.
+
+**Neural network**: Predicts noise $\epsilon_\theta(x_t, t)$.
+
+**Sampling**: Start from $x_T \sim \mathcal{N}(0, I)$, iteratively denoise to $x_0$.
+
+---
+
+### Conditional Generation
+
+**Text-to-image**: Condition on text prompt via CLIP encoder.
+
+**Other conditions**: Depth, edges, pose, etc.
+
+**Classifier-free guidance**: Improves quality and control.
+
+---
+
+## Technical Details
+
+### Architecture
+
+**U-Net**: Standard architecture for diffusion models.
+
+**Time embedding**: Encodes timestep $t$ into model.
+
+**Attention**: Self-attention and cross-attention layers.
+
+**Residual connections**: Enable training deep networks.
+
+---
+
+### Training
+
+**Objective**: Predict noise $\epsilon$ given noisy image $x_t$ and timestep $t$.
+
+**Loss**: Mean squared error between predicted and true noise.
+
+**Noise schedule**: Linear or cosine schedule for $\beta_t$.
+
+---
+
+### Sampling
+
+**DDPM sampling**: Stochastic, requires many steps (1000+).
+
+**DDIM sampling**: Deterministic, fewer steps (10-50).
+
+**Advanced samplers**: DPM-Solver, k-diffusion, etc.
+
+---
+
+## Applications
+
+- Image generation (DALL-E 2, Midjourney, Stable Diffusion)
+- Video generation (extend to temporal dimension)
+- 3D generation (via score distillation - Module 7.1)
+- Image editing, inpainting, super-resolution
+
+---
+
+## Related Modules
+
+- Module 1.2: Multimodal Foundation Models (CLIP for text conditioning)
+- Module 7.1: Score Distillation Sampling (uses diffusion for 3D)
+- Module 2.2: Control & Conditioning (ControlNet, etc.)
+
+---
+
+## Additional Resources
+
+- **Stable Diffusion**: [stability.ai](https://stability.ai/)
+- **Diffusion Models Papers**: Comprehensive list of diffusion papers
+- **Hugging Face Diffusers**: Implementation library
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Control & Conditioning →](02-generative-control.md.html)
+</div>
+
+</code>
+</body>
+</html>

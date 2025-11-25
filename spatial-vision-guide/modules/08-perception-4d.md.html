@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>4D Detection & Tracking</title>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# 4D Detection & Tracking
+
+**Module 8.5** | [← Back to Index](../index.md.html) | [Previous: Occupancy & Scene Completion ←](08-perception-occupancy.md.html)
+
+---
+
+## Overview
+
+4D detection and tracking: Detect objects in 3D space and track them over time (3D + time = 4D). Combine detection and tracking for temporal consistency.
+
+---
+
+## Essential Papers
+
+### 4D Detection Methods
+
+**Key idea**: Joint detection and tracking over video sequences.
+
+**Approaches**:
+- Track objects across frames
+- Use temporal features
+- Maintain track consistency
+
+**Benefits**: Better accuracy, temporal smoothness, trajectory prediction.
+
+---
+
+### Tracking-by-Detection
+
+**Process**:
+1. Detect objects in each frame
+2. Associate detections across frames
+3. Maintain tracks
+
+**Association**: Feature matching, motion prediction, Hungarian algorithm.
+
+---
+
+### Joint Detection-Tracking
+
+**Key innovation**: End-to-end learning of detection and tracking.
+
+**Benefits**: Better performance, shared features.
+
+---
+
+## Core Concepts
+
+### Temporal Association
+
+**Goal**: Match detections across frames.
+
+**Methods**:
+- Feature similarity
+- Motion prediction
+- Kalman filtering
+- Learned association
+
+---
+
+### Track Management
+
+**Track initialization**: Start new tracks for new objects.
+
+**Track termination**: End tracks for disappeared objects.
+
+**Track maintenance**: Update existing tracks.
+
+---
+
+### Trajectory Prediction
+
+**Goal**: Predict future object trajectories.
+
+**Applications**: Autonomous driving, planning, safety.
+
+---
+
+## Applications
+
+- Autonomous driving
+- Video surveillance
+- Sports analytics
+- Robotics
+
+---
+
+## Related Modules
+
+- Module 8.1: Multi-View Transformers (3D detection)
+- Module 4.1: Optical Flow (temporal motion)
+- Module 4.3: Scene Flow (3D motion)
+
+---
+
+## Additional Resources
+
+- **nuScenes Dataset**: Tracking benchmarks
+- **MOT (Multiple Object Tracking)**: Tracking methods
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Previous: Occupancy & Scene Completion ←](08-perception-occupancy.md.html)
+</div>
+
+</code>
+</body>
+</html>

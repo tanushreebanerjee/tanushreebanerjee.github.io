@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>SLAM</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# SLAM
+
+**Module 3.4** | [← Back to Index](../index.md.html) | [Next: Optical Flow →](../index.md.html)
+
+---
+
+## Overview
+
+Simultaneous Localization and Mapping (SLAM): Estimate camera trajectory and map environment simultaneously in real-time. Essential for robotics and augmented reality.
+
+---
+
+## Essential Papers
+
+### 📖 ORB-SLAM (2015)
+
+**ORB-SLAM: A Versatile and Accurate Monocular SLAM System** (Mur-Artal et al.) | [arXiv](https://arxiv.org/abs/1502.00956)
+
+**Key features**:
+- Feature-based tracking (ORB features)
+- Keyframe-based mapping
+- Loop closure detection
+- Relocalization
+
+**Pipeline**:
+1. **Tracking**: Match features, estimate camera pose
+2. **Mapping**: Add keyframes, triangulate new map points
+3. **Loop closing**: Detect revisited locations, optimize map
+
+**Modules**:
+- **Tracking thread**: Real-time pose estimation
+- **Local mapping**: Add keyframes and points
+- **Loop closing**: Global optimization
+
+---
+
+### DSO (2016)
+
+**Direct Sparse Odometry** (Engel et al.) | [arXiv](https://arxiv.org/abs/1607.02565)
+
+**Key idea**: Direct method (optimize photometric error) instead of features.
+
+**Advantages**: Works in low-texture regions, more accurate.
+
+**Disadvantages**: Sensitive to photometric calibration, slower.
+
+---
+
+### 🔥 NICE-SLAM (2022)
+
+**Neural Implicit SLAM** (Zhu et al.) | [arXiv](https://arxiv.org/abs/2112.12130)
+
+**Key innovation**: Neural implicit representation for mapping.
+
+**Representation**: Hierarchical feature grid (like instant-NGP) for scene.
+
+**Advantages**: 
+- Dense geometry and appearance
+- Real-time optimization
+- Photo-realistic rendering
+
+**Applications**: Dense SLAM for AR/VR.
+
+---
+
+### 🔥 DROID-SLAM (2021)
+
+**DROID-SLAM: Deep Visual SLAM** (Teed & Deng) | [arXiv](https://arxiv.org/abs/2108.10869)
+
+**Key innovation**: Dense optical flow + bundle adjustment.
+
+**Pipeline**:
+1. Dense correspondence via optical flow (RAFT)
+2. Bundle adjustment with learned update operator
+3. Dense depth map estimation
+
+**Advantages**: Dense tracking, robust, accurate.
+
+**Supports**: Monocular, stereo, RGB-D cameras.
+
+---
+
+### 🚀 Gaussian-SLAM (2024)
+
+**Gaussian-SLAM: Photo-realistic Dense SLAM with Gaussian Splatting**
+
+**Key innovation**: 3D Gaussian Splatting for SLAM representation.
+
+**Benefits**: Real-time rendering, photo-realistic maps, efficient.
+
+---
+
+## Core Concepts
+
+### Feature-Based SLAM
+
+**Process**:
+1. Extract features (ORB, SIFT)
+2. Match features across frames
+3. Estimate pose (PnP)
+4. Triangulate landmarks
+5. Bundle adjustment
+
+**Advantages**: Robust, well-established.
+
+**Limitations**: Requires texture, sparse maps.
+
+---
+
+### Direct SLAM
+
+**Process**: Optimize photometric error directly.
+
+**Advantages**: Dense tracking, works in low-texture regions.
+
+**Limitations**: Sensitive to lighting changes, calibration.
+
+---
+
+### Neural Implicit SLAM
+
+**Representation**: Neural network encodes scene geometry/appearance.
+
+**Advantages**: Dense maps, rendering capabilities.
+
+**Challenges**: Real-time optimization, scalability.
+
+---
+
+## SLAM Pipeline
+
+**Frontend** (Tracking):
+- Feature extraction/matching
+- Pose estimation
+- Frame selection (keyframes)
+
+**Backend** (Mapping):
+- Landmark triangulation
+- Bundle adjustment
+- Loop closure detection
+
+**Map representation**:
+- **Feature-based**: Sparse point cloud
+- **Direct**: Dense depth maps
+- **Neural**: Implicit representation
+
+---
+
+## Related Modules
+
+- Module 3.1: Geometry & Camera Models (epipolar geometry, PnP)
+- Module 3.2: Structure-from-Motion (offline reconstruction)
+- Module 4.1: Optical Flow (dense tracking)
+- Module 6.1: Gaussian Splatting (Gaussian-SLAM)
+
+---
+
+## Additional Resources
+
+- **ORB-SLAM**: [github.com/raulmur/ORB_SLAM3](https://github.com/raulmur/ORB_SLAM3)
+- **NICE-SLAM**: Repository and code
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Previous: Multi-View Stereo ←](03-3d-mvs.md.html)
+</div>
+
+</code>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Multi-View Stereo</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Multi-View Stereo
+
+**Module 3.3** | [← Back to Index](../index.md.html) | [Next: SLAM →](03-3d-slam.md.html)
+
+---
+
+## Overview
+
+Multi-View Stereo (MVS): Estimate dense depth maps from multiple calibrated camera views. Produces dense 3D reconstructions.
+
+---
+
+## Essential Papers
+
+### 🔥 MVSNet (2018)
+
+**MVSNet: Depth Inference for Unstructured Multi-view Stereo** (Yao et al.) | [arXiv](https://arxiv.org/abs/1804.02505)
+
+**Key idea**: Deep learning for MVS using cost volume construction.
+
+**Pipeline**:
+1. Feature extraction from input images
+2. Build cost volume by warping features to reference view at different depth hypotheses
+3. 3D CNN regularizes cost volume
+4. Depth map regression and refinement
+
+[Figure placeholder: MVSNet pipeline showing cost volume construction]
+
+**Cost volume**: 3D volume (width × height × depth hypotheses) containing matching costs.
+
+**Advantages**: Learned matching, handles textureless regions better than traditional methods.
+
+---
+
+### CasMVSNet (2020)
+
+**CasMVSNet: Cascade Cost Volume for High-Resolution Multi-View Stereo** (Gu et al.) | [arXiv](https://arxiv.org/abs/1912.06378)
+
+**Key innovation**: Coarse-to-fine cascade approach.
+
+**Cascade structure**:
+- Stage 1: Low-resolution cost volume (fewer depth hypotheses)
+- Stage 2: Higher resolution, refined depth range
+- Stage 3: Highest resolution
+
+**Benefits**: Memory efficient, enables high-resolution reconstruction.
+
+---
+
+### PatchmatchNet (2021)
+
+**PatchmatchNet: Learned Multi-View Patchmatch Stereo** (Wang et al.) | [arXiv](https://arxiv.org/abs/2012.01411)
+
+**Key idea**: Learnable PatchMatch algorithm.
+
+**PatchMatch**: Randomized search for matching patches, iterative propagation.
+
+**Learned components**: Feature extraction, similarity computation, propagation.
+
+**Benefits**: Fast, memory efficient, good quality.
+
+---
+
+## Core Concepts
+
+### Cost Volume
+
+**Definition**: 3D volume encoding matching costs for each pixel at different depth hypotheses.
+
+**Construction**: Warp features from source views to reference view at each depth.
+
+**Regularization**: 3D CNN smooths cost volume.
+
+**Depth selection**: Argmax or weighted average over depth dimension.
+
+---
+
+### Depth Map Fusion
+
+**Problem**: Multiple views produce multiple depth maps.
+
+**Solution**: Fuse depth maps from different reference views.
+
+**Methods**: 
+- Consistency checking
+- Visibility voting
+- Weighted averaging
+
+**Output**: Dense point cloud or mesh.
+
+---
+
+## Comparison with Traditional MVS
+
+**Traditional**: Hand-crafted features, patch matching, optimization.
+
+**Learning-based**: Learned features, cost volume, CNN regularization.
+
+**Benefits**: Better in textureless regions, more robust.
+
+---
+
+## Applications
+
+- 3D reconstruction from photo collections
+- Preprocessing for NeRF (dense geometry)
+- Robotics and mapping
+- Virtual reality content creation
+
+---
+
+## Related Modules
+
+- Module 3.1: Geometry & Camera Models (calibration required)
+- Module 3.2: Structure-from-Motion (provides camera poses)
+- Module 5.1: NeRF Fundamentals (alternative dense reconstruction)
+
+---
+
+## Additional Resources
+
+- **MVSNet Repository**: GitHub implementations
+- **COLMAP**: Includes MVS pipeline
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: SLAM →](03-3d-slam.md.html)
+</div>
+
+</code>
+</body>
+</html>

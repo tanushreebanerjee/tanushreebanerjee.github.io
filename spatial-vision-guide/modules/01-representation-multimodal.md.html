@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Multimodal Foundation Models</title>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Multimodal Foundation Models
+
+**Module 1.2** | [← Back to Index](../index.md.html) | [Previous: Self-Supervised Learning ←](01-representation-self-supervised.md.html)
+
+---
+
+## Overview
+
+Multimodal foundation models: Joint vision-language models that understand images and text. CLIP and related models enable text-conditional vision tasks.
+
+---
+
+## Essential Papers
+
+### 🔥🔥 CLIP (2021)
+
+**Learning Transferable Visual Models From Natural Language Supervision** (Radford et al.) | [arXiv](https://arxiv.org/abs/2103.00020)
+
+**Key idea**: Contrastive learning on 400M image-text pairs from internet.
+
+**Architecture**:
+- **Image encoder**: Vision Transformer (ViT) or ResNet
+- **Text encoder**: Transformer
+- **Contrastive loss**: Maximize similarity of matched pairs, minimize unmatched
+
+**Training**: Contrastive objective:
+$$L = -\log \frac{\exp(\text{sim}(I_i, T_i) / \tau)}{\sum_{j=1}^{N} \exp(\text{sim}(I_i, T_j) / \tau)}$$
+
+Where $\text{sim}$ is cosine similarity, $\tau$ is temperature.
+
+**Capabilities**:
+- Zero-shot image classification (describe classes in text)
+- Image retrieval given text
+- Text retrieval given image
+- Transferable visual features
+
+[Figure placeholder: CLIP architecture showing image and text encoders with contrastive learning]
+
+**Impact**: Foundation for text-to-image models (DALL-E 2, Stable Diffusion), zero-shot transfer.
+
+---
+
+### 🔥 BLIP (2022)
+
+**BLIP: Bootstrapping Language-Image Pre-training** (Li et al.) | [arXiv](https://arxiv.org/abs/2201.12086)
+
+**Key innovation**: Unified architecture for understanding and generation tasks.
+
+**Architecture**:
+- **Unimodal encoders**: Image and text encoders
+- **Image-grounded text encoder**: Adds cross-attention
+- **Image-grounded text decoder**: Generates text from images
+
+**Multi-task learning**: Captioning, retrieval, VQA, image-text matching.
+
+**Bootstrapping**: Use model to filter noisy web data, retrain on cleaner data.
+
+**Benefits**: Better quality than CLIP, supports generation tasks.
+
+---
+
+### 🔥 BLIP-2 (2023)
+
+**BLIP-2: Bootstrapping Language-Image Pre-training with Frozen Image Encoders** (Li et al.) | [arXiv](https://arxiv.org/abs/2301.12597)
+
+**Key innovation**: Q-Former to bridge frozen pre-trained models.
+
+**Architecture**:
+- **Frozen image encoder**: Pre-trained ViT (e.g., CLIP ViT-L)
+- **Frozen LLM**: Large language model (e.g., Flan-T5, OPT)
+- **Q-Former**: Learnable query transformer bridges them
+
+**Benefits**: 
+- Efficient (don't train large models end-to-end)
+- Leverages pre-trained models
+- Strong performance
+
+---
+
+### 🔥 LLaVA (2023)
+
+**LLaVA: Large Language and Vision Assistant** (Liu et al.) | [arXiv](https://arxiv.org/abs/2304.08485)
+
+**Vision-language chatbot**: Instruct-tuned for dialogue.
+
+**Architecture**:
+- **Vision encoder**: CLIP ViT-L
+- **Language model**: Vicuna (LLaMA fine-tuned)
+- **Projection layer**: Maps vision features to LLM space
+
+**Training**: 
+1. Pre-train projection on image-text pairs
+2. Fine-tune end-to-end on visual instruction data
+
+**Capabilities**: Visual question answering, image description, visual reasoning.
+
+---
+
+## Core Concepts
+
+### Contrastive Learning
+
+**Goal**: Learn joint embedding space where similar concepts are close.
+
+**Positive pairs**: Matching image-text pairs.
+
+**Negative pairs**: Non-matching pairs.
+
+**Loss**: Push positives together, push negatives apart.
+
+**Scaling**: Benefits from more data and larger models.
+
+---
+
+### Vision-Language Alignment
+
+**Embedding space**: Shared space for images and text.
+
+**Semantic alignment**: Similar concepts across modalities have similar embeddings.
+
+**Zero-shot transfer**: Text descriptions can be used for image classification.
+
+---
+
+### Instruction Tuning
+
+**Goal**: Make model follow instructions for vision-language tasks.
+
+**Data**: Visual instruction datasets (e.g., "Describe this image", "What is in this image?").
+
+**Benefits**: Better task performance, more controllable.
+
+---
+
+## Applications
+
+**Image generation**: CLIP text encoder conditions diffusion models (Stable Diffusion).
+
+**Image retrieval**: Find images matching text query.
+
+**Zero-shot classification**: Describe classes in text, classify images.
+
+**Visual question answering**: Answer questions about images.
+
+**3D generation**: CLIP guides 3D optimization (Score Distillation - Module 7.1).
+
+---
+
+## Technical Details
+
+### CLIP Architecture
+
+**Image encoder**: ViT-B/32, ViT-B/16, ViT-L/14, ResNet variants.
+
+**Text encoder**: Transformer (63M-123M parameters).
+
+**Training**: Contrastive learning on 400M image-text pairs.
+
+**Batch size**: Very large (32K+) for many negatives.
+
+---
+
+### BLIP Architecture
+
+**Unimodal encoders**: Separate image and text encoders.
+
+**Multimodal encoder**: Cross-attention between modalities.
+
+**Multimodal decoder**: Generate text from images.
+
+**Loss functions**: 
+- Image-text contrastive
+- Image-grounded language modeling
+- Image-text matching
+
+---
+
+## Related Models
+
+**ALIGN**: Similar to CLIP, larger scale.
+
+**CoCa**: Contrastive + captioning objectives.
+
+**Florence**: Unified vision-language model.
+
+**Qwen2-VL, InternVL, Gemini-Vision**: Latest multimodal models.
+
+---
+
+## Related Modules
+
+- Module 0.3: Transformers (underlying architecture)
+- Module 1.1: Self-Supervised Learning (contrastive learning foundations)
+- Module 2.1: Diffusion Models (uses CLIP for conditioning)
+- Module 7.1: Score Distillation Sampling (uses CLIP guidance)
+
+---
+
+## Additional Resources
+
+- **OpenAI CLIP**: [openai.com/research/clip](https://openai.com/research/clip)
+- **BLIP Repository**: GitHub implementations
+- **LLaVA Project**: [llava-vl.github.io](https://llava-vl.github.io/)
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Previous: Self-Supervised Learning ←](01-representation-self-supervised.md.html)
+</div>
+
+</code>
+</body>
+</html>
