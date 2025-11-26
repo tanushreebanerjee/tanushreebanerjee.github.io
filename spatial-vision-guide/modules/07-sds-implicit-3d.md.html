@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Implicit 3D Generation</title>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Implicit 3D Generation
+
+**Module 7.3** | [← Back to Index](../index.md.html) | [Previous: 2D→3D Lifting ←](07-sds-2d-to-3d.md.html)
+
+---
+
+## Overview
+
+Implicit 3D generation: Generate 3D shapes using implicit representations (NeRF, SDF) with generative models. Direct 3D generation without relying on 2D supervision.
+
+---
+
+## Essential Papers
+
+### GIRAFFE (2021)
+
+**GIRAFFE: Representing Scenes as Compositional Generative Neural Feature Fields** (Niemeyer & Geiger) | [arXiv](https://arxiv.org/abs/2011.12100)
+
+**Key idea**: Generative adversarial networks for neural radiance fields.
+
+**Architecture**: Generator creates NeRF representations, discriminator distinguishes real/fake.
+
+**Compositional**: Objects composed in scenes.
+
+**Benefits**: Direct 3D generation, controllable.
+
+---
+
+### pi-GAN (2021)
+
+**pi-GAN: Periodic Implicit Generative Adversarial Networks for 3D-Aware Image Synthesis** (Chan et al.) | [arXiv](https://arxiv.org/abs/2012.00926)
+
+**Key innovation**: Periodic activations for better 3D consistency.
+
+**Benefits**: Better 3D-aware image generation.
+
+---
+
+### EG3D (2022)
+
+**EG3D: Efficient Geometry-aware 3D Generative Adversarial Networks** (Chan et al.) | [arXiv](https://arxiv.org/abs/2112.07945)
+
+**Key innovation**: Efficient 3D GAN with tri-plane representation.
+
+**Tri-plane**: Three feature planes for efficient NeRF rendering.
+
+**Benefits**: Fast generation, high quality, controllable.
+
+---
+
+### GET3D (2022)
+
+**GET3D: A Generative Model of High Quality 3D Textured Shapes** (Gao et al.) | [arXiv](https://arxiv.org/abs/2209.11163)
+
+**Key idea**: Generate textured 3D meshes directly.
+
+**Representation**: SDF for geometry, texture fields for appearance.
+
+**Benefits**: Explicit mesh output, high quality textures.
+
+---
+
+### StyleSDF (2022)
+
+**StyleSDF: High-Resolution 3D-Consistent Image and Geometry Generation** (Or-El et al.) | [arXiv](https://arxiv.org/abs/2112.11427)
+
+**Key innovation**: StyleGAN-based generation with SDF representation.
+
+**Benefits**: High resolution, 3D consistent.
+
+---
+
+## Core Concepts
+
+### Implicit 3D Representations
+
+**NeRF**: Neural radiance fields for rendering.
+
+**SDF**: Signed distance functions for geometry.
+
+**Hybrid**: Combine geometry and appearance representations.
+
+---
+
+### 3D GANs
+
+**Generator**: Creates 3D representations (NeRF/SDF).
+
+**Discriminator**: Distinguishes real/fake 3D shapes.
+
+**Training**: Adversarial training for 3D generation.
+
+---
+
+### Direct 3D Generation
+
+**Advantages**: 
+- No 2D supervision needed
+- Better 3D consistency
+- Controllable generation
+
+**Challenges**: More complex training, requires 3D data.
+
+---
+
+## Applications
+
+- 3D asset generation
+- Character creation
+- Scene generation
+- Shape synthesis
+
+---
+
+## Related Modules
+
+- Module 7.1: Score Distillation Sampling (2D-supervised 3D generation)
+- Module 7.2: 2D→3D Lifting (image-based reconstruction)
+- Module 5.1: NeRF Fundamentals (implicit representation)
+
+---
+
+## Additional Resources
+
+- **EG3D Repository**: Official implementation
+- **GET3D**: High-quality mesh generation
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Previous: 2D→3D Lifting ←](07-sds-2d-to-3d.md.html)
+</div>
+
+</code>
+</body>
+</html>

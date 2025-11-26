@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Libraries & Tools</title>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Libraries & Tools
+
+**Module 12.1** | [← Back to Index](../index.md.html) | [Next: Datasets →](12-tools-datasets.md.html)
+
+---
+
+## Overview
+
+Essential libraries and tools for 3D/4D computer vision, neural rendering, and spatial understanding. From classical geometry to modern neural methods.
+
+---
+
+## Structure-from-Motion & 3D Reconstruction
+
+### COLMAP
+**Website**: [colmap.github.io](https://colmap.github.io/)
+
+**Purpose**: Structure-from-Motion and multi-view stereo.
+
+**Features**:
+- Dense/sparse reconstruction
+- Camera calibration
+- Bundle adjustment
+- MVS pipeline
+
+**Usage**: Standard tool for NeRF data preprocessing.
+
+---
+
+## 3D Data Processing
+
+### Open3D
+**Website**: [open3d.org](http://www.open3d.org/)
+
+**Purpose**: 3D data processing library.
+
+**Features**:
+- Point cloud processing
+- Mesh operations
+- Visualization
+- Registration
+- SLAM
+
+**Language**: Python, C++
+
+---
+
+## Deep Learning for 3D
+
+### PyTorch3D
+**Website**: [pytorch3d.org](https://pytorch3d.org/)
+
+**Purpose**: 3D deep learning with PyTorch.
+
+**Features**:
+- Differentiable rendering
+- Mesh operations
+- Point cloud processing
+- 3D transforms
+
+**Key modules**: Renderer, Meshes, PointClouds
+
+---
+
+### Kaolin
+**Website**: [kaolin.readthedocs.io](https://kaolin.readthedocs.io/)
+
+**Purpose**: 3D deep learning library by NVIDIA.
+
+**Features**:
+- Differentiable rendering
+- 3D operations
+- Neural graphics primitives
+
+---
+
+## Neural Rendering
+
+### Nerfstudio
+**Website**: [nerf.studio](https://nerf.studio/)
+
+**Purpose**: Framework for NeRF development.
+
+**Features**:
+- Many NeRF methods implemented
+- Easy configuration
+- Visualization tools
+- Data processing
+
+**Usage**: Best starting point for NeRF research.
+
+---
+
+### tiny-cuda-nn
+**Purpose**: Fast CUDA neural networks.
+
+**Usage**: Accelerates NeRF and neural fields training.
+
+**Features**: Hash encoding, MLP optimization
+
+---
+
+### gaussiansplatting
+**Repository**: [repo-sam.inria.fr](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/)
+
+**Purpose**: Official 3D Gaussian Splatting implementation.
+
+**Features**: Real-time rendering, high quality
+
+---
+
+## 3D Perception & Detection
+
+### OpenMMLab
+**Website**: [openmmlab.com](https://www.openmmlab.com/)
+
+**Frameworks**:
+- **mmdetection3d**: 3D object detection
+- **mmcv**: Computer vision library
+- **mmengine**: Training framework
+
+**Usage**: BEV models, multi-view detection, 3D perception
+
+---
+
+## Feature Matching & SLAM
+
+### COLMAP (see above)
+For feature matching and SfM.
+
+### DROID-SLAM
+**Purpose**: Deep visual SLAM.
+
+**Features**: Dense tracking, bundle adjustment
+
+---
+
+## Related Modules
+
+- Module 3.2: Structure-from-Motion (COLMAP usage)
+- Module 5.1: NeRF Fundamentals (Nerfstudio)
+- Module 6.1: Gaussian Splatting (official repo)
+- Module 11.1: Differentiable Rendering (PyTorch3D)
+
+---
+
+## Additional Resources
+
+- **GitHub**: Search for implementations of specific methods
+- **Papers with Code**: [paperswithcode.com](https://paperswithcode.com/)
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Datasets →](12-tools-datasets.md.html)
+</div>
+
+</code>
+</body>
+</html>

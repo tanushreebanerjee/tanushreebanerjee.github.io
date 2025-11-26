@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Parametric Human Models</title>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Parametric Human Models
+
+**Module 9.1** | [← Back to Index](../index.md.html) | [Next: Neural Humans →](09-humans-neural.md.html)
+
+---
+
+## Overview
+
+Parametric human models: Low-dimensional representations of human body shape and pose. SMPL and related models enable compact encoding of human geometry.
+
+---
+
+## Essential Papers
+
+### 🔥🔥 SMPL (2015)
+
+**SMPL: A Skinned Multi-Person Linear Model** (Loper et al.) | [Project](https://smpl.is.tue.mpg.de/)
+
+**Key idea**: Linear blend skinning model with learned shape and pose spaces.
+
+**Parameters**:
+- **Shape**: 10 parameters (PCA basis for body shape variation)
+- **Pose**: 72 parameters (23 joints × 3 rotation axes)
+- **Output**: 6890 vertices mesh
+
+**Skinning**: Linear blend skinning to pose the body.
+
+**Training**: Learned from thousands of 3D body scans.
+
+[Figure placeholder: SMPL model showing shape and pose parameters]
+
+---
+
+### SMPL-X / SMPL+H
+
+**Extensions**: Add hands, face, expressions.
+
+**SMPL-X**: Full body with hands and face.
+
+**SMPL+H**: SMPL with detailed hands.
+
+---
+
+### STAR (2020)
+
+**STAR: Sparse Trained Articulated Human Body Regressor**
+
+**Key innovation**: Better generalization, sparser representation.
+
+---
+
+## Core Concepts
+
+### Linear Blend Skinning (LBS)
+
+**Process**:
+1. Define skeleton with joints
+2. Assign vertices to bones (weights)
+3. Transform vertices by bone transformations
+4. Blend multiple bone influences
+
+**Formula**: $v' = \sum w_i T_i v$ where $T_i$ is bone transform, $w_i$ is weight.
+
+---
+
+### Shape and Pose Spaces
+
+**Shape space**: Learned PCA basis for body shape variation.
+
+**Pose space**: Joint rotations (axis-angle representation).
+
+**Decoupling**: Separate shape and pose enables better generalization.
+
+---
+
+### Skinning Weights
+
+**Definition**: Per-vertex weights indicating bone influence.
+
+**Learning**: Learned during model training.
+
+**Constraints**: Weights sum to 1, enforce smoothness.
+
+---
+
+## Applications
+
+- Human pose estimation
+- Motion capture
+- Character animation
+- Virtual try-on
+- Human reconstruction
+
+---
+
+## Related Modules
+
+- Module 9.2: Neural Humans (neural extensions)
+- Module 9.3: Monocular Human Reconstruction (uses SMPL)
+
+---
+
+## Additional Resources
+
+- **SMPL Website**: [smpl.is.tue.mpg.de](https://smpl.is.tue.mpg.de/)
+- **SMPL-X**: Extended model with face and hands
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Neural Humans →](09-humans-neural.md.html)
+</div>
+
+</code>
+</body>
+</html>

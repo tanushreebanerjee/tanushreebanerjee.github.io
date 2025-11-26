@@ -156,6 +156,106 @@ $$L = -\log \frac{\exp(\text{sim}(z_i, z_j) / \tau)}{\sum_{k \neq i} \exp(\text{
 
 ---
 
+## Problems Solved by Self-Supervised Learning
+
+### Learning from Unlabeled Data
+**Problem**: Supervised learning requires expensive manual labeling. For vision, ImageNet-scale labeling costs millions of dollars and thousands of person-hours.
+
+**Self-supervised solution**: Learn representations from unlabeled data using pretext tasks (predicting rotations, solving jigsaw puzzles) or contrastive learning. Leverages vast amounts of unlabeled images available on internet.
+
+[Figure placeholder: Comparison showing supervised learning (labeled images → expensive) vs self-supervised (unlabeled images → free)]
+
+### Transfer Learning Foundation
+**Problem**: Training models from scratch for each task is inefficient. Need reusable representations that transfer across tasks.
+
+**Solution**: Self-supervised pre-training learns general-purpose features. Fine-tune on downstream tasks with small labeled datasets. Enables learning with limited labels.
+
+### Better Representations
+**Problem**: Supervised learning can produce task-specific features that don't generalize well. Features may focus on dataset-specific biases.
+
+**Self-supervised solution**: Learns more general, robust features by avoiding task-specific supervision. Better generalization to new tasks and domains.
+
+### Scaling with Data
+**Problem**: Labeled datasets limited by annotation cost. Can't scale to internet-scale data.
+
+**Self-supervised solution**: Can use billions of unlabeled images. Scales better with data. DINOv2 uses 142M images, would be impractical to label.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Evaluation and Metrics
+**Problem**: Measuring quality of self-supervised representations is indirect - need to evaluate on downstream tasks. No direct quality metric.
+
+**Current solutions**: Linear probing, fine-tuning evaluation, but still indirect and task-dependent.
+
+**Open question**: Better metrics for representation quality? Theoretical understanding?
+
+### Theoretical Understanding
+**Problem**: Why does contrastive learning work so well? What features does it learn? Theoretical foundations still incomplete.
+
+**Open question**: Better theoretical understanding? Guarantees about learned features?
+
+### Computational Cost
+**Problem**: Large-scale self-supervised training (e.g., DINOv2 with 142M images) requires massive compute resources.
+
+**Current solutions**: More efficient architectures, better training strategies, but still expensive.
+
+**Open question**: Can we achieve similar quality with less compute? More efficient algorithms?
+
+### Task-Specific vs General Features
+**Problem**: Self-supervised features are general but may not be optimal for specific tasks. Fine-tuning helps but may forget general features.
+
+**Open question**: Better balance between general and task-specific features? Transfer without forgetting?
+
+### Domain Generalization
+**Problem**: Features learned on natural images (ImageNet, web images) may not transfer well to specialized domains (medical, satellite, etc.).
+
+**Open question**: Better domain generalization? Self-supervised learning for specialized domains?
+
+### Bias and Fairness
+**Problem**: Self-supervised models learn biases from training data. Web-scraped data contains societal biases.
+
+**Open question**: Better bias mitigation? Fairness in self-supervised learning?
+
+---
+
+## Broader Insights and Implications
+
+### The Power of Unlabeled Data
+**Insight**: Self-supervised learning demonstrates that vast amounts of unlabeled data can be leveraged effectively. Labels aren't always necessary.
+
+**Broader impact**: Enables learning from internet-scale datasets. Reduces dependence on expensive annotation. Opens up new data sources.
+
+### Pretext Tasks Reveal Structure
+**Insight**: Simple pretext tasks (predicting rotation, solving jigsaw) force models to learn useful features. The task design guides what features are learned.
+
+**Broader impact**: Shows that task design matters. Better pretext tasks → better features. Encourages exploration of novel pretext tasks.
+
+### Contrastive Learning as Universal Framework
+**Insight**: Contrastive learning (learn by comparing) appears to be general principle. Works across modalities (images, text, audio, 3D).
+
+**Broader impact**: Unified framework for learning representations. Influences design of methods across domains.
+
+### The Importance of Data Augmentation
+**Insight**: Self-supervised learning reveals critical importance of data augmentation. Strong augmentations essential for good representations.
+
+**Broader impact**: Highlights that augmentation design is crucial. Better augmentations can improve representations more than architectural changes.
+
+### Foundation Models Paradigm
+**Insight**: Self-supervised pre-training creates foundation models. Single model can be used for many downstream tasks.
+
+**Broader impact**: Enables foundation model paradigm. Pre-train once, use for many tasks. More efficient than task-specific training.
+
+### Emergent Properties
+**Insight**: DINO shows that self-supervised learning can produce unexpected emergent properties (attention maps that segment objects).
+
+**Broader impact**: Suggests that powerful representations may have emergent properties we don't explicitly train for. Encourages exploration of what models learn.
+
+[Placeholder for manual expansion: Add insights about impact on computer vision, democratization of AI, connections to biological learning]
+
+---
+
 ## Applications
 
 - Pre-training for downstream tasks
@@ -163,6 +263,8 @@ $$L = -\log \frac{\exp(\text{sim}(z_i, z_j) / \tau)}{\sum_{k \neq i} \exp(\text{
 - Image retrieval
 - Segmentation (DINO attention)
 - Foundation for other models (CLIP uses self-supervised features)
+
+[Figure placeholder: Applications diagram showing self-supervised pre-training → downstream tasks: classification, detection, segmentation, retrieval, etc.]
 
 ---
 

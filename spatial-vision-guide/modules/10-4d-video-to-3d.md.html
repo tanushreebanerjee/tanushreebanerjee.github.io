@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Video-to-3D/4D</title>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Video-to-3D/4D
+
+**Module 10.2** | [← Back to Index](../index.md.html) | [Previous: Dynamic NeRFs ←](10-4d-dynamic-nerf.md.html)
+
+---
+
+## Overview
+
+Video-to-3D/4D: Convert monocular videos into 3D or 4D (dynamic 3D) representations. Enables free-viewpoint video and dynamic scene reconstruction.
+
+---
+
+## Essential Papers
+
+### Neural Scene Flow Fields (NSFF) (2021)
+
+**Neural Scene Flow Fields for Space-Time View Synthesis of Dynamic Scenes** (Li et al.) | [arXiv](https://arxiv.org/abs/2011.13084)
+
+**Key idea**: Joint reconstruction of geometry, appearance, and scene flow.
+
+**Representation**: Neural fields for static scene + scene flow.
+
+**Benefits**: Novel view synthesis of dynamic scenes.
+
+---
+
+### Video-to-3D Methods
+
+**Approaches**:
+- **Multi-view stereo**: Treat video as multi-view input
+- **Neural rendering**: Use NeRF/Gaussian Splatting
+- **Hybrid**: Combine geometry + neural rendering
+
+---
+
+### Recent Methods (2024-2025)
+
+**Key innovations**:
+- Better temporal consistency
+- Faster reconstruction
+- Higher quality
+
+---
+
+## Core Concepts
+
+### Video as Multi-View
+
+**Insight**: Video frames can be treated as multi-view images.
+
+**Challenges**: 
+- Moving cameras
+- Dynamic scenes
+- Temporal consistency
+
+**Solutions**: 
+- Estimate camera poses
+- Handle scene motion
+- Ensure consistency
+
+---
+
+### Temporal Consistency
+
+**Goal**: Reconstructed 3D/4D should be consistent across frames.
+
+**Methods**:
+- Temporal regularization
+- Scene flow
+- Deformation fields
+
+---
+
+### Reconstruction Pipeline
+
+**Step 1**: Estimate camera poses (SfM or learning-based).
+
+**Step 2**: Reconstruct geometry (MVS, neural rendering).
+
+**Step 3**: Model dynamics (scene flow, deformation).
+
+**Step 4**: Refine for consistency.
+
+---
+
+## Applications
+
+- Free-viewpoint video
+- Video editing
+- AR/VR content creation
+- Sports analysis
+- Virtual production
+
+---
+
+## Related Modules
+
+- Module 10.1: Dynamic NeRFs (neural rendering approach)
+- Module 3.2: Structure-from-Motion (camera pose estimation)
+- Module 4.3: Scene Flow (3D motion)
+
+---
+
+## Additional Resources
+
+- **NSFF**: Neural scene flow fields
+- **Video-to-3D**: Research papers and implementations
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Previous: Dynamic NeRFs ←](10-4d-dynamic-nerf.md.html)
+</div>
+
+</code>
+</body>
+</html>

@@ -145,19 +145,139 @@ Bird's-Eye-View (BEV) models: Transform multi-view camera features into unified 
 
 ---
 
+## Problems Solved by BEV Models
+
+### Unified Multi-Camera Representation
+**Problem**: Autonomous vehicles have multiple cameras (e.g., 6 around vehicle). Each camera sees different viewpoint. How to combine information from all cameras for 3D understanding?
+
+**BEV solution**: Lift all camera features to unified bird's-eye-view representation. Single 2D grid in BEV space aggregates information from all cameras, naturally handles overlapping views and occlusions.
+
+[Figure placeholder: Visualization showing 6 camera views around vehicle being transformed into unified BEV representation]
+
+### Planning-Ready Representation
+**Problem**: 3D object detection alone insufficient for autonomous driving. Need representation suitable for planning, prediction, trajectory optimization.
+
+**BEV solution**: BEV representation is naturally suited for planning tasks - top-down view matches how planning algorithms reason about space. Objects, lanes, obstacles all in same coordinate frame.
+
+### Multi-Task Learning
+**Problem**: Autonomous driving requires multiple tasks (detection, segmentation, prediction). Separate models for each task inefficient and may produce inconsistent results.
+
+**BEV solution**: Single BEV representation can support multiple tasks (BEVFusion). Train detection, segmentation, occupancy prediction all from same BEV features.
+
+### Handling Arbitrary Camera Rigs
+**Problem**: Different vehicles have different camera configurations. Method should work with arbitrary camera setups.
+
+**LSS solution**: Lift-splat-shoot naturally handles arbitrary camera rigs - no assumptions about specific camera layout.
+
+### Temporal Reasoning
+**Problem**: Single frame lacks temporal context. Moving objects, occlusions, predictions all benefit from temporal information.
+
+**BEVFormer solution**: Temporal attention enables leveraging previous frames while maintaining real-time performance.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Depth Ambiguity
+**Problem**: Single camera view cannot determine absolute depth. Multiple views needed to resolve ambiguity.
+
+**Current solutions**: Depth prediction networks, multi-view aggregation, but depth estimation remains challenging especially at long distances.
+
+**Open question**: Better depth understanding with fewer views? More robust to depth errors?
+
+### Scale Ambiguity
+**Problem**: Object size estimation can be ambiguous, especially for distant objects or objects with unusual shapes.
+
+**Remaining**: Challenging for small objects, far objects, objects partially occluded.
+
+### Occlusion Handling
+**Problem**: Some objects partially or fully occluded from some camera views.
+
+**Current solutions**: Multi-view aggregation helps, but heavily occluded objects still challenging.
+
+**Open question**: Better reasoning about occlusions? Explicit occlusion modeling?
+
+### Real-Time Performance
+**Problem**: BEVFormer and similar transformer-based methods can be computationally expensive.
+
+**Current solutions**: Lighter architectures, optimization techniques, but quality/efficiency trade-off remains.
+
+**Open question**: Can we achieve state-of-the-art quality at significantly lower compute?
+
+### Long-Range Perception
+**Problem**: Detection quality degrades with distance. Critical for highway driving where objects far away.
+
+**Open question**: Better features for long-range? Hierarchical representations?
+
+### Weather and Lighting
+**Problem**: Challenging lighting conditions (night, rain, fog) degrade performance.
+
+**Remaining**: Robustness to adverse conditions still active area of research.
+
+### Generalization Across Domains
+**Problem**: Models trained on one dataset (e.g., nuScenes) may not generalize to different locations, camera setups, or vehicle types.
+
+**Open question**: Domain adaptation, generalization, or models that work across diverse conditions?
+
+---
+
+## Broader Insights and Implications
+
+### The Power of Intermediate Representations
+**Insight**: BEV demonstrates value of explicit intermediate representations. Rather than direct 2D→3D mapping, intermediate BEV representation enables:
+- Better multi-view aggregation
+- Multi-task learning
+- Planning/prediction integration
+- Interpretability
+
+**Broader impact**: Influences design of other multi-view methods. Explicit intermediate representations can be beneficial, not just overhead.
+
+### Unifying Perception and Planning
+**Insight**: BEV representation bridges perception (what's in the scene) and planning (how to move). Same representation serves both.
+
+**Broader impact**: Enables end-to-end learning of perception-planning systems. Represents shift toward more integrated autonomous driving architectures.
+
+### Transformer Architecture for 3D
+**Insight**: BEVFormer shows transformers effective for 3D perception, not just 2D. Attention mechanisms naturally handle multi-view aggregation.
+
+**Broader impact**: Validates transformer architecture for 3D tasks. Influences design of other 3D perception methods.
+
+### Temporal Fusion Strategies
+**Insight**: BEVFormer's temporal attention provides effective way to leverage history without just concatenating frames.
+
+**Broader impact**: Shows value of learned temporal fusion vs simple concatenation. Influences design of video-based 3D methods.
+
+### The Autonomous Driving Stack Integration
+**Insight**: BEV representation enables tighter integration of perception, prediction, and planning modules in autonomous driving stack.
+
+**Broader impact**: Represents architectural shift in autonomous driving systems. More integrated, less modular approaches may enable better end-to-end performance.
+
+[Placeholder for manual expansion: Add insights about industry adoption, deployment challenges, safety considerations, connections to other autonomous driving technologies]
+
+---
+
 ## Comparison with Multi-View Transformers
 
 **BEV methods**: 
 - 2D features → BEV features → 3D detection
 - Explicit intermediate representation
 - Good for planning/prediction tasks
+- Better temporal reasoning
+- More complex architecture
 
 **Multi-view transformers** (DETR3D, PETR):
 - 2D features → Direct 3D detection
 - No explicit BEV intermediate
 - Simpler architecture
+- Faster inference
+- Less suitable for multi-task learning
 
-**Trade-offs**: BEV methods often better for autonomous driving (planning, prediction). Multi-view transformers simpler and faster.
+**Trade-offs**: 
+- BEV methods often better for autonomous driving (planning, prediction, multi-task)
+- Multi-view transformers simpler and faster, good when only detection needed
+- Choice depends on application requirements
+
+[Figure placeholder: Architecture comparison diagram showing data flow differences between BEV and multi-view transformer methods]
 
 ---
 

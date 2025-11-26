@@ -146,6 +146,104 @@ Where $\text{sim}$ is cosine similarity, $\tau$ is temperature.
 
 ---
 
+## Problems Solved by Multimodal Foundation Models
+
+### Vision-Language Alignment
+**Problem**: Images and text exist in separate spaces. How to connect them? Previous methods required task-specific training or limited to specific domains.
+
+**CLIP solution**: Learns joint embedding space where images and text with similar meaning are close. Enables zero-shot transfer from text to images without task-specific training.
+
+[Figure placeholder: Visualization showing images and text being mapped to shared embedding space, with similar concepts close together]
+
+### Zero-Shot Transfer
+**Problem**: Traditional vision models require labeled training data for each task. New tasks require collecting labels and retraining.
+
+**CLIP solution**: Zero-shot classification - describe classes in text, classify images without training. Enables applying model to new tasks without retraining.
+
+### Scaling with Web Data
+**Problem**: Collecting and labeling vision datasets is expensive and limited in scale.
+
+**CLIP solution**: Uses 400M image-text pairs scraped from internet. Leverages natural image-text associations (captions, alt text). Scales to massive datasets.
+
+### Natural Language Control
+**Problem**: Controlling vision models traditionally required training task-specific models or using limited fixed vocabularies.
+
+**CLIP solution**: Natural language provides flexible, expressive control. Can describe concepts, relationships, abstract ideas in text.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Fine-Grained Understanding
+**Problem**: CLIP excels at high-level concepts but struggles with fine-grained details (exact object counts, spatial relationships, precise attributes).
+
+**Open question**: Better fine-grained understanding? Combining coarse (CLIP) and fine-grained features?
+
+### Compositional Reasoning
+**Problem**: Understanding complex compositions ("red car to the left of blue house") or multi-object relationships can be challenging.
+
+**Open question**: Better compositional reasoning? Structured understanding of scenes?
+
+### Robustness and Adversarial Examples
+**Problem**: CLIP can be fooled by adversarial examples or distribution shift. Performance degrades on out-of-distribution data.
+
+**Open question**: Better robustness? Adversarial training? Domain adaptation?
+
+### Bias and Fairness
+**Problem**: CLIP learns biases from web data. Can exhibit gender, racial, cultural biases.
+
+**Open question**: Better bias mitigation? Fairness-aware training? Debasing techniques?
+
+### Computational Cost
+**Problem**: CLIP requires large models and compute. ViT-L/14 has hundreds of millions of parameters.
+
+**Current solutions**: Smaller models, distillation, but quality trade-offs.
+
+**Open question**: More efficient architectures with same quality?
+
+### Evaluation
+**Problem**: Evaluating multimodal models is challenging. Zero-shot tasks may not capture true understanding.
+
+**Open question**: Better evaluation metrics? More comprehensive benchmarks?
+
+---
+
+## Broader Insights and Implications
+
+### Scaling Laws for Multimodal Learning
+**Insight**: CLIP demonstrates that scale (data, model, compute) dramatically improves performance. More data → better alignment → better zero-shot transfer.
+
+**Broader impact**: Validates scaling hypothesis for multimodal learning. Encourages investment in large-scale datasets and models.
+
+### Natural Language as Universal Interface
+**Insight**: CLIP shows that natural language can serve as universal interface for vision. Text provides flexible, expressive control.
+
+**Broader impact**: Enables more intuitive interaction with AI systems. Text becomes control mechanism for vision tasks. Influences design of AI interfaces.
+
+### The Power of Weak Supervision
+**Insight**: CLIP uses "weak" supervision - image-text pairs from web, not carefully labeled datasets. Shows that weak supervision at scale can be very effective.
+
+**Broader impact**: Demonstrates value of weak supervision. Encourages use of noisy web data. Reduces need for expensive annotation.
+
+### Foundation Models for Vision
+**Insight**: CLIP creates foundation model for vision - single model enables many tasks through zero-shot transfer or fine-tuning.
+
+**Broader impact**: Establishes foundation model paradigm for vision. Influences design of subsequent vision models. Enables new application paradigms.
+
+### Transfer Learning Revolution
+**Insight**: CLIP's zero-shot transfer demonstrates that large pre-trained models can transfer to new tasks without fine-tuning.
+
+**Broader impact**: Changes how we approach new vision tasks. Start with foundation model, adapt as needed. Reduces need for task-specific training.
+
+### Multimodal Understanding
+**Insight**: CLIP learns semantic alignment between vision and language. This alignment captures meaningful relationships, not just statistical correlations.
+
+**Broader impact**: Shows that vision-language alignment is learnable and powerful. Enables new applications combining vision and language. Influences design of multimodal systems.
+
+[Placeholder for manual expansion: Add insights about impact on AI systems, creative applications, ethical considerations, future of human-AI interaction]
+
+---
+
 ## Applications
 
 **Image generation**: CLIP text encoder conditions diffusion models (Stable Diffusion).
@@ -157,6 +255,8 @@ Where $\text{sim}$ is cosine similarity, $\tau$ is temperature.
 **Visual question answering**: Answer questions about images.
 
 **3D generation**: CLIP guides 3D optimization (Score Distillation - Module 7.1).
+
+[Figure placeholder: Applications diagram showing CLIP enabling various vision-language tasks: zero-shot classification, image retrieval, text-to-image generation, visual QA, etc.]
 
 ---
 

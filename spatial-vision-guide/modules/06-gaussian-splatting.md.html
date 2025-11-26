@@ -145,23 +145,131 @@ $$C = \sum_{i \in N} c_i \alpha_i \prod_{j=1}^{i-1} (1 - \alpha_j)$$
 
 ---
 
+## Problems Solved by Gaussian Splatting
+
+### Real-Time Rendering at NeRF Quality
+**Problem**: NeRF achieves high quality but is too slow for real-time applications (seconds per frame). Previous real-time methods sacrificed quality.
+
+**Gaussian Splatting solution**: Achieves real-time rendering (60+ FPS) while maintaining quality comparable to NeRF through efficient rasterization of 3D primitives.
+
+[Figure placeholder: Side-by-side comparison: NeRF rendering (high quality, slow) vs Gaussian Splatting (high quality, real-time)]
+
+### Fast Training
+**Problem**: NeRF training takes hours to days, even with acceleration methods.
+
+**Gaussian Splatting solution**: Training completes in minutes to hours, enabling rapid iteration and experimentation.
+
+### Memory Efficiency for Real-Time
+**Problem**: Real-time rendering requires storing and efficiently accessing scene representation during inference.
+
+**Gaussian Splatting solution**: Discrete Gaussian primitives enable efficient GPU rasterization and memory access patterns optimized for real-time rendering.
+
+### Interactive Viewing
+**Problem**: NeRF requires per-frame rendering computation, making interactive exploration impossible.
+
+**Gaussian Splatting solution**: Real-time performance enables interactive viewing, VR/AR applications, and dynamic camera control.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Initialization Dependency
+**Problem**: Requires high-quality point cloud from COLMAP/SfM for initialization. Poor initialization → poor results.
+
+**Current solutions**: InstantSplat and other methods try to reduce initialization requirements, but quality still depends on good initial points.
+
+**Open question**: Can we initialize from scratch or very sparse views without SfM?
+
+### Memory for Large Scenes
+**Problem**: Large scenes require millions of Gaussians → large memory footprint (hundreds of MB to GB).
+
+**Current solutions**: Compression methods, quantization, hierarchical representations.
+
+**Open question**: Can we achieve similar quality with significantly fewer Gaussians?
+
+### Extreme Viewpoints
+**Problem**: Rendering from viewpoints far from training views can show artifacts or degraded quality.
+
+**Open question**: Better generalization to novel viewpoints without explicit supervision?
+
+### View-Dependent Effects
+**Problem**: While SH coefficients capture view-dependent appearance, very specular surfaces or complex lighting can be challenging.
+
+**Remaining**: Limited by SH representation capacity compared to NeRF's continuous function.
+
+### Dynamic Scenes
+**Problem**: Original Gaussian Splatting is static only.
+
+**Current solutions**: 4D Gaussian Splatting (Module 6.2) handles dynamic scenes, but more complex.
+
+**Open question**: Real-time dynamic rendering at same quality and efficiency?
+
+### Geometry Extraction
+**Problem**: Gaussians are rendering primitives, not explicit geometry. Extracting meshes requires conversion steps.
+
+**Open question**: Direct mesh generation or better geometry extraction methods?
+
+### Textured/Transparent Surfaces
+**Problem**: Thin structures, transparent objects, complex textures can be challenging to represent with discrete Gaussians.
+
+**Remaining**: Some artifacts on fine details, edges.
+
+---
+
+## Broader Insights and Implications
+
+### The Primitive Choice Matters
+**Insight**: Gaussian Splatting demonstrates that choosing the right primitive (3D Gaussians) enables dramatically different efficiency/quality trade-offs than implicit representations (NeRF).
+
+**Broader impact**: Opens research direction on primitive selection - different primitives may be optimal for different applications. Hybrid approaches combining primitives show promise.
+
+### Rasterization Still Relevant
+**Insight**: While differentiable rendering revolutionized learning, traditional rasterization (when made differentiable) can still be highly efficient for inference.
+
+**Broader impact**: Combines benefits of deep learning (differentiable optimization) with benefits of traditional graphics (efficient rasterization). Shows value of hybrid classical/deep approaches.
+
+### Discrete vs Continuous Representations
+**Insight**: Gaussian Splatting uses discrete primitives, NeRF uses continuous function. Each has advantages:
+- Discrete: Efficient storage/access, explicit control
+- Continuous: Smooth interpolation, compact representation
+
+**Broader impact**: Choice of discrete vs continuous is fundamental design decision. Different problems benefit from different choices.
+
+### Quality vs Speed Trade-off Can Be Shifted
+**Insight**: Gaussian Splatting shows that clever representation design can shift the quality/speed Pareto frontier - achieving both better quality AND speed than previous methods in some regimes.
+
+**Broader impact**: Encourages exploration of novel representations. Better representations can improve multiple metrics simultaneously, not just trade-offs.
+
+### The Importance of Initialization
+**Insight**: Good initialization (from SfM point cloud) enables fast convergence. Without it, results degrade.
+
+**Broader impact**: Highlights value of multi-stage pipelines (SfM → Gaussian Splatting). Classical methods still provide valuable preprocessing for deep learning.
+
+[Placeholder for manual expansion: Add insights about impact on industry, VR/AR applications, real-time graphics, connections to other methods]
+
+---
+
 ## Comparison with NeRF
 
 **Gaussian Splatting**:
-- Real-time rendering
-- Fast training
+- Real-time rendering (60+ FPS)
+- Fast training (minutes to hours)
 - Requires point cloud initialization
 - Discrete primitives
+- Memory: 50-500 MB per scene
 
 **NeRF**:
 - Slow rendering (seconds per frame)
 - Slow training (hours to days)
 - Continuous representation
 - Better extrapolation to novel views
+- Memory: 5-10 MB per scene (more compact)
 
 **Use cases**:
-- Gaussian Splatting: Real-time applications, VR/AR, interactive viewing
-- NeRF: Highest quality, research, offline rendering
+- Gaussian Splatting: Real-time applications, VR/AR, interactive viewing, gaming
+- NeRF: Highest quality offline rendering, research, when real-time not needed
+
+[Figure placeholder: Comparison table showing detailed metrics: rendering speed, training time, quality metrics, memory usage, initialization requirements]
 
 ---
 

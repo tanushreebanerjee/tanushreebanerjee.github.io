@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Neural Humans</title>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Neural Humans
+
+**Module 9.2** | [← Back to Index](../index.md.html) | [Next: Monocular Human Reconstruction →](09-humans-monocular.md.html)
+
+---
+
+## Overview
+
+Neural humans: Neural radiance fields and implicit representations for human rendering. Extend NeRF to handle articulated humans with realistic appearance.
+
+---
+
+## Essential Papers
+
+### 🔥 HumanNeRF (2022)
+
+**HumanNeRF: Free-viewpoint Rendering of Moving People from Monocular Video** (Weng et al.) | [arXiv](https://arxiv.org/abs/2201.04127)
+
+**Key idea**: NeRF for humans with pose conditioning.
+
+**Architecture**: 
+- SMPL pose conditioning
+- NeRF representation per pose
+- Pose-aware rendering
+
+**Benefits**: Novel view synthesis, realistic appearance.
+
+---
+
+### Neural Body (2021)
+
+**Neural Body: Implicit Neural Representations with Structured Latent Codes for Novel View Synthesis of Dynamic Humans** (Peng et al.) | [arXiv](https://arxiv.org/abs/2012.15838)
+
+**Key innovation**: Structured latent codes attached to SMPL vertices.
+
+**Process**: Learn per-vertex features, aggregate to query points, decode with NeRF.
+
+**Benefits**: Better generalization, efficient.
+
+---
+
+### Instant-NGP + SMPL
+
+**Key idea**: Combine Instant-NGP acceleration with SMPL human representation.
+
+**Benefits**: Fast training and rendering for humans.
+
+---
+
+## Core Concepts
+
+### Pose-Conditioned NeRF
+
+**Challenge**: Humans are articulated, need to handle pose changes.
+
+**Solution**: Condition NeRF on SMPL pose parameters.
+
+**Methods**:
+- Pose embedding
+- Canonical space mapping
+- Pose-aware feature aggregation
+
+---
+
+### Canonical Space
+
+**Idea**: Transform to canonical pose, learn NeRF in canonical space.
+
+**Process**: 
+1. Transform query point to canonical space using SMPL
+2. Query NeRF in canonical space
+3. Transform result back
+
+**Benefits**: Better generalization, handles pose changes.
+
+---
+
+### Structured Representations
+
+**Neural Body**: Features attached to SMPL vertices.
+
+**Benefits**: Better structure, faster training.
+
+---
+
+## Applications
+
+- Free-viewpoint video
+- Virtual try-on
+- Motion capture
+- Human animation
+- Telepresence
+
+---
+
+## Related Modules
+
+- Module 9.1: Parametric Human Models (SMPL foundation)
+- Module 5.1: NeRF Fundamentals (underlying representation)
+
+---
+
+## Additional Resources
+
+- **HumanNeRF**: Official repository
+- **Neural Body**: Project page
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Next: Monocular Human Reconstruction →](09-humans-monocular.md.html)
+</div>
+
+</code>
+</body>
+</html>

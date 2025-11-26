@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Inverse Rendering</title>
+<script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+</head>
+<body>
+
+<code style="display:none">
+<!-- Markdeep: https://casual-effects.com/markdeep/ -->
+
+# Inverse Rendering
+
+**Module 11.2** | [← Back to Index](../index.md.html) | [Previous: Differentiable Rendering ←](11-diff-rendering.md.html)
+
+---
+
+## Overview
+
+Inverse rendering: Recover 3D shape, materials, and lighting from images. Uses differentiable rendering to optimize scene parameters to match observations.
+
+---
+
+## Essential Papers
+
+### NeRFactor (2021)
+
+**NeRFactor: Neural Factorization of Shape and Reflectance under an Unknown Illumination** (Bi et al.) | [arXiv](https://arxiv.org/abs/2006.04970)
+
+**Key idea**: Factorize NeRF into geometry, BRDF, and lighting.
+
+**Process**:
+1. Train NeRF to learn appearance
+2. Extract geometry (marching cubes)
+3. Optimize BRDF and lighting
+
+**Output**: Decomposed scene with material properties.
+
+---
+
+### Relightable NeRF
+
+**Goal**: Recover lighting and enable relighting.
+
+**Methods**: 
+- Environment map estimation
+- Spherical harmonics lighting
+- Light source estimation
+
+---
+
+### Physically-based Neural Fields
+
+**Key idea**: Learn physically-based material properties.
+
+**Properties**: Albedo, roughness, metallic, normal maps.
+
+**Benefits**: Realistic materials, relightable scenes.
+
+---
+
+## Core Concepts
+
+### Scene Decomposition
+
+**Components**:
+- **Geometry**: 3D shape (mesh, SDF, NeRF)
+- **Material**: BRDF properties (albedo, roughness, etc.)
+- **Lighting**: Environment maps, light sources
+
+**Challenge**: Ambiguity between components.
+
+---
+
+### Material Estimation
+
+**BRDF**: Bidirectional Reflectance Distribution Function.
+
+**Properties**: 
+- Albedo (diffuse color)
+- Roughness (surface smoothness)
+- Metallic (metal vs dielectric)
+- Normal (surface orientation)
+
+**Methods**: Optimization with physical constraints.
+
+---
+
+### Lighting Estimation
+
+**Environment maps**: Omnidirectional lighting.
+
+**Light sources**: Point, directional, area lights.
+
+**Estimation**: From shadows, reflections, shading.
+
+---
+
+## Applications
+
+- Material editing
+- Relighting
+- Virtual product visualization
+- Scene understanding
+- AR/VR
+
+---
+
+## Related Modules
+
+- Module 11.1: Differentiable Rendering (required tool)
+- Module 5.3: Appearance & Relighting (NeRF-based)
+
+---
+
+## Additional Resources
+
+- **NeRFactor**: Project page
+- **Inverse Rendering**: Research papers
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+[← Back to Index](../index.md.html) | [Previous: Differentiable Rendering ←](11-diff-rendering.md.html)
+</div>
+
+</code>
+</body>
+</html>
