@@ -6,6 +6,74 @@
 <title>Spatial Understanding For Dummies: Basics of 3D/4D Computer Vision</title>
 <script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js"></script>
 <style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<style>
+/* System fonts matching personal website */
+body, .md { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+
+/* Burgundy color theme */
+.md h1, .md h2, .md h3, .md h4, .md h5, .md h6 { color: #8B1538; }
+.md a { color: #8B1538; }
+.md a:hover { color: #A0446C; }
+
+/* Smaller, consistent section headers */
+.md h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  padding-left: 0;
+}
+
+/* Consistent list indentation */
+.md ul {
+  margin-left: 0;
+  padding-left: 0;
+  list-style-position: outside;
+}
+
+.md li {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* Subsection labels (bold text) */
+.md strong {
+  font-weight: 600;
+  font-size: 0.95em;
+  display: inline-block;
+  margin-top: 0.8em;
+  margin-bottom: 0.3em;
+}
+
+/* Search box styling */
+#search-box {
+  width: 100%;
+  max-width: 500px;
+  padding: 0.6em 1em;
+  margin: 1.5em 0;
+  font-size: 1em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  border: 2px solid #8B1538;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#search-box:focus {
+  outline: none;
+  border-color: #A0446C;
+  box-shadow: 0 0 0 3px rgba(139, 21, 56, 0.1);
+}
+
+.search-result-hidden {
+  display: none !important;
+}
+
+.search-highlight {
+  background-color: #ffeb3b;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+</style>
 </head>
 <body>
 
@@ -21,7 +89,11 @@
 
 ---
 
-**Foundations**
+**Search:** <input type="text" id="search-box" placeholder="Search modules, topics, papers... (e.g., NeRF, Gaussian Splatting, CLIP)" autocomplete="off">
+
+---
+
+### Foundations
 
 **Prerequisites:**
 - [0.1: Core ML & Mathematics](modules/00-foundations-core-ml.md.html)
@@ -34,7 +106,7 @@
 
 ---
 
-**Generative Models**
+### Generative Models
 
 - [2.1: Diffusion Models](modules/02-generative-diffusion.md.html)
 - [2.2: Control & Conditioning (ControlNet)](modules/02-generative-control.md.html)
@@ -43,7 +115,7 @@
 
 ---
 
-**3D Understanding**
+### 3D Understanding
 
 **Classical 3D Vision:**
 - [3.1: Geometry & Camera Models](modules/03-3d-geometry.md.html)
@@ -65,7 +137,7 @@
 
 ---
 
-**Neural Rendering**
+### Neural Rendering
 
 **NeRF:**
 - [5.1: NeRF Fundamentals](modules/05-nerf-fundamentals.md.html)
@@ -82,7 +154,7 @@
 
 ---
 
-**Generative 3D**
+### Generative 3D
 
 **Score Distillation:**
 - [7.1: Score Distillation Sampling (DreamFusion)](modules/07-sds-fundamentals.md.html)
@@ -95,7 +167,7 @@
 
 ---
 
-**Specialized Topics**
+### Specialized Topics
 
 **Humans & Avatars:**
 - [9.1: Parametric Human Models (SMPL)](modules/09-humans-parametric.md.html)
@@ -104,7 +176,7 @@
 
 ---
 
-**Resources**
+### Resources
 
 - [12.1: Libraries & Tools](modules/12-tools-libraries.md.html)
 - [12.2: Datasets](modules/12-tools-datasets.md.html)
@@ -121,5 +193,125 @@ You can copy, modify, distribute, and use this work, even for commercial purpose
 ---
 
 </code>
+
+<script>
+(function() {
+  // Wait for Markdeep to process the page
+  window.onload = function() {
+    const searchBox = document.getElementById('search-box');
+    if (!searchBox) return;
+    
+    // Get all list items and sections
+    const allSections = document.querySelectorAll('.md h3, .md ul, .md li');
+    const allLinks = document.querySelectorAll('.md a');
+    
+    // Build search index
+    const searchIndex = [];
+    allSections.forEach(el => {
+      if (el.textContent && el.textContent.trim()) {
+        searchIndex.push({
+          element: el,
+          text: el.textContent.toLowerCase(),
+          originalHTML: el.innerHTML
+        });
+      }
+    });
+    
+    allLinks.forEach(link => {
+      if (link.textContent && link.textContent.trim() && link.href) {
+        searchIndex.push({
+          element: link,
+          text: link.textContent.toLowerCase(),
+          originalHTML: link.innerHTML,
+          href: link.href
+        });
+      }
+    });
+    
+    // Search function
+    function performSearch(query) {
+      const searchTerm = query.toLowerCase().trim();
+      
+      if (!searchTerm) {
+        // Show all if search is empty
+        allSections.forEach(el => {
+          el.classList.remove('search-result-hidden');
+          // Remove highlights
+          const highlights = el.querySelectorAll('.search-highlight');
+          highlights.forEach(h => {
+            h.outerHTML = h.textContent;
+          });
+        });
+        allLinks.forEach(link => {
+          link.classList.remove('search-result-hidden');
+          const highlights = link.querySelectorAll('.search-highlight');
+          highlights.forEach(h => {
+            h.outerHTML = h.textContent;
+          });
+        });
+        return;
+      }
+      
+      const terms = searchTerm.split(/\s+/).filter(t => t.length > 0);
+      
+      // Search and highlight
+      searchIndex.forEach(item => {
+        const matches = terms.every(term => item.text.includes(term));
+        
+        if (matches) {
+          item.element.classList.remove('search-result-hidden');
+          
+          // Highlight matching text
+          if (item.element.textContent && !item.element.querySelector('.search-highlight')) {
+            let html = item.originalHTML || item.element.innerHTML;
+            terms.forEach(term => {
+              const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+              html = html.replace(regex, '<span class="search-highlight">$1</span>');
+            });
+            item.element.innerHTML = html;
+          }
+        } else {
+          item.element.classList.add('search-result-hidden');
+        }
+      });
+      
+      // Hide empty sections (h3 with no visible content)
+      document.querySelectorAll('.md h3').forEach(h3 => {
+        let hasVisibleContent = false;
+        let sibling = h3.nextElementSibling;
+        while (sibling && sibling.tagName !== 'H3' && sibling.tagName !== 'HR') {
+          if (!sibling.classList.contains('search-result-hidden')) {
+            hasVisibleContent = true;
+            break;
+          }
+          sibling = sibling.nextElementSibling;
+        }
+        if (!hasVisibleContent && searchTerm) {
+          h3.classList.add('search-result-hidden');
+        } else {
+          h3.classList.remove('search-result-hidden');
+        }
+      });
+    }
+    
+    // Event listener
+    searchBox.addEventListener('input', function(e) {
+      performSearch(e.target.value);
+    });
+    
+    // Handle Enter key to focus first result
+    searchBox.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const firstVisible = document.querySelector('.md a:not(.search-result-hidden)');
+        if (firstVisible) {
+          firstVisible.focus();
+        }
+      }
+    });
+  };
+})();
+</script>
+
 </body>
 </html>
