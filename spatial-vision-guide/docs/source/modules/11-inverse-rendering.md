@@ -1,0 +1,182 @@
+# Inverse Rendering
+
+
+---
+
+## Overview
+
+Inverse rendering: Recover 3D shape, materials, and lighting from images. Uses differentiable rendering to optimize scene parameters to match observations.
+
+---
+
+## Essential Papers
+
+### NeRFactor (2021)
+
+**NeRFactor: Neural Factorization of Shape and Reflectance under an Unknown Illumination** (Bi et al.) | [arXiv](https://arxiv.org/abs/2006.04970)
+
+**Key idea**: Factorize NeRF into geometry, BRDF, and lighting.
+
+**Process**:
+1. Train NeRF to learn appearance
+2. Extract geometry (marching cubes)
+3. Optimize BRDF and lighting
+
+**Output**: Decomposed scene with material properties.
+
+---
+
+### Relightable NeRF
+
+**Goal**: Recover lighting and enable relighting.
+
+**Methods**:
+- Environment map estimation
+- Spherical harmonics lighting
+- Light source estimation
+
+---
+
+### Physically-based Neural Fields
+
+**Key idea**: Learn physically-based material properties.
+
+**Properties**: Albedo, roughness, metallic, normal maps.
+
+**Benefits**: Realistic materials, relightable scenes.
+
+---
+
+## Core Concepts
+
+### Scene Decomposition
+
+**Components**:
+- **Geometry**: 3D shape (mesh, SDF, NeRF)
+- **Material**: BRDF properties (albedo, roughness, etc.)
+- **Lighting**: Environment maps, light sources
+
+**Challenge**: Ambiguity between components.
+
+---
+
+### Material Estimation
+
+**BRDF**: Bidirectional Reflectance Distribution Function.
+
+**Properties**:
+- Albedo (diffuse color)
+- Roughness (surface smoothness)
+- Metallic (metal vs dielectric)
+- Normal (surface orientation)
+
+**Methods**: Optimization with physical constraints.
+
+---
+
+### Lighting Estimation
+
+**Environment maps**: Omnidirectional lighting.
+
+**Light sources**: Point, directional, area lights.
+
+**Estimation**: From shadows, reflections, shading.
+
+---
+
+## Problems Solved by Inverse Rendering
+
+### Recovering Scene Components from Images
+**Problem**: Images show combined effect of geometry, materials, and lighting. Need to separate these components for editing, relighting, understanding.
+
+**Inverse rendering solution**: Recover individual components (geometry, materials, lighting) from images using optimization and differentiable rendering.
+
+[Figure placeholder: Visualization showing input image → inverse rendering → decomposed components (geometry, materials, lighting) → editable/renderable scene]
+
+### Enabling Scene Editing
+**Problem**: Reconstructed scenes (e.g., from NeRF) cannot be edited - can't change materials, lighting, or geometry easily.
+
+**Solution**: Explicit material and lighting enable editing. Change materials, relight, modify scene.
+
+### Understanding Scene Properties
+**Problem**: Want to understand scene properties (what materials? what lighting?) from images.
+
+**Solution**: Inverse rendering recovers these properties explicitly. Enables scene understanding, analysis.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Fundamental Ambiguity
+**Problem**: Same appearance can result from different combinations of geometry, materials, lighting. Factorization is fundamentally ambiguous.
+
+**Current solutions**: Use priors, constraints, additional information, but ambiguity remains.
+
+**Open question**: Better constraints? Additional sensors? More priors?
+
+### Quality of Estimated Properties
+**Problem**: Estimated materials and lighting may not be physically accurate or realistic.
+
+**Remaining**: Challenging to estimate accurate properties from limited information.
+
+### Computational Cost
+**Problem**: Inverse rendering requires optimization over many parameters. Can be computationally expensive.
+
+**Open question**: More efficient optimization? Better initialization?
+
+### Generalization
+**Problem**: Methods may not generalize well across different scene types, lighting conditions, or materials.
+
+**Open question**: Better generalization? More robust methods?
+
+---
+
+## Broader Insights and Implications
+
+### The Inverse Problem Challenge
+**Insight**: Inverse rendering highlights fundamental challenge of inverse problems - multiple solutions can explain same observations.
+
+**Broader impact**: Demonstrates importance of priors, constraints, additional information. Need more than just images to resolve ambiguity. Influences design of inverse methods.
+
+### Enabling New Capabilities
+**Insight**: Decomposition enables new capabilities (editing, relighting) not possible with black-box representations.
+
+**Broader impact**: Shows value of interpretable representations. Enables applications beyond just rendering. Influences design of neural scene representations.
+
+### The Role of Physics
+**Insight**: Physically-based models (BRDF, lighting models) provide structure that helps resolve ambiguity and enables editing.
+
+**Broader impact**: Demonstrates value of incorporating physics into learned models. Best of both worlds - learning + physics.
+
+[Placeholder for manual expansion: Add insights about connections to graphics, applications, future of scene understanding]
+
+---
+
+## Applications
+
+- Material editing
+- Relighting
+- Virtual product visualization
+- Scene understanding
+- AR/VR
+
+[Figure placeholder: Applications showing material editing, relighting, product visualization examples]
+
+---
+
+## Related Modules
+
+- Module 11.1: Differentiable Rendering (required tool)
+- Module 5.3: Appearance & Relighting (NeRF-based)
+
+---
+
+## Additional Resources
+
+- **NeRFactor**: Project page
+- **Inverse Rendering**: Research papers
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+</div>

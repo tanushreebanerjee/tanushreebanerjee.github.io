@@ -1,0 +1,187 @@
+# Neural Humans
+
+
+---
+
+## Overview
+
+Neural humans: Neural radiance fields and implicit representations for human rendering. Extend NeRF to handle articulated humans with realistic appearance.
+
+---
+
+## Essential Papers
+
+### 🔥 HumanNeRF (2022)
+
+**HumanNeRF: Free-viewpoint Rendering of Moving People from Monocular Video** (Weng et al.) | [arXiv](https://arxiv.org/abs/2201.04127)
+
+**Key idea**: NeRF for humans with pose conditioning.
+
+**Architecture**:
+- SMPL pose conditioning
+- NeRF representation per pose
+- Pose-aware rendering
+
+**Benefits**: Novel view synthesis, realistic appearance.
+
+---
+
+### Neural Body (2021)
+
+**Neural Body: Implicit Neural Representations with Structured Latent Codes for Novel View Synthesis of Dynamic Humans** (Peng et al.) | [arXiv](https://arxiv.org/abs/2012.15838)
+
+**Key innovation**: Structured latent codes attached to SMPL vertices.
+
+**Process**: Learn per-vertex features, aggregate to query points, decode with NeRF.
+
+**Benefits**: Better generalization, efficient.
+
+---
+
+### Instant-NGP + SMPL
+
+**Key idea**: Combine Instant-NGP acceleration with SMPL human representation.
+
+**Benefits**: Fast training and rendering for humans.
+
+---
+
+## Core Concepts
+
+### Pose-Conditioned NeRF
+
+**Challenge**: Humans are articulated, need to handle pose changes.
+
+**Solution**: Condition NeRF on SMPL pose parameters.
+
+**Methods**:
+- Pose embedding
+- Canonical space mapping
+- Pose-aware feature aggregation
+
+---
+
+### Canonical Space
+
+**Idea**: Transform to canonical pose, learn NeRF in canonical space.
+
+**Process**:
+1. Transform query point to canonical space using SMPL
+2. Query NeRF in canonical space
+3. Transform result back
+
+**Benefits**: Better generalization, handles pose changes.
+
+---
+
+### Structured Representations
+
+**Neural Body**: Features attached to SMPL vertices.
+
+**Benefits**: Better structure, faster training.
+
+---
+
+## Problems Solved by Neural Humans
+
+### Realistic Human Rendering from Video
+**Problem**: Render realistic humans from arbitrary viewpoints using only monocular video input. Traditional methods struggle with view-dependent appearance, clothing, lighting.
+
+**Neural human solution**: NeRF-based representation learns appearance and geometry from video. Enables free-viewpoint rendering of humans with realistic appearance.
+
+[Figure placeholder: Visualization showing input video frames → neural human model → novel viewpoint rendering]
+
+### Handling Articulated Motion
+**Problem**: Humans are articulated - body parts move and deform. Standard NeRF can't handle this.
+
+**Pose-conditioned solution**: Condition NeRF on pose parameters. Learn appearance in canonical space, deform with pose. Handles articulated motion.
+
+### View-Dependent Appearance
+**Problem**: Human appearance (shading, wrinkles, clothing) changes with viewing angle. Need view-dependent modeling.
+
+**Neural rendering solution**: NeRF naturally models view-dependent appearance. Learns view-dependent color from training data.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Clothing and Fine Details
+**Problem**: Complex clothing, fine details (hair, wrinkles) can be challenging to model accurately.
+
+**Current solutions**: Some methods add detail networks, but quality still limited for very fine details.
+
+**Open question**: Better modeling of fine details? Clothing-specific methods?
+
+### Fast Motion and Blur
+**Problem**: Fast motion causes motion blur in video. Can cause artifacts in neural rendering.
+
+**Open question**: Better handling of motion blur? Temporal modeling improvements?
+
+### Generalization Across Poses
+**Problem**: Models trained on limited poses may not generalize well to unseen poses.
+
+**Open question**: Better generalization? More diverse training data?
+
+### Real-Time Rendering
+**Problem**: Neural human rendering can be slow. Real-time rendering challenging.
+
+**Current solutions**: Acceleration methods, but real-time still difficult for high quality.
+
+**Open question**: Real-time neural human rendering at high quality?
+
+### Multiple People
+**Problem**: Scenes with multiple people interacting are challenging. Occlusions, interactions complex.
+
+**Open question**: Better multi-person neural rendering?
+
+---
+
+## Broader Insights and Implications
+
+### Combining Parametric and Neural Representations
+**Insight**: Neural humans combine parametric models (SMPL for structure) with neural rendering (NeRF for appearance). Best of both worlds.
+
+**Broader impact**: Demonstrates value of hybrid representations. Structure (parametric) + appearance (neural). Influences design of other human/object methods.
+
+### The Canonical Space Paradigm
+**Insight**: Transforming to canonical space enables learning appearance independently of pose. Powerful paradigm for articulated objects.
+
+**Broader impact**: Canonical space approach applicable to other articulated objects (animals, robots, characters). Influences design of other dynamic methods.
+
+### Neural Rendering for Humans
+**Insight**: NeRF demonstrates that neural rendering can capture realistic human appearance better than traditional graphics.
+
+**Broader impact**: Shows potential of neural rendering for realistic human rendering. May replace traditional graphics in some applications.
+
+[Placeholder for manual expansion: Add insights about impact on applications, connections to other human understanding methods, future of virtual humans]
+
+---
+
+## Applications
+
+- Free-viewpoint video
+- Virtual try-on
+- Motion capture
+- Human animation
+- Telepresence
+
+[Figure placeholder: Applications showing free-viewpoint human rendering, virtual try-on, motion capture examples]
+
+---
+
+## Related Modules
+
+- Module 9.1: Parametric Human Models (SMPL foundation)
+- Module 5.1: NeRF Fundamentals (underlying representation)
+
+---
+
+## Additional Resources
+
+- **HumanNeRF**: Official repository
+- **Neural Body**: Project page
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+</div>

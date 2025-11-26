@@ -1,0 +1,145 @@
+# World Models
+
+
+---
+
+## Overview
+
+World models: Learn predictive models of environments for planning and decision-making. Model dynamics, rewards, and state transitions from observations.
+
+---
+
+## Essential Papers
+
+### 📖 World Models (2018)
+
+**World Models** (Ha & Schmidhuber) | [arXiv](https://arxiv.org/abs/1803.10122)
+
+**Key idea**: Learn compressed representation of environment, use for planning.
+
+**Components**:
+- **V**: Variational autoencoder encodes observations
+- **M**: Recurrent model predicts next states
+- **C**: Controller uses model for decision-making
+
+**Benefits**: Sample-efficient RL, planning in learned model.
+
+---
+
+### Dreamer / DreamerV2 (2020-2021)
+
+**Dreamer: Learning Models for Reinforcement Learning**
+
+**Key innovation**: Actor-critic learning from world model predictions.
+
+**Benefits**: Strong performance, sample efficient.
+
+---
+
+### World Models with NeRF / Diffusion
+
+**Recent approaches**: Use NeRF or diffusion models as world models.
+
+**Benefits**: High-fidelity predictions, better visual quality.
+
+---
+
+## Core Concepts
+
+### Model-Based RL
+
+**Goal**: Learn environment dynamics model, use for planning.
+
+**Advantages**: Sample efficient, enables planning.
+
+**Challenges**: Model errors compound, requires good models.
+
+---
+
+### World Model Components
+
+**Observation encoder**: Compress observations to latent states.
+
+**Dynamics model**: Predict next states from actions.
+
+**Reward model**: Predict rewards (if needed).
+
+**Decoder**: Reconstruct observations from states (optional).
+
+---
+
+### Planning
+
+**Methods**:
+- Model-predictive control (MPC)
+- Value iteration
+- Policy search in model
+
+---
+
+## Problems Solved by World Models
+
+### Sample-Efficient RL
+**Problem**: Reinforcement learning can be sample-inefficient - requires many interactions with environment.
+
+**World model solution**: Learn environment model, plan in model. Much more sample-efficient than model-free RL.
+
+[Figure placeholder: Comparison showing model-free RL (many samples) vs world model RL (fewer samples)]
+
+### Planning Without Real Environment
+**Problem**: Need to plan actions but don't want to try all in real environment (expensive, dangerous).
+
+**Solution**: Learn world model, plan in simulated model. Safe, fast planning.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Model Accuracy
+**Problem**: World models may not perfectly capture environment. Model errors compound, can cause planning failures.
+
+**Open question**: Better world models? More accurate predictions?
+
+### Generalization
+**Problem**: World models may not generalize well to new environments or situations.
+
+**Open question**: Better generalization? Transfer learning?
+
+---
+
+## Broader Insights and Implications
+
+### The Value of Predictive Models
+**Insight**: World models demonstrate value of learning predictive models. Enables planning, reasoning.
+
+**Broader impact**: Shows importance of model-based approaches. Influences design of other predictive systems.
+
+[Placeholder for manual expansion: Add insights about connections to other areas, applications]
+
+---
+
+## Applications
+
+- Reinforcement learning
+- Robotics
+- Game playing
+- Autonomous systems
+
+---
+
+## Related Modules
+
+- Module 2.1: Diffusion Models (as world models)
+- Module 2.3: Video Generation (predictive modeling)
+
+---
+
+## Additional Resources
+
+- **World Models Paper**: Original work
+- **Dreamer**: State-of-the-art world models
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+</div>

@@ -1,0 +1,160 @@
+# Occupancy & Scene Completion
+
+
+---
+
+## Overview
+
+Occupancy prediction: Predict dense 3D occupancy grids from images. Scene completion: Fill in occluded/truncated regions. Essential for autonomous driving planning.
+
+---
+
+## Essential Papers
+
+### SurroundOcc (2023)
+
+**SurroundOcc: Multi-Camera 3D Occupancy Prediction for Autonomous Driving**
+
+**Key idea**: Predict dense occupancy from multi-camera inputs.
+
+**Benefits**: Dense 3D understanding, better than sparse detection.
+
+**Applications**: Planning, obstacle avoidance, safety.
+
+---
+
+### OccFormer (2024)
+
+**OccFormer: Dual-path Transformer for 3D Occupancy Prediction**
+
+**Key innovation**: Transformer architecture for occupancy prediction.
+
+**Benefits**: Better feature aggregation, strong performance.
+
+---
+
+### OccNeXt
+
+**Key idea**: Next-generation occupancy prediction models.
+
+**Improvements**: Better accuracy, efficiency.
+
+---
+
+## Core Concepts
+
+### Occupancy Grid
+
+**Definition**: 3D voxel grid where each voxel is occupied/empty.
+
+**Resolution**: Voxel size determines resolution (e.g., 0.5m × 0.5m × 0.5m).
+
+**Semantic occupancy**: Predict semantic class for each voxel.
+
+---
+
+### Scene Completion
+
+**Goal**: Fill in occluded regions.
+
+**Approaches**:
+- Learned priors from training data
+- Geometric reasoning
+- Multi-view fusion
+
+---
+
+### Multi-Camera Fusion
+
+**Challenge**: Combine information from multiple cameras.
+
+**Solutions**:
+- BEV representation
+- Transformer attention
+- Voxel fusion
+
+---
+
+## Problems Solved by Occupancy Prediction
+
+### Dense 3D Scene Understanding
+**Problem**: Sparse 3D detection (bounding boxes) misses many scene regions. Need dense understanding for planning and safety.
+
+**Occupancy solution**: Predict dense 3D occupancy grid. Every voxel classified as occupied/empty/semantic class. Complete scene understanding.
+
+[Figure placeholder: Comparison showing sparse detection (bounding boxes) vs dense occupancy (complete 3D understanding)]
+
+### Planning-Ready Representations
+**Problem**: Sparse detections not directly usable for planning. Need dense geometry information.
+
+**Solution**: Occupancy grids directly usable for path planning, obstacle avoidance. Complete geometric scene representation.
+
+### Handling Occlusions
+**Problem**: Occluded regions unknown from single viewpoint. Need to reason about what's behind objects.
+
+**Scene completion solution**: Learned priors enable filling in occluded regions. Complete scene understanding even with partial views.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Computational Cost
+**Problem**: Dense 3D voxel grids can be memory-intensive and computationally expensive, especially at high resolution.
+
+**Open question**: More efficient representations? Sparse occupancy? Hierarchical methods?
+
+### Accuracy of Completion
+**Problem**: Scene completion may not always be accurate. Filled-in regions might be wrong.
+
+**Open question**: Better completion methods? Uncertainty estimation for completed regions?
+
+### Resolution vs Efficiency
+**Problem**: Higher resolution improves quality but increases cost. Trade-off between resolution and efficiency.
+
+**Open question**: Adaptive resolution? Better representations for efficiency?
+
+---
+
+## Broader Insights and Implications
+
+### Dense vs Sparse Representations
+**Insight**: Occupancy prediction shows that dense representations valuable for planning tasks, even if more expensive than sparse.
+
+**Broader impact**: Demonstrates that representation choice depends on application. Planning needs dense, detection can use sparse.
+
+### Scene Understanding for Safety
+**Insight**: Dense occupancy prediction crucial for safety-critical applications (autonomous driving). Need complete understanding, not just objects.
+
+**Broader impact**: Highlights importance of scene-level understanding for safety. Influences design of perception systems for autonomous systems.
+
+[Placeholder for manual expansion: Add insights about planning integration, safety applications]
+
+---
+
+## Applications
+
+- Autonomous driving planning
+- Obstacle avoidance
+- Safety systems
+- Dense 3D scene understanding
+
+[Figure placeholder: Applications showing occupancy prediction used in planning, obstacle avoidance, safety systems]
+
+---
+
+## Related Modules
+
+- Module 8.2: BEV Models (similar multi-camera fusion)
+- Module 8.3: Monocular 3D Detection (sparse vs dense)
+
+---
+
+## Additional Resources
+
+- **nuScenes Dataset**: Occupancy prediction benchmarks
+- **Occupancy Prediction**: Research papers and code
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+</div>

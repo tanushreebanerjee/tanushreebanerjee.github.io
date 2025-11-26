@@ -123,14 +123,59 @@ $$C = \sum_{i \in N} c_i \alpha_i \prod_{j=1}^{i-1} (1 - \alpha_j)$$
 
 3. **Loss**:
    - $L = (1-\lambda) L_1 + \lambda L_{D-SSIM}$
-   - $L_1$: Pixel-wise L1 loss
-   - $L_{D-SSIM}$: Structural similarity loss
+   - $L_1$: Pixel-wise L1 loss: $L_1 = \frac{1}{N} \sum_{i=1}^N |I_i - \hat{I}_i|$
+   - $L_{D-SSIM}$: Structural similarity loss (perceptual loss)
+   - Typical $\lambda = 0.2$ (more weight on L1, some on SSIM)
+
+[Figure placeholder: Loss function visualization:
+- Left: Rendered image
+- Center: Ground truth image
+- Right: Loss map (red = high error, blue = low error)
+- Shows L1 loss emphasizes pixel differences, SSIM emphasizes structure]
 
 4. **Optimization**:
-   - SGD with exponential decay
-   - Adaptive density control every $N$ iterations
+   - SGD with exponential decay: $\eta_t = \eta_0 \cdot \gamma^t$
+   - Learning rate: $\eta_0 = 0.01$, decay $\gamma = 0.99$
+   - Adaptive density control every $N$ iterations (typically every 100 iterations)
 
 5. **Convergence**: Typically 7,000-30,000 iterations.
+
+**Code example** (Gaussian rasterization):
+```python
+def rasterize_gaussians(gaussians, camera):
+    """
+    Rasterize 3D Gaussians to image.
+    
+    Args:
+        gaussians: List of Gaussian parameters (μ, Σ, opacity, color)
+        camera: Camera parameters (intrinsics, extrinsics)
+    
+    Returns:
+        rendered_image: [H, W, 3] RGB image
+    """
+    image = torch.zeros(H, W, 3)
+    
+    for gaussian in gaussians:
+        # Project to 2D
+        mu_2d = project_3d_to_2d(gaussian.mu, camera)
+        cov_2d = project_covariance_3d_to_2d(gaussian.cov, camera)
+        
+        # Compute 2D Gaussian contribution
+        for y in range(H):
+            for x in range(W):
+                pixel = torch.tensor([x, y])
+                # Evaluate 2D Gaussian PDF
+                diff = pixel - mu_2d
+                exponent = -0.5 * diff.T @ torch.inverse(cov_2d) @ diff
+                alpha = gaussian.opacity * torch.exp(exponent)
+                
+                # Alpha blending
+                image[y, x] = alpha * gaussian.color + (1 - alpha) * image[y, x]
+    
+    return image
+```
+
+**Note**: Actual implementation uses efficient tile-based rasterization, not pixel-by-pixel.
 
 ---
 
@@ -306,3 +351,5 @@ $$C = \sum_{i \in N} c_i \alpha_i \prod_{j=1}^{i-1} (1 - \alpha_j)$$
 </div>
 
 <!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js" charset="utf-8"></script><script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js" charset="utf-8"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+
+<script src="../assets/search.js"></script>

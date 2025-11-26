@@ -1,0 +1,151 @@
+# Dynamic & 4D Gaussians
+
+
+---
+
+## Overview
+
+Dynamic Gaussian Splatting: Extend 3D Gaussian Splatting to handle dynamic scenes. 4D representation capturing both spatial and temporal information.
+
+---
+
+## Essential Papers
+
+### 🔥 4D Gaussian Splatting (2024)
+
+**4D Gaussian Splatting for Real-Time Dynamic Scene Rendering** (Luiten et al.) | [arXiv](https://arxiv.org/abs/2310.08528)
+
+**Key idea**: Add time dimension to 3D Gaussians.
+
+**Representation**: 4D Gaussians with temporal basis functions.
+
+**Deformation**: Gaussians deform over time using learned deformation fields.
+
+**Training**: Optimize 4D Gaussians from multi-view video.
+
+**Benefits**: Real-time dynamic scene rendering, high quality.
+
+[Figure placeholder: 4D Gaussian deformation over time]
+
+---
+
+### 🚀 Spacetime Gaussians (2024-2025)
+
+**Spacetime Gaussians**: Alternative 4D representation.
+
+**Benefits**: Better temporal modeling, handles complex motions.
+
+---
+
+### 🚀 4D Gaussian Tracking Models (2024-2025)
+
+**Temporal tracking**: Track Gaussians across time for consistency.
+
+---
+
+## Core Concepts
+
+### 4D Representation
+
+**4D Gaussians**: Extend 3D position $(x,y,z)$ to 4D $(x,y,z,t)$.
+
+**Temporal modeling**:
+- Deformation fields
+- Temporal basis functions
+- Per-frame variations
+
+---
+
+### Dynamic Scene Modeling
+
+**Challenge**: Capture motion and deformation.
+
+**Approaches**:
+- **Deformation fields**: Learn how Gaussians move/deform
+- **Per-frame Gaussians**: Separate Gaussians per frame (memory intensive)
+- **Temporal basis**: Compact temporal representation
+
+---
+
+### Animatable Gaussians
+
+**Goal**: Control deformation via parameters (pose, expression).
+
+**Applications**: Character animation, avatar rendering.
+
+---
+
+## Problems Solved by Dynamic Gaussians
+
+### Real-Time Dynamic Rendering
+**Problem**: Dynamic NeRF enables dynamic scenes but is slow. Need real-time dynamic rendering.
+
+**Dynamic Gaussian solution**: Real-time rendering of dynamic scenes. Maintains speed advantages of Gaussian Splatting while handling motion.
+
+[Figure placeholder: Visualization showing static Gaussian Splatting vs dynamic 4D Gaussians handling motion over time]
+
+### Handling Motion in Gaussian Framework
+**Problem**: 3D Gaussian Splatting is static. Need to extend to dynamic scenes.
+
+**4D Gaussian solution**: Extends Gaussian framework to 4D (space + time). Enables motion modeling within efficient Gaussian framework.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Complex Motion Patterns
+**Problem**: Very complex motion, fast motion, or large deformations can be challenging to model.
+
+**Open question**: Better motion modeling? More expressive deformation representations?
+
+### Memory for Long Sequences
+**Problem**: Long video sequences require modeling many time steps. Memory can grow significantly.
+
+**Open question**: More compact temporal representations? Better compression?
+
+### Real-Time Performance Limits
+**Problem**: While fast, very complex dynamic scenes or long sequences may still challenge real-time rendering.
+
+**Open question**: Better efficiency for complex dynamic scenes?
+
+---
+
+## Broader Insights and Implications
+
+### Extending Efficient Representations
+**Insight**: Dynamic Gaussians show that efficient static representations can be extended to dynamic. Same principles apply.
+
+**Broader impact**: Demonstrates that efficient representation design principles extend across dimensions. Influences design of other dynamic methods.
+
+[Placeholder for manual expansion: Add insights about impact on real-time graphics, connections to other dynamic methods]
+
+---
+
+## Applications
+
+- Dynamic scene reconstruction
+- Video rendering
+- Character animation
+- Real-time dynamic VR/AR
+
+[Figure placeholder: Applications showing dynamic scene rendering, video rendering, animation]
+
+---
+
+## Related Modules
+
+- Module 6.1: 3D Gaussian Splatting (static version)
+- Module 10.1: Dynamic NeRFs (alternative approach)
+- Module 10.2: Video-to-3D/4D (conversion methods)
+
+---
+
+## Additional Resources
+
+- **4D Gaussian Splatting Repository**: Official implementation
+- **Dynamic scene datasets**: NeRF-Dynamic, etc.
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+</div>

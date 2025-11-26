@@ -147,6 +147,80 @@ Adds noise over $T$ steps until $x_T \sim \mathcal{N}(0, I)$.
 
 ### Architecture
 
+**U-Net backbone**: Standard diffusion models use U-Net architecture.
+
+**Key components**:
+- **Encoder**: Downsampling path (convolutional blocks)
+- **Bottleneck**: Middle blocks with attention
+- **Decoder**: Upsampling path (transposed convolutions)
+- **Skip connections**: Preserve spatial information
+
+**Attention mechanisms**:
+- **Self-attention**: Within image features
+- **Cross-attention**: Between image and conditioning (text, etc.)
+
+[Figure placeholder: U-Net architecture diagram:
+- Input: Noisy image $x_t$
+- Encoder: Downsampling (H×W → H/2×W/2 → ...)
+- Bottleneck: Self-attention + cross-attention
+- Decoder: Upsampling (H/8×W/8 → H/4×W/4 → ...)
+- Output: Predicted noise $\epsilon_\theta(x_t, t)$]
+
+**Mathematical formulation**:
+
+**Forward diffusion** (adding noise):
+$$q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t} x_{t-1}, \beta_t I)$$
+
+**Cumulative noise** (closed form):
+$$q(x_t | x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t} x_0, (1-\bar{\alpha}_t) I)$$
+
+Where $\bar{\alpha}_t = \prod_{s=1}^t (1-\beta_s)$.
+
+**Reverse diffusion** (denoising):
+$$p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))$$
+
+**Training objective**:
+$$\mathcal{L} = \mathbb{E}_{t, x_0, \epsilon} \left[ ||\epsilon - \epsilon_\theta(x_t, t)||^2 \right]$$
+
+Where $x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t} \epsilon$ and $\epsilon \sim \mathcal{N}(0, I)$.
+
+**Code example** (DDPM training step):
+```python
+def diffusion_loss(model, x0, t, noise_schedule):
+    """
+    Compute diffusion model loss.
+    
+    Args:
+        model: U-Net that predicts noise
+        x0: [B, C, H, W] clean images
+        t: [B] random timesteps
+        noise_schedule: Beta schedule
+    
+    Returns:
+        loss: Scalar loss value
+    """
+    # Sample noise
+    epsilon = torch.randn_like(x0)
+    
+    # Get noise schedule values
+    sqrt_alpha_bar_t = torch.sqrt(noise_schedule.alpha_bar[t])
+    sqrt_one_minus_alpha_bar_t = torch.sqrt(1 - noise_schedule.alpha_bar[t])
+    
+    # Forward diffusion: add noise to clean image
+    x_t = sqrt_alpha_bar_t[:, None, None, None] * x0 + \
+          sqrt_one_minus_alpha_bar_t[:, None, None, None] * epsilon
+    
+    # Predict noise
+    epsilon_pred = model(x_t, t)
+    
+    # MSE loss
+    loss = F.mse_loss(epsilon_pred, epsilon)
+    
+    return loss
+```
+
+### Architecture
+
 **U-Net**: Standard architecture for diffusion models.
 
 **Time embedding**: Encodes timestep $t$ into model.
@@ -304,3 +378,5 @@ Adds noise over $T$ steps until $x_T \sim \mathcal{N}(0, I)$.
 </div>
 
 <!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js" charset="utf-8"></script><script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js" charset="utf-8"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+
+<script src="../assets/search.js"></script>

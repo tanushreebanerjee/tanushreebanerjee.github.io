@@ -1,0 +1,152 @@
+/* Custom CSS for Spatial Vision Guide - Burgundy Theme */
+
+/* Color variables */
+:root {
+    --burgundy: #8B1538;
+    --burgundy-light: #A0446C;
+    --burgundy-dark: #6B0F28;
+    --text-color: #333;
+    --bg-color: #fff;
+}
+
+/* Override ReadTheDocs theme colors */
+.wy-side-nav-search,
+.wy-nav-top {
+    background-color: var(--burgundy) !important;
+}
+
+.wy-side-nav-search > a,
+.wy-side-nav-search .wy-dropdown > a {
+    color: #fff !important;
+}
+
+/* Links */
+a {
+    color: var(--burgundy);
+}
+
+a:hover {
+    color: var(--burgundy-light);
+}
+
+a:visited {
+    color: var(--burgundy-light);
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--burgundy);
+}
+
+.rst-content h1,
+.rst-content h2,
+.rst-content h3,
+.rst-content h4,
+.rst-content h5,
+.rst-content h6 {
+    color: var(--burgundy);
+}
+
+/* Navigation */
+.wy-menu-vertical a {
+    color: var(--text-color);
+}
+
+.wy-menu-vertical a:hover {
+    background-color: rgba(139, 21, 56, 0.1);
+    color: var(--burgundy);
+}
+
+.wy-menu-vertical li.current > a {
+    color: var(--burgundy);
+    border-right: 3px solid var(--burgundy);
+}
+
+.wy-menu-vertical li.on a,
+.wy-menu-vertical li.current > a:hover {
+    background-color: rgba(139, 21, 56, 0.15);
+}
+
+/* Code blocks */
+.highlight {
+    border-left: 4px solid var(--burgundy);
+}
+
+/* Math */
+.math {
+    color: var(--text-color);
+}
+
+/* Buttons */
+.btn-primary,
+.btn {
+    background-color: var(--burgundy);
+    border-color: var(--burgundy);
+}
+
+.btn-primary:hover,
+.btn:hover {
+    background-color: var(--burgundy-light);
+    border-color: var(--burgundy-light);
+}
+
+/* Tables */
+table.docutils {
+    border: 1px solid #ddd;
+}
+
+table.docutils th {
+    background-color: rgba(139, 21, 56, 0.1);
+    color: var(--burgundy);
+}
+
+/* Admonitions */
+.admonition.note,
+.admonition.warning,
+.admonition.important {
+    border-left: 4px solid var(--burgundy);
+}
+
+/* System fonts */
+body,
+.rst-content {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+/* Search bar styling */
+.rtd_search {
+    background-color: var(--burgundy) !important;
+}
+
+/* Version selector */
+.rst-versions {
+    border-top: 3px solid var(--burgundy);
+}
+
+.rst-versions .rst-current-version {
+    background-color: var(--burgundy);
+    color: #fff;
+}
+
+/* Footer */
+footer {
+    border-top: 1px solid #ddd;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    background-color: rgba(139, 21, 56, 0.05);
+}
+
+.breadcrumbs a {
+    color: var(--burgundy);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .wy-side-nav-search,
+    .wy-nav-top {
+        background-color: var(--burgundy) !important;
+    }
+}
+

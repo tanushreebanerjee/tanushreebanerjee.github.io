@@ -1,0 +1,124 @@
+# Scene Flow
+
+
+---
+
+## Overview
+
+Scene flow: 3D motion field describing how each 3D point moves between frames. Extension of optical flow to 3D space.
+
+---
+
+## Essential Papers
+
+### NSFF (2021)
+
+**Neural Scene Flow Fields for Space-Time View Synthesis of Dynamic Scenes** (Li et al.) | [arXiv](https://arxiv.org/abs/2011.13084)
+
+**Key idea**: Neural representation of scene flow for dynamic scene rendering.
+
+**Representation**: Neural field maps 3D position and time to scene flow (3D motion vector).
+
+**Benefits**: Enables novel view synthesis of dynamic scenes.
+
+---
+
+### RigidFlow / DynFlow
+
+**RigidFlow**: Assumes rigid body motion, more efficient.
+
+**DynFlow**: Handles non-rigid deformation.
+
+---
+
+## Core Concepts
+
+### Scene Flow vs Optical Flow
+
+**Optical flow**: 2D motion in image plane (where pixel moves).
+
+**Scene flow**: 3D motion in world space (how 3D point moves).
+
+**Relationship**: Scene flow projects to optical flow via camera projection.
+
+---
+
+### Estimation Methods
+
+**Direct**: Estimate 3D motion directly from RGB/RGB-D sequences.
+
+**Indirect**: Estimate optical flow, triangulate to 3D, compute scene flow.
+
+**Learning-based**: Neural networks predict scene flow from RGB images.
+
+---
+
+## Problems Solved by Scene Flow
+
+### 3D Motion Understanding
+**Problem**: Optical flow gives 2D motion. Need to understand how objects move in 3D space.
+
+**Scene flow solution**: Provides 3D motion field. Understand motion in world space, not just image plane.
+
+[Figure placeholder: Comparison showing optical flow (2D motion vectors) vs scene flow (3D motion vectors in world space)]
+
+### Enabling Dynamic 3D Reconstruction
+**Problem**: Dynamic scene reconstruction requires understanding 3D motion. Optical flow insufficient.
+
+**Solution**: Scene flow enables dynamic 3D reconstruction. Understand how 3D points move over time.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Estimation from RGB Only
+**Problem**: Scene flow from RGB images is more ambiguous than from RGB-D. Requires strong priors or learning.
+
+**Open question**: Better RGB-only scene flow estimation?
+
+### Complex Motion
+**Problem**: Non-rigid motion, occlusions, fast motion remain challenging.
+
+**Open question**: Better handling of complex motion patterns?
+
+---
+
+## Broader Insights and Implications
+
+### 3D Motion as Foundation
+**Insight**: Scene flow provides foundation for dynamic scene understanding. Essential for 4D reconstruction.
+
+**Broader impact**: Shows importance of 3D motion understanding. Influences design of dynamic scene methods.
+
+[Placeholder for manual expansion: Add insights about connections to dynamic methods, applications]
+
+---
+
+## Applications
+
+- Dynamic scene reconstruction
+- Motion segmentation
+- 3D object tracking
+- Dynamic NeRF (uses scene flow)
+- Robotics and autonomous systems
+
+[Figure placeholder: Applications showing scene flow used in dynamic reconstruction, tracking, robotics]
+
+---
+
+## Related Modules
+
+- Module 4.1: Optical Flow (2D motion)
+- Module 10.1: Dynamic NeRFs (uses scene flow concepts)
+
+---
+
+## Additional Resources
+
+- **Scene Flow Benchmarks**: FlyingThings3D, KITTI
+- **Dynamic NeRF papers**: Use scene flow for 4D reconstruction
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+</div>

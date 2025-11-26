@@ -1,0 +1,188 @@
+# Differentiable Rendering
+
+
+---
+
+## Overview
+
+Differentiable rendering: Make rendering process differentiable to enable gradient-based optimization. Enables learning 3D from 2D images via backpropagation.
+
+---
+
+## Essential Papers
+
+### Neural Mesh Renderer (2018)
+
+**Neural Mesh Renderer: Learning Latent Shape Space with Differentiable Renderer** (Kato et al.) | [arXiv](https://arxiv.org/abs/1711.07566)
+
+**Key idea**: Approximate gradients of rasterization for backpropagation.
+
+**Approach**: Soft rasterization with differentiable operations.
+
+**Benefits**: Enables learning 3D shape from 2D supervision.
+
+---
+
+### Soft Rasterizer (2019)
+
+**Soft Rasterizer: A Differentiable Renderer for Image-based 3D Reasoning** (Liu et al.) | [arXiv](https://arxiv.org/abs/1904.01786)
+
+**Key innovation**: Fully differentiable rasterization.
+
+**Process**: Soft assignment of pixels to faces, differentiable aggregation.
+
+**Benefits**: Better gradients, more stable training.
+
+---
+
+### DIB-R (2019)
+
+**DIB-R: Differentiable Rendering of Rasterization** (Chen et al.) | [arXiv](https://arxiv.org/abs/1908.01210)
+
+**Key innovation**: Efficient differentiable rasterization.
+
+**Benefits**: Fast, memory efficient, good gradients.
+
+---
+
+### PyTorch3D Renderer
+
+**PyTorch3D**: [pytorch3d.org](https://pytorch3d.org/)
+
+**Features**: Differentiable rendering, mesh operations, point cloud processing.
+
+**Benefits**: Well-maintained, widely used, efficient.
+
+---
+
+## Core Concepts
+
+### Rasterization Gradients
+
+**Challenge**: Traditional rasterization is non-differentiable.
+
+**Solution**: Soften rasterization operations.
+
+**Methods**:
+- Soft z-buffering
+- Soft assignment
+- Interpolation-based gradients
+
+---
+
+### Differentiable Operations
+
+**Z-buffering**: Soft selection of visible faces.
+
+**Shading**: Differentiable lighting and materials.
+
+**Compositing**: Differentiable blending.
+
+---
+
+### Optimization
+
+**Goal**: Optimize 3D parameters to match 2D observations.
+
+**Loss**: Pixel-wise difference between rendered and observed images.
+
+**Parameters**: Shape, pose, appearance, lighting.
+
+---
+
+## Problems Solved by Differentiable Rendering
+
+### Enabling Learning from 2D Supervision
+**Problem**: Want to learn 3D parameters (shape, pose) from 2D images. Rendering is non-differentiable, blocking backpropagation.
+
+**Differentiable rendering solution**: Make rendering differentiable. Enables gradient-based optimization from 2D loss to 3D parameters.
+
+[Figure placeholder: Diagram showing 3D parameters → differentiable rendering → 2D image → loss → backpropagation → gradient update]
+
+### End-to-End Learning
+**Problem**: Traditional pipelines have discrete steps (detection, reconstruction, optimization). Cannot optimize end-to-end.
+
+**Solution**: Differentiable rendering enables end-to-end learning. Optimize entire pipeline jointly.
+
+### No Intermediate Representations Needed
+**Problem**: Learning 3D often requires intermediate explicit representations (meshes, point clouds) which can have artifacts.
+
+**Solution**: Can learn directly from differentiable rendering without intermediate representations. Optimize parameters that render well.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Gradient Quality
+**Problem**: Approximate gradients from differentiable rendering may not be as accurate as true gradients. Can affect optimization.
+
+**Open question**: Better gradient approximations? More accurate differentiable rendering?
+
+### Memory and Computation
+**Problem**: Differentiable rendering can be memory-intensive and computationally expensive, especially for high-resolution rendering.
+
+**Current solutions**: Efficient implementations, approximations, but trade-offs remain.
+
+**Open question**: More efficient differentiable rendering?
+
+### Discretization Effects
+**Problem**: Rendering involves discretization (pixels, samples). Can cause gradient issues or artifacts.
+
+**Remaining**: Need careful handling of discretization for good gradients.
+
+### Non-Differentiable Operations
+**Problem**: Some rendering operations (e.g., texture lookups, some shading models) may not be fully differentiable.
+
+**Open question**: Fully differentiable rendering pipelines?
+
+---
+
+## Broader Insights and Implications
+
+### Rendering as Differentiable Operation
+**Insight**: Making rendering differentiable enables new paradigm - learn 3D by optimizing rendering quality.
+
+**Broader impact**: Enables learning-based 3D methods. Foundation for many modern 3D learning approaches. Influences design of 3D learning systems.
+
+### Bridging Graphics and Learning
+**Insight**: Differentiable rendering bridges traditional graphics (rendering) with deep learning (optimization). Best of both worlds.
+
+**Broader impact**: Demonstrates value of combining classical graphics with modern learning. Influences design of hybrid systems.
+
+### The Importance of Differentiability
+**Insight**: Differentiability is key enabling factor. Without it, cannot use gradient-based optimization for 3D learning.
+
+**Broader impact**: Highlights importance of making operations differentiable. Influences development of differentiable versions of other operations.
+
+[Placeholder for manual expansion: Add insights about impact on 3D learning, connections to other areas, future directions]
+
+---
+
+## Applications
+
+- Learning 3D from 2D images
+- 3D reconstruction
+- Pose estimation
+- Shape optimization
+- Neural rendering
+
+[Figure placeholder: Applications diagram showing differentiable rendering used in various learning tasks]
+
+---
+
+## Related Modules
+
+- Module 11.2: Inverse Rendering (uses differentiable rendering)
+- Module 5.1: NeRF Fundamentals (implicit differentiable rendering)
+
+---
+
+## Additional Resources
+
+- **PyTorch3D**: Official library
+- **Differentiable Rendering**: Research papers and implementations
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+</div>

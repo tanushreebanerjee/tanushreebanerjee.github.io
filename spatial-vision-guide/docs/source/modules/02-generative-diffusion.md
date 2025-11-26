@@ -1,0 +1,361 @@
+# Diffusion Models
+
+
+---
+
+## Overview
+
+Diffusion models: Generative models that learn to reverse a diffusion process. State-of-the-art for image and video generation.
+
+---
+
+## Essential Papers
+
+### 📖 DDPM (2020)
+
+**Denoising Diffusion Probabilistic Models** (Ho et al.) | [arXiv](https://arxiv.org/abs/2006.11239)
+
+**Key idea**: Learn to reverse gradual noise corruption process.
+
+**Forward process** (diffusion): Gradually add Gaussian noise:
+$$q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t} x_{t-1}, \beta_t I)$$
+
+**Reverse process** (denoising): Learn to denoise:
+$$p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))$$
+
+**Training**: Predict noise $\epsilon$ added to $x_0$:
+$$L = \mathbb{E}_{t,x_0,\epsilon} [||\epsilon - \epsilon_\theta(x_t, t)||^2]$$
+
+**Sampling**: Start from noise, iteratively denoise:
+$$x_{t-1} = \frac{1}{\sqrt{\alpha_t}} (x_t - \frac{\beta_t}{\sqrt{1-\bar{\alpha}_t}} \epsilon_\theta(x_t, t)) + \sigma_t z$$
+
+[Figure placeholder: Diffusion process diagram showing forward and reverse]
+
+---
+
+### 🔥 DDIM (2020)
+
+**Denoising Diffusion Implicit Models** (Song et al.) | [arXiv](https://arxiv.org/abs/2010.02502)
+
+**Key innovation**: Deterministic sampling with fewer steps.
+
+**DDIM sampling**: Deterministic reverse process, skip steps.
+
+**Benefits**: 10-50x faster sampling, enables latent interpolation.
+
+**Trade-off**: Slightly lower quality than DDPM.
+
+---
+
+### 🔥 Score-Based Diffusion (2020)
+
+**Score-Based Generative Modeling through Stochastic Differential Equations** (Song et al.) | [arXiv](https://arxiv.org/abs/2011.13456)
+
+**Unified framework**: Connects diffusion models to score-based methods.
+
+**SDE formulation**: Continuous-time diffusion process.
+
+**Benefits**: Theoretical foundation, enables new sampling methods.
+
+---
+
+### 🔥 Stable Diffusion (2022)
+
+**High-Resolution Image Synthesis with Latent Diffusion Models** (Rombach et al.) | [arXiv](https://arxiv.org/abs/2112.10752)
+
+**Key innovation**: Operate in latent space, not pixel space.
+
+**Architecture**:
+1. VAE encoder: Image → Latent
+2. Diffusion in latent space (much smaller, faster)
+3. VAE decoder: Latent → Image
+
+**Benefits**:
+- Faster training and inference
+- Lower memory
+- High-resolution generation
+
+**Text conditioning**: CLIP text encoder conditions diffusion model.
+
+---
+
+### 🔥 Classifier-Free Guidance (2022)
+
+**Classifier-Free Diffusion Guidance** (Ho & Salimans) | [arXiv](https://arxiv.org/abs/2207.12598)
+
+**Key idea**: Train unconditional model, use guidance during sampling.
+
+**Guided sampling**: $\tilde{\epsilon}_\theta = \epsilon_\theta(x_t, y) + s(\epsilon_\theta(x_t, y) - \epsilon_\theta(x_t))$
+
+Where $s$ is guidance scale.
+
+**Benefits**: Better control, higher quality, no classifier needed.
+
+---
+
+## Core Concepts
+
+### Diffusion Process
+
+**Forward diffusion**: $q(x_{1:T} | x_0) = \prod_{t=1}^T q(x_t | x_{t-1})$
+
+Adds noise over $T$ steps until $x_T \sim \mathcal{N}(0, I)$.
+
+**Noise schedule**: $\{\beta_t\}$ controls noise amount at each step.
+
+**Cumulative noise**: $\bar{\alpha}_t = \prod_{s=1}^t (1-\beta_s)$, $x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t} \epsilon$.
+
+---
+
+### Denoising Process
+
+**Goal**: Learn $p_\theta(x_{t-1} | x_t)$ to reverse diffusion.
+
+**Neural network**: Predicts noise $\epsilon_\theta(x_t, t)$.
+
+**Sampling**: Start from $x_T \sim \mathcal{N}(0, I)$, iteratively denoise to $x_0$.
+
+---
+
+### Conditional Generation
+
+**Text-to-image**: Condition on text prompt via CLIP encoder.
+
+**Other conditions**: Depth, edges, pose, etc.
+
+**Classifier-free guidance**: Improves quality and control.
+
+---
+
+## Technical Details
+
+### Architecture
+
+**U-Net backbone**: Standard diffusion models use U-Net architecture.
+
+**Key components**:
+- **Encoder**: Downsampling path (convolutional blocks)
+- **Bottleneck**: Middle blocks with attention
+- **Decoder**: Upsampling path (transposed convolutions)
+- **Skip connections**: Preserve spatial information
+
+**Attention mechanisms**:
+- **Self-attention**: Within image features
+- **Cross-attention**: Between image and conditioning (text, etc.)
+
+[Figure placeholder: U-Net architecture diagram:
+- Input: Noisy image $x_t$
+- Encoder: Downsampling (H×W → H/2×W/2 → ...)
+- Bottleneck: Self-attention + cross-attention
+- Decoder: Upsampling (H/8×W/8 → H/4×W/4 → ...)
+- Output: Predicted noise $\epsilon_\theta(x_t, t)$]
+
+**Mathematical formulation**:
+
+**Forward diffusion** (adding noise):
+$$q(x_t | x_{t-1}) = \mathcal{N}(x_t; \sqrt{1-\beta_t} x_{t-1}, \beta_t I)$$
+
+**Cumulative noise** (closed form):
+$$q(x_t | x_0) = \mathcal{N}(x_t; \sqrt{\bar{\alpha}_t} x_0, (1-\bar{\alpha}_t) I)$$
+
+Where $\bar{\alpha}_t = \prod_{s=1}^t (1-\beta_s)$.
+
+**Reverse diffusion** (denoising):
+$$p_\theta(x_{t-1} | x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))$$
+
+**Training objective**:
+$$\mathcal{L} = \mathbb{E}_{t, x_0, \epsilon} \left[ ||\epsilon - \epsilon_\theta(x_t, t)||^2 \right]$$
+
+Where $x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1-\bar{\alpha}_t} \epsilon$ and $\epsilon \sim \mathcal{N}(0, I)$.
+
+**Code example** (DDPM training step):
+```python
+def diffusion_loss(model, x0, t, noise_schedule):
+    """
+    Compute diffusion model loss.
+
+    Args:
+        model: U-Net that predicts noise
+        x0: [B, C, H, W] clean images
+        t: [B] random timesteps
+        noise_schedule: Beta schedule
+
+    Returns:
+        loss: Scalar loss value
+    """
+    # Sample noise
+    epsilon = torch.randn_like(x0)
+
+    # Get noise schedule values
+    sqrt_alpha_bar_t = torch.sqrt(noise_schedule.alpha_bar[t])
+    sqrt_one_minus_alpha_bar_t = torch.sqrt(1 - noise_schedule.alpha_bar[t])
+
+    # Forward diffusion: add noise to clean image
+    x_t = sqrt_alpha_bar_t[:, None, None, None] * x0 + \
+          sqrt_one_minus_alpha_bar_t[:, None, None, None] * epsilon
+
+    # Predict noise
+    epsilon_pred = model(x_t, t)
+
+    # MSE loss
+    loss = F.mse_loss(epsilon_pred, epsilon)
+
+    return loss
+```
+
+### Architecture
+
+**U-Net**: Standard architecture for diffusion models.
+
+**Time embedding**: Encodes timestep $t$ into model.
+
+**Attention**: Self-attention and cross-attention layers.
+
+**Residual connections**: Enable training deep networks.
+
+---
+
+### Training
+
+**Objective**: Predict noise $\epsilon$ given noisy image $x_t$ and timestep $t$.
+
+**Loss**: Mean squared error between predicted and true noise.
+
+**Noise schedule**: Linear or cosine schedule for $\beta_t$.
+
+---
+
+### Sampling
+
+**DDPM sampling**: Stochastic, requires many steps (1000+).
+
+**DDIM sampling**: Deterministic, fewer steps (10-50).
+
+**Advanced samplers**: DPM-Solver, k-diffusion, etc.
+
+---
+
+## Problems Solved by Diffusion Models
+
+### High-Quality Image Generation
+**Problem**: Previous generative models (GANs, VAEs) struggled with mode collapse, training instability, or limited diversity/quality.
+
+**Diffusion solution**: Achieves state-of-the-art image generation quality with stable training. No adversarial training needed, naturally diverse outputs.
+
+[Figure placeholder: Quality comparison showing GAN artifacts vs diffusion model smooth, diverse generations]
+
+### Controllable Generation via Text
+**Problem**: Early generative models couldn't be controlled by text prompts - generation was random.
+
+**Diffusion solution**: Text conditioning enables precise control over generated content. CLIP text encoder conditions generation process, enabling text-to-image.
+
+### Training Stability
+**Problem**: GANs suffer from training instability, mode collapse, hyperparameter sensitivity.
+
+**Diffusion solution**: Stable training process - simply learn to predict noise. No adversarial dynamics.
+
+### Flexible Conditioning
+**Problem**: Controlling generation with different types of inputs (text, images, depth maps, etc.) required different architectures.
+
+**Diffusion solution**: Unified architecture can condition on various inputs (text, images, depth, etc.) via cross-attention or feature injection.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Sampling Speed
+**Problem**: Requires many denoising steps (50-1000+) → slow generation.
+
+**Current solutions**: DDIM (10-50 steps), distillation methods, but quality/efficiency trade-off remains.
+
+**Open question**: Can we achieve same quality with very few steps (1-5)? Consistency models attempt this.
+
+### Computational Cost
+**Problem**: Training requires large datasets, many GPUs, expensive inference.
+
+**Current solutions**: Smaller models, distillation, quantization, but still resource-intensive.
+
+**Open question**: More efficient architectures without quality loss?
+
+### Controllability Limits
+**Problem**: While text provides control, precise spatial control or multi-object composition can be challenging.
+
+**Current solutions**: ControlNet provides better spatial control, but still limitations.
+
+**Open question**: Fine-grained control for complex compositions?
+
+### Evaluation and Metrics
+**Problem**: Measuring quality, diversity, and alignment with prompts remains challenging.
+
+**Remaining**: Better metrics needed. Human evaluation often gold standard but expensive.
+
+### Bias and Safety
+**Problem**: Models learn biases from training data. Can generate harmful content.
+
+**Open question**: Better alignment, safety filters, bias mitigation?
+
+### Consistency Across Generations
+**Problem**: Generating same object/character from different viewpoints or in different scenes is difficult.
+
+**Open question**: Better consistency for multi-view or multi-image generation?
+
+---
+
+## Broader Insights and Implications
+
+### The Power of Denoising as Generation
+**Insight**: Diffusion models show that learning to reverse a simple noise process can generate complex, high-quality images. Simple forward process (adding noise) enables complex generation.
+
+**Broader impact**: Demonstrates that generation doesn't require complex adversarial training or sophisticated latent spaces. Simple processes, when learned well, can produce complex outputs.
+
+### Score-Based Models Unify Many Approaches
+**Insight**: Diffusion models connect to score-based generative models, stochastic differential equations. Unified framework for understanding generative modeling.
+
+**Broader impact**: Provides theoretical framework connecting different generative approaches. Influences development of new generative methods.
+
+### Text-Conditioned Generation Enables New Applications
+**Insight**: CLIP + diffusion enables natural language control of image generation. This democratizes content creation.
+
+**Broader impact**: Enables non-experts to create visual content. Affects industries from marketing to game development to education.
+
+### Iterative Refinement vs Single Pass
+**Insight**: Diffusion models generate through iterative refinement (many steps), unlike GANs (single pass). This iterative process seems beneficial for quality.
+
+**Broader impact**: Shows value of iterative refinement in generative modeling. May inform design of other generative methods.
+
+### The Role of Pre-Trained Models
+**Insight**: Stable Diffusion and similar models are pre-trained on massive datasets, then fine-tuned. This transfer learning paradigm crucial for quality.
+
+**Broader impact**: Highlights importance of large-scale pre-training in generative AI. Enables downstream applications with less data.
+
+[Placeholder for manual expansion: Add insights about impact on creative industries, ethical considerations, future directions, connections to other generative methods]
+
+---
+
+## Applications
+
+- Image generation (DALL-E 2, Midjourney, Stable Diffusion)
+- Video generation (extend to temporal dimension)
+- 3D generation (via score distillation - Module 7.1)
+- Image editing, inpainting, super-resolution
+
+---
+
+## Related Modules
+
+- Module 1.2: Multimodal Foundation Models (CLIP for text conditioning)
+- Module 7.1: Score Distillation Sampling (uses diffusion for 3D)
+- Module 2.2: Control & Conditioning (ControlNet, etc.)
+
+---
+
+## Additional Resources
+
+- **Stable Diffusion**: [stability.ai](https://stability.ai/)
+- **Diffusion Models Papers**: Comprehensive list of diffusion papers
+- **Hugging Face Diffusers**: Implementation library
+
+---
+
+<div style="text-align: center; margin-top: 2em;">
+</div>
