@@ -139,6 +139,96 @@ Feature matching: Find sparse correspondences between images. Modern methods use
 
 ---
 
+## Problems Solved by Modern Feature Matching
+
+### Robust Matching in Textureless Regions
+**Problem**: Traditional methods (SIFT, ORB) require texture to detect keypoints. Textureless regions (walls, skies, uniform surfaces) fail to produce matches.
+
+**Detector-free solution**: LoFTR and similar methods extract dense features without keypoint detection. Match features directly, enabling matches in textureless regions.
+
+[Figure placeholder: Comparison showing SIFT (few matches on textureless wall) vs LoFTR (dense matches everywhere)]
+
+### Handling Large Viewpoint Changes
+**Problem**: Traditional methods struggle with large viewpoint changes, occlusions, or significant appearance differences between images.
+
+**Learned features solution**: Deep learning learns viewpoint-invariant features. Better generalization across viewpoint changes than hand-crafted features.
+
+### End-to-End Learning
+**Problem**: Traditional pipeline (detect → describe → match) has separate stages. Errors compound, optimization is difficult.
+
+**End-to-end solution**: Joint learning of feature extraction and matching. Optimize entire pipeline for matching task. Better performance.
+
+### Dense Matching
+**Problem**: Sparse keypoint matching misses many correspondences. Need dense matches for some applications.
+
+**Detector-free solution**: Dense feature extraction enables dense matching. More complete correspondence information.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Computational Cost
+**Problem**: Dense feature extraction and transformer attention can be computationally expensive, especially for high-resolution images.
+
+**Current solutions**: LightGlue reduces cost with efficient architecture, but trade-offs remain.
+
+**Open question**: Can we achieve same quality with much lower compute?
+
+### Generalization Across Domains
+**Problem**: Models trained on natural images may not generalize well to specialized domains (medical, satellite, underwater, etc.).
+
+**Open question**: Better domain generalization? Few-shot adaptation to new domains?
+
+### Handling Reflections and Transparency
+**Problem**: Reflective surfaces and transparent objects can cause matching errors. Features may match to reflections rather than actual surfaces.
+
+**Remaining**: Challenging for both traditional and learned methods.
+
+### Scale Ambiguity
+**Problem**: Matching across large scale differences (zoom, resolution changes) remains challenging.
+
+**Open question**: Better multi-scale matching? Scale-invariant features?
+
+### Real-Time Performance
+**Problem**: High-quality matching can be slow, limiting real-time applications.
+
+**Current solutions**: Efficient architectures (LightGlue), but quality/efficiency trade-off remains.
+
+**Open question**: Real-time high-quality matching for all applications?
+
+---
+
+## Broader Insights and Implications
+
+### The Detector-Free Paradigm
+**Insight**: Detector-free matching (no keypoint detection) demonstrates that keypoint detection isn't necessary. Can extract and match features directly.
+
+**Broader impact**: Challenges traditional feature matching pipeline. Shows value of rethinking classical approaches. Influences design of other matching methods.
+
+### Transformer Architecture for Matching
+**Insight**: Transformers naturally handle correspondence problem. Self-attention encodes context, cross-attention enables matching.
+
+**Broader impact**: Validates transformer architecture for correspondence tasks. Influences design of other matching methods.
+
+### Learned vs Hand-Crafted Features
+**Insight**: Learned features outperform hand-crafted features (SIFT, ORB) by learning from data what's important for matching.
+
+**Broader impact**: Demonstrates power of learning over hand-crafting. Encourages replacing hand-crafted methods with learned alternatives. But hand-crafted methods still useful for resource-constrained scenarios.
+
+### Dense vs Sparse Matching
+**Insight**: Dense matching provides more complete information but is more expensive. Choice depends on application needs.
+
+**Broader impact**: Highlights trade-off between completeness and efficiency. Different applications need different approaches.
+
+### The Role of Context
+**Insight**: Transformer-based matching shows that context (attention to surrounding features) is crucial for robust matching.
+
+**Broader impact**: Demonstrates importance of context in vision tasks. Influences design of other methods.
+
+[Placeholder for manual expansion: Add insights about impact on 3D reconstruction pipelines, connections to biological vision, applications in robotics]
+
+---
+
 ## Applications
 
 - Structure-from-Motion
@@ -146,6 +236,8 @@ Feature matching: Find sparse correspondences between images. Modern methods use
 - Image stitching
 - 3D reconstruction
 - Visual localization
+
+[Figure placeholder: Applications diagram showing feature matching used in SfM pipeline, SLAM tracking, panoramic stitching, etc.]
 
 ---
 
