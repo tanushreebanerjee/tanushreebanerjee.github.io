@@ -177,6 +177,91 @@ Used in: LLaMA, PaLM, modern LLMs.
 
 ---
 
+## Problems Solved by Transformers in Vision
+
+### Long-Range Dependencies
+**Problem**: CNNs have limited receptive fields. Long-range spatial relationships (e.g., object relationships across image) hard to capture.
+
+**Self-attention solution**: Attention mechanism enables direct connections between any two positions. Models long-range dependencies naturally.
+
+[Figure placeholder: Comparison showing CNN receptive field (local) vs transformer attention (global)]
+
+### Sequence Modeling in Vision
+**Problem**: Vision tasks can be framed as sequence problems (patches, objects, views). Need architecture that handles sequences well.
+
+**Transformer solution**: Originally designed for sequences (text), naturally adapts to vision sequences (image patches, object queries, multi-view features).
+
+### Set-Based Prediction
+**Problem**: Object detection traditionally uses anchors, NMS. Need architecture that naturally handles variable number of objects.
+
+**DETR solution**: Query-based architecture predicts set of objects directly. No anchors, no NMS needed.
+
+### Multi-View Feature Fusion
+**Problem**: How to aggregate features from multiple camera views? Traditional methods use explicit operations (pooling, concatenation).
+
+**Transformer solution**: Attention naturally aggregates features across views. Learnable feature fusion.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Computational Cost
+**Problem**: Self-attention is $O(n^2)$ in sequence length. High-resolution images or long sequences can be expensive.
+
+**Current solutions**: Efficient attention variants (Flash Attention, sparse attention, windowed attention), but trade-offs remain.
+
+**Open question**: Linear or sub-quadratic attention with same expressiveness?
+
+### Inductive Biases
+**Problem**: Transformers lack spatial inductive biases that CNNs have (translation equivariance, locality). May need more data to learn these.
+
+**Current solutions**: Hybrid architectures (CNN + Transformer), positional encodings, but still less sample-efficient than CNNs in some cases.
+
+**Open question**: Better inductive biases for vision transformers?
+
+### Training Stability
+**Problem**: Transformers can require careful initialization, learning rate schedules, warmup.
+
+**Open question**: More stable training? Better initialization strategies?
+
+### Interpretability
+**Problem**: Understanding what transformers learn, which parts of image they attend to, can be challenging.
+
+**Open question**: Better interpretability? Understanding attention patterns?
+
+---
+
+## Broader Insights and Implications
+
+### Unified Architecture Across Modalities
+**Insight**: Transformers work well for text, images, audio, 3D. Unified architecture across modalities enables multi-modal models.
+
+**Broader impact**: Enables unified architectures (vision-language, multi-modal). Foundation for models like CLIP, GPT-4V. Influences design of multi-modal systems.
+
+### Attention as Universal Mechanism
+**Insight**: Attention mechanism is general mechanism for information routing. Works across many tasks and modalities.
+
+**Broader impact**: Demonstrates power of attention. Influences design of many modern architectures beyond transformers.
+
+### The Shift from Convolution to Attention
+**Insight**: Transformers show that attention can replace or complement convolutions. Different inductive biases, different strengths.
+
+**Broader impact**: Challenges dominance of CNNs. Hybrid approaches often best. Encourages exploration beyond convolutional architectures.
+
+### Scaling Laws
+**Insight**: Transformers show strong scaling behavior - larger models, more data → better performance. Predictable improvements with scale.
+
+**Broader impact**: Validates scaling hypothesis. Encourages investment in larger models and datasets. Influences research priorities.
+
+### Query-Based Architectures
+**Insight**: Query-based architectures (DETR) show that set prediction can be learned directly. No need for anchors or post-processing.
+
+**Broader impact**: Influences design of detection and other vision architectures. Challenges traditional pipeline designs. Encourages end-to-end learning.
+
+[Placeholder for manual expansion: Add insights about impact on computer vision field, connections to other areas, future directions]
+
+---
+
 ## Connections to 3D Vision
 
 **Multi-view transformers**: Use transformer attention to fuse multi-view features (DETR3D, PETR).
@@ -184,6 +269,8 @@ Used in: LLaMA, PaLM, modern LLMs.
 **BEV methods**: Transformers aggregate features from multiple cameras to BEV space (BEVFormer).
 
 **Attention in NeRF**: Some methods use attention for view-dependent effects.
+
+[Figure placeholder: Diagram showing transformer applications in 3D vision: multi-view fusion, BEV aggregation, attention mechanisms]
 
 ---
 
