@@ -114,12 +114,72 @@ Multi-View Stereo (MVS): Estimate dense depth maps from multiple calibrated came
 
 ---
 
+## Problems Solved by Multi-View Stereo
+
+### Dense 3D Reconstruction
+**Problem**: SfM produces sparse point cloud. Many scene regions not reconstructed. Need dense geometry.
+
+**MVS solution**: Dense depth maps from multiple views. Produces dense point clouds or meshes covering entire scene.
+
+[Figure placeholder: Comparison showing SfM sparse point cloud vs MVS dense reconstruction]
+
+### Better Than Single-View Depth
+**Problem**: Single-view depth estimation is ambiguous and unreliable. Multiple views needed.
+
+**MVS solution**: Leverages multiple views to resolve depth ambiguity. Geometric constraints from multiple viewpoints enable reliable depth estimation.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Textureless Regions
+**Problem**: Regions with little texture produce unreliable matches. Depth estimation fails.
+
+**Open question**: Better handling of textureless regions? Alternative features or methods?
+
+### Occlusions
+**Problem**: Some parts of scene occluded in some views. Cannot reconstruct occluded regions.
+
+**Remaining**: Fundamental limitation - need views where region is visible.
+
+### Large Baselines
+**Problem**: Very large camera baselines make matching difficult. Appearance changes too much.
+
+**Open question**: Better matching across large baselines?
+
+### Computational Cost
+**Problem**: High-resolution MVS can be computationally expensive and memory-intensive.
+
+**Current solutions**: Efficient implementations, multi-scale approaches, but still resource-intensive.
+
+**Open question**: More efficient methods for large-scale MVS?
+
+---
+
+## Broader Insights and Implications
+
+### The Sparse-to-Dense Pipeline
+**Insight**: MVS demonstrates value of sparse-to-dense pipeline. SfM provides structure (poses), MVS adds density.
+
+**Broader impact**: Shows value of multi-stage approaches. Each stage optimized for different goals. Influences design of other reconstruction methods.
+
+### Learning Improves Matching
+**Insight**: Learned MVS (MVSNet, etc.) outperforms traditional methods, especially in challenging regions.
+
+**Broader impact**: Demonstrates value of learning for geometric tasks. Classical geometry + learning often best.
+
+[Placeholder for manual expansion: Add insights about connections to other methods, applications]
+
+---
+
 ## Applications
 
 - 3D reconstruction from photo collections
 - Preprocessing for NeRF (dense geometry)
 - Robotics and mapping
 - Virtual reality content creation
+
+[Figure placeholder: Applications showing MVS used in 3D reconstruction, NeRF preprocessing, mapping]
 
 ---
 

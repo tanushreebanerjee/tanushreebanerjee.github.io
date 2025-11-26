@@ -97,6 +97,52 @@ Video-to-3D/4D: Convert monocular videos into 3D or 4D (dynamic 3D) representati
 
 ---
 
+## Problems Solved by Video-to-3D/4D
+
+### 3D/4D from Monocular Video
+**Problem**: Single camera video is easier to capture than multi-view setups. Can we extract 3D/4D from monocular video?
+
+**Video-to-3D solution**: Treat video as multi-view sequence. Estimate camera motion, reconstruct 3D/4D from video frames.
+
+[Figure placeholder: Visualization showing monocular video → camera pose estimation → 3D/4D reconstruction]
+
+### Free-Viewpoint Video
+**Problem**: Recorded video fixed to camera viewpoint. Can't change viewpoint.
+
+**Solution**: Reconstruct 3D/4D representation enables rendering from arbitrary viewpoints. Free-viewpoint video from single camera.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Camera Motion Estimation
+**Problem**: Accurate camera pose estimation from video can be challenging, especially with moving objects.
+
+**Open question**: Better camera tracking in dynamic scenes?
+
+### Temporal Consistency
+**Problem**: Ensuring 3D/4D reconstruction is consistent across all frames is challenging.
+
+**Open question**: Better temporal consistency? Guaranteed consistency?
+
+### Complex Dynamics
+**Problem**: Very complex dynamic scenes (many moving objects, interactions) remain challenging.
+
+**Open question**: Better handling of complex dynamics?
+
+---
+
+## Broader Insights and Implications
+
+### Video as Multi-View Source
+**Insight**: Video frames can be treated as multi-view images. Enables using multi-view techniques on video.
+
+**Broader impact**: Demonstrates value of treating video as spatial sequence. Opens video to multi-view methods.
+
+[Placeholder for manual expansion: Add insights about applications, connections to other methods]
+
+---
+
 ## Applications
 
 - Free-viewpoint video
@@ -104,6 +150,8 @@ Video-to-3D/4D: Convert monocular videos into 3D or 4D (dynamic 3D) representati
 - AR/VR content creation
 - Sports analysis
 - Virtual production
+
+[Figure placeholder: Applications showing free-viewpoint video, video editing, virtual production examples]
 
 ---
 

@@ -99,6 +99,74 @@ Inverse rendering: Recover 3D shape, materials, and lighting from images. Uses d
 
 ---
 
+## Problems Solved by Inverse Rendering
+
+### Recovering Scene Components from Images
+**Problem**: Images show combined effect of geometry, materials, and lighting. Need to separate these components for editing, relighting, understanding.
+
+**Inverse rendering solution**: Recover individual components (geometry, materials, lighting) from images using optimization and differentiable rendering.
+
+[Figure placeholder: Visualization showing input image → inverse rendering → decomposed components (geometry, materials, lighting) → editable/renderable scene]
+
+### Enabling Scene Editing
+**Problem**: Reconstructed scenes (e.g., from NeRF) cannot be edited - can't change materials, lighting, or geometry easily.
+
+**Solution**: Explicit material and lighting enable editing. Change materials, relight, modify scene.
+
+### Understanding Scene Properties
+**Problem**: Want to understand scene properties (what materials? what lighting?) from images.
+
+**Solution**: Inverse rendering recovers these properties explicitly. Enables scene understanding, analysis.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Fundamental Ambiguity
+**Problem**: Same appearance can result from different combinations of geometry, materials, lighting. Factorization is fundamentally ambiguous.
+
+**Current solutions**: Use priors, constraints, additional information, but ambiguity remains.
+
+**Open question**: Better constraints? Additional sensors? More priors?
+
+### Quality of Estimated Properties
+**Problem**: Estimated materials and lighting may not be physically accurate or realistic.
+
+**Remaining**: Challenging to estimate accurate properties from limited information.
+
+### Computational Cost
+**Problem**: Inverse rendering requires optimization over many parameters. Can be computationally expensive.
+
+**Open question**: More efficient optimization? Better initialization?
+
+### Generalization
+**Problem**: Methods may not generalize well across different scene types, lighting conditions, or materials.
+
+**Open question**: Better generalization? More robust methods?
+
+---
+
+## Broader Insights and Implications
+
+### The Inverse Problem Challenge
+**Insight**: Inverse rendering highlights fundamental challenge of inverse problems - multiple solutions can explain same observations.
+
+**Broader impact**: Demonstrates importance of priors, constraints, additional information. Need more than just images to resolve ambiguity. Influences design of inverse methods.
+
+### Enabling New Capabilities
+**Insight**: Decomposition enables new capabilities (editing, relighting) not possible with black-box representations.
+
+**Broader impact**: Shows value of interpretable representations. Enables applications beyond just rendering. Influences design of neural scene representations.
+
+### The Role of Physics
+**Insight**: Physically-based models (BRDF, lighting models) provide structure that helps resolve ambiguity and enables editing.
+
+**Broader impact**: Demonstrates value of incorporating physics into learned models. Best of both worlds - learning + physics.
+
+[Placeholder for manual expansion: Add insights about connections to graphics, applications, future of scene understanding]
+
+---
+
 ## Applications
 
 - Material editing
@@ -106,6 +174,8 @@ Inverse rendering: Recover 3D shape, materials, and lighting from images. Uses d
 - Virtual product visualization
 - Scene understanding
 - AR/VR
+
+[Figure placeholder: Applications showing material editing, relighting, product visualization examples]
 
 ---
 

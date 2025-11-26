@@ -90,12 +90,60 @@ Dynamic Gaussian Splatting: Extend 3D Gaussian Splatting to handle dynamic scene
 
 ---
 
+## Problems Solved by Dynamic Gaussians
+
+### Real-Time Dynamic Rendering
+**Problem**: Dynamic NeRF enables dynamic scenes but is slow. Need real-time dynamic rendering.
+
+**Dynamic Gaussian solution**: Real-time rendering of dynamic scenes. Maintains speed advantages of Gaussian Splatting while handling motion.
+
+[Figure placeholder: Visualization showing static Gaussian Splatting vs dynamic 4D Gaussians handling motion over time]
+
+### Handling Motion in Gaussian Framework
+**Problem**: 3D Gaussian Splatting is static. Need to extend to dynamic scenes.
+
+**4D Gaussian solution**: Extends Gaussian framework to 4D (space + time). Enables motion modeling within efficient Gaussian framework.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Complex Motion Patterns
+**Problem**: Very complex motion, fast motion, or large deformations can be challenging to model.
+
+**Open question**: Better motion modeling? More expressive deformation representations?
+
+### Memory for Long Sequences
+**Problem**: Long video sequences require modeling many time steps. Memory can grow significantly.
+
+**Open question**: More compact temporal representations? Better compression?
+
+### Real-Time Performance Limits
+**Problem**: While fast, very complex dynamic scenes or long sequences may still challenge real-time rendering.
+
+**Open question**: Better efficiency for complex dynamic scenes?
+
+---
+
+## Broader Insights and Implications
+
+### Extending Efficient Representations
+**Insight**: Dynamic Gaussians show that efficient static representations can be extended to dynamic. Same principles apply.
+
+**Broader impact**: Demonstrates that efficient representation design principles extend across dimensions. Influences design of other dynamic methods.
+
+[Placeholder for manual expansion: Add insights about impact on real-time graphics, connections to other dynamic methods]
+
+---
+
 ## Applications
 
 - Dynamic scene reconstruction
 - Video rendering
 - Character animation
 - Real-time dynamic VR/AR
+
+[Figure placeholder: Applications showing dynamic scene rendering, video rendering, animation]
 
 ---
 
