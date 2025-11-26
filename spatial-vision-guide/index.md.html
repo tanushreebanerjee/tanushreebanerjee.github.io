@@ -77,12 +77,6 @@ body, .md { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetic
 </head>
 <body>
 
-<!-- Search box placed at top for visibility -->
-<div id="search-container" style="margin: 2em auto; max-width: 600px; padding: 0 1em;">
-  <label for="search-box" style="display: block; margin-bottom: 0.5em; font-weight: 600; color: #8B1538; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;">Search Modules:</label>
-  <input type="text" id="search-box" placeholder="Search modules, topics, papers... (e.g., NeRF, Gaussian Splatting, CLIP)" autocomplete="off" style="width: 100%; padding: 0.6em 1em; font-size: 1em; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; border: 2px solid #8B1538; border-radius: 4px; box-sizing: border-box;">
-</div>
-
 <code style="display:none">
 <!-- Markdeep: https://casual-effects.com/markdeep/ -->
 <!-- Markdeep: NO TOC -->
@@ -198,25 +192,56 @@ You can copy, modify, distribute, and use this work, even for commercial purpose
 
 <script>
 (function() {
-  // Wait for Markdeep to process the page
-  window.onload = function() {
-    // Move search box to appear after title
-    const searchContainer = document.getElementById('search-container');
+    // Wait for Markdeep to process the page
+    function initSearch() {
+    // Create and inject search box
     const markdownContent = document.querySelector('.md') || document.body;
-    const firstHeading = markdownContent.querySelector('h1, h2, .md h1, .md h2');
-    const firstHR = markdownContent.querySelector('hr, .md hr');
-    
-    if (searchContainer && (firstHeading || firstHR)) {
-      const target = firstHR || firstHeading;
-      if (target && target.nextSibling) {
-        target.parentNode.insertBefore(searchContainer, target.nextSibling);
-      } else if (target) {
-        target.parentNode.insertBefore(searchContainer, null);
-      }
+    if (!markdownContent) {
+      setTimeout(initSearch, 100);
+      return;
     }
     
-    const searchBox = document.getElementById('search-box');
-    if (!searchBox) return;
+    // Check if search box already exists
+    if (document.getElementById('search-box')) {
+      return;
+    }
+    
+    const firstHR = markdownContent.querySelector('hr');
+    const firstH3 = markdownContent.querySelector('h3');
+    
+    // Create search container
+    const searchContainer = document.createElement('div');
+    searchContainer.id = 'search-container';
+    searchContainer.style.cssText = 'margin: 1.5em 0; max-width: 600px; padding: 0.5em 0;';
+    
+    const label = document.createElement('label');
+    label.htmlFor = 'search-box';
+    label.textContent = '🔍 Search Modules:';
+    label.style.cssText = 'display: block; margin-bottom: 0.5em; font-weight: 600; color: #8B1538; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;';
+    
+    const searchBox = document.createElement('input');
+    searchBox.type = 'text';
+    searchBox.id = 'search-box';
+    searchBox.placeholder = 'Search modules, topics, papers... (e.g., NeRF, Gaussian Splatting, CLIP)';
+    searchBox.autocomplete = 'off';
+    searchBox.style.cssText = 'width: 100%; padding: 0.6em 1em; font-size: 1em; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; border: 2px solid #8B1538; border-radius: 4px; box-sizing: border-box;';
+    
+    searchContainer.appendChild(label);
+    searchContainer.appendChild(searchBox);
+    
+    // Insert search box after first HR or before first H3
+    if (firstHR && firstHR.nextSibling) {
+      firstHR.parentNode.insertBefore(searchContainer, firstHR.nextSibling);
+    } else if (firstH3 && firstH3.parentNode) {
+      firstH3.parentNode.insertBefore(searchContainer, firstH3);
+    } else if (markdownContent) {
+      markdownContent.insertBefore(searchContainer, markdownContent.firstChild);
+    }
+    
+    if (!searchBox) {
+      console.log('Search box creation failed');
+      return;
+    }
     
     // Get all list items and sections
     const allSections = document.querySelectorAll('.md h3, .md ul, .md li');
@@ -326,7 +351,16 @@ You can copy, modify, distribute, and use this work, even for commercial purpose
         }
       }
     });
-  };
+    }
+    
+    // Try immediately, then retry if Markdeep hasn't loaded yet
+    if (document.readyState === 'complete') {
+      setTimeout(initSearch, 100);
+    } else {
+      window.addEventListener('load', function() {
+        setTimeout(initSearch, 300);
+      });
+    }
 })();
 </script>
 
