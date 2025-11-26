@@ -132,6 +132,101 @@ Optical flow: Dense pixel-level motion between consecutive frames. Estimates 2D 
 
 ---
 
+## Problems Solved by Optical Flow
+
+### Dense Motion Estimation
+**Problem**: Track motion of every pixel between frames. Needed for video understanding, editing, analysis.
+
+**Optical flow solution**: Dense pixel-level motion vectors. Every pixel has motion estimate, enabling fine-grained motion understanding.
+
+[Figure placeholder: Visualization showing input frames and dense optical flow field with color-coded motion vectors]
+
+### Video Understanding Foundation
+**Problem**: Understanding video requires understanding motion. Static features insufficient.
+
+**Solution**: Optical flow provides motion features. Foundation for action recognition, video segmentation, video understanding tasks.
+
+### Real-Time Motion Tracking
+**Problem**: Track objects or regions across video frames. Needed for applications like video editing, surveillance, analysis.
+
+**RAFT solution**: Real-time or near-real-time optical flow enables interactive applications. Fast enough for real-time video processing.
+
+### Handling Large Motions
+**Problem**: Large object motions or camera motion can cause traditional methods to fail.
+
+**Learned methods solution**: Deep learning methods (RAFT, GMFlow) handle large motions better than traditional methods. Learned features more robust.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Occlusions
+**Problem**: When objects move behind other objects, optical flow is ambiguous. Which object should pixel belong to?
+
+**Current solutions**: Some methods model occlusions explicitly, but remains challenging.
+
+**Open question**: Better occlusion handling? Explicit occlusion reasoning?
+
+### Textureless Regions
+**Problem**: Regions with little texture (plain walls, sky) make optical flow ambiguous. Can't determine motion reliably.
+
+**Remaining**: Challenging for traditional and learned methods. Often requires global constraints or assumptions.
+
+### Lighting Changes
+**Problem**: Changes in lighting between frames violate brightness constancy assumption. Can cause errors.
+
+**Open question**: Better handling of illumination changes? Adaptive brightness models?
+
+### Computational Cost
+**Problem**: High-resolution optical flow can be computationally expensive, especially for real-time applications.
+
+**Current solutions**: Efficient architectures, optimization, but trade-offs remain.
+
+**Open question**: Better efficiency without quality loss?
+
+### Ground Truth Availability
+**Problem**: Collecting dense optical flow ground truth is expensive. Limited training data.
+
+**Open question**: Better synthetic data? Self-supervised methods? Few-shot learning?
+
+### Extreme Motions
+**Problem**: Very fast motion or motion blur can cause failures.
+
+**Remaining**: Challenging cases where motion exceeds model's training distribution.
+
+---
+
+## Broader Insights and Implications
+
+### Learning from Video
+**Insight**: Optical flow demonstrates that motion is rich signal for learning. Many self-supervised methods use optical flow or motion as supervision signal.
+
+**Broader impact**: Shows value of temporal information. Motion provides strong learning signal. Influences design of video understanding methods.
+
+### The Evolution from Hand-Crafted to Learned
+**Insight**: Optical flow shows evolution: traditional methods (Lucas-Kanade, Horn-Schunck) → learned features (FlowNet) → end-to-end learning (RAFT). Learned methods now dominate.
+
+**Broader impact**: Demonstrates that deep learning can improve even well-established classical problems. Encourages revisiting classical CV with modern methods.
+
+### Real-Time Requirements Drive Innovation
+**Insight**: Need for real-time optical flow (video processing, robotics) drives development of efficient architectures.
+
+**Broader impact**: Shows how application requirements (real-time) influence research directions. Efficiency becomes as important as accuracy.
+
+### The Importance of Benchmarks
+**Insight**: Standard benchmarks (Sintel, KITTI) enable fair comparison and rapid progress.
+
+**Broader impact**: Demonstrates value of standardized evaluation. Enables tracking progress and identifying bottlenecks.
+
+### Motion as Fundamental Signal
+**Insight**: Motion (optical flow) is fundamental to understanding video, dynamic scenes, temporal processes.
+
+**Broader impact**: Highlights that motion understanding is core to many vision tasks. Influences design of video understanding systems.
+
+[Placeholder for manual expansion: Add insights about connections to biology (human vision), applications in robotics, video processing industry]
+
+---
+
 ## Applications
 
 - Video stabilization
@@ -140,6 +235,8 @@ Optical flow: Dense pixel-level motion between consecutive frames. Estimates 2D 
 - SLAM (DROID-SLAM uses optical flow)
 - Video interpolation
 - Scene flow (3D motion)
+
+[Figure placeholder: Applications diagram showing optical flow used in video stabilization, action recognition, SLAM, video editing, etc.]
 
 ---
 

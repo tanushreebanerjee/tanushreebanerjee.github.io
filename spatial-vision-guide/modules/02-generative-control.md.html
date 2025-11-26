@@ -104,6 +104,94 @@ Control methods for diffusion models: Add spatial, geometric, or semantic contro
 
 ---
 
+## Problems Solved by Control Methods
+
+### Precise Spatial Control of Generation
+**Problem**: Text-to-image diffusion models provide semantic control but lack precise spatial/geometric control. Can't specify exact layout, positions, or geometric constraints.
+
+**ControlNet solution**: Enables precise spatial control through conditioning signals (depth maps, edges, pose). Generation respects geometric constraints while maintaining quality.
+
+[Figure placeholder: Comparison showing text-only generation (uncontrolled layout) vs ControlNet with depth/edges (precise spatial control)]
+
+### Preserving Pre-Trained Model Quality
+**Problem**: Fine-tuning diffusion models for control can degrade quality or require retraining entire model.
+
+**ControlNet solution**: Frozen original model + trainable control branch. Preserves quality of pre-trained model while adding control. Zero-initialized layers ensure no initial degradation.
+
+### Modular Control Architecture
+**Problem**: Adding different control types (depth, edges, pose) traditionally requires training separate models or complex architectures.
+
+**ControlNet solution**: Modular design - train one control branch per control type, can use multiple controls. Easy to add new control types.
+
+### Reference-Based Generation
+**Problem**: Generating images matching style or content of reference images is challenging with text-only prompts.
+
+**IP-Adapter solution**: Image prompts enable style transfer, composition, reference-based generation alongside text prompts.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Complex Multi-Object Scenes
+**Problem**: Controlling multiple objects with specific relationships, compositions, or interactions remains challenging.
+
+**Open question**: Better compositional control? Handling object-object relationships?
+
+### Fine-Grained Control Balance
+**Problem**: Too much control → artifacts, quality degradation. Too little → control ignored.
+
+**Open question**: Better balance? Adaptive control strength?
+
+### Real-Time Performance
+**Problem**: ControlNet adds computational overhead. Real-time generation with control challenging.
+
+**Current solutions**: Optimization, smaller control branches, but trade-offs remain.
+
+**Open question**: More efficient control architectures?
+
+### Generalization to New Control Types
+**Problem**: Each new control type requires training new control branch. Doesn't generalize to unseen control types.
+
+**Open question**: More general control framework? Few-shot or zero-shot control?
+
+### Control Signal Quality
+**Problem**: Quality of generation depends on quality of control signal. Poor depth maps or edges → poor results.
+
+**Open question**: Better robustness to imperfect control signals? Automatic correction?
+
+---
+
+## Broader Insights and Implications
+
+### Modular Design for Foundation Models
+**Insight**: ControlNet demonstrates value of modular design for foundation models. Add capabilities (control) without modifying core model.
+
+**Broader impact**: Influences design of foundation models. Modular architectures enable extensibility. Others can add capabilities without retraining base model.
+
+### Zero-Initialization Trick
+**Insight**: Zero-initialized output layers ensure control branch starts with no effect. Gradually learns control without disrupting pre-trained model.
+
+**Broader impact**: Demonstrates importance of careful initialization for modular architectures. Enables training new components without breaking existing ones.
+
+### The Value of Pre-Trained Models
+**Insight**: ControlNet leverages powerful pre-trained diffusion models. Shows that extending existing models can be more effective than training from scratch.
+
+**Broader impact**: Validates foundation model paradigm. Extending pre-trained models often better than training new ones. Encourages investment in foundation models.
+
+### Control as Conditioning
+**Insight**: Control signals are just additional conditioning. Same framework handles text, images, depth, edges, etc.
+
+**Broader impact**: Unified understanding of control. Different modalities just different conditioning signals. Enables combining multiple control types.
+
+### Democratizing Precise Generation
+**Insight**: Control methods make precise image generation accessible. Non-experts can create complex compositions with geometric constraints.
+
+**Broader impact**: Enables new applications (architecture visualization, character design). Makes powerful generation tools more accessible. Influences creative workflows.
+
+[Placeholder for manual expansion: Add insights about impact on creative industries, applications, future directions]
+
+---
+
 ## Applications
 
 - Image editing with precise control
@@ -111,6 +199,8 @@ Control methods for diffusion models: Add spatial, geometric, or semantic contro
 - Character generation with pose control
 - Style transfer and composition
 - 3D control for generation (via depth/normal maps)
+
+[Figure placeholder: Applications gallery showing architecture visualization, character design, style transfer, image editing examples]
 
 ---
 

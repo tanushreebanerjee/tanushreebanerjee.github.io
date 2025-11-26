@@ -133,15 +133,106 @@ Acceleration methods for NeRF: Hash encoding, grid-based representations, and op
 
 ---
 
+## Problems Solved by NeRF Acceleration
+
+### Practical Training Times
+**Problem**: Vanilla NeRF training takes hours to days, making iteration and experimentation slow. Impractical for many applications.
+
+**Acceleration solutions**: Reduce training from days to minutes. Enable rapid iteration, experimentation, practical deployment.
+
+[Figure placeholder: Comparison chart showing training times: Vanilla NeRF (12-24 hours) vs Instant-NGP (minutes) vs DVGO (minutes)]
+
+### Real-Time Rendering
+**Problem**: NeRF rendering takes seconds per frame, making interactive viewing impossible.
+
+**Acceleration solutions**: Achieve real-time or near-real-time rendering (30+ FPS). Enable interactive applications, VR/AR.
+
+### Memory Efficiency
+**Problem**: High-resolution NeRF can require large memory for training and inference.
+
+**Hash encoding solution**: Compact representation using hash tables. Much smaller than dense grids while maintaining quality.
+
+### Scalability to High Resolution
+**Problem**: NeRF quality improves with resolution, but training time and memory scale poorly.
+
+**Multiresolution methods**: Enable high-resolution training and rendering with manageable compute and memory.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Quality vs Speed Trade-off
+**Problem**: Acceleration methods often trade some quality for speed. May have artifacts or reduced quality compared to vanilla NeRF.
+
+**Current solutions**: Zip-NeRF addresses aliasing, but trade-offs remain.
+
+**Open question**: Can we match vanilla NeRF quality with acceleration? Better representations?
+
+### Generalization
+**Problem**: Accelerated methods often optimized for specific scene types. May not generalize well to all scenes.
+
+**Open question**: Better generalization? Universal acceleration methods?
+
+### Memory for Large Scenes
+**Problem**: Very large scenes still require significant memory, even with acceleration.
+
+**Current solutions**: Hierarchical methods, compression, but limitations remain.
+
+**Open question**: Better scalability to extremely large scenes?
+
+### Hardware Dependencies
+**Problem**: Some acceleration methods (e.g., hash encoding) optimized for specific hardware (GPU, CUDA cores).
+
+**Open question**: Better cross-platform performance? More hardware-agnostic methods?
+
+### Initialization Sensitivity
+**Problem**: Some accelerated methods sensitive to initialization. Poor initialization → poor results.
+
+**Open question**: Better initialization strategies? More robust to initialization?
+
+---
+
+## Broader Insights and Implications
+
+### Encoding Design Matters
+**Insight**: Instant-NGP demonstrates that encoding design (hash encoding) can dramatically improve efficiency. Representation choice fundamental to performance.
+
+**Broader impact**: Highlights importance of encoding/representation design. Encourages exploration of novel encodings for neural fields.
+
+### Hybrid Explicit-Implicit Representations
+**Insight**: Accelerated NeRF methods use hybrid approaches: explicit grids/voxels + implicit MLPs. Combines benefits of both.
+
+**Broader impact**: Shows value of hybrid representations. Not just explicit or implicit - best of both worlds. Influences design of other neural field methods.
+
+### The Role of Caching and Precomputation
+**Insight**: Grid-based methods (DVGO, TensoRF) enable caching and precomputation, accelerating inference.
+
+**Broader impact**: Demonstrates that some precomputation can dramatically speed up neural rendering. Trade computation time for inference speed.
+
+### Making Research Practical
+**Insight**: Acceleration makes NeRF practical for real applications. Research methods become usable tools.
+
+**Broader impact**: Shows importance of efficiency in research. Not just quality - practical methods needed for adoption. Influences research priorities.
+
+### The Evolution of Neural Rendering
+**Insight**: Acceleration methods show that neural rendering can achieve both quality and speed. Enables new applications.
+
+**Broader impact**: Demonstrates progress toward practical neural rendering. Enables applications in VR/AR, gaming, content creation.
+
+[Placeholder for manual expansion: Add insights about impact on industry, deployment considerations, connections to real-time graphics]
+
+---
+
 ## Performance Comparison
 
-**Vanilla NeRF**: Hours to days training, seconds per frame rendering.
+| Method | Training Time | Rendering Speed | Memory | Quality |
+|--------|--------------|-----------------|--------|---------|
+| Vanilla NeRF | 12-24 hours | Seconds/frame | ~5-10 MB | High |
+| Instant-NGP | Minutes | Real-time (30+ FPS) | ~50-100 MB | High |
+| DVGO | Minutes | Real-time | High (grid) | Medium-High |
+| Zip-NeRF | Minutes-Hours | Near real-time | ~100-200 MB | Very High |
 
-**Instant-NGP**: Minutes training, real-time rendering possible.
-
-**DVGO**: Very fast training, real-time rendering.
-
-**Zip-NeRF**: Fast training, high quality, some aliasing fixes.
+[Figure placeholder: Performance comparison chart showing training time vs quality vs rendering speed trade-offs]
 
 ---
 
