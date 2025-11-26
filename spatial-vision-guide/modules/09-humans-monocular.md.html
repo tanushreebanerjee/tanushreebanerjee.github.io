@@ -107,6 +107,82 @@ Monocular human reconstruction: Reconstruct 3D human shape and pose from single 
 
 ---
 
+## Problems Solved by Monocular Human Reconstruction
+
+### 3D Human Recovery from Single Images
+**Problem**: Reconstruct full 3D human body (shape + pose) from single RGB image. Fundamentally ambiguous - depth information lost.
+
+**SMPL-based solution**: Use parametric body model (SMPL) to constrain solution space. Predict SMPL parameters from image. Enables 3D reconstruction despite ambiguity.
+
+[Figure placeholder: Visualization showing input image → predicted SMPL parameters → 3D mesh reconstruction]
+
+### Weak Supervision from 2D
+**Problem**: Limited 3D ground truth data for training. Need to learn from abundant 2D data (images, keypoints).
+
+**Weak supervision solution**: Use 2D keypoints, silhouettes as supervision. Adversarial loss provides shape prior. Enables training with limited 3D data.
+
+### Detailed Clothed Human Reconstruction
+**Problem**: SMPL models naked body. Need to reconstruct clothing and fine details.
+
+**PIFu solution**: Implicit function learns detailed clothed human geometry. Handles clothing, hair, fine details beyond parametric model.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Depth Ambiguity
+**Problem**: Single view cannot determine absolute depth. Shape estimation can be ambiguous.
+
+**Open question**: Better depth understanding? Multi-view fusion? Geometric priors?
+
+### Occlusions
+**Problem**: Parts of body occluded in single view. Back side, self-occlusions difficult to reconstruct.
+
+**Open question**: Better occlusion reasoning? Use temporal information in video?
+
+### Complex Clothing
+**Problem**: Very loose clothing, complex garments (dresses, coats) remain challenging.
+
+**Remaining**: Difficult to model complex clothing geometry accurately.
+
+### Fine Details
+**Problem**: Fine details (facial features, wrinkles, jewelry) can be lost in reconstruction.
+
+**Open question**: Better detail preservation? Multi-scale approaches?
+
+### Generalization
+**Problem**: Models may not generalize well to diverse body types, poses, clothing styles, or domains (artistic images, unusual poses).
+
+**Open question**: Better generalization? More diverse training data?
+
+---
+
+## Broader Insights and Implications
+
+### Parametric Models Enable Learning
+**Insight**: SMPL parametric model provides strong prior that enables learning from 2D supervision. Constraint reduces ambiguity.
+
+**Broader impact**: Demonstrates value of parametric models as priors. Enables learning when full supervision unavailable. Influences design of other reconstruction methods.
+
+### Weak Supervision is Powerful
+**Insight**: 2D supervision (keypoints, silhouettes) sufficient for learning 3D. Don't always need full 3D ground truth.
+
+**Broader impact**: Shows that weak supervision can be very effective. Enables learning from abundant 2D data. Influences training strategies for other 3D tasks.
+
+### The Role of Adversarial Priors
+**Insight**: Adversarial loss on shape parameters provides important prior. Prevents unrealistic shapes.
+
+**Broader impact**: Shows value of adversarial training for regularization. Influences design of other weakly-supervised methods.
+
+### Beyond Parametric Models
+**Insight**: PIFu shows that can go beyond parametric models for details. Parametric model provides structure, implicit function adds details.
+
+**Broader impact**: Demonstrates hybrid approach - parametric structure + neural details. Influences design of other detailed reconstruction methods.
+
+[Placeholder for manual expansion: Add insights about impact on applications, connections to other reconstruction methods, future directions]
+
+---
+
 ## Applications
 
 - Motion capture from video
@@ -114,6 +190,8 @@ Monocular human reconstruction: Reconstruct 3D human shape and pose from single 
 - Human animation
 - AR/VR avatars
 - Fitness tracking
+
+[Figure placeholder: Applications showing motion capture, virtual try-on, AR avatars, animation examples]
 
 ---
 

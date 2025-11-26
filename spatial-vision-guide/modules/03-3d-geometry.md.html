@@ -170,6 +170,82 @@ Used in essential matrix: $E = [t]_\times R$
 
 ---
 
+## Problems Solved by 3D Geometry
+
+### Mathematical Foundation for 3D Vision
+**Problem**: Need mathematical framework to understand how 3D world projects to 2D images. Basis for all 3D vision tasks.
+
+**Solution**: Established geometric theory (projective geometry, epipolar geometry, camera models) provides rigorous mathematical foundation.
+
+[Figure placeholder: Diagram showing how geometric principles underpin all 3D vision: camera projection → 3D reconstruction → rendering → perception]
+
+### Camera Calibration
+**Problem**: Real cameras have unknown parameters (focal length, distortion, principal point). Need calibration for accurate 3D reconstruction.
+
+**Zhang's method solution**: Simple, accurate calibration from checkerboard images. Enables practical camera calibration.
+
+### Epipolar Constraint
+**Problem**: Finding correspondences between images is challenging. Need geometric constraint to guide search.
+
+**Epipolar geometry solution**: Epipolar constraint restricts search space to epipolar lines. Reduces correspondence problem from 2D search to 1D search.
+
+### 3D Reconstruction from 2D
+**Problem**: How to recover 3D structure from 2D images? Fundamentally ambiguous problem.
+
+**Triangulation solution**: Geometric principle: intersection of rays from multiple views gives 3D point. Enables 3D reconstruction from correspondences.
+
+---
+
+## Remaining Challenges and Limitations
+
+### Scale Ambiguity
+**Problem**: Monocular vision cannot determine absolute scale. Only relative scale can be recovered (up to scale factor).
+
+**Remaining**: Fundamental limitation. Need additional information (known object size, sensor data) to recover absolute scale.
+
+### Degenerate Configurations
+**Problem**: Some camera/viewpoint configurations are degenerate (coplanar points, pure rotation, etc.). Cannot recover structure.
+
+**Remaining**: Need to detect and handle degenerate cases.
+
+### Numerical Stability
+**Problem**: Geometric computations can be numerically unstable (near-singular matrices, small baselines).
+
+**Remaining**: Requires careful implementation, robust numerical methods.
+
+### Non-Linear Optimization Challenges
+**Problem**: Bundle adjustment is non-linear optimization. Can get stuck in local minima, sensitive to initialization.
+
+**Remaining**: Ongoing research in robust optimization, better initialization strategies.
+
+---
+
+## Broader Insights and Implications
+
+### The Power of Mathematical Rigor
+**Insight**: Established geometric theory provides rigorous foundation. Well-understood mathematics enables reliable algorithms.
+
+**Broader impact**: Demonstrates value of mathematical foundations. Rigorous theory enables practical algorithms. Influences design of 3D vision systems.
+
+### Projective Geometry Simplifies 3D Vision
+**Insight**: Projective geometry (homogeneous coordinates) simplifies many 3D vision problems. Enables linear formulations.
+
+**Broader impact**: Shows how right mathematical framework simplifies problems. Influences mathematical approaches to other vision problems.
+
+### The Fundamental Ambiguities
+**Insight**: 3D vision has fundamental ambiguities (scale, depth). Mathematics makes these explicit, shows what can and cannot be recovered.
+
+**Broader impact**: Highlights importance of understanding limitations. Not everything is recoverable. Need additional constraints or assumptions.
+
+### Geometry vs Learning
+**Insight**: Geometry provides principled foundation. Learning can improve robustness, but geometry provides understanding and guarantees.
+
+**Broader impact**: Demonstrates that geometry and learning complement each other. Best methods combine both. Influences hybrid approaches.
+
+[Placeholder for manual expansion: Add insights about impact on all 3D vision, connections to other mathematical areas, practical applications]
+
+---
+
 ## Applications
 
 ### Stereo Vision
@@ -183,6 +259,8 @@ Used in essential matrix: $E = [t]_\times R$
 - $B$: Baseline (distance between cameras)
 - $d$: Disparity
 
+[Figure placeholder: Stereo vision diagram showing two cameras, rectified images, disparity map, depth calculation]
+
 ---
 
 ### Multi-View Geometry
@@ -192,6 +270,8 @@ Used in essential matrix: $E = [t]_\times R$
 **Cost function**: Sum of squared reprojection errors.
 
 **Optimization**: Levenberg-Marquardt or Gauss-Newton.
+
+[Figure placeholder: Bundle adjustment visualization showing camera poses and 3D points being optimized]
 
 ---
 

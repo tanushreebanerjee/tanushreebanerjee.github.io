@@ -1,226 +1,189 @@
 <!DOCTYPE html>
 <meta charset="utf-8" emacsmode="-*- markdown -*-">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://casual-effects.com/markdeep/latest/website.css?">
 
-<style>
-/* Enhanced styling combining website + apidoc + slate features */
-body { 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background: #fafbfc;
-}
+**Spatial Understanding For Dummies**
+*A practical guide to 3D and 4D computer vision*
 
-.md .title { 
-    text-align: center; 
-    font-size: 2.5em; 
-    font-weight: 300;
-    color: #2c3e50;
-    margin-bottom: 0.2em;
-    border-bottom: 3px solid #3498db;
-    padding-bottom: 0.3em;
-}
+Welcome to the comprehensive guide for understanding spatial relationships in computer vision! This educational resource covers everything from classical 2D vision to cutting-edge 4D understanding.
 
-.md .subtitle { 
-    text-align: center; 
-    font-size: 1.3em; 
-    color: #7f8c8d;
-    font-weight: 300;
-    margin-bottom: 1em;
-}
+---
 
-.md .nonumberh1 {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    padding: 1em 1.5em;
-    margin: 2em -1.5em 1em -1.5em;
-    border-radius: 8px;
-    font-weight: 500;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
+# Foundations & Prerequisites
 
-.md h2 {
-    color: #2980b9;
-    border-left: 4px solid #3498db;
-    padding-left: 1em;
-    background: #f8f9fa;
-    padding: 0.5em 1em;
-    margin: 1.5em 0 1em 0;
-    border-radius: 0 4px 4px 0;
-}
+## Module 0.1: [Classical Computer Vision](modules/00-foundations-classical-cv.md.html)
+Image processing, feature detection, matching, geometric vision fundamentals
 
-.md a {
-    color: #3498db;
-    text-decoration: none;
-    transition: color 0.2s;
-}
+## Module 0.2: [Core Machine Learning](modules/00-foundations-core-ml.md.html)  
+Essential ML concepts: optimization, regularization, neural networks
 
-.md a:hover {
-    color: #2980b9;
-    text-decoration: underline;
-}
+## Module 0.3: [Transformers & Attention](modules/00-foundations-transformers.md.html)
+Attention mechanisms, transformer architectures, positional encoding
 
-.md ul {
-    padding-left: 1.5em;
-}
+---
 
-.md li {
-    margin: 0.5em 0;
-}
+# Modern Representation Learning
 
-/* Sidebar TOC styling */
-.md .longTOC {
-    background: white;
-    border: 1px solid #e1e8ed;
-    border-radius: 8px;
-    padding: 1.5em;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+## Module 1.1: [Self-Supervised Learning](modules/01-representation-self-supervised.md.html)
+Contrastive learning, masked modeling, pretext tasks for visual understanding
 
-.md .mediumTOC {
-    background: white;
-    border: 1px solid #e1e8ed;
-    border-radius: 8px;
-    padding: 1em;
-    float: right;
-    width: 300px;
-    margin: 0 0 1em 2em;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
+## Module 1.2: [Multimodal Representations](modules/01-representation-multimodal.md.html) 
+Vision-language models, CLIP, cross-modal understanding
 
-/* Content area styling */
-.md {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2em;
-}
-
-/* License section styling */
-.md hr + h1:last-of-type {
-    background: #ecf0f1;
-    color: #2c3e50;
-    border-radius: 4px;
-    margin: 2em 0 1em 0;
-}
-
-/* Date styling */
-.md em {
-    color: #7f8c8d;
-    font-style: italic;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-    .md { padding: 1em; }
-    .md .mediumTOC { 
-        float: none; 
-        width: auto; 
-        margin: 1em 0; 
-    }
-    .md .nonumberh1 {
-        margin-left: -1em;
-        margin-right: -1em;
-        border-radius: 0;
-    }
-}
-</style>
-
-                            **Spatial Understanding For Dummies**
-                              *Basics of 3D/4D Computer Vision*
-
-An open educational resource: concise encyclopedia-style for foundations, deeper blog-style for frontier topics.
-
-*Last Updated: November 25, 2025*
-
-# Foundations
-
-## Prerequisites
-- [0.1: Core ML & Mathematics](modules/00-foundations-core-ml.md.html)
-- [0.2: Classical Computer Vision](modules/00-foundations-classical-cv.md.html)
-- [0.3: Transformers & Attention](modules/00-foundations-transformers.md.html)
-
-## Representation Learning
-- [1.1: Self-Supervised Learning](modules/01-representation-self-supervised.md.html)
-- [1.2: Multimodal Foundation Models (CLIP)](modules/01-representation-multimodal.md.html)
+---
 
 # Generative Models
 
-- [2.1: Diffusion Models](modules/02-generative-diffusion.md.html)
-- [2.2: Control & Conditioning (ControlNet)](modules/02-generative-control.md.html)
-- [2.3: Video Generation](modules/02-generative-video.md.html)
-- [2.4: World Models](modules/02-generative-world-models.md.html)
+## Module 2.1: [Diffusion Models](modules/02-generative-diffusion.md.html)
+Denoising diffusion, DDPM, DDIM, guidance techniques
 
-# 3D Understanding
+## Module 2.2: [Video Generation](modules/02-generative-video.md.html)
+Temporal consistency, video diffusion, controllable generation
 
-## Classical 3D Vision
-- [3.1: Geometry & Camera Models](modules/03-3d-geometry.md.html)
-- [3.2: Structure-from-Motion (COLMAP)](modules/03-3d-sfm.md.html)
-- [3.3: Multi-View Stereo](modules/03-3d-mvs.md.html)
-- [3.4: SLAM](modules/03-3d-slam.md.html)
+## Module 2.3: [Controllable Generation](modules/02-generative-control.md.html)
+ControlNet, adapters, conditioning mechanisms
 
-## Temporal & Motion
-- [4.1: Optical Flow](modules/04-temporal-flow.md.html)
-- [4.2: Feature Matching (LoFTR, DUST3R)](modules/04-temporal-matching.md.html)
-- [4.3: Scene Flow](modules/04-temporal-scene-flow.md.html)
+## Module 2.4: [World Models](modules/02-generative-world-models.md.html)
+Spatiotemporal prediction, scene understanding, physics simulation
 
-## 3D Perception
-- [8.1: Multi-View Transformers (DETR3D, PETR)](modules/08-perception-multiview.md.html)
-- [8.2: BEV Models (BEVFormer)](modules/08-perception-bev.md.html)
-- [8.3: Monocular 3D Detection](modules/08-perception-monocular.md.html)
-- [8.4: Occupancy & Scene Completion](modules/08-perception-occupancy.md.html)
-- [8.5: 4D Detection & Tracking](modules/08-perception-4d.md.html)
+---
 
-# Neural Rendering
+# 3D Geometry & Structure
 
-## NeRF
-- [5.1: NeRF Fundamentals](modules/05-nerf-fundamentals.md.html)
-- [5.2: NeRF Acceleration (Instant-NGP)](modules/05-nerf-acceleration.md.html)
-- [5.3: Appearance & Relighting](modules/05-nerf-appearance.md.html)
+## Module 3.1: [Geometry & Camera Models](modules/03-3d-geometry.md.html)
+Camera calibration, epipolar geometry, projective transformations
 
-## Gaussian Splatting
-- [6.1: 3D Gaussian Splatting](modules/06-gaussian-splatting.md.html)
-- [6.2: Dynamic & 4D Gaussians](modules/06-gaussian-dynamic.md.html)
+## Module 3.2: [Structure-from-Motion](modules/03-3d-sfm.md.html)
+Bundle adjustment, sparse reconstruction, COLMAP
 
-## Dynamic & 4D
-- [10.1: Dynamic NeRFs](modules/10-4d-dynamic-nerf.md.html)
-- [10.2: Video-to-3D/4D](modules/10-4d-video-to-3d.md.html)
+## Module 3.3: [Multi-View Stereo](modules/03-3d-mvs.md.html)
+Dense reconstruction, plane sweeping, PatchMatch
 
-# Generative 3D
+## Module 3.4: [SLAM (Simultaneous Localization & Mapping)](modules/03-3d-slam.md.html)
+Visual odometry, loop closure, real-time mapping
 
-## Score Distillation
-- [7.1: Score Distillation Sampling (DreamFusion)](modules/07-sds-fundamentals.md.html)
-- [7.2: 2D→3D Lifting (Zero-1-to-3, Wonder3D)](modules/07-sds-2d-to-3d.md.html)
-- [7.3: Implicit 3D Generation](modules/07-sds-implicit-3d.md.html)
+---
 
-## Differentiable Rendering
-- [11.1: Differentiable Rendering](modules/11-diff-rendering.md.html)
-- [11.2: Inverse Rendering](modules/11-inverse-rendering.md.html)
+# Temporal Understanding
 
-# Specialized Topics
+## Module 4.1: [Optical Flow](modules/04-temporal-flow.md.html)
+Lucas-Kanade, Horn-Schunck, modern flow estimation
 
-## Humans & Avatars
-- [9.1: Parametric Human Models (SMPL)](modules/09-humans-parametric.md.html)
-- [9.2: Neural Humans (HumanNeRF)](modules/09-humans-neural.md.html)
-- [9.3: Monocular Human Reconstruction](modules/09-humans-monocular.md.html)
+## Module 4.2: [Feature Matching & Tracking](modules/04-temporal-matching.md.html)
+SIFT, ORB, learned features, temporal consistency
 
-# Resources
+## Module 4.3: [Scene Flow](modules/04-temporal-scene-flow.md.html)
+3D motion estimation, dynamic scene understanding
 
-- [12.1: Libraries & Tools](modules/12-tools-libraries.md.html)
-- [12.2: Datasets](modules/12-tools-datasets.md.html)
-- [Complete Reading List](reading-list.md.html)
+---
 
-# License
+# Neural Rendering - NeRF Family
 
-This work is dedicated to the public domain under [CC0 1.0 Universal (CC0 1.0) Public Domain Dedication](https://creativecommons.org/publicdomain/zero/1.0/).
+## Module 5.1: [NeRF Fundamentals](modules/05-nerf-fundamentals.md.html)
+Neural radiance fields, volume rendering, positional encoding
 
-You can copy, modify, distribute, and use this work, even for commercial purposes, all without asking permission.
+## Module 5.2: [NeRF Acceleration](modules/05-nerf-acceleration.md.html)
+InstantNGP, TensoRF, efficient representations
 
-<link rel="stylesheet" href="https://casual-effects.com/markdeep/latest/apidoc.css?">
-<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script>
-window.markdeepOptions = {
-    tocStyle: 'medium',  // Creates floating TOC sidebar
-    definitionStyle: 'short',
-    sortScheduleLists: false
-};
-</script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js" charset="utf-8"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+## Module 5.3: [Appearance Modeling](modules/05-nerf-appearance.md.html)
+Lighting, materials, photorealistic rendering
+
+---
+
+# Gaussian Splatting
+
+## Module 6.1: [3D Gaussian Splatting](modules/06-gaussian-splatting.md.html)
+Point-based rendering, differentiable rasterization
+
+## Module 6.2: [Dynamic Gaussians](modules/06-gaussian-dynamic.md.html)
+Temporal modeling, deformation fields
+
+---
+
+# Score Distillation & 2D-to-3D
+
+## Module 7.1: [SDS Fundamentals](modules/07-sds-fundamentals.md.html)
+Score distillation sampling, DreamFusion principles
+
+## Module 7.2: [2D-to-3D Generation](modules/07-sds-2d-to-3d.md.html)
+Single-view reconstruction, lifting 2D priors to 3D
+
+## Module 7.3: [Implicit 3D Generation](modules/07-sds-implicit-3d.md.html)
+Text-to-3D, zero-shot generation
+
+---
+
+# 3D Perception & Detection
+
+## Module 8.1: [Monocular 3D Perception](modules/08-perception-monocular.md.html)
+Depth estimation, object detection in 3D from single images
+
+## Module 8.2: [Multi-View Perception](modules/08-perception-multiview.md.html)
+Camera fusion, 3D object detection from multiple viewpoints
+
+## Module 8.3: [Bird's-Eye View (BEV)](modules/08-perception-bev.md.html)
+BEV representations, autonomous driving applications
+
+## Module 8.4: [Occupancy Networks](modules/08-perception-occupancy.md.html)
+3D scene completion, voxel-based representations
+
+## Module 8.5: [4D Perception](modules/08-perception-4d.md.html)
+Spatiotemporal understanding, tracking in 3D+time
+
+---
+
+# Human Understanding
+
+## Module 9.1: [Parametric Human Models](modules/09-humans-parametric.md.html)
+SMPL, body pose estimation, shape modeling
+
+## Module 9.2: [Neural Human Rendering](modules/09-humans-neural.md.html)
+Neural avatars, animatable humans
+
+## Module 9.3: [Monocular Human Reconstruction](modules/09-humans-monocular.md.html)
+Single-image human modeling, pose and shape recovery
+
+---
+
+# 4D Understanding
+
+## Module 10.1: [Dynamic NeRF](modules/10-4d-dynamic-nerf.md.html)
+Temporal radiance fields, deformation modeling
+
+## Module 10.2: [Video-to-3D](modules/10-4d-video-to-3d.md.html)
+Reconstructing 3D from video sequences
+
+---
+
+# Rendering & Graphics
+
+## Module 11.1: [Differentiable Rendering](modules/11-diff-rendering.md.html)
+Gradient-based optimization through rendering
+
+## Module 11.2: [Inverse Rendering](modules/11-inverse-rendering.md.html)
+Material and lighting estimation from images
+
+---
+
+# Tools & Implementation
+
+## Module 12.1: [Essential Tools & Libraries](modules/12-tools-libraries.md.html)
+PyTorch3D, Open3D, implementation frameworks
+
+## Module 12.2: [Datasets & Benchmarks](modules/12-tools-datasets.md.html)
+Key datasets for evaluation and training
+
+---
+
+# Additional Resources
+
+- [📚 Reading List](reading-list.md.html) - Essential papers and references
+- [🔗 External Links & Tools](#)
+- [💡 Project Ideas](#)
+
+---
+
+*Last updated: November 2025*  
+*Licensed under MIT License*
+
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js" charset="utf-8"></script><script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js" charset="utf-8"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
